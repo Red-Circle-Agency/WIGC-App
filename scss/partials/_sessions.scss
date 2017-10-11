@@ -1,0 +1,11 @@
+.sessions { @include cards(); }
+.session { @include card();
+  a { color:$orange; }
+  .when-and-where { margin-bottom: 0.5em; }
+  time { font-weight: $bold; }
+  .desc { margin-bottom: 0.5em; }
+  .speakers { padding-left: 0;
+    li { list-style: none; margin-bottom: 0.5em; }
+    .job { padding-left: 1em; }
+  }
+}

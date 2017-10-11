@@ -1,0 +1,11 @@
+header { z-index: $z-header; background:rgba($black,0.70); @include position(fixed,0,0,null,0); height: $header-height; overflow: hidden;
+  .logos { @include flex-container(); justify-content: space-between; padding-left: 10px; padding-right: 10px; }
+  .logo { @include flex-item(120px); max-width: 45%;
+    &.wigc { padding-top:10px;
+      img { height: 24px; }
+    }
+    &.cniga { text-align: right; padding-top: 6px;
+      img { height: 44px; }
+    }
+  }
+}

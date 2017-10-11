@@ -1,0 +1,8 @@
+
+aside.sidebar { @include position(fixed,$header-height,null,$footer-height,0); z-index: $z-sidebar; min-width: 75%; background:$orange; /* mix-blend-mode: color-burn; */
+  //.orange { @include position(fixed,$header-height,null,$footer-height,0); background-color:$orange; mix-blend-mode: multiply; }
+  nav { @include flex-container(column); height:100%; justify-content: space-around; padding-left:10px; padding-right: 10px; position: relative; }
+  a { font-size:7vw; color:$white; font-family: $serif; mix-blend-mode: normal; }
+  transform: translateX(-102%); transition:transform 0.5s ease;
+  &.visible { transform: translate(0); }
+}

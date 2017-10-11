@@ -1,0 +1,22 @@
+.vendors { @include cards(); }
+
+.vendor { @include card(); @extend %clearfix; padding-bottom: 0;
+  figure.logo { float:left; margin-right: 20px; margin-bottom: 10px; width:72px; max-height:72px; /*background-size:contain; background-position: center; background-repeat: no-repeat; */ }
+  p { margin-bottom: 1em; }
+  .icon-link { margin-right: 0.5em; color:$orange;}
+  //svg.icon { width:1.2rem; height: 1.2rem; fill:currentColor; }
+  .icon-link {
+    .icon { width:1.2em; height:1.2em; }
+  }
+  .tags { padding-left: 0; margin-bottom: 0.5em;
+    li { background-color:$black; color:$white; display: inline-block; margin-right: 0.5em; padding: 0.25em 1em; font-size:80%; }
+  }
+  .people {
+    .name { font-weight: $bold; }
+  }
+  
+  &.full { margin: 0 0 30px 0; }
+  
+}
+  
+  

@@ -1,0 +1,265 @@
+doctype html
+html(lang="en")
+  head
+    title Test App
+    link(href="https://fonts.googleapis.com/css?family=Catamaran:400,700|Libre+Baskerville:700" rel="stylesheet")
+    link(href="css/wigc.css" rel="stylesheet")
+  body
+    main#app 
+    
+      section.errors(v-if="error_msg" v-html="error_msg")
+      
+      .video-holder
+        video(src="video/glory_bands.mp4" autoplay muted loop)
+        
+        header
+          .logos
+            .logo.wigc
+              img(src="svg/logos/wigc.svg")
+            .logo.cniga
+              img(src="svg/logos/cniga.svg")
+        
+        
+        aside.sidebar(v-bind:class="{visible: my.sidebarVisible}" v-cloak)
+          nav
+            a My WIGA
+            a(v-on:click="switchSection('sessions')") Sessions
+            a(v-on:click="switchSection('vendors')") Vendors
+            a Talk
+            
+        footer
+          a.toggle-sidebar(v-on:click="my.sidebarVisible = !my.sidebarVisible" v-bind:class="{visible: !my.sidebarVisible}")
+            svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100")
+              path(d="M97.5 29.4H4.4V17.3h93.1v12.1zm0 14.7H4.4v12.1h93.1V44.1zm0 26.8H4.4V83h93.1V70.9z")
+          nav
+            a Map
+            a Exhibitors
+            a Contact
+
+      section.sessions(v-cloak v-bind:class="{ visible: my.view == 'sessions' }")
+        //h2 Sessions
+        article.session(v-for="session in sessions" :class="{full: session.fullinfo }")
+          h3.title 
+            a(v-on:click="session.fullinfo = !session.fullinfo") {{session.title}}
+            a.favorite(v-on:click="toggleFavorite(my.sessions, session);" :class="{active: session.favorite}")
+              svg.icon(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100")
+                path.fill(d="M49.8 1.6L64.6 33l33 5.1-23.9 24.4 5.7 34.6-29.6-16.3-29.5 16.3 5.6-34.6L2 38.1 35 33z")
+                path.outline(d="M49.8 13.3L60 35.1l1.1 2.4 2.6.4 23.4 3.6-17 17.6-1.8 1.8.4 2.5 4 24.4-20.5-11.4-2.4-1.3-2.4 1.3-20.5 11.4 4-24.4.4-2.5-1.8-1.8-17.1-17.6L35.8 38l2.6-.4 1.1-2.4 10.3-21.9m0-11.7L35 33 2 38l23.9 24.5-5.6 34.6 29.5-16.3 29.5 16.3-5.6-34.6L97.6 38l-33-5L49.8 1.6z")
+          .when-and-where
+            time.when
+              span {{session.date}} @ {{session.time}}
+              span(v-if="session.duration")
+                |   ({{session.duration}})
+            .where.room(v-if="session.room") {{session.room}}
+          summary.desc(v-if="session.teaser && !session.fullinfo" v-html="session.teaser")
+          .desc.fulltext(v-if="session.text && session.fullinfo" v-html="session.text")
+          ul.speakers(v-if="session.speakers")
+            li(v-for="speaker in session.speakers")
+              b.role(v-if="speaker.role && session.fullinfo") {{speaker.role}}: 
+              
+              span.name(v-if="!session.fullinfo") {{speaker.name}}, {{speaker.company}}
+              span.name(v-else) {{speaker.name}}
+              .and(v-if="session.fullinfo")
+                .job(v-if="speaker.job_title && speaker.company") {{speaker.job_title}}, {{speaker.company}}
+                .job(v-else-if="speaker.job_title") {{speaker.job_title}}
+                .job(v-else-if="speaker.company") {{speaker.company}}
+                .desc(v-if="speaker.text && session.fullinfo" v-html="speaker.text")
+              
+      section.vendors(v-cloak v-bind:class="{ visible: my.view == 'vendors' }")
+        article.vendor(v-for="vendor in vendors" :class="{ full: vendor.fullinfo }")
+          figure.logo
+            img(:src="vendor.logo")
+          h3.title
+            a(v-on:click="vendor.fullinfo = !vendor.fullinfo") {{vendor.title}}
+            a.favorite(v-on:click="toggleFavorite(my.vendors, vendor);" :class="{active: vendor.favorite}")
+              svg.icon(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100")
+                path.fill(d="M49.8 1.6L64.6 33l33 5.1-23.9 24.4 5.7 34.6-29.6-16.3-29.5 16.3 5.6-34.6L2 38.1 35 33z")
+                path.outline(d="M49.8 13.3L60 35.1l1.1 2.4 2.6.4 23.4 3.6-17 17.6-1.8 1.8.4 2.5 4 24.4-20.5-11.4-2.4-1.3-2.4 1.3-20.5 11.4 4-24.4.4-2.5-1.8-1.8-17.1-17.6L35.8 38l2.6-.4 1.1-2.4 10.3-21.9m0-11.7L35 33 2 38l23.9 24.5-5.6 34.6 29.5-16.3 29.5 16.3-5.6-34.6L97.6 38l-33-5L49.8 1.6z")
+          //figure.logo(:style="{ 'background-image': 'url(' +vendor.logo+')' }")
+          
+          .booth(v-if="vendor.booth") Booth {{vendor.booth}}
+          //img.logo(v-if="vendor.logo" :src="vendor.logo")
+          summary.desc(v-if="vendor.teaser && !vendor.fullinfo" v-html="vendor.teaser")
+          .desc.fulltext(v-if="vendor.text && vendor.fullinfo" v-html="vendor.text")
+          ul.tags(v-if="vendor.tags")
+            li(v-for="tag in vendor.tags") {{tag}}
+          .contacts(v-if="vendor.fullinfo")
+            a.icon-link(:href="vendor.website" v-if="vendor.website")
+              svg.icon(xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8")
+                path(d="M4 0c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 1c.33 0 .64.09.94.19-.21.2-.45.38-.41.56.04.18.69.13.69.5 0 .27-.42.35-.13.66.35.35-.64.98-.66 1.44-.03.83.84.97 1.53.97.42 0 .53.2.5.44-.54.77-1.46 1.25-2.47 1.25-.38 0-.73-.09-1.06-.22.22-.44-.28-1.31-.75-1.59-.23-.23-.72-.14-1-.25-.09-.27-.18-.54-.19-.84.03-.05.08-.09.16-.09.19 0 .45.38.59.34.18-.04-.74-1.31-.31-1.56.2-.12.6.39.47-.16-.12-.51.36-.28.66-.41.26-.11.45-.41.13-.59-.06-.03-.13-.1-.22-.19.45-.27.97-.44 1.53-.44zm2.31 1.09c.18.22.32.46.44.72 0 .01 0 .02 0 .03-.04.07-.11.11-.22.22-.28.28-.32-.21-.44-.31-.13-.12-.6.02-.66-.13-.07-.18.5-.42.88-.53z")
+            a.icon-link(:href="'mailto:' + vendor.email" v-if="vendor.email")
+                svg.icon(xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8")
+                  path(d="M4 0l-4 2v6h8v-6l-4-2zm0 1.13l3 1.5v1.88l-3 1.5-3-1.5v-1.88l3-1.5zm-2 1.88v1l2 1 2-1v-1h-4z")
+            a.icon-link(@click="mapClick(vendor)" v-if="vendor.street_address")
+              svg.icon(xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8")
+                path(d="M8 0l-8 4 3 1 1 3 4-8z")
+            ul.people(v-if="vendor.people")
+              li(v-for="person in vendor.people")
+                span.name {{person.name}}
+                | , 
+                span.job {{person.job}}
+            
+    .javascripts
+      script(src="https://code.jquery.com/jquery-3.1.1.min.js")
+      script(src="https://unpkg.com/vue")
+      script.
+      
+        function snap(array, search_term, multi = false) {
+          for (var i = array.length - 1; i >= 0; i--) {
+            if (array[i] === search_term) {
+              array.splice(i, 1);
+              if (multi == true) {
+                break;
+              }
+            }
+          }
+        }
+
+      
+        var app = new Vue({
+          el: '#app',
+          data: {
+            my: {
+              sidebarVisible: true,
+              view: 'home',
+              sessions: [],
+              vendors: []
+            },
+            sessions: [],
+            vendors: [],
+            error_msg: false
+            
+          },
+          mounted: function () {
+            var self = this;
+            
+            // Grab Sessions
+            $.ajax({
+                url: 'https://circle.red/wigc/sessions',
+                //url: 'http://localhost/wigc/sessions',
+                method: 'GET',
+                success: function (data) {
+                  self.sessions = data;
+                },
+                error: function (error) {
+                  alert(JSON.stringify(error));
+                  self.error_msg = error
+                }
+            });
+            
+            // Grab Vendors
+            $.ajax({
+                url: 'https://circle.red/wigc/vendors',
+                //url: 'http://localhost/wigc/vendors',
+                method: 'GET',
+                success: function (data) {
+                  self.vendors = data;
+                },
+                error: function (error) {
+                  alert(JSON.stringify(error));
+                  //self.error_msg = error
+                }
+            });
+            
+            var request = indexedDB.open("WIGCApp", 3);
+
+            request.onerror = function(event) {
+              self.indexed = "Can't use IndexedDB";
+            };
+            request.onsuccess = function(event) {
+              self.db = this.result;
+              self.getFavorites();
+              self.my.view = "sessions";
+            };
+            request.onupgradeneeded = function(event) {
+              var objStore = event.currentTarget.result.createObjectStore('my');
+            }
+          },
+          updated: function() {
+            var self = this;
+            var request = indexedDB.open("WIGCApp", 3);
+
+            request.onerror = function(event) {
+              self.indexed = "Can't use IndexedDB";
+            };
+            request.onsuccess = function(event) {
+              self.db = this.result;
+              self.updateFavorites();
+            };
+            request.onupgradeneeded = function(event) {
+              var objStore = event.currentTarget.result.createObjectStore('my');
+            }
+          },
+          methods: {
+            toggleFavorite: function(faves,fave) {
+              var self = this;
+              fave.favorite = !fave.favorite;
+              console.log(fave.url);
+              if (fave.favorite) {
+                faves.push(fave.url);
+              } else {
+                snap(faves,fave.url);
+              }
+              self.updateFavorites();
+            },
+            switchSection: function(newView) {
+              var self = this;
+              self.my.sidebarVisible = false;
+              self.my.view = newView;
+            },
+            mapClick: function(vendor) {
+              var query = vendor.street_address + ' ' + vendor.city+ ', ' +vendor.state+ ' ' +vendor.zip;
+              window.open('https://maps.google.com?q='+query, 'Map');
+              console.log(vendor);
+            },
+            getFavorites: function() {
+              var self = this; 
+              var store = self.getObjectStore('my', 'readonly');
+              var req = store.openCursor();
+
+              req.onsuccess = function(evt) {
+                var cursor = evt.target.result;
+                if (cursor) {
+                  self.my = cursor.value;
+                }
+              }; 
+            },
+            updateFavorites: function(){
+              var self = this;
+              var store = self.getObjectStore('my', 'readwrite');
+
+              var getCount = store.count();
+              getCount.onsuccess = function(evt){
+              if (evt.target.result === 0){
+                try {
+                  req = store.add(self.my, 0);
+                } catch (e) {
+                  throw e;
+                }
+              }
+              else{
+                var req = store.openCursor();
+                req.onsuccess = function(evt) {
+                  var cursor = evt.target.result;
+                  if(cursor){
+                      try {
+                        cursor.update(self.my)
+                      } catch (e) {
+                        throw e;
+                      }
+                    }
+                    self.sessions.map(function(s){
+                      if(self.my.sessions.indexOf(s.url) !== -1){
+                        s.favorite = true;
+                      }
+                    });
+                  }                  
+                }
+              }
+            },
+            getObjectStore: function(storeName, protocol){
+                var self = this; 
+                return self.db.transaction(storeName, protocol).objectStore(storeName);
+            }
+          }
+        });
