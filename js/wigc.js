@@ -29,41 +29,32 @@ var app = new Vue({
 
     // Grab Sessions
     $.ajax({
-        url: 'https://circle.red/wigc/sessions',
-        //url: 'http://localhost/wigc/sessions',
-        method: 'GET',
-        success: function (data) {
-          self.sessions = data;
-        },
-        error: function (error) {
-          alert(JSON.stringify(error));
-          //self.error_msg = error;
-        }
+      url: 'https://circle.red/wigc/sessions',
+      //url: 'http://localhost/wigc/sessions',
+      method: 'GET',
+      success: function (data) {
+        self.sessions = data;
+      },
+      error: function (error) {
+        alert(JSON.stringify(error));
+        //self.error_msg = error
+      }
     });
 
     // Grab Vendors
     $.ajax({
-        url: 'https://circle.red/wigc/vendors',
-        //url: 'http://localhost/wigc/vendors',
-        method: 'GET',
-        success: function (data) {
-          self.vendors = data;
-        },
-        error: function (error) {
-          alert(JSON.stringify(error));
-          //self.error_msg = error
-        }
+      url: 'https://circle.red/wigc/vendors',
+      //url: 'http://localhost/wigc/vendors',
+      method: 'GET',
+      success: function (data) {
+        self.vendors = data;
+      },
+      error: function (error) {
+        alert(JSON.stringify(error));
+        //self.error_msg = error
+      }
     });
-  },
-  methods: {
-    switchSection: function(newView) {
-      var self = this;
-      self.my.sidebarVisible = false;
-      self.my.view = newView;
-    }
-  }
 
-    /*
     var request = indexedDB.open("WIGCApp", 3);
 
     request.onerror = function(event) {
@@ -133,20 +124,20 @@ var app = new Vue({
 
       var getCount = store.count();
       getCount.onsuccess = function(evt){
-      if (evt.target.result === 0){
-        try {
-          req = store.add(self.my, 0);
-        } catch (e) {
-          throw e;
+        if (evt.target.result === 0){
+          try {
+            req = store.add(self.my, 0);
+          } catch (e) {
+            throw e;
+          }
         }
-      }
-      else{
-        var req = store.openCursor();
-        req.onsuccess = function(evt) {
-          var cursor = evt.target.result;
-          if(cursor){
+        else{
+          var req = store.openCursor();
+          req.onsuccess = function(evt) {
+            var cursor = evt.target.result;
+            if(cursor){
               try {
-                cursor.update(self.my)
+                cursor.update(self.my);
               } catch (e) {
                 throw e;
               }
@@ -161,9 +152,8 @@ var app = new Vue({
       }
     },
     getObjectStore: function(storeName, protocol){
-        var self = this; 
-        return self.db.transaction(storeName, protocol).objectStore(storeName);
+      var self = this; 
+      return self.db.transaction(storeName, protocol).objectStore(storeName);
     }
   }
-  */
 });
