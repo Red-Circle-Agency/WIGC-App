@@ -20,5 +20,9 @@
   <platform name="ios" />
   <platform name="android" />
   <platform name="winphone" />
+  
+  <access origin="*" />
+  <allow-intent href="*" />
+  <allow-navigation href="*" />
 
 </widget>
