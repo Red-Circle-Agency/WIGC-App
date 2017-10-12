@@ -10,7 +10,7 @@ html(lang="en")
       section.errors(v-if="error_msg" v-html="error_msg")
       
       .video-holder
-        video(src="video/glory_bands.mp4" autoplay muted loop)
+        //- video(src="video/glory_bands.mp4" autoplay muted loop)
         
         header
           .logos
@@ -100,8 +100,10 @@ html(lang="en")
                 span.job {{person.job}}
             
     .javascripts
-      script(src="https://code.jquery.com/jquery-3.1.1.min.js")
-      script(src="https://unpkg.com/vue")
+      //script(src="https://code.jquery.com/jquery-3.1.1.min.js")
+      //script(src="https://unpkg.com/vue")
+      script(src="js/vendor/jquery-3.2.1.min.js")
+      script(src="js/vendor/vue.min.js")
       script.
       
         function snap(array, search_term, multi = false) {

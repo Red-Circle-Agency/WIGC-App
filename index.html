@@ -9,7 +9,6 @@
     <main id="app"> 
       <section class="errors" v-if="error_msg" v-html="error_msg"></section>
       <div class="video-holder">
-        <video src="video/glory_bands.mp4" autoplay muted loop></video>
         <header>
           <div class="logos">
             <div class="logo wigc"><img src="svg/logos/wigc.svg"></div>
@@ -86,8 +85,10 @@
       </section>
     </main>
     <div class="javascripts">
-      <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-      <script src="https://unpkg.com/vue"></script>
+      <!--script(src="https://code.jquery.com/jquery-3.1.1.min.js")-->
+      <!--script(src="https://unpkg.com/vue")-->
+      <script src="js/vendor/jquery-3.2.1.min.js"></script>
+      <script src="js/vendor/vue.min.js"></script>
       <script>
         function snap(array, search_term, multi = false) {
           for (var i = array.length - 1; i >= 0; i--) {
