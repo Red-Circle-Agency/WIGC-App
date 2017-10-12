@@ -1,3 +1,10 @@
+// jshint -W117
+// jshint -W119
+
+
+
+/////////////////////////////////
+// Functions (General Use)
 function snap(array, search_term, multi = false) {
   for (var i = array.length - 1; i >= 0; i--) {
     if (array[i] === search_term) {
@@ -17,7 +24,8 @@ var app = new Vue({
       sidebarVisible: true,
       view: 'home',
       sessions: [],
-      vendors: []
+      vendors: [],
+      schedule: []
     },
     sessions: [],
     vendors: [],
@@ -29,8 +37,8 @@ var app = new Vue({
 
     // Grab Sessions
     $.ajax({
-      url: 'https://circle.red/wigc/sessions',
-      //url: 'http://localhost/wigc/sessions',
+      //url: 'https://circle.red/wigc/sessions',
+      url: 'http://localhost/wigc/sessions',
       method: 'GET',
       success: function (data) {
         self.sessions = data;
@@ -43,11 +51,25 @@ var app = new Vue({
 
     // Grab Vendors
     $.ajax({
-      url: 'https://circle.red/wigc/vendors',
-      //url: 'http://localhost/wigc/vendors',
+      //url: 'https://circle.red/wigc/vendors',
+      url: 'http://localhost/wigc/vendors',
       method: 'GET',
       success: function (data) {
         self.vendors = data;
+      },
+      error: function (error) {
+        alert(JSON.stringify(error));
+        //self.error_msg = error
+      }
+    });
+    
+    // Grab Schedule
+    $.ajax({
+      //url: 'https://circle.red/wigc/schedule',
+      url: 'http://localhost/wigc/schedule',
+      method: 'GET',
+      success: function (data) {
+        self.schedule = data;
       },
       error: function (error) {
         alert(JSON.stringify(error));
