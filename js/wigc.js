@@ -187,6 +187,11 @@ var app = new Vue({
                 s.favorite = true;
               }
             });
+            self.vendors.map(function(v){
+              if(self.my.vendors.indexOf(v.url) !== -1){
+                v.favorite = true;
+              }
+            });
           }
         }
       }
