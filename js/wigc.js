@@ -25,10 +25,10 @@ var app = new Vue({
       view: 'home',
       sessions: [],
       vendors: [],
-      schedule: []
     },
     sessions: [],
     vendors: [],
+    unfavorited: [],
     error_msg: false
 
   },
@@ -36,7 +36,7 @@ var app = new Vue({
     mySessions: function(){
       var self = this;
       return self.sessions.filter(function(s){
-        if(self.my.sessions.indexOf(s.url) !== -1){
+        if((self.my.sessions.indexOf(s.url) !== -1) || (self.unfavorited.indexOf(s.url) !== -1)  || (self.type === 'mandatory')){
           return true;
         }
       });
@@ -44,7 +44,7 @@ var app = new Vue({
     myVendors: function(){
       var self = this;
       return self.vendors.filter(function(v){
-        if(self.my.vendors.indexOf(v.url) !== -1){
+        if((self.my.vendors.indexOf(v.url) !== -1) || (self.unfavorited.indexOf(v.url) !== -1)){
           return true;
         }
       });
@@ -81,20 +81,6 @@ var app = new Vue({
       }
     });
 
-    // Grab Schedule
-    /*$.ajax({
-      url: 'https://circle.red/wigc/schedule',
-      //url: 'http://localhost/wigc/schedule',
-      method: 'GET',
-      success: function (data) {
-        self.schedule = data;
-      },
-      error: function (error) {
-        alert(JSON.stringify(error));
-        //self.error_msg = error
-      }
-    });*/
-
     var request = indexedDB.open("WIGCApp", 3);
 
     request.onerror = function(event) {
@@ -107,10 +93,11 @@ var app = new Vue({
     };
     request.onupgradeneeded = function(event) {
       var objStore = event.currentTarget.result.createObjectStore('my');
-    }
+    };
   },
   updated: function() {
     var self = this;
+    console.log('updating');
     var request = indexedDB.open("WIGCApp", 3);
 
     request.onerror = function(event) {
@@ -122,7 +109,7 @@ var app = new Vue({
     };
     request.onupgradeneeded = function(event) {
       var objStore = event.currentTarget.result.createObjectStore('my');
-    }
+    };
   },
   methods: {
     toggleFavorite: function(faves,fave) {
@@ -132,13 +119,21 @@ var app = new Vue({
       if (fave.favorite) {
         faves.push(fave.url);
       } else {
+        if(self.my.view === 'my-wigc'){
+          self.unfavorited.push(fave.url);
+          setTimeout(function(){
+            snap(self.unfavorited, fave.url);
+          }, 3000);
+        }
         snap(faves,fave.url);
       }
-      self.updateFavorites();
     },
     switchSection: function(newView) {
       var self = this;
       self.my.sidebarVisible = false;
+      if(self.my.view === 'my-wigc'){
+        self.unfavorited = [];
+      }
       self.my.view = newView;
     },
     mapClick: function(vendor) {
@@ -166,7 +161,7 @@ var app = new Vue({
       getCount.onsuccess = function(evt){
         if (evt.target.result === 0){
           try {
-            req = store.add(self.my, 0);
+            var req = store.add(self.my, 0);
           } catch (e) {
             throw e;
           }
@@ -192,9 +187,9 @@ var app = new Vue({
                 v.favorite = true;
               }
             });
-          }
+          };
         }
-      }
+      };
     },
     getObjectStore: function(storeName, protocol){
       var self = this;

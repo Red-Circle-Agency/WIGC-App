@@ -21,20 +21,20 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3000000', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
-@mixin filter($filter-type,$filter-amount) { 
+@mixin filter($filter-type,$filter-amount) {
   filter: $filter-type+unquote('(#{$filter-amount})');
 }
 
 @mixin flex-container($direction:row, $wrap:wrap, $align:strech) {
   display: -webkit-box; display: -webkit-flex; display: -moz-flex;display: -ms-flexbox; display: flex;
   flex-direction: $direction;
-  -webkit-flex-wrap:$wrap; -moz-flex-wrap:$wrap; 
+  -webkit-flex-wrap:$wrap; -moz-flex-wrap:$wrap;
   flex-wrap: $wrap;
-  @if $align == flex-start { 
+  @if $align == flex-start {
     -webkit-box-align: start; -ms-flex-align: start;
-  } @else if $align == flex-end { 
+  } @else if $align == flex-end {
     -webkit-box-align: end; -ms-flex-align: end;
-  } @else { 
+  } @else {
     -webkit-box-align: $align; -ms-flex-align: $align;
   }
   align-items: $align;
@@ -85,11 +85,11 @@
   transform: skew($x, $y);
 }
 
-@mixin transition($property: all, $duration: 0.3s, $animation: ease, $delay:0s) { 
+@mixin transition($property: all, $duration: 0.3s, $animation: ease, $delay:0s) {
   transition: $property $duration $animation $delay;
 }
 @mixin scale($ratio) {
-  transform: scale($ratio); 
+  transform: scale($ratio);
 }
 
 @mixin position($type, $top:null, $right:null, $bottom:null, $left:null) {
@@ -138,5 +138,9 @@
   &.full { margin: 0 0 30px 0; padding: 20px; // transition:all 0.5s ease;
     .title { font-size:140%;  /*transition:all 0.5s ease;*/ }
   }
-  
+  &.disabled {
+    opacity: 0.4;
+    transition:all 0.5s ease;
+  }
+
 }

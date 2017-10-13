@@ -39,8 +39,7 @@ html(lang="en")
             a Exhibitors
             a Contact
       section.sessions.my-wigc(v-cloak v-bind:class="{ visible: my.view == 'my-wigc' }")
-          h2.my-sessions(v-if="mySessions > 0") My Sessions
-          article.session(v-for="session in mySessions" :class="{full: session.fullinfo }")
+          article.session(v-for="session in mySessions" :class="{full: session.fullinfo, disabled:!session.favorite }")
             h3.title 
               a(v-on:click="session.fullinfo = !session.fullinfo") {{session.title}}
               a.favorite(v-on:click="toggleFavorite(my.sessions, session);" :class="{active: session.favorite}")
@@ -68,7 +67,7 @@ html(lang="en")
                   .desc(v-if="speaker.text && session.fullinfo" v-html="speaker.text")
           
           h2.my-vendors(v-if="myVendors.length > 0") My Vendors        
-          article.vendor(v-for="vendor in myVendors" :class="{ full: vendor.fullinfo }")
+          article.vendor(v-for="vendor in myVendors" :class="{ full: vendor.fullinfo, disabled:!vendor.favorite }")
                     figure.logo
                       img(:src="vendor.logo")
                     h3.title
