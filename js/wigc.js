@@ -40,6 +40,14 @@ var app = new Vue({
           return true;
         }
       });
+    },
+    myVendors: function(){
+      var self = this;
+      return self.vendors.filter(function(v){
+        if(self.my.vendors.indexOf(v.url) !== -1){
+          return true;
+        }
+      });
     }
   },
   mounted: function () {

@@ -565,10 +565,12 @@ video {
   .vendor.full {
     margin: 0 0 30px 0; }
 
+.my-sessions, .my-vendors {
+  font-family: "Catamaran", sans-serif;
+  margin: 0 10px 10px 10px; }
+
 [v-cloak] {
   display: none !important; }
 
 body {
   background: #feecce; }
-
-/*# sourceMappingURL=wigc.css.map */
