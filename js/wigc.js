@@ -32,13 +32,23 @@ var app = new Vue({
     error_msg: false
 
   },
+  computed: {
+    mySessions: function(){
+      var self = this;
+      return self.sessions.filter(function(s){
+        if(self.my.sessions.indexOf(s.url) !== -1){
+          return true;
+        }
+      });
+    }
+  },
   mounted: function () {
     var self = this;
 
     // Grab Sessions
     $.ajax({
-      //url: 'https://circle.red/wigc/sessions',
-      url: 'http://localhost/wigc/sessions',
+      url: 'https://circle.red/wigc/sessions',
+      //url: 'http://localhost/wigc/sessions',
       method: 'GET',
       success: function (data) {
         self.sessions = data;
@@ -51,8 +61,8 @@ var app = new Vue({
 
     // Grab Vendors
     $.ajax({
-      //url: 'https://circle.red/wigc/vendors',
-      url: 'http://localhost/wigc/vendors',
+      url: 'https://circle.red/wigc/vendors',
+      //url: 'http://localhost/wigc/vendors',
       method: 'GET',
       success: function (data) {
         self.vendors = data;
@@ -62,11 +72,11 @@ var app = new Vue({
         //self.error_msg = error
       }
     });
-    
+
     // Grab Schedule
-    $.ajax({
-      //url: 'https://circle.red/wigc/schedule',
-      url: 'http://localhost/wigc/schedule',
+    /*$.ajax({
+      url: 'https://circle.red/wigc/schedule',
+      //url: 'http://localhost/wigc/schedule',
       method: 'GET',
       success: function (data) {
         self.schedule = data;
@@ -75,7 +85,7 @@ var app = new Vue({
         alert(JSON.stringify(error));
         //self.error_msg = error
       }
-    });
+    });*/
 
     var request = indexedDB.open("WIGCApp", 3);
 
@@ -129,7 +139,7 @@ var app = new Vue({
       console.log(vendor);
     },
     getFavorites: function() {
-      var self = this; 
+      var self = this;
       var store = self.getObjectStore('my', 'readonly');
       var req = store.openCursor();
 
@@ -138,7 +148,7 @@ var app = new Vue({
         if (cursor) {
           self.my = cursor.value;
         }
-      }; 
+      };
     },
     updateFavorites: function(){
       var self = this;
@@ -169,12 +179,12 @@ var app = new Vue({
                 s.favorite = true;
               }
             });
-          }                  
+          }
         }
       }
     },
     getObjectStore: function(storeName, protocol){
-      var self = this; 
+      var self = this;
       return self.db.transaction(storeName, protocol).objectStore(storeName);
     }
   }
