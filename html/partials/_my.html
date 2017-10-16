@@ -1,0 +1,26 @@
+
+<section class="sessions my-wigc" v-cloak="v-cloak" v-bind:class="{ visible: my.view == 'my-wigc' }">
+  <article class="session" v-for="session in mySessions" :class="{full: session.fullinfo, disabled:!session.favorite }">
+    <h3 class="title"> <a v-on:click="session.fullinfo = !session.fullinfo">{{session.title}}</a><a class="favorite" v-on:click="toggleFavorite(my.sessions, session);" :class="{active: session.favorite}">
+        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+          <path class="fill" d="M49.8 1.6L64.6 33l33 5.1-23.9 24.4 5.7 34.6-29.6-16.3-29.5 16.3 5.6-34.6L2 38.1 35 33z"></path>
+          <path class="outline" d="M49.8 13.3L60 35.1l1.1 2.4 2.6.4 23.4 3.6-17 17.6-1.8 1.8.4 2.5 4 24.4-20.5-11.4-2.4-1.3-2.4 1.3-20.5 11.4 4-24.4.4-2.5-1.8-1.8-17.1-17.6L35.8 38l2.6-.4 1.1-2.4 10.3-21.9m0-11.7L35 33 2 38l23.9 24.5-5.6 34.6 29.5-16.3 29.5 16.3-5.6-34.6L97.6 38l-33-5L49.8 1.6z"></path>
+        </svg></a></h3>
+    <div class="when-and-where">
+      <time class="when"><span>{{session.date}} @ {{session.time}}</span><span v-if="session.duration">  ({{session.duration}})</span></time>
+      <div class="where room" v-if="session.room">{{session.room}}</div>
+    </div>
+    <summary class="desc" v-if="session.teaser &amp;&amp; !session.fullinfo" v-html="session.teaser"></summary>
+    <div class="desc fulltext" v-if="session.text &amp;&amp; session.fullinfo" v-html="session.text"></div>
+    <ul class="speakers" v-if="session.speakers">
+      <li v-for="speaker in session.speakers"><b class="role" v-if="speaker.role &amp;&amp; session.fullinfo">{{speaker.role}}: </b><span class="name" v-if="!session.fullinfo">{{speaker.name}}, {{speaker.company}}</span><span class="name" v-else="v-else">{{speaker.name}}</span>
+        <div class="and" v-if="session.fullinfo">
+          <div class="job" v-if="speaker.job_title &amp;&amp; speaker.company">{{speaker.job_title}}, {{speaker.company}}</div>
+          <div class="job" v-else-if="speaker.job_title">{{speaker.job_title}}</div>
+          <div class="job" v-else-if="speaker.company">{{speaker.company}}</div>
+          <div class="desc" v-if="speaker.text &amp;&amp; session.fullinfo" v-html="speaker.text"></div>
+        </div>
+      </li>
+    </ul>
+  </article>
+</section>

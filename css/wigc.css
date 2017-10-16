@@ -562,6 +562,25 @@ video {
     width: 100%;
     max-width: none; }
 
+section.meetoo {
+  position: fixed;
+  top: 36px;
+  right: 0;
+  bottom: 42px;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  z-index: 2;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  transform: translateY(-120%);
+  transition: transform 1s ease;
+  padding: 10px; }
+  section.meetoo.visible {
+    transform: translateY(0); }
+  section.meetoo iframe {
+    height: calc(100vh - 96px); }
+
 [v-cloak] {
   display: none !important; }
 

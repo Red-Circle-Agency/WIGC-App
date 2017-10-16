@@ -19,82 +19,15 @@ html(lang="en")
       .video-holder
         //- video(src="video/glory_bands.mp4" autoplay muted loop)
         
-        header
-          .logos
-            .logo.wigc
-              img(src="svg/logos/wigc.svg")
-            .logo.cniga
-              img(src="svg/logos/cniga.svg")
-        
+        include partials/_header
         include partials/_sidebar.pug
+        include partials/_footer.pug
             
-        footer
-          a.toggle-sidebar(v-on:click="my.sidebarVisible = !my.sidebarVisible" v-bind:class="{visible: !my.sidebarVisible}")
-            svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100")
-              path(d="M97.5 29.4H4.4V17.3h93.1v12.1zm0 14.7H4.4v12.1h93.1V44.1zm0 26.8H4.4V83h93.1V70.9z")
-          nav
-            a(v-on:click="switchSection('map')") Map
-            //a Exhibitors
-            a Contact
-      section.sessions.my-wigc(v-cloak v-bind:class="{ visible: my.view == 'my-wigc' }")
-        article.session(v-for="session in mySessions" :class="{full: session.fullinfo, disabled:!session.favorite }")
-          h3.title 
-            a(v-on:click="session.fullinfo = !session.fullinfo") {{session.title}}
-            a.favorite(v-on:click="toggleFavorite(my.sessions, session);" :class="{active: session.favorite}")
-              svg.icon(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100")
-                path.fill(d="M49.8 1.6L64.6 33l33 5.1-23.9 24.4 5.7 34.6-29.6-16.3-29.5 16.3 5.6-34.6L2 38.1 35 33z")
-                path.outline(d="M49.8 13.3L60 35.1l1.1 2.4 2.6.4 23.4 3.6-17 17.6-1.8 1.8.4 2.5 4 24.4-20.5-11.4-2.4-1.3-2.4 1.3-20.5 11.4 4-24.4.4-2.5-1.8-1.8-17.1-17.6L35.8 38l2.6-.4 1.1-2.4 10.3-21.9m0-11.7L35 33 2 38l23.9 24.5-5.6 34.6 29.5-16.3 29.5 16.3-5.6-34.6L97.6 38l-33-5L49.8 1.6z")
-          .when-and-where
-            time.when
-              span {{session.date}} @ {{session.time}}
-              span(v-if="session.duration")
-                |   ({{session.duration}})
-            .where.room(v-if="session.room") {{session.room}}
-          summary.desc(v-if="session.teaser && !session.fullinfo" v-html="session.teaser")
-          .desc.fulltext(v-if="session.text && session.fullinfo" v-html="session.text")
-          ul.speakers(v-if="session.speakers")
-            li(v-for="speaker in session.speakers")
-              b.role(v-if="speaker.role && session.fullinfo") {{speaker.role}}: 
-
-              span.name(v-if="!session.fullinfo") {{speaker.name}}, {{speaker.company}}
-              span.name(v-else) {{speaker.name}}
-              .and(v-if="session.fullinfo")
-                .job(v-if="speaker.job_title && speaker.company") {{speaker.job_title}}, {{speaker.company}}
-                .job(v-else-if="speaker.job_title") {{speaker.job_title}}
-                .job(v-else-if="speaker.company") {{speaker.company}}
-                .desc(v-if="speaker.text && session.fullinfo" v-html="speaker.text")
-          
-      section.sessions(v-cloak v-bind:class="{ visible: my.view == 'sessions' }")
-        //h2 Sessions
-        article.session(v-for="session in sessions" :class="{full: session.fullinfo }")
-          h3.title 
-            a(v-on:click="session.fullinfo = !session.fullinfo") {{session.title}}
-            a.favorite(v-on:click="toggleFavorite(my.sessions, session);" :class="{active: session.favorite}")
-              svg.icon(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100")
-                path.fill(d="M49.8 1.6L64.6 33l33 5.1-23.9 24.4 5.7 34.6-29.6-16.3-29.5 16.3 5.6-34.6L2 38.1 35 33z")
-                path.outline(d="M49.8 13.3L60 35.1l1.1 2.4 2.6.4 23.4 3.6-17 17.6-1.8 1.8.4 2.5 4 24.4-20.5-11.4-2.4-1.3-2.4 1.3-20.5 11.4 4-24.4.4-2.5-1.8-1.8-17.1-17.6L35.8 38l2.6-.4 1.1-2.4 10.3-21.9m0-11.7L35 33 2 38l23.9 24.5-5.6 34.6 29.5-16.3 29.5 16.3-5.6-34.6L97.6 38l-33-5L49.8 1.6z")
-          .when-and-where
-            time.when
-              span {{session.date}} @ {{session.time}}
-              span(v-if="session.duration")
-                |   ({{session.duration}})
-            .where.room(v-if="session.room") {{session.room}}
-          summary.desc(v-if="session.teaser && !session.fullinfo" v-html="session.teaser")
-          .desc.fulltext(v-if="session.text && session.fullinfo" v-html="session.text")
-          ul.speakers(v-if="session.speakers")
-            li(v-for="speaker in session.speakers")
-              b.role(v-if="speaker.role && session.fullinfo") {{speaker.role}}: 
-              
-              span.name(v-if="!session.fullinfo") {{speaker.name}}, {{speaker.company}}
-              span.name(v-else) {{speaker.name}}
-              .and(v-if="session.fullinfo")
-                .job(v-if="speaker.job_title && speaker.company") {{speaker.job_title}}, {{speaker.company}}
-                .job(v-else-if="speaker.job_title") {{speaker.job_title}}
-                .job(v-else-if="speaker.company") {{speaker.company}}
-                .desc(v-if="speaker.text && session.fullinfo" v-html="speaker.text")
-                
-      include partials/_vendors.pug
-      include partials/_map.pug
+      include partials/sections/_my.pug
+      include partials/sections/_sessions.pug
+      include partials/sections/_vendors.pug
+      include partials/sections/_map.pug
+      include partials/sections/_meetoo.pug
             
     .javascripts
       if testing
