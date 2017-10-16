@@ -29,6 +29,7 @@ var app = new Vue({
     sessions: [],
     vendors: [],
     unfavorited: [],
+    showMyVendors: true,
     error_msg: false
 
   },
@@ -36,7 +37,7 @@ var app = new Vue({
     mySessions: function(){
       var self = this;
       return self.sessions.filter(function(s){
-        if((self.my.sessions.indexOf(s.url) !== -1) || (self.unfavorited.indexOf(s.url) !== -1)  || (self.type === 'mandatory')){
+        if((self.my.sessions.indexOf(s.url) !== -1) || (self.unfavorited.indexOf(s.url) !== -1)  || (self.type === 'default')){
           return true;
         }
       });
@@ -44,7 +45,7 @@ var app = new Vue({
     myVendors: function(){
       var self = this;
       return self.vendors.filter(function(v){
-        if((self.my.vendors.indexOf(v.url) !== -1) || (self.unfavorited.indexOf(v.url) !== -1)){
+        if((self.my.vendors.indexOf(v.url) !== -1) || (self.unfavorited.indexOf(v.url) !== -1) || (self.showMyVendors === false)){
           return true;
         }
       });
@@ -55,7 +56,7 @@ var app = new Vue({
 
     // Grab Sessions
     $.ajax({
-      url: 'https://circle.red/wigc/sessions',
+      url: 'https://circle.red/wigc/events',
       //url: 'http://localhost/wigc/sessions',
       method: 'GET',
       success: function (data) {
@@ -119,7 +120,7 @@ var app = new Vue({
       if (fave.favorite) {
         faves.push(fave.url);
       } else {
-        if(self.my.view === 'my-wigc'){
+        if(self.my.view === 'my-wigc' || (self.my.view === 'vendors' && self.showMyVendors === true)){
           self.unfavorited.push(fave.url);
           setTimeout(function(){
             snap(self.unfavorited, fave.url);
