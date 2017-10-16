@@ -39,6 +39,11 @@
   }
   align-items: $align;
 }
+
+@mixin flex-center() {
+  @include flex-container(row,wrap,center);
+}
+
 @mixin flex-item($basis, $grow:1, $shrink:1, $align:auto) {
   @if $grow == 0 {
     width:$basis;

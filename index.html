@@ -4,6 +4,8 @@
     <title>Test App</title>
     <link href="https://fonts.googleapis.com/css?family=Catamaran:400,700|Libre+Baskerville:700" rel="stylesheet">
     <link href="css/wigc.css" rel="stylesheet">
+    <!--meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no")-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="format-detection" content="telephone=no">
     <!---->
   </head>
@@ -18,13 +20,15 @@
           </div>
         </header>
         <aside class="sidebar" v-bind:class="{visible: my.sidebarVisible}" v-cloak>
-          <nav><a v-on:click="switchSection('my-wigc')">My WIGA</a><a v-on:click="switchSection('sessions')">Sessions</a><a v-on:click="switchSection('vendors')">Vendors</a><a>Talk</a></nav>
+          <nav><a v-on:click="switchSection('my-wigc')">My WIGC</a><a v-on:click="switchSection('sessions')">Seminars</a><a v-on:click="switchSection('parties')">Parties</a><a v-on:click="switchSection('vendors')">Vendors</a></nav>
         </aside>
         <footer><a class="toggle-sidebar" v-on:click="my.sidebarVisible = !my.sidebarVisible" v-bind:class="{visible: !my.sidebarVisible}">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
               <path d="M97.5 29.4H4.4V17.3h93.1v12.1zm0 14.7H4.4v12.1h93.1V44.1zm0 26.8H4.4V83h93.1V70.9z"></path>
             </svg></a>
-          <nav><a>Map</a><a>Exhibitors</a><a>Contact</a></nav>
+          <nav><a v-on:click="switchSection('map')">Map</a>
+            <!--a Exhibitors--><a>Contact</a>
+          </nav>
         </footer>
       </div>
       <section class="sessions my-wigc" v-cloak v-bind:class="{ visible: my.view == 'my-wigc' }">
@@ -111,6 +115,11 @@
           </div>
         </article>
       </section>
+      <section class="map" v-cloak v-bind:class="{ visible: my.view == 'map' }">
+        <div class="map-wrapper">
+          <div id="pinchzoom"><img id="rect" src="img/sample-map.jpg" ondragstart="return false"></div>
+        </div>
+      </section>
     </main>
     <div class="javascripts">
       <!--script(src="https://code.jquery.com/jquery-3.1.1.min.js")-->
@@ -119,6 +128,11 @@
       <script src="js/vendor/jquery-3.2.1.min.js"></script>
       <!--script(src="js/vendor/vue.min.js")-->
       <script src="js/wigc.js"></script>
+      <script src="http://manuelstofer.github.io/pinchzoom/src/pinchzoom.js"></script>
+      <script>
+        let el = document.querySelector('#pinchzoom');
+        let pz = new PinchZoom(el, options);
+      </script>
     </div>
   </body>
 </html>
