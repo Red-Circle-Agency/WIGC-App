@@ -25,19 +25,9 @@ html(lang="en")
             
       include partials/sections/_my.pug
       include partials/sections/_sessions.pug
+      include partials/sections/_parties.pug
       include partials/sections/_vendors.pug
       include partials/sections/_map.pug
       include partials/sections/_meetoo.pug
             
-    .javascripts
-      if testing
-        script(src="https://code.jquery.com/jquery-3.1.1.min.js")
-        script(src="https://unpkg.com/vue")
-        script(src="http://hammerjs.github.io/dist/hammer.min.js")
-      else 
-        script(src="cordova.js")
-        script(src="js/vendor/jquery-3.2.1.min.js")
-        script(src="js/vendor/vue.min.js")
-        script(src="js/vendor/hammer.min.js")
-      script(src="js/wigc.js")
-      script(src="js/pinch-zoom.js")
+    include partials/_javascripts.pug

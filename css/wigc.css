@@ -400,6 +400,19 @@ video {
       color: #F86C4F; }
     .session a.favorite.active .fill {
       opacity: 1; }
+  .session a.meetoo {
+    color: #4885ed;
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    top: 40px;
+    right: 10px; }
+    .session a.meetoo .filled {
+      opacity: 0; }
+    .session a.meetoo:hover .filled {
+      opacity: 1; }
+    .session a.meetoo:hover .outlined {
+      opacity: 0; }
   .session.full {
     margin: 0 0 30px 0;
     padding: 20px; }
@@ -469,6 +482,19 @@ video {
       color: #F86C4F; }
     .vendor a.favorite.active .fill {
       opacity: 1; }
+  .vendor a.meetoo {
+    color: #4885ed;
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    top: 40px;
+    right: 10px; }
+    .vendor a.meetoo .filled {
+      opacity: 0; }
+    .vendor a.meetoo:hover .filled {
+      opacity: 1; }
+    .vendor a.meetoo:hover .outlined {
+      opacity: 0; }
   .vendor.full {
     margin: 0 0 30px 0;
     padding: 20px; }

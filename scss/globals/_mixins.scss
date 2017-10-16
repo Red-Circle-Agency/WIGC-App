@@ -133,6 +133,7 @@
 @mixin card() { margin: 0 10px 10px 10px; padding: 10px; background-color:#e8e8e8; box-shadow: 0 0 3px rgba($black,0.3); font-family:$sans; position: relative;
   a { color:$orange; }
   .title { font-family: $serif; margin-bottom: 0.25em; padding-right: 42px; font-size:115%; }
+  
   a.favorite { color:$black; width:26px; height: 26px; @include position(absolute,10px,10px);
     .fill { opacity: 0; }
     &:hover { color:$orange; }
@@ -140,6 +141,16 @@
       .fill { opacity: 1; }
     }
   }
+  
+  a.meetoo { color:$blue; width:26px; height: 26px; @include position(absolute,40px,10px);
+    .filled { opacity: 0; }
+    &:hover {
+      .filled { opacity: 1; }
+      .outlined { opacity: 0; }
+    }
+  }
+  
+  
   &.full { margin: 0 0 30px 0; padding: 20px; // transition:all 0.5s ease;
     .title { font-size:140%;  /*transition:all 0.5s ease;*/ }
   }

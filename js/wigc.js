@@ -22,6 +22,7 @@ var app = new Vue({
   data: {
     my: {
       sidebarVisible: true,
+      meetoo: '',
       view: 'home',
       sessions: [],
       vendors: [],
@@ -37,7 +38,7 @@ var app = new Vue({
     mySessions: function(){
       var self = this;
       return self.sessions.filter(function(s){
-        if((self.my.sessions.indexOf(s.url) !== -1) || (self.unfavorited.indexOf(s.url) !== -1)  || (self.type === 'default')){
+        if((self.my.sessions.indexOf(s.url) !== -1) || (self.unfavorited.indexOf(s.url) !== -1)  || (self.type === 'schedule-item')) {
           return true;
         }
       });
@@ -57,7 +58,7 @@ var app = new Vue({
     // Grab Sessions
     $.ajax({
       url: 'https://circle.red/wigc/events',
-      //url: 'http://localhost/wigc/sessions',
+      //url: 'http://localhost/wigc/events',
       method: 'GET',
       success: function (data) {
         self.sessions = data;
@@ -141,6 +142,12 @@ var app = new Vue({
       var query = vendor.street_address + ' ' + vendor.city+ ', ' +vendor.state+ ' ' +vendor.zip;
       window.open('https://maps.google.com?q='+query, 'Map');
       console.log(vendor);
+    },
+    showMeetoo: function(u) {
+      var self = this;
+      self.my.meetoo = u;
+      self.switchSection('meetoo');
+      //alert(u);
     },
     getFavorites: function() {
       var self = this;
