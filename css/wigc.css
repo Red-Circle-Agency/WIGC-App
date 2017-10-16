@@ -239,7 +239,7 @@ header {
   top: 0;
   right: 0;
   left: 0;
-  height: 36px;
+  height: 0;
   overflow: hidden; }
   header .logos {
     display: -webkit-box;
@@ -275,7 +275,7 @@ header {
 
 aside.sidebar {
   position: fixed;
-  top: 36px;
+  top: 0;
   bottom: 42px;
   left: 0;
   z-index: 3;
@@ -315,12 +315,12 @@ footer {
   right: 0;
   bottom: 0;
   left: 0;
-  background: rgba(73, 73, 73, 0.3);
+  background: rgba(73, 73, 73, 0.95);
   z-index: 4;
   padding-left: 10px;
   padding-right: 10px;
   height: 42px;
-  padding-top: 8px;
+  padding-top: 10px;
   padding-left: 70px; }
   footer .toggle-sidebar {
     background-color: #F86C4F;
@@ -337,13 +337,34 @@ footer {
     footer .toggle-sidebar.visible {
       transform: translateX(0); }
   footer nav a {
-    color: #494949;
+    color: #eee;
     font-family: "Catamaran", sans-serif;
     text-transform: uppercase;
     margin-right: 1em;
     cursor: pointer;
     font-size: 16px;
     font-weight: 600; }
+  footer .sun {
+    width: 30px;
+    display: block;
+    float: right;
+    position: absolute;
+    top: 0;
+    right: 5px;
+    bottom: 0;
+    padding-top: 6px; }
+    footer .sun .red {
+      fill: #ffeecd; }
+    footer .sun .blue {
+      fill: #f26c51; }
+  footer .wigc {
+    width: 56px;
+    color: #FEECCE;
+    position: absolute;
+    top: 0;
+    right: 40px;
+    bottom: 0;
+    padding-top: 12px; }
 
 video {
   position: fixed;
@@ -359,7 +380,7 @@ video {
 
 .sessions {
   position: fixed;
-  top: 36px;
+  top: 0;
   right: 0;
   bottom: 42px;
   left: 0;
@@ -440,7 +461,7 @@ video {
 
 .vendors {
   position: fixed;
-  top: 36px;
+  top: 0;
   right: 0;
   bottom: 42px;
   left: 0;
@@ -566,7 +587,7 @@ video {
 
 .map {
   position: fixed;
-  top: 36px;
+  top: 0;
   right: 0;
   bottom: 42px;
   left: 0;
@@ -590,7 +611,7 @@ video {
 
 section.meetoo {
   position: fixed;
-  top: 36px;
+  top: 0;
   right: 0;
   bottom: 42px;
   left: 0;
