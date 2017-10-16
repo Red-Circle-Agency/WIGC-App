@@ -551,22 +551,16 @@ video {
   padding-bottom: 10px;
   transform: translateY(-120%);
   transition: transform 1s ease;
-  background: white;
-  padding: 15px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: flex;
-  flex-direction: row;
-  -webkit-flex-wrap: wrap;
-  -moz-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center; }
+  padding: 0; }
   .map.visible {
     transform: translateY(0); }
+  .map .pinch-zoom-container {
+    overflow: hidden;
+    height: calc(100vh - 78px);
+    background: white; }
+  .map .pinch-zoom-image {
+    width: 100%;
+    max-width: none; }
 
 [v-cloak] {
   display: none !important; }

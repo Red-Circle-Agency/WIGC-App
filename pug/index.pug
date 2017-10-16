@@ -1,3 +1,5 @@
+- var testing = "true"
+
 doctype html
 html(lang="en")
   head
@@ -5,11 +7,12 @@ html(lang="en")
     link(href="https://fonts.googleapis.com/css?family=Catamaran:400,700|Libre+Baskerville:700" rel="stylesheet")
     link(href="css/wigc.css" rel="stylesheet")
     //meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no")
-    meta(name="viewport" content="width=device-width, initial-scale=1")
+    //meta(name="viewport" content="width=device-width, initial-scale=1")
+    meta(name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1")
     meta(name="format-detection" content="telephone=no")
     //
   body
-    main#app 
+    main#app
     
       section.errors(v-if="error_msg" v-html="error_msg")
       
@@ -94,13 +97,14 @@ html(lang="en")
       include partials/_map.pug
             
     .javascripts
-      //script(src="https://code.jquery.com/jquery-3.1.1.min.js")
-      script(src="https://unpkg.com/vue")
-      script(src="cordova.js")
-      script(src="js/vendor/jquery-3.2.1.min.js")
-      //script(src="js/vendor/vue.min.js")
+      if testing
+        script(src="https://code.jquery.com/jquery-3.1.1.min.js")
+        script(src="https://unpkg.com/vue")
+        script(src="http://hammerjs.github.io/dist/hammer.min.js")
+      else 
+        script(src="cordova.js")
+        script(src="js/vendor/jquery-3.2.1.min.js")
+        script(src="js/vendor/vue.min.js")
+        script(src="js/vendor/hammer.min.js")
       script(src="js/wigc.js")
-      script(src="http://manuelstofer.github.io/pinchzoom/src/pinchzoom.js")
-      script.
-        let el = document.querySelector('#pinchzoom');
-        let pz = new PinchZoom(el, options);
+      script(src="js/pinch-zoom.js")

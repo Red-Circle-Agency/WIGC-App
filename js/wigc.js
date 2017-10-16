@@ -198,11 +198,3 @@ var app = new Vue({
     }
   }
 });
-
-
-var pinchZoom = require('pinch-zoom')
-var el = document.querySelector('.wrapper')
-var pzoom = pinchZoom(el, {
-  draggable: true,
-  maxScale: 4
-})

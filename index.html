@@ -5,12 +5,13 @@
     <link href="https://fonts.googleapis.com/css?family=Catamaran:400,700|Libre+Baskerville:700" rel="stylesheet">
     <link href="css/wigc.css" rel="stylesheet">
     <!--meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no")-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--meta(name="viewport" content="width=device-width, initial-scale=1")-->
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="format-detection" content="telephone=no">
     <!---->
   </head>
   <body>
-    <main id="app"> 
+    <main id="app">
       <section class="errors" v-if="error_msg" v-html="error_msg"></section>
       <div class="video-holder">
         <header>
@@ -117,22 +118,19 @@
       </section>
       <section class="map" v-cloak v-bind:class="{ visible: my.view == 'map' }">
         <div class="map-wrapper">
-          <div id="pinchzoom"><img id="rect" src="img/sample-map.jpg" ondragstart="return false"></div>
+          <!--button(onclick="zoomIn()") Zoom In-->
+          <div class="pinch-zoom-container">
+            <!--img.panzoom#pinch-zoom-image-id(src="img/sample-map.jpg" class="pinch-zoom-image" onload="onLoad()")--><img class="pinch-zoom-image" id="pinch-zoom-image-id" onload="onLoad()" src="img/sample-map2.jpg">
+          </div>
         </div>
       </section>
     </main>
     <div class="javascripts">
-      <!--script(src="https://code.jquery.com/jquery-3.1.1.min.js")-->
+      <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
       <script src="https://unpkg.com/vue"></script>
-      <script src="cordova.js"></script>
-      <script src="js/vendor/jquery-3.2.1.min.js"></script>
-      <!--script(src="js/vendor/vue.min.js")-->
+      <script src="http://hammerjs.github.io/dist/hammer.min.js"></script>
       <script src="js/wigc.js"></script>
-      <script src="http://manuelstofer.github.io/pinchzoom/src/pinchzoom.js"></script>
-      <script>
-        let el = document.querySelector('#pinchzoom');
-        let pz = new PinchZoom(el, options);
-      </script>
+      <script src="js/pinch-zoom.js"></script>
     </div>
   </body>
 </html>
