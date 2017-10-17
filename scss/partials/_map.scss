@@ -1,0 +1,4 @@
+.map { @include cards(); padding: 0;
+  .pinch-zoom-container { overflow: hidden; height: calc(100vh - 78px); background: white; }
+  .pinch-zoom-image {width: 100%; max-width:none; }
+}
