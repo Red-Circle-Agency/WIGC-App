@@ -1,0 +1,235 @@
+// jshint -W117
+// jshint -W119
+
+
+
+/////////////////////////////////
+// Functions (General Use)
+function snap(array, search_term, multi = false) {
+  for (var i = array.length - 1; i >= 0; i--) {
+    if (array[i] === search_term) {
+      array.splice(i, 1);
+      if (multi === true) {
+        break;
+      }
+    }
+  }
+}
+
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    my: {
+      sidebarVisible: true,
+      meetoo: '',
+      view: 'home',
+      sessions: [],
+      vendors: [],
+    },
+    sessions: [],
+    vendors: [],
+    unfavorited: [],
+    showMyVendors: true,
+    error_msg: false
+
+  },
+  computed: {
+    mySessions: function(){
+      var self = this;
+      return self.sessions.filter(function(s){
+        if((self.my.sessions.indexOf(s.url) !== -1) || (self.unfavorited.indexOf(s.url) !== -1)  || (s.type === 'schedule-item')) {
+          return true;
+        }
+      });
+    },
+    myVendors: function(){
+      var self = this;
+      return self.vendors.filter(function(v){
+        if((self.my.vendors.indexOf(v.url) !== -1) || (self.unfavorited.indexOf(v.url) !== -1) || (self.showMyVendors === false)){
+          return true;
+        }
+      });
+    }
+  },
+  mounted: function () {
+    var self = this;
+
+    // Grab Sessions
+    $.ajax({
+      url: 'https://circle.red/wigc/events',
+      //url: 'http://localhost/wigc/events',
+      method: 'GET',
+      success: function (data) {
+        self.sessions = data;
+      },
+      error: function (error) {
+        alert(JSON.stringify(error));
+        //self.error_msg = error
+      }
+    });
+
+    // Grab Vendors
+    $.ajax({
+      url: 'https://circle.red/wigc/vendors',
+      //url: 'http://localhost/wigc/vendors',
+      method: 'GET',
+      success: function (data) {
+        self.vendors = data;
+      },
+      error: function (error) {
+        alert(JSON.stringify(error));
+        //self.error_msg = error
+      }
+    });
+
+    var request = indexedDB.open("WIGCApp", 3);
+
+    request.onerror = function(event) {
+      self.indexed = "Can't use IndexedDB";
+    };
+    request.onsuccess = function(event) {
+      self.db = this.result;
+      self.getFavorites();
+      self.my.view = "sessions";
+    };
+    request.onupgradeneeded = function(event) {
+      var objStore = event.currentTarget.result.createObjectStore('my');
+    };
+
+
+    document.addEventListener('deviceready', function () {
+      // Enable to debug issues.
+       window.plugins.OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
+       console.log("Device Ready!");
+      var notificationOpenedCallback = function(jsonData) {
+        console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+      };
+
+      window.plugins.OneSignal
+        .startInit("2405a721-a178-45fb-a787-a1bf43a2e74c")
+        .handleNotificationOpened(notificationOpenedCallback)
+        .endInit();
+
+      // Call syncHashedEmail anywhere in your app if you have the user's email.
+      // This improves the effectiveness of OneSignal's "best-time" notification scheduling feature.
+      // window.plugins.OneSignal.syncHashedEmail(userEmail);
+    }, false);
+
+  },
+  updated: function() {
+    var self = this;
+    var request = indexedDB.open("WIGCApp", 3);
+
+    request.onerror = function(event) {
+      self.indexed = "Can't use IndexedDB";
+    };
+    request.onsuccess = function(event) {
+      self.db = this.result;
+      self.updateFavorites();
+    };
+    request.onupgradeneeded = function(event) {
+      var objStore = event.currentTarget.result.createObjectStore('my');
+    };
+  },
+  methods: {
+    toggleFavorite: function(faves,fave) {
+      var self = this;
+      fave.favorite = !fave.favorite;
+      console.log(fave.url);
+      if (fave.favorite) {
+        faves.push(fave.url);
+      } else {
+        if(self.my.view === 'my-wigc' || (self.my.view === 'vendors' && self.showMyVendors === true)){
+          self.unfavorited.push(fave.url);
+          setTimeout(function(){
+            snap(self.unfavorited, fave.url);
+          }, 3000);
+        }
+        snap(faves,fave.url);
+      }
+    },
+    switchSection: function(newView) {
+      var self = this;
+      self.my.sidebarVisible = false;
+      if(self.my.view === 'my-wigc'){
+        self.unfavorited = [];
+      } if (self.my.view == "map"){
+        onLoad();
+      }
+      self.my.view = newView;
+
+    },
+    mapClick: function(vendor) {
+      var query = vendor.street_address + ' ' + vendor.city+ ', ' +vendor.state+ ' ' +vendor.zip;
+      window.open('https://maps.google.com?q='+query, 'Map');
+      console.log(vendor);
+    },
+    showMeetoo: function(u) {
+      var self = this;
+      self.my.meetoo = u;
+      self.switchSection('meetoo');
+      //alert(u);
+    },
+    getFavorites: function() {
+      var self = this;
+      var store = self.getObjectStore('my', 'readonly');
+      var req = store.openCursor();
+
+      req.onsuccess = function(evt) {
+        var cursor = evt.target.result;
+        if (cursor) {
+          self.my = cursor.value;
+        }
+      };
+    },
+    updateFavorites: function(){
+      var self = this;
+      var store = self.getObjectStore('my', 'readwrite');
+
+      var getCount = store.count();
+      getCount.onsuccess = function(evt){
+        if (evt.target.result === 0){
+          try {
+            var req = store.add(self.my, 0);
+          } catch (e) {
+            throw e;
+          }
+        }
+        else{
+          var req = store.openCursor();
+          req.onsuccess = function(evt) {
+            var cursor = evt.target.result;
+            if(cursor){
+              try {
+                cursor.update(self.my);
+              } catch (e) {
+                throw e;
+              }
+            }
+            self.sessions.map(function(s){
+              if(self.my.sessions.indexOf(s.url) !== -1){
+                s.favorite = true;
+              }
+            });
+            self.vendors.map(function(v){
+              if(self.my.vendors.indexOf(v.url) !== -1){
+                v.favorite = true;
+              }
+            });
+          };
+        }
+      };
+    },
+    getObjectStore: function(storeName, protocol){
+      var self = this;
+      return self.db.transaction(storeName, protocol).objectStore(storeName);
+    },
+    isDisabled(session){
+      if (!session.favorite && session.type !== 'schedule-item'){
+        return true;
+      }
+      return false;
+    }
+  }
+});
