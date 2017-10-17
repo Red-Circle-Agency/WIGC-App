@@ -4,30 +4,42 @@
     <title>Test App</title>
     <link href="https://fonts.googleapis.com/css?family=Catamaran:400,700|Libre+Baskerville:700" rel="stylesheet">
     <link href="css/wigc.css" rel="stylesheet">
+    <meta http-equiv="Content-Security-Policy" content="default-src * gap://ready file:; style-src 'self' 'unsafe-inline' *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <!---->
   </head>
   <body>
-    <main id="app"> 
+    <main id="app">
       <section class="errors" v-if="error_msg" v-html="error_msg"></section>
       <div class="video-holder">
-        <video src="video/glory_bands.mp4" autoplay muted loop></video>
-        <header>
-          <div class="logos">
-            <div class="logo wigc"><img src="svg/logos/wigc.svg"></div>
-            <div class="logo cniga"><img src="svg/logos/cniga.svg"></div>
-          </div>
-        </header>
+        <video src="video/glorybands.mp4" autoplay muted loop></video>
+        <!--include partials/_header-->
         <aside class="sidebar" v-bind:class="{visible: my.sidebarVisible}" v-cloak>
-          <nav><a>My WIGA</a><a v-on:click="switchSection('sessions')">Sessions</a><a v-on:click="switchSection('vendors')">Vendors</a><a>Talk</a></nav>
+          <nav><a v-on:click="switchSection('my-wigc')">My WIGC</a><a v-on:click="switchSection('sessions')">Seminars</a><a v-on:click="switchSection('parties')">Parties</a><a v-on:click="switchSection('vendors')">Vendors</a></nav>
         </aside>
         <footer><a class="toggle-sidebar" v-on:click="my.sidebarVisible = !my.sidebarVisible" v-bind:class="{visible: !my.sidebarVisible}">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
               <path d="M97.5 29.4H4.4V17.3h93.1v12.1zm0 14.7H4.4v12.1h93.1V44.1zm0 26.8H4.4V83h93.1V70.9z"></path>
             </svg></a>
-          <nav><a>Map</a><a>Exhibitors</a><a>Contact</a></nav>
+          <nav><a v-on:click="switchSection('map')">Map</a><a v-on:click="my.meetoo = 'https://web.meetoo.com/170479740'; switchSection('meetoo');">Chat</a>
+            <!--a(v-on:click="switchSection('meetoo')") Meetoo-->
+            <!--a Exhibitors-->
+            <!--a Contact-->
+            <div class="sun">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <path class="red" d="M11.1 77.2c3.3 4.8 7.4 8.8 12 12 1-4.3 1.4-8.7 1.1-13-4.5-.3-8.9 0-13.1 1m2.3-26.9c-2.9-3.3-6.2-6.1-10-8.5-1 5.5-1 11.2 0 16.9 3.7-2.3 7.1-5.1 10-8.4m-2.3-27c4.3 1 8.7 1.4 13 1.1.3-4.4-.1-8.8-1.1-13-4.7 3.2-8.7 7.3-11.9 11.9M77 89.2c4.8-3.3 8.8-7.4 12-12-4.3-1-8.7-1.4-13-1.1-.4 4.4 0 8.8 1 13.1m19.6-47.4c-3.7 2.3-7.1 5.2-10 8.5 2.9 3.3 6.2 6.1 10 8.5 1-5.6 1-11.3 0-17M41.5 96.9c5.5 1 11.2 1 16.9 0-2.3-3.7-5.2-7.1-8.5-10-3.2 2.9-6 6.2-8.4 10m17-93.2c-5.5-1-11.2-1-16.9 0 2.3 3.7 5.2 7.1 8.5 10 3.2-3 6-6.3 8.4-10M77 11.3c4.6 3.2 8.7 7.2 12 12-4.3 1-8.7 1.4-13 1.1-.4-4.4 0-8.8 1-13.1"></path>
+                <path class="blue" d="M20.8 62.3c-1-2.3-2.1-4.6-3.5-6.7-3.3 3.7-7.2 6.8-11.5 9.4l-.7.4c.3 1 .7 2 1.1 3 .4 1 .9 2 1.3 2.9l.8-.2c4.8-1.3 9.8-1.8 14.8-1.6-.5-2.4-1.3-4.8-2.3-7.2M29 7.8l.2.8c1.3 4.8 1.8 9.8 1.6 14.8 4.9-1.1 9.6-3.1 13.9-5.8-3.7-3.4-6.8-7.2-9.3-11.5l-.4-.7c-1 .3-2 .7-3 1.1-1.1.4-2.1.9-3 1.3M5.8 35.5c4.3 2.5 8.2 5.7 11.6 9.3 1.3-2.1 2.5-4.4 3.5-6.7s1.7-4.7 2.3-7.2c-5 .2-9.9-.3-14.8-1.6l-.8-.2C6.6 31 5.8 33 5.1 35l.7.5zM94.2 65c-4.3-2.5-8.2-5.7-11.6-9.3-1.3 2.1-2.5 4.4-3.5 6.7s-1.7 4.7-2.3 7.2c5-.2 9.9.3 14.8 1.6l.8.2c1-1.9 1.8-3.9 2.5-5.9l-.7-.5zM35.3 94.4c2.5-4.3 5.7-8.2 9.3-11.6-2.1-1.3-4.4-2.5-6.7-3.5s-4.7-1.7-7.2-2.3c.2 5-.3 9.9-1.6 14.8l-.1.9c1.9 1 3.9 1.8 5.9 2.5l.4-.8zM71 92.7l-.2-.8c-1.3-4.8-1.8-9.8-1.6-14.8-4.9 1.1-9.6 3.1-13.9 5.8 3.7 3.4 6.8 7.2 9.3 11.5l.4.7c1-.3 2-.7 3-1.1 1.1-.4 2.1-.8 3-1.3m20.6-63.3c-4.8 1.3-9.8 1.8-14.8 1.6.6 2.5 1.3 4.9 2.3 7.2 1 2.3 2.1 4.6 3.5 6.7 3.4-3.7 7.2-6.8 11.5-9.3l.7-.4c-.3-1-.7-2-1.1-3-.4-1-.9-2-1.3-2.9l-.8.1zM70.8 8.6l.2-.8c-1.9-1-3.9-1.8-5.9-2.5l-.4.7c-2.5 4.3-5.7 8.2-9.3 11.6 2.1 1.3 4.4 2.5 6.7 3.5s4.7 1.7 7.2 2.3c-.2-5 .3-9.9 1.5-14.8m7.5 41.6v.1c-2.1 3-3.8 6.2-5.2 9.5-1.4 3.3-2.4 6.8-3 10.4H70v.1c-7.1 1.3-13.9 4.1-19.9 8.2h-.2c-3-2.1-6.2-3.8-9.5-5.2-3.3-1.4-6.8-2.4-10.4-3v-.1h-.1c-.6-3.6-1.7-7.1-3-10.4-1.4-3.3-3.1-6.5-5.2-9.5v-.2c2.1-3 3.8-6.2 5.2-9.5 1.4-3.3 2.4-6.8 3-10.4h.1v-.1c7.1-1.3 13.9-4.1 19.9-8.2h.2c3 2.1 6.2 3.8 9.5 5.2 3.3 1.4 6.8 2.4 10.4 3v.1h.1c.6 3.6 1.7 7.1 3 10.4 1.4 3.4 3.1 6.6 5.2 9.6"></path>
+              </svg>
+            </div>
+            <div class="wigc">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 75.8">
+                <path d="M91.2 74.5H68.7L56.9 32.4 45.1 74.5H22.6L2.4 2.7H22L34.1 51 46.9 2.7h20.4L80 51 92 2.7h19.5L91.2 74.5zm47.8 0h-19.1V2.7H139v71.8zm74-63.2l-13.4 13.6c-3.6-3.6-8.4-5.5-13.4-5.3-10 0-17 7.8-17 19 0 13.2 8.4 19.6 17.3 19.6s14-3.5 15.9-10.6h-16.5V33.4h35c.3 2.1.4 4.3.4 6.4 0 23.9-17.4 36-34 36-22.1 0-37.7-15.4-37.7-37.2 0-21.8 15.6-37.2 37.7-37.2 11.2-.1 19.8 3.7 25.7 9.9zm85.8 8.2l-17 9.5c-3-5.8-9.1-9.3-15.5-9.1-9.7 0-17 7.6-17 18.6 0 12.3 8.4 18.6 17 18.6 6.5.1 12.6-3.4 15.9-9.1l15.6 11.2c-6.6 10.2-17.4 16.5-31.4 16.5-21.8 0-37.2-15.4-37.2-37.2 0-21.8 15.4-37.2 37.2-37.2 14 0 26.2 6.7 32.4 18.2z"></path>
+              </svg>
+            </div>
+          </nav>
         </footer>
       </div>
-<<<<<<< Updated upstream
-=======
       <section class="sessions my-wigc" v-cloak v-bind:class="{ visible: my.view == 'my-wigc' }">
         <article class="session" v-for="session in mySessions" :class="{full: session.fullinfo, disabled:isDisabled(session) }">
           <h3 class="title"> <a v-on:click="session.fullinfo = !session.fullinfo">{{session.title}}</a><a class="favorite" v-on:click="toggleFavorite(my.sessions, session);" :class="{active: session.favorite}">
@@ -53,14 +65,45 @@
           </ul>
         </article>
       </section>
->>>>>>> Stashed changes
       <section class="sessions" v-cloak v-bind:class="{ visible: my.view == 'sessions' }">
-        <!--h2 Sessions-->
         <article class="session" v-for="session in sessions" :class="{full: session.fullinfo }">
           <h3 class="title"> <a v-on:click="session.fullinfo = !session.fullinfo">{{session.title}}</a><a class="favorite" v-on:click="toggleFavorite(my.sessions, session);" :class="{active: session.favorite}">
               <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                 <path class="fill" d="M49.8 1.6L64.6 33l33 5.1-23.9 24.4 5.7 34.6-29.6-16.3-29.5 16.3 5.6-34.6L2 38.1 35 33z"></path>
                 <path class="outline" d="M49.8 13.3L60 35.1l1.1 2.4 2.6.4 23.4 3.6-17 17.6-1.8 1.8.4 2.5 4 24.4-20.5-11.4-2.4-1.3-2.4 1.3-20.5 11.4 4-24.4.4-2.5-1.8-1.8-17.1-17.6L35.8 38l2.6-.4 1.1-2.4 10.3-21.9m0-11.7L35 33 2 38l23.9 24.5-5.6 34.6 29.5-16.3 29.5 16.3-5.6-34.6L97.6 38l-33-5L49.8 1.6z"></path>
+              </svg></a><a class="meetoo" v-if="session.meetoo" v-on:click="showMeetoo(session.meetoo)">
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <path class="outlined" d="M50 5.438c-25.4 0-46.4 16.9-46.4 38.2 0 11.8 6.9 21.5 16.8 28.3l-8 19c-.5 1.1 0 2.4 1.1 2.8.6.3 1.3.2 1.9-.1l23.2-12.7c3.5.6 8.1.9 11.4.9 25.4 0 46.4-16.9 46.4-38.3 0-21.2-21-38.1-46.4-38.1zm0 4.3c23.5 0 42.1 15.4 42.1 33.9s-18.6 34-42.1 34c-3.3 0-8.5-.3-11.5-.9-.5-.1-1 0-1.5.2l-18.3 10 6.2-14.8c.4-1 0-2.1-.8-2.6-9.9-6.3-16.3-15.1-16.3-25.8 0-18.6 18.7-34 42.2-34zm-23.8 27c-3.6 0-6.5 2.9-6.5 6.5s2.9 6.5 6.5 6.5 6.5-2.9 6.5-6.5-2.9-6.5-6.5-6.5zm23.8 0c-3.6 0-6.5 2.9-6.5 6.5s2.9 6.5 6.5 6.5 6.5-2.9 6.5-6.5-3-6.5-6.5-6.5zm23.7 0c-3.6 0-6.5 2.9-6.5 6.5s2.9 6.5 6.5 6.5 6.5-2.9 6.5-6.5-2.9-6.5-6.5-6.5zm-47.5 4.4c1.2 0 2.2.9 2.2 2.2s-.9 2.2-2.2 2.2c-1.2 0-2.2-.9-2.2-2.2s1-2.2 2.2-2.2zm23.8 0c1.2 0 2.2.9 2.2 2.2s-.9 2.2-2.2 2.2-2.2-.9-2.2-2.2.9-2.2 2.2-2.2zm23.7 0c1.2 0 2.2.9 2.2 2.2s-.9 2.2-2.2 2.2-2.2-.9-2.2-2.2 1-2.2 2.2-2.2z"></path>
+                <path class="filled" d="M50 4C23.3 4 1.6 21.6 1.6 43.4c0 12.6 7.6 22.9 18.9 30.2L11.1 96l26-14.2c3.5.7 9.2 1 13 1 26.7 0 48.4-17.6 48.4-39.4C98.4 21.6 76.7 4 50 4zM24 34.7c4.6 0 8.3 3.7 8.3 8.3 0 4.6-3.7 8.3-8.3 8.3s-8.3-3.7-8.3-8.3c.1-4.6 3.8-8.3 8.3-8.3zm26 0c4.6 0 8.3 3.7 8.3 8.3 0 4.6-3.7 8.3-8.3 8.3s-8.3-3.7-8.3-8.3c0-4.6 3.7-8.3 8.3-8.3zm26 0c4.6 0 8.3 3.7 8.3 8.3 0 4.6-3.7 8.3-8.3 8.3-4.6 0-8.3-3.7-8.3-8.3 0-4.6 3.7-8.3 8.3-8.3z"></path>
+              </svg></a></h3>
+          <div class="when-and-where">
+            <time class="when"><span>{{session.date}} @ {{session.time}}</span><span v-if="session.duration">  ({{session.duration}})</span></time>
+            <div class="where room" v-if="session.room">{{session.room}}</div>
+          </div>
+          <summary class="desc" v-if="session.teaser &amp;&amp; !session.fullinfo" v-html="session.teaser"></summary>
+          <div class="desc fulltext" v-if="session.text &amp;&amp; session.fullinfo" v-html="session.text"></div>
+          <ul class="speakers" v-if="session.speakers">
+            <li v-for="speaker in session.speakers"><b class="role" v-if="speaker.role &amp;&amp; session.fullinfo">{{speaker.role}}: </b><span class="name" v-if="!session.fullinfo">{{speaker.name}}, {{speaker.company}}</span><span class="name" v-else>{{speaker.name}}</span>
+              <div class="and" v-if="session.fullinfo">
+                <div class="job" v-if="speaker.job_title &amp;&amp; speaker.company">{{speaker.job_title}}, {{speaker.company}}</div>
+                <div class="job" v-else-if="speaker.job_title">{{speaker.job_title}}</div>
+                <div class="job" v-else-if="speaker.company">{{speaker.company}}</div>
+                <div class="desc" v-if="speaker.text &amp;&amp; session.fullinfo" v-html="speaker.text"></div>
+              </div>
+            </li>
+          </ul>
+        </article>
+      </section>
+      <section class="sessions" v-cloak v-bind:class="{ visible: my.view == 'parties' }">
+        <article class="session" v-for="session in sessions" v-if="session.type == 'party'" :class="{full: session.fullinfo }">
+          <h3 class="title"> <a v-on:click="session.fullinfo = !session.fullinfo">{{session.title}}</a><a class="favorite" v-on:click="toggleFavorite(my.sessions, session);" :class="{active: session.favorite}">
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <path class="fill" d="M49.8 1.6L64.6 33l33 5.1-23.9 24.4 5.7 34.6-29.6-16.3-29.5 16.3 5.6-34.6L2 38.1 35 33z"></path>
+                <path class="outline" d="M49.8 13.3L60 35.1l1.1 2.4 2.6.4 23.4 3.6-17 17.6-1.8 1.8.4 2.5 4 24.4-20.5-11.4-2.4-1.3-2.4 1.3-20.5 11.4 4-24.4.4-2.5-1.8-1.8-17.1-17.6L35.8 38l2.6-.4 1.1-2.4 10.3-21.9m0-11.7L35 33 2 38l23.9 24.5-5.6 34.6 29.5-16.3 29.5 16.3-5.6-34.6L97.6 38l-33-5L49.8 1.6z"></path>
+              </svg></a><a class="meetoo" v-if="session.meetoo" v-on:click="showMeetoo(session.meetoo)">
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <path class="outlined" d="M50 5.438c-25.4 0-46.4 16.9-46.4 38.2 0 11.8 6.9 21.5 16.8 28.3l-8 19c-.5 1.1 0 2.4 1.1 2.8.6.3 1.3.2 1.9-.1l23.2-12.7c3.5.6 8.1.9 11.4.9 25.4 0 46.4-16.9 46.4-38.3 0-21.2-21-38.1-46.4-38.1zm0 4.3c23.5 0 42.1 15.4 42.1 33.9s-18.6 34-42.1 34c-3.3 0-8.5-.3-11.5-.9-.5-.1-1 0-1.5.2l-18.3 10 6.2-14.8c.4-1 0-2.1-.8-2.6-9.9-6.3-16.3-15.1-16.3-25.8 0-18.6 18.7-34 42.2-34zm-23.8 27c-3.6 0-6.5 2.9-6.5 6.5s2.9 6.5 6.5 6.5 6.5-2.9 6.5-6.5-2.9-6.5-6.5-6.5zm23.8 0c-3.6 0-6.5 2.9-6.5 6.5s2.9 6.5 6.5 6.5 6.5-2.9 6.5-6.5-3-6.5-6.5-6.5zm23.7 0c-3.6 0-6.5 2.9-6.5 6.5s2.9 6.5 6.5 6.5 6.5-2.9 6.5-6.5-2.9-6.5-6.5-6.5zm-47.5 4.4c1.2 0 2.2.9 2.2 2.2s-.9 2.2-2.2 2.2c-1.2 0-2.2-.9-2.2-2.2s1-2.2 2.2-2.2zm23.8 0c1.2 0 2.2.9 2.2 2.2s-.9 2.2-2.2 2.2-2.2-.9-2.2-2.2.9-2.2 2.2-2.2zm23.7 0c1.2 0 2.2.9 2.2 2.2s-.9 2.2-2.2 2.2-2.2-.9-2.2-2.2 1-2.2 2.2-2.2z"></path>
+                <path class="filled" d="M50 4C23.3 4 1.6 21.6 1.6 43.4c0 12.6 7.6 22.9 18.9 30.2L11.1 96l26-14.2c3.5.7 9.2 1 13 1 26.7 0 48.4-17.6 48.4-39.4C98.4 21.6 76.7 4 50 4zM24 34.7c4.6 0 8.3 3.7 8.3 8.3 0 4.6-3.7 8.3-8.3 8.3s-8.3-3.7-8.3-8.3c.1-4.6 3.8-8.3 8.3-8.3zm26 0c4.6 0 8.3 3.7 8.3 8.3 0 4.6-3.7 8.3-8.3 8.3s-8.3-3.7-8.3-8.3c0-4.6 3.7-8.3 8.3-8.3zm26 0c4.6 0 8.3 3.7 8.3 8.3 0 4.6-3.7 8.3-8.3 8.3-4.6 0-8.3-3.7-8.3-8.3 0-4.6 3.7-8.3 8.3-8.3z"></path>
               </svg></a></h3>
           <div class="when-and-where">
             <time class="when"><span>{{session.date}} @ {{session.time}}</span><span v-if="session.duration">  ({{session.duration}})</span></time>
@@ -81,7 +124,8 @@
         </article>
       </section>
       <section class="vendors" v-cloak v-bind:class="{ visible: my.view == 'vendors' }">
-        <article class="vendor" v-for="vendor in vendors" :class="{ full: vendor.fullinfo }">
+        <nav class="vendor-toggle"><a v-on:click="showMyVendors = true" :class="{active:showMyVendors}">My Vendors</a><a v-on:click="showMyVendors = false" :class="{active:!showMyVendors}">All Vendors</a></nav>
+        <article class="vendor" v-for="vendor in myVendors" :class="{ full: vendor.fullinfo, disabled:!vendor.favorite &amp;&amp; showMyVendors }">
           <figure class="logo"><img :src="vendor.logo"></figure>
           <h3 class="title"><a v-on:click="vendor.fullinfo = !vendor.fullinfo">{{vendor.title}}</a><a class="favorite" v-on:click="toggleFavorite(my.vendors, vendor);" :class="{active: vendor.favorite}">
               <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
@@ -112,171 +156,26 @@
           </div>
         </article>
       </section>
+      <section class="map" v-cloak v-bind:class="{ visible: my.view == 'map' }">
+        <div class="map-wrapper">
+          <!--button(onclick="zoomIn()") Zoom In-->
+          <div class="pinch-zoom-container">
+            <!--img.panzoom#pinch-zoom-image-id(src="img/sample-map.jpg" class="pinch-zoom-image" onload="onLoad()")--><img class="pinch-zoom-image" id="pinch-zoom-image-id" src="img/wigc-floorplan.jpg">
+          </div>
+        </div>
+      </section>
+      <section class="meetoo" v-cloak v-bind:class="{ visible: my.view == 'meetoo' }">
+        <div class="map-wrapper">
+          <iframe class="meetoo-frame" width="100%" :src="my.meetoo"></iframe>
+        </div>
+      </section>
     </main>
     <div class="javascripts">
       <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-      <script src="https://unpkg.com/vue"></script>
-      <script>
-        function snap(array, search_term, multi = false) {
-          for (var i = array.length - 1; i >= 0; i--) {
-            if (array[i] === search_term) {
-              array.splice(i, 1);
-              if (multi == true) {
-                break;
-              }
-            }
-          }
-        }
-        
-        
-        var app = new Vue({
-          el: '#app',
-          data: {
-            my: {
-              sidebarVisible: true,
-              view: 'home',
-              sessions: [],
-              vendors: []
-            },
-            sessions: [],
-            vendors: [],
-            error_msg: false
-            
-          },
-          mounted: function () {
-            var self = this;
-            
-            // Grab Sessions
-            $.ajax({
-                url: 'https://circle.red/wigc/sessions',
-                //url: 'http://localhost/wigc/sessions',
-                method: 'GET',
-                success: function (data) {
-                  self.sessions = data;
-                },
-                error: function (error) {
-                  alert(JSON.stringify(error));
-                  self.error_msg = error
-                }
-            });
-            
-            // Grab Vendors
-            $.ajax({
-                url: 'https://circle.red/wigc/vendors',
-                //url: 'http://localhost/wigc/vendors',
-                method: 'GET',
-                success: function (data) {
-                  self.vendors = data;
-                },
-                error: function (error) {
-                  alert(JSON.stringify(error));
-                  //self.error_msg = error
-                }
-            });
-            
-            var request = indexedDB.open("WIGCApp", 3);
-        
-            request.onerror = function(event) {
-              self.indexed = "Can't use IndexedDB";
-            };
-            request.onsuccess = function(event) {
-              self.db = this.result;
-              self.getFavorites();
-              self.my.view = "sessions";
-            };
-            request.onupgradeneeded = function(event) {
-              var objStore = event.currentTarget.result.createObjectStore('my');
-            }
-          },
-          updated: function() {
-            var self = this;
-            var request = indexedDB.open("WIGCApp", 3);
-        
-            request.onerror = function(event) {
-              self.indexed = "Can't use IndexedDB";
-            };
-            request.onsuccess = function(event) {
-              self.db = this.result;
-              self.updateFavorites();
-            };
-            request.onupgradeneeded = function(event) {
-              var objStore = event.currentTarget.result.createObjectStore('my');
-            }
-          },
-          methods: {
-            toggleFavorite: function(faves,fave) {
-              var self = this;
-              fave.favorite = !fave.favorite;
-              console.log(fave.url);
-              if (fave.favorite) {
-                faves.push(fave.url);
-              } else {
-                snap(faves,fave.url);
-              }
-              self.updateFavorites();
-            },
-            switchSection: function(newView) {
-              var self = this;
-              self.my.sidebarVisible = false;
-              self.my.view = newView;
-            },
-            mapClick: function(vendor) {
-              var query = vendor.street_address + ' ' + vendor.city+ ', ' +vendor.state+ ' ' +vendor.zip;
-              window.open('https://maps.google.com?q='+query, 'Map');
-              console.log(vendor);
-            },
-            getFavorites: function() {
-              var self = this; 
-              var store = self.getObjectStore('my', 'readonly');
-              var req = store.openCursor();
-        
-              req.onsuccess = function(evt) {
-                var cursor = evt.target.result;
-                if (cursor) {
-                  self.my = cursor.value;
-                }
-              }; 
-            },
-            updateFavorites: function(){
-              var self = this;
-              var store = self.getObjectStore('my', 'readwrite');
-        
-              var getCount = store.count();
-              getCount.onsuccess = function(evt){
-              if (evt.target.result === 0){
-                try {
-                  req = store.add(self.my, 0);
-                } catch (e) {
-                  throw e;
-                }
-              }
-              else{
-                var req = store.openCursor();
-                req.onsuccess = function(evt) {
-                  var cursor = evt.target.result;
-                  if(cursor){
-                      try {
-                        cursor.update(self.my)
-                      } catch (e) {
-                        throw e;
-                      }
-                    }
-                    self.sessions.map(function(s){
-                      if(self.my.sessions.indexOf(s.url) !== -1){
-                        s.favorite = true;
-                      }
-                    });
-                  }                  
-                }
-              }
-            },
-            getObjectStore: function(storeName, protocol){
-                var self = this; 
-                return self.db.transaction(storeName, protocol).objectStore(storeName);
-            }
-          }
-        });
-      </script>
+      <script src="js/vendor/vue.js"></script>
+      <script src="http://hammerjs.github.io/dist/hammer.min.js"></script>
+      <script src="js/pinch-zoom.js"></script>
+      <script src="js/wigc.js"></script>
     </div>
   </body>
 </html>

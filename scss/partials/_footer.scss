@@ -1,12 +1,19 @@
-footer { @include position(fixed,null,0,0,0); background:rgba($black,0.3); z-index: 4; padding-left: 10px; padding-right: 10px; height: $footer-height; padding-top: 8px; padding-left: 70px;
+footer { @include position(fixed,null,0,0,0); background:rgba($black,0.95); z-index: 4; padding-left: 10px; padding-right: 10px; height: $footer-height; padding-top: 10px; padding-left: 70px;
   .toggle-sidebar { background-color:$orange; @include position(absolute,0,null,0,0); color:$black; width:50px; padding:5px 10px 0 10px;; color:$white;
     transform: translateX(-102%); transition:transform 0.5s ease;
     &.visible { transform: translateX(0); }
   }
   nav {
-    a { color:$black; font-family: $sans; text-transform: uppercase; margin-right: 1em; cursor: pointer; font-size:16px; font-weight: 600; }
+    a { color:$white; font-family: $sans; text-transform: uppercase; margin-right: 1em; cursor: pointer; font-size:16px; font-weight: 600; }
   }
   
+  .sun { width:30px; display: block; float: right; @include position(absolute,0,5px,0); padding-top: 6px;
+    .red { fill:#ffeecd; }
+    .blue { fill:#f26c51; }
+  }
+  .wigc { width: 56px; color:#FEECCE; @include position(absolute,0,40px,0); padding-top: 12px;
+    
+  }
   
   
 }

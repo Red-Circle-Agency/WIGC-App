@@ -225,7 +225,7 @@ var app = new Vue({
       var self = this;
       return self.db.transaction(storeName, protocol).objectStore(storeName);
     },
-    isDisabled(session){
+    isDisabled: function(session){
       if (!session.favorite && session.type !== 'schedule-item'){
         return true;
       }
