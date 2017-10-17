@@ -581,6 +581,78 @@ video {
     .vendor-toggle a.active {
       background-color: #f6431e; }
 
+.people {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 42px;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  z-index: 2;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  transform: translateY(-120%);
+  transition: transform 1s ease; }
+  .people.visible {
+    transform: translateY(0); }
+
+.person {
+  margin: 0 10px 10px 10px;
+  padding: 10px;
+  background-color: #e8e8e8;
+  box-shadow: 0 0 3px rgba(73, 73, 73, 0.3);
+  font-family: "Catamaran", sans-serif;
+  position: relative; }
+  .person a {
+    color: #F86C4F; }
+  .person .title {
+    font-family: "Libre Baskerville", serif;
+    margin-bottom: 0.25em;
+    padding-right: 42px;
+    font-size: 115%; }
+  .person a.favorite {
+    color: #494949;
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    top: 10px;
+    right: 10px; }
+    .person a.favorite .fill {
+      opacity: 0; }
+    .person a.favorite:hover {
+      color: #F86C4F; }
+    .person a.favorite.active .fill {
+      opacity: 1; }
+  .person a.meetoo {
+    color: #4885ed;
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    top: 40px;
+    right: 10px; }
+    .person a.meetoo .filled {
+      opacity: 0; }
+    .person a.meetoo:hover .filled {
+      opacity: 1; }
+    .person a.meetoo:hover .outlined {
+      opacity: 0; }
+  .person.full {
+    margin: 0 0 30px 0;
+    padding: 20px; }
+    .person.full .title {
+      font-size: 140%;
+      /*transition:all 0.5s ease;*/ }
+  .person.disabled {
+    opacity: 0.4;
+    transition: all 0.5s ease; }
+  .person figure.pic {
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    width: 72px;
+    max-height: 72px; }
+
 .my-sessions, .my-vendors {
   font-family: "Catamaran", sans-serif;
   margin: 0 10px 10px 10px; }
@@ -633,3 +705,5 @@ section.meetoo {
 
 body {
   background: #feecce; }
+
+/*# sourceMappingURL=wigc.css.map */

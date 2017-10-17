@@ -16,7 +16,7 @@
         <video src="video/glorybands.mp4" autoplay muted loop></video>
         <!--include partials/_header-->
         <aside class="sidebar" v-bind:class="{visible: my.sidebarVisible}" v-cloak>
-          <nav><a v-on:click="switchSection('my-wigc')">My WIGC</a><a v-on:click="switchSection('sessions')">Seminars</a><a v-on:click="switchSection('parties')">Parties</a><a v-on:click="switchSection('vendors')">Vendors</a></nav>
+          <nav><a v-on:click="switchSection('my-wigc')">My WIGC</a><a v-on:click="switchSection('sessions')">Seminars</a><a v-on:click="switchSection('parties')">Parties</a><a v-on:click="switchSection('vendors')">Vendors</a><a v-on:click="switchSection('people')">People</a></nav>
         </aside>
         <footer><a class="toggle-sidebar" v-on:click="my.sidebarVisible = !my.sidebarVisible" v-bind:class="{visible: !my.sidebarVisible}">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
@@ -154,6 +154,19 @@
               <li v-for="person in vendor.people"><span class="name">{{person.name}}</span>, <span class="job">{{person.job}}</span></li>
             </ul>
           </div>
+        </article>
+      </section>
+      <section class="people" v-cloak v-bind:class="{ visible: my.view == 'people' }">
+        <article class="person" v-for="person in people">
+          <figure class="pic" v-if="person.pic"><img :src="person.pic"></figure>
+          <h3 class="name"><a v-on:click="person.fullinfo = !person.fullinfo">{{person.name}}</a></h3>
+          <div class="job" v-if="person.job_title &amp;&amp; person.company">{{person.job_title}},  {{person.company}}</div>
+          <div class="job" v-else-if="person.job_title">{{person.job_title}}</div>
+          <div class="job" v-else-if="person.company">{{person.company}}</div>
+          <!--.desc.fulltext(v-if="person.text" v-html="person.text")-->
+          <summary class="desc" v-if="person.teaser &amp;&amp; !person.fullinfo" v-html="person.teaser"></summary>
+          <div class="desc fulltext" v-if="person.text &amp;&amp; person.fullinfo" v-html="person.text"></div>
+          <div class="contacts" v-if="person.fullinfo"><a class="icon-link" :href="person.website" v-if="person.website">WEBSITE</a><a class="icon-link" :href="'mailto:' + person.email" v-if="person.email">EMAIL</a><a class="icon-link" :href="person.linkedin" v-if="person.linkedin">LINKED IN</a><a class="icon-link" :href="person.twitter" v-if="person.twitter">LINKED IN</a></div>
         </article>
       </section>
       <section class="map" v-cloak v-bind:class="{ visible: my.view == 'map' }">

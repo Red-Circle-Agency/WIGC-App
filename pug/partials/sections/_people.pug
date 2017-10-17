@@ -1,0 +1,21 @@
+section.people(v-cloak v-bind:class="{ visible: my.view == 'people' }")
+  article.person(v-for="person in people")
+    figure.pic(v-if="person.pic")
+      img(:src="person.pic")
+    h3.name
+      a(v-on:click="person.fullinfo = !person.fullinfo") {{person.name}}
+    .job(v-if="person.job_title && person.company") {{person.job_title}},  {{person.company}}
+    .job(v-else-if="person.job_title") {{person.job_title}}
+    .job(v-else-if="person.company") {{person.company}}
+    //.desc.fulltext(v-if="person.text" v-html="person.text")
+    summary.desc(v-if="person.teaser && !person.fullinfo" v-html="person.teaser")
+    .desc.fulltext(v-if="person.text && person.fullinfo" v-html="person.text")
+    .contacts(v-if="person.fullinfo")
+      a.icon-link(:href="person.website" v-if="person.website")
+        | WEBSITE
+      a.icon-link(:href="'mailto:' + person.email" v-if="person.email")
+        | EMAIL
+      a.icon-link(:href="person.linkedin" v-if="person.linkedin")
+        | LINKED IN
+      a.icon-link(:href="person.twitter" v-if="person.twitter")
+        | LINKED IN

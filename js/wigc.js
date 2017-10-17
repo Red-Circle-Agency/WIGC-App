@@ -25,10 +25,11 @@ var app = new Vue({
       meetoo: '',
       view: 'home',
       sessions: [],
-      vendors: [],
+      vendors: []
     },
     sessions: [],
     vendors: [],
+    people: [],
     unfavorited: [],
     showMyVendors: true,
     error_msg: false
@@ -76,6 +77,20 @@ var app = new Vue({
       method: 'GET',
       success: function (data) {
         self.vendors = data;
+      },
+      error: function (error) {
+        alert(JSON.stringify(error));
+        //self.error_msg = error
+      }
+    });
+    
+    // Grab People
+    $.ajax({
+      //url: 'https://circle.red/wigc/people',
+      url: 'http://localhost/wigc/people',
+      method: 'GET',
+      success: function (data) {
+        self.people = data;
       },
       error: function (error) {
         alert(JSON.stringify(error));
