@@ -135,8 +135,11 @@ var app = new Vue({
       self.my.sidebarVisible = false;
       if(self.my.view === 'my-wigc'){
         self.unfavorited = [];
+      } if (self.my.view == "map"){
+        onLoad();
       }
       self.my.view = newView;
+      
     },
     mapClick: function(vendor) {
       var query = vendor.street_address + ' ' + vendor.city+ ', ' +vendor.state+ ' ' +vendor.zip;
