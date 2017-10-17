@@ -9,6 +9,7 @@
   </author>
     <platform name="ios" />
     <platform name="android" />
+    <preference name="android-minSdkVersion" value="20" />
     <platform name="winphone" />
     <access origin="*" />
     <allow-intent href="*" />
