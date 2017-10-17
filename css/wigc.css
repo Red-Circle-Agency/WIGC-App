@@ -376,7 +376,7 @@ video {
   height: auto;
   object-fit: fill;
   z-index: 1;
-  opacity: 0.3; }
+  opacity: 0.65; }
 
 .sessions {
   position: fixed;

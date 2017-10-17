@@ -4,9 +4,10 @@ footer
       path(d="M97.5 29.4H4.4V17.3h93.1v12.1zm0 14.7H4.4v12.1h93.1V44.1zm0 26.8H4.4V83h93.1V70.9z")
   nav
     a(v-on:click="switchSection('map')") Map
+    a(v-on:click="my.meetoo = 'https://web.meetoo.com/170479740'; switchSection('meetoo');") Chat
     //a(v-on:click="switchSection('meetoo')") Meetoo
     //a Exhibitors
-    a Contact
+    //a Contact
     
     .sun
       svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100")
