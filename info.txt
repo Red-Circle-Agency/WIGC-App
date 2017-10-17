@@ -1,0 +1,79 @@
+Node version: v8.6.0
+
+Cordova version: 7.1.0
+
+Config.xml file: 
+
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.wigc.wigc" version="0.0.1" versionCode="10" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>WIGC</name>
+    <description>
+      Currently, a proof of concept.
+  </description>
+    <author email="support@phonegap.com" href="https://build.phonegap.com">
+      Vladomir Fakename
+  </author>
+    <platform name="ios" />
+    <platform name="android" />
+    <platform name="winphone" />
+    <access origin="*" />
+    <allow-intent href="*" />
+    <allow-navigation href="*" />
+    <engine name="android" spec="^6.3.0" />
+    <engine name="ios" spec="^4.4.0" />
+    <plugin name="cordova-plugin-battery-status" spec="~1.1.1" />
+    <plugin name="cordova-plugin-camera" spec="~2.1.1" />
+    <plugin name="cordova-plugin-console" spec="~1.0.2" />
+    <plugin name="cordova-plugin-contacts" spec="~2.0.1" />
+    <plugin name="cordova-plugin-device" spec="~1.1.1" />
+    <plugin name="cordova-plugin-device-motion" spec="~1.2.0" />
+    <plugin name="cordova-plugin-device-orientation" spec="~1.0.2" />
+    <plugin name="cordova-plugin-dialogs" spec="~1.2.0" />
+    <plugin name="cordova-plugin-file" spec="~4.1.1" />
+    <plugin name="cordova-plugin-file-transfer" spec="~1.5.0" />
+    <plugin name="cordova-plugin-geolocation" spec="~2.1.0" />
+    <plugin name="cordova-plugin-globalization" spec="~1.0.3" />
+    <plugin name="cordova-plugin-inappbrowser" spec="~1.3.0" />
+    <plugin name="cordova-plugin-media" spec="~2.2.0" />
+    <plugin name="cordova-plugin-media-capture" spec="~1.2.0" />
+    <plugin name="cordova-plugin-network-information" spec="~1.2.0" />
+    <plugin name="cordova-plugin-splashscreen" spec="~3.2.1" />
+    <plugin name="cordova-plugin-statusbar" spec="~2.1.2" />
+    <plugin name="cordova-plugin-vibration" spec="~2.1.0" />
+    <plugin name="cordova-plugin-whitelist" spec="~1.2.1" />
+    <plugin name="onesignal-cordova-plugin" spec="^2.2.2" />
+</widget>
+
+
+Plugins: 
+
+cordova-plugin-battery-status,cordova-plugin-camera,cordova-plugin-compat,cordova-plugin-console,cordova-plugin-contacts,cordova-plugin-device,cordova-plugin-device-motion,cordova-plugin-device-orientation,cordova-plugin-dialogs,cordova-plugin-file,cordova-plugin-file-transfer,cordova-plugin-geolocation,cordova-plugin-globalization,cordova-plugin-inappbrowser,cordova-plugin-media,cordova-plugin-media-capture,cordova-plugin-network-information,cordova-plugin-splashscreen,cordova-plugin-statusbar,cordova-plugin-vibration,cordova-plugin-whitelist,onesignal-cordova-plugin,phonegap-plugin-push
+
+Android platform:
+
+*************************************************************************
+The "android" command is deprecated.
+For manual SDK, AVD, and project management, please use Android Studio.
+For command-line tools, use tools/bin/sdkmanager and tools/bin/avdmanager
+*************************************************************************
+Running /Users/brianhenderson/Library/Android/sdk/tools/bin/avdmanager list target
+
+Loading local repository...                                                     [=========                              ] 25% Loading local repository...       [=========                              ] 25% Fetch remote repository...        [=========                              ] 25% Fetch remote repository...        [=========                              ] 25% Fetch remote repository...        [=======================================] 100% Fetch remote repository...       Available Android targets:
+----------
+id: 1 or "android-25"
+     Name: Android API 25
+     Type: Platform
+     API level: 25
+     Revision: 3
+----------
+id: 2 or "android-26"
+     Name: Android API 26
+     Type: Platform
+     API level: 26
+     Revision: 2
+
+iOS platform:
+
+Xcode 9.0
+Build version 9A235
+
