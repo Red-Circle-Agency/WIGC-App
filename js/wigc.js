@@ -95,6 +95,27 @@ var app = new Vue({
     request.onupgradeneeded = function(event) {
       var objStore = event.currentTarget.result.createObjectStore('my');
     };
+
+    console.log("VUE MOUNTED");
+
+    document.addEventListener('deviceready', function () {
+      // Enable to debug issues.
+       window.plugins.OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
+       console.log("Device Ready!");
+      var notificationOpenedCallback = function(jsonData) {
+        console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+      };
+
+      window.plugins.OneSignal
+        .startInit("2405a721-a178-45fb-a787-a1bf43a2e74c")
+        .handleNotificationOpened(notificationOpenedCallback)
+        .endInit();
+
+      // Call syncHashedEmail anywhere in your app if you have the user's email.
+      // This improves the effectiveness of OneSignal's "best-time" notification scheduling feature.
+      // window.plugins.OneSignal.syncHashedEmail(userEmail);
+    }, false);
+
   },
   updated: function() {
     var self = this;
