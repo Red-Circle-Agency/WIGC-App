@@ -1,29 +1,20 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<widget xmlns   = "http://www.w3.org/ns/widgets"
-    xmlns:gap   = "http://phonegap.com/ns/1.0"
-    id          = "com.wigc.wigc"
-    versionCode = "10"
-    version     = "0.0.1" >
-
-<!-- versionCode is optional and Android only -->
-
-  <name>WIGC</name>
-
-  <description>
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.wigc.wigc" version="0.0.1" versionCode="10" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>WIGC</name>
+    <description>
       Currently, a proof of concept.
   </description>
-
-  <author href="https://build.phonegap.com" email="support@phonegap.com">
+    <author email="support@phonegap.com" href="https://build.phonegap.com">
       Vladomir Fakename
   </author>
-
-  <platform name="ios" />
-  <platform name="android" />
-  <platform name="winphone" />
-  
-  <plugin name="cordova-plugin-whitelist" version="1" />
-  <access origin="*" />
-  <allow-intent href="*" />
-  <allow-navigation href="*" />
-
+    <platform name="ios" />
+    <platform name="android" />
+    <platform name="winphone" />
+    <access origin="*" />
+    <allow-intent href="*" />
+    <allow-navigation href="*" />
+    <engine name="android" spec="^6.3.0" />
+    <engine name="ios" spec="^4.4.0" />
+    <plugin name="cordova-plugin-whitelist" spec="~1.2.1" />
+    <plugin name="onesignal-cordova-plugin" spec="^2.2.2" />
 </widget>
