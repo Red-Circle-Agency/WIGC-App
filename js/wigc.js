@@ -97,7 +97,6 @@ var app = new Vue({
       var objStore = event.currentTarget.result.createObjectStore('my');
     };
 
-    console.log("VUE MOUNTED");
 
     document.addEventListener('deviceready', function () {
       // Enable to debug issues.
