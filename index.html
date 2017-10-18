@@ -83,12 +83,10 @@
           <summary class="desc" v-if="session.teaser &amp;&amp; !session.fullinfo" v-html="session.teaser"></summary>
           <div class="desc fulltext" v-if="session.text &amp;&amp; session.fullinfo" v-html="session.text"></div>
           <ul class="speakers" v-if="session.speakers">
-            <li v-for="speaker in session.speakers"><b class="role" v-if="speaker.role &amp;&amp; session.fullinfo">{{speaker.role}}: </b><span class="name" v-if="!session.fullinfo">{{speaker.name}}, {{speaker.company}}</span><span class="name" v-else>{{speaker.name}}</span>
-              <div class="and" v-if="session.fullinfo">
-                <div class="job" v-if="speaker.job_title &amp;&amp; speaker.company">{{speaker.job_title}}, {{speaker.company}}</div>
-                <div class="job" v-else-if="speaker.job_title">{{speaker.job_title}}</div>
-                <div class="job" v-else-if="speaker.company">{{speaker.company}}</div>
-                <div class="desc" v-if="speaker.text &amp;&amp; session.fullinfo" v-html="speaker.text"></div>
+            <li v-for="speaker in session.speakers">
+              <div class="speaker"><b class="role" v-if="speaker.role">{{speaker.role}}: </b><a class="name" v-if="speaker.url" v-on:click="speaker.fullinfo = !speaker.fullinfo">{{speaker.name}}</a><span class="name" v-else-if="!speaker.url">{{speaker.name}}</span><span class="job" v-if="speaker.company">, {{speaker.company}}</span>
+                <figure class="pic" v-if="speaker.fullinfo" v-on:click="speaker.fullpic = !speaker.fullpic" v-bind:class="{full: speaker.fullpic}"><img :src="speaker.pic"></figure>
+                <div class="desc fulltext" v-if="speaker.text &amp;&amp; speaker.fullinfo" v-html="speaker.text"></div>
               </div>
             </li>
           </ul>
@@ -151,7 +149,7 @@
             <li class="vendor-person" v-for="person in vendor.people" v-bind:class="{ full: person.fullinfo }">
               <h4 class="person-title" v-if="person.url"><a class="name" v-on:click="person.fullinfo = !person.fullinfo">{{person.name}}</a><span class="job" v-if="person.job_title">, {{person.job_title}}</span></h4>
               <h4 class="person-title" v-else-if="person.name"><span class="name">{{person.name}}</span><span class="job" v-if="person.job_title">, {{person.job_title}}</span></h4>
-              <figure class="pic" v-if="person.fullinfo"><img :src="person.pic"></figure>
+              <figure class="pic" v-if="person.fullinfo" v-on:click="person.fullpic = !person.fullpic" v-bind:class="{ full :person.fullpic }"><img :src="person.pic"></figure>
               <summary class="desc" v-show="person.fullinfo" v-html="person.text"></summary>
               <div class="person-contacts contacts" v-show="person.fullinfo"><a class="icon-link" :href="'mailto:' + person.email" v-if="person.email">
                   <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">

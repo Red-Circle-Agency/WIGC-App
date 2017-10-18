@@ -1,4 +1,2 @@
 .people { @include cards(); }
-.person { @include card();
-  figure.pic { float:left; margin-right: 20px; margin-bottom: 10px; width:72px; max-height:72px; }
-}
+.person { @include card(); }

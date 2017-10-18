@@ -72,8 +72,8 @@ var app = new Vue({
 
     // Grab Vendors
     $.ajax({
-      //url: 'https://circle.red/wigc/vendors',
-      url: 'http://localhost/wigc/vendors',
+      url: 'https://circle.red/wigc/vendors',
+      //url: 'http://localhost/wigc/vendors',
       method: 'GET',
       success: function (data) {
         self.vendors = data;
@@ -86,8 +86,8 @@ var app = new Vue({
     
     // Grab People
     $.ajax({
-      //url: 'https://circle.red/wigc/people',
-      url: 'http://localhost/wigc/people',
+      url: 'https://circle.red/wigc/people',
+      //url: 'http://localhost/wigc/people',
       method: 'GET',
       success: function (data) {
         self.people = data;

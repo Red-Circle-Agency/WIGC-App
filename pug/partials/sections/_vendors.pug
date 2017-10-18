@@ -35,7 +35,7 @@ section.vendors(v-cloak v-bind:class="{ visible: my.view == 'vendors' }")
         h4.person-title(v-else-if="person.name")
           span.name {{person.name}}
           span.job(v-if="person.job_title") , {{person.job_title}}
-        figure.pic(v-if="person.fullinfo")
+        figure.pic(v-if="person.fullinfo" v-on:click="person.fullpic = !person.fullpic" v-bind:class="{ full :person.fullpic }")
           img(:src="person.pic")
         summary.desc(v-show="person.fullinfo" v-html="person.text")
         .person-contacts.contacts(v-show="person.fullinfo")

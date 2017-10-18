@@ -462,8 +462,20 @@ video {
     .session .speakers li {
       list-style: none;
       margin-bottom: 0.5em; }
-    .session .speakers .job {
-      padding-left: 1em; }
+
+figure.pic {
+  width: 92px;
+  max-height: 92px;
+  display: block;
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  transition: all 0.3s ease; }
+  figure.pic.full {
+    float: none;
+    width: 100%;
+    max-height: none;
+    text-align: center; }
 
 .vendors {
   position: fixed;
@@ -575,12 +587,6 @@ video {
     font-weight: 400; }
     .vendor-people h4 .name {
       font-weight: 600; }
-  .vendor-people figure.pic {
-    float: left;
-    margin-right: 20px;
-    margin-bottom: 10px;
-    width: 94px;
-    max-height: 94px; }
   .vendor-people li.full {
     border-bottom: 1px solid #494949; }
     .vendor-people li.full h4 {
@@ -684,12 +690,6 @@ video {
   .person.disabled {
     opacity: 0.4;
     transition: all 0.5s ease; }
-  .person figure.pic {
-    float: left;
-    margin-right: 20px;
-    margin-bottom: 10px;
-    width: 72px;
-    max-height: 72px; }
 
 .my-sessions, .my-vendors {
   font-family: "Catamaran", sans-serif;
