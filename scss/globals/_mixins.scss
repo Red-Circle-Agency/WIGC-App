@@ -150,6 +150,9 @@
     }
   }
   
+  .icon-link { margin-right: 0.5em; color:$orange;
+    .icon { width:1.2em; height:1.2em; }
+  }
   
   &.full { margin: 0 0 30px 0; padding: 20px; // transition:all 0.5s ease;
     .title { font-size:140%;  /*transition:all 0.5s ease;*/ }

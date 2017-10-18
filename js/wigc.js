@@ -72,8 +72,8 @@ var app = new Vue({
 
     // Grab Vendors
     $.ajax({
-      url: 'https://circle.red/wigc/vendors',
-      //url: 'http://localhost/wigc/vendors',
+      //url: 'https://circle.red/wigc/vendors',
+      url: 'http://localhost/wigc/vendors',
       method: 'GET',
       success: function (data) {
         self.vendors = data;

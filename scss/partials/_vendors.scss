@@ -1,13 +1,9 @@
 .vendors { @include cards(); }
 
 .vendor { @include card(); @extend %clearfix; padding-bottom: 0;
-  figure.logo { float:left; margin-right: 20px; margin-bottom: 10px; width:72px; max-height:72px; /*background-size:contain; background-position: center; background-repeat: no-repeat; */ }
+  figure.logo { float:left; margin-right: 20px; margin-bottom: 10px; width:72px; max-height:72px; }
   p { margin-bottom: 1em; }
-  .icon-link { margin-right: 0.5em; color:$orange;}
-  //svg.icon { width:1.2rem; height: 1.2rem; fill:currentColor; }
-  .icon-link {
-    .icon { width:1.2em; height:1.2em; }
-  }
+  .vendor-contacts { margin-bottom: 0.65em; font-size:1.25em; }
   .tags { padding-left: 0; margin-bottom: 0.5em;
     li { background-color:$black; color:$white; display: inline-block; margin-right: 0.5em; padding: 0.25em 1em; font-size:80%; }
   }
@@ -16,18 +12,22 @@
   }
 
   &.full { margin: 0 0 30px 0; }
-
 }
 
+
+.vendor-people { padding-left: 0; float: none;
+  li { display: block; list-style: none; margin-bottom: 1em; }
+  h4 { font-size:1em; font-weight: $medium;
+    .name { font-weight: $bold; }
+  }
+  figure.pic { float:left; margin-right: 20px; margin-bottom: 10px; width:94px; max-height:94px; }
+  li.full { border-bottom: 1px solid $black; 
+    h4 { font-size:1.25em; margin-bottom: 0.5em; }
+  }
+}
 .vendor-toggle{
   @include flex-container();
-  a{
-    @include flex-item(50%);
-    background-color: $orange;
-    color: $white;
-    font-family: $sans;
-    text-align: center;
-    text-transform: uppercase;
+  a{ @include flex-item(50%); background-color: $orange; color: $white; font-family: $sans; text-align: center; text-transform: uppercase;
     &.active{
       background-color: darken($orange, 10%);
     }

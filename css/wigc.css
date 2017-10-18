@@ -434,6 +434,12 @@ video {
       opacity: 1; }
     .session a.meetoo:hover .outlined {
       opacity: 0; }
+  .session .icon-link {
+    margin-right: 0.5em;
+    color: #F86C4F; }
+    .session .icon-link .icon {
+      width: 1.2em;
+      height: 1.2em; }
   .session.full {
     margin: 0 0 30px 0;
     padding: 20px; }
@@ -516,6 +522,12 @@ video {
       opacity: 1; }
     .vendor a.meetoo:hover .outlined {
       opacity: 0; }
+  .vendor .icon-link {
+    margin-right: 0.5em;
+    color: #F86C4F; }
+    .vendor .icon-link .icon {
+      width: 1.2em;
+      height: 1.2em; }
   .vendor.full {
     margin: 0 0 30px 0;
     padding: 20px; }
@@ -530,16 +542,12 @@ video {
     margin-right: 20px;
     margin-bottom: 10px;
     width: 72px;
-    max-height: 72px;
-    /*background-size:contain; background-position: center; background-repeat: no-repeat; */ }
+    max-height: 72px; }
   .vendor p {
     margin-bottom: 1em; }
-  .vendor .icon-link {
-    margin-right: 0.5em;
-    color: #F86C4F; }
-  .vendor .icon-link .icon {
-    width: 1.2em;
-    height: 1.2em; }
+  .vendor .vendor-contacts {
+    margin-bottom: 0.65em;
+    font-size: 1.25em; }
   .vendor .tags {
     padding-left: 0;
     margin-bottom: 0.5em; }
@@ -554,6 +562,30 @@ video {
     font-weight: 600; }
   .vendor.full {
     margin: 0 0 30px 0; }
+
+.vendor-people {
+  padding-left: 0;
+  float: none; }
+  .vendor-people li {
+    display: block;
+    list-style: none;
+    margin-bottom: 1em; }
+  .vendor-people h4 {
+    font-size: 1em;
+    font-weight: 400; }
+    .vendor-people h4 .name {
+      font-weight: 600; }
+  .vendor-people figure.pic {
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    width: 94px;
+    max-height: 94px; }
+  .vendor-people li.full {
+    border-bottom: 1px solid #494949; }
+    .vendor-people li.full h4 {
+      font-size: 1.25em;
+      margin-bottom: 0.5em; }
 
 .vendor-toggle {
   display: -webkit-box;
@@ -637,6 +669,12 @@ video {
       opacity: 1; }
     .person a.meetoo:hover .outlined {
       opacity: 0; }
+  .person .icon-link {
+    margin-right: 0.5em;
+    color: #F86C4F; }
+    .person .icon-link .icon {
+      width: 1.2em;
+      height: 1.2em; }
   .person.full {
     margin: 0 0 30px 0;
     padding: 20px; }
