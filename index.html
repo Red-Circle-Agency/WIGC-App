@@ -16,7 +16,7 @@
         <video src="video/glorybands.mp4" autoplay muted loop></video>
         <!--include partials/_header-->
         <aside class="sidebar" v-bind:class="{visible: my.sidebarVisible}" v-cloak>
-          <nav><a v-on:click="switchSection('my-wigc')">My WIGC</a><a v-on:click="switchSection('sessions')">Seminars</a><a v-on:click="switchSection('parties')">Parties</a><a v-on:click="switchSection('vendors')">Vendors</a><a v-on:click="switchSection('people')">People</a></nav>
+          <nav><a v-on:click="switchSection('My WIGC')">My WIGC</a><a v-on:click="switchSection('Seminars')">Seminars</a><a v-on:click="switchSection('Parties')">Parties</a><a v-on:click="switchSection('Vendors')">Vendors</a><a v-on:click="switchSection('People')">People</a></nav>
         </aside>
         <footer><a class="toggle-sidebar" v-on:click="my.sidebarVisible = !my.sidebarVisible" v-bind:class="{visible: !my.sidebarVisible}">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
@@ -40,8 +40,8 @@
           </nav>
         </footer>
       </div>
-      <section class="sessions my-wigc" v-cloak v-bind:class="{ visible: my.view == 'my-wigc' }">
-        <article class="session" v-for="session in mySessions" :class="{full: session.fullinfo, disabled:isDisabled(session) }">
+      <section class="cards sessions my-wigc" v-cloak v-bind:class="{ visible: my.view == 'My WIGC' }">
+        <article class="card session" v-for="session in mySessions" :class="{full: session.fullinfo, disabled:isDisabled(session) }">
           <h3 class="title"> <a v-on:click="session.fullinfo = !session.fullinfo">{{session.title}}</a><a class="favorite" v-on:click="toggleFavorite(my.sessions, session);" :class="{active: session.favorite}">
               <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                 <path class="fill" d="M49.8 1.6L64.6 33l33 5.1-23.9 24.4 5.7 34.6-29.6-16.3-29.5 16.3 5.6-34.6L2 38.1 35 33z"></path>
@@ -65,8 +65,8 @@
           </ul>
         </article>
       </section>
-      <section class="sessions" v-cloak v-bind:class="{ visible: my.view == 'sessions' }">
-        <article class="session" v-for="session in sessions" :class="{full: session.fullinfo }">
+      <section class="cards sessions" v-cloak v-bind:class="{ visible: my.view == 'Seminars' }">
+        <article class="card session" v-for="session in sessions" :class="{full: session.fullinfo }">
           <h3 class="title"> <a v-on:click="session.fullinfo = !session.fullinfo">{{session.title}}</a><a class="favorite" v-on:click="toggleFavorite(my.sessions, session);" :class="{active: session.favorite}">
               <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                 <path class="fill" d="M49.8 1.6L64.6 33l33 5.1-23.9 24.4 5.7 34.6-29.6-16.3-29.5 16.3 5.6-34.6L2 38.1 35 33z"></path>
@@ -84,16 +84,20 @@
           <div class="desc fulltext" v-if="session.text &amp;&amp; session.fullinfo" v-html="session.text"></div>
           <ul class="speakers" v-if="session.speakers">
             <li v-for="speaker in session.speakers">
-              <div class="speaker"><b class="role" v-if="speaker.role">{{speaker.role}}: </b><a class="name" v-if="speaker.url" v-on:click="speaker.fullinfo = !speaker.fullinfo">{{speaker.name}}</a><span class="name" v-else-if="!speaker.url">{{speaker.name}}</span><span class="job" v-if="speaker.company">, {{speaker.company}}</span>
+              <div class="speaker">
+                <div class="name-and-title"><b class="role" v-if="speaker.role">{{speaker.role}}: </b><a class="name" v-if="speaker.url" v-on:click="speaker.fullinfo = !speaker.fullinfo">{{speaker.name}}</a><span class="name" v-else-if="!speaker.url">{{speaker.name}}</span><span class="job" v-if="speaker.company">, {{speaker.company}}</span></div>
                 <figure class="pic" v-if="speaker.fullinfo" v-on:click="speaker.fullpic = !speaker.fullpic" v-bind:class="{full: speaker.fullpic}"><img :src="speaker.pic"></figure>
                 <div class="desc fulltext" v-if="speaker.text &amp;&amp; speaker.fullinfo" v-html="speaker.text"></div>
               </div>
             </li>
           </ul>
+          <ul class="tags" v-if="session.tags">
+            <li v-for="tag in session.tags">{{tag}}</li>
+          </ul>
         </article>
       </section>
-      <section class="sessions" v-cloak v-bind:class="{ visible: my.view == 'parties' }">
-        <article class="session" v-for="session in sessions" v-if="session.type == 'party'" :class="{full: session.fullinfo }">
+      <section class="cards sessions" v-cloak v-bind:class="{ visible: my.view == 'Parties' }">
+        <article class="card session" v-for="session in sessions" v-if="session.type == 'party'" :class="{full: session.fullinfo }">
           <h3 class="title"> <a v-on:click="session.fullinfo = !session.fullinfo">{{session.title}}</a><a class="favorite" v-on:click="toggleFavorite(my.sessions, session);" :class="{active: session.favorite}">
               <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                 <path class="fill" d="M49.8 1.6L64.6 33l33 5.1-23.9 24.4 5.7 34.6-29.6-16.3-29.5 16.3 5.6-34.6L2 38.1 35 33z"></path>
@@ -121,10 +125,10 @@
           </ul>
         </article>
       </section>
-      <section class="vendors" v-cloak v-bind:class="{ visible: my.view == 'vendors' }">
+      <section class="cards vendors" v-cloak v-bind:class="{ visible: my.view == 'Vendors' }">
         <nav class="vendor-toggle"><a v-on:click="showMyVendors = true" :class="{active:showMyVendors}">My Vendors</a><a v-on:click="showMyVendors = false" :class="{active:!showMyVendors}">All Vendors</a></nav>
-        <article class="vendor" v-for="vendor in myVendors" :class="{ full: vendor.fullinfo, disabled:!vendor.favorite &amp;&amp; showMyVendors }">
-          <figure class="logo"><img :src="vendor.logo"></figure>
+        <article class="card vendor" v-for="vendor in myVendors" :class="{ full: vendor.fullinfo, disabled:!vendor.favorite &amp;&amp; showMyVendors }">
+          <figure class="pic" v-on:click="vendor.fullpic = !vendor.fullpic" v-bind:class="{full: vendor.fullpic}"><img :src="vendor.logo"></figure>
           <h3 class="title"><a v-on:click="vendor.fullinfo = !vendor.fullinfo">{{vendor.title}}</a><a class="favorite" v-on:click="toggleFavorite(my.vendors, vendor);" :class="{active: vendor.favorite}">
               <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                 <path class="fill" d="M49.8 1.6L64.6 33l33 5.1-23.9 24.4 5.7 34.6-29.6-16.3-29.5 16.3 5.6-34.6L2 38.1 35 33z"></path>
@@ -168,13 +172,13 @@
           </ul>
         </article>
       </section>
-      <section class="people" v-cloak v-bind:class="{ visible: my.view == 'people' }">
-        <article class="person" v-for="person in people">
-          <figure class="pic" v-if="person.pic"><img :src="person.pic"></figure>
+      <section class="cards people" v-cloak v-bind:class="{ visible: my.view == 'People' }">
+        <article class="card person" v-for="person in people" v-bind:class="{full: person.fullinfo}">
+          <figure class="pic" v-if="person.pic" v-on:click="person.fullpic = !person.fullpic" v-bind:class="{full: person.fullpic}"><img :src="person.pic"></figure>
           <h3 class="name"><a v-if="person.text || person.website || person.email || person.linkedin || person.twitter" v-on:click="person.fullinfo = !person.fullinfo">{{person.name}}</a><span v-else>{{person.name}}</span></h3>
-          <div class="job" v-if="person.job_title &amp;&amp; person.company">{{person.job_title}},  {{person.company}}</div>
-          <div class="job" v-else-if="person.job_title">{{person.job_title}}</div>
-          <div class="job" v-else-if="person.company">{{person.company}}</div>
+          <div class="job" v-if="person.job_title &amp;&amp; person.company"><span class="job-title">{{person.job_title}}</span>,  <span class="company">{{person.company}}</span></div>
+          <div class="job" v-else-if="person.job_title"><span class="job-title">{{person.job_title}}</span></div>
+          <div class="job" v-else-if="person.company"><span class="company">{{person.company}}</span></div>
           <!--.desc.fulltext(v-if="person.text" v-html="person.text")-->
           <summary class="desc" v-if="person.teaser &amp;&amp; !person.fullinfo" v-html="person.teaser"></summary>
           <div class="desc fulltext" v-if="person.text &amp;&amp; person.fullinfo" v-html="person.text"></div>
@@ -212,7 +216,7 @@
       <script src="js/vendor/vue.js"></script>
       <script src="http://hammerjs.github.io/dist/hammer.min.js"></script>
       <script src="js/pinch-zoom.js"></script>
-      <script src="js/wigc.js"></script>
+      <script src="js/wigc.min.js"></script>
     </div>
   </body>
 </html>

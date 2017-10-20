@@ -1,13 +1,18 @@
-section.people(v-cloak v-bind:class="{ visible: my.view == 'people' }")
-  article.person(v-for="person in people")
-    figure.pic(v-if="person.pic")
+section.cards.people(v-cloak v-bind:class="{ visible: my.view == 'People' }")
+  article.card.person(v-for="person in people" v-bind:class="{full: person.fullinfo}")
+    figure.pic(v-if="person.pic" v-on:click="person.fullpic = !person.fullpic" v-bind:class="{full: person.fullpic}")
       img(:src="person.pic")
     h3.name
       a(v-if="person.text || person.website || person.email || person.linkedin || person.twitter" v-on:click="person.fullinfo = !person.fullinfo") {{person.name}}
       span(v-else) {{person.name}}
-    .job(v-if="person.job_title && person.company") {{person.job_title}},  {{person.company}}
-    .job(v-else-if="person.job_title") {{person.job_title}}
-    .job(v-else-if="person.company") {{person.company}}
+    .job(v-if="person.job_title && person.company")
+      span.job-title {{person.job_title}}
+      |,  
+      span.company {{person.company}}
+    .job(v-else-if="person.job_title")
+      span.job-title {{person.job_title}}
+    .job(v-else-if="person.company")
+      span.company {{person.company}}
     //.desc.fulltext(v-if="person.text" v-html="person.text")
     summary.desc(v-if="person.teaser && !person.fullinfo" v-html="person.teaser")
     .desc.fulltext(v-if="person.text && person.fullinfo" v-html="person.text")

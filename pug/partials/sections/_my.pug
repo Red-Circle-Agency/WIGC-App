@@ -1,5 +1,5 @@
-section.sessions.my-wigc(v-cloak v-bind:class="{ visible: my.view == 'my-wigc' }")
-  article.session(v-for="session in mySessions" :class="{full: session.fullinfo, disabled:isDisabled(session) }")
+section.cards.sessions.my-wigc(v-cloak v-bind:class="{ visible: my.view == 'My WIGC' }")
+  article.card.session(v-for="session in mySessions" :class="{full: session.fullinfo, disabled:isDisabled(session) }")
     h3.title 
       a(v-on:click="session.fullinfo = !session.fullinfo") {{session.title}}
       a.favorite(v-on:click="toggleFavorite(my.sessions, session);" :class="{active: session.favorite}")
@@ -17,7 +17,6 @@ section.sessions.my-wigc(v-cloak v-bind:class="{ visible: my.view == 'my-wigc' }
     ul.speakers(v-if="session.speakers")
       li(v-for="speaker in session.speakers")
         b.role(v-if="speaker.role && session.fullinfo") {{speaker.role}}: 
-
         span.name(v-if="!session.fullinfo") {{speaker.name}}, {{speaker.company}}
         span.name(v-else) {{speaker.name}}
         .and(v-if="session.fullinfo")

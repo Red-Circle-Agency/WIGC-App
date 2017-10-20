@@ -1,0 +1,8 @@
+.cards { @include cards();
+  .card { @include card(); }
+}
+
+
+figure.pic { width:92px; max-height: 92px; display: block; float: left; margin-right: 10px; margin-bottom: 10px; transition: all 0.3s ease;
+  &.full { float: none; width:100%; max-height: none; text-align: center; }
+}

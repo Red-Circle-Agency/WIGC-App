@@ -1,9 +1,9 @@
-section.vendors(v-cloak v-bind:class="{ visible: my.view == 'vendors' }")
+section.cards.vendors(v-cloak v-bind:class="{ visible: my.view == 'Vendors' }")
   nav.vendor-toggle
     a(v-on:click="showMyVendors = true" :class="{active:showMyVendors}") My Vendors
     a(v-on:click="showMyVendors = false" :class="{active:!showMyVendors}") All Vendors
-  article.vendor(v-for="vendor in myVendors" :class="{ full: vendor.fullinfo, disabled:!vendor.favorite && showMyVendors }")
-    figure.logo
+  article.card.vendor(v-for="vendor in myVendors" :class="{ full: vendor.fullinfo, disabled:!vendor.favorite && showMyVendors }")
+    figure.pic(v-on:click="vendor.fullpic = !vendor.fullpic" v-bind:class="{full: vendor.fullpic}")
       img(:src="vendor.logo")
     h3.title
       a(v-on:click="vendor.fullinfo = !vendor.fullinfo") {{vendor.title}}

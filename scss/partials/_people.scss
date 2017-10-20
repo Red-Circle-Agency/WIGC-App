@@ -1,2 +1,3 @@
-.people { @include cards(); }
-.person { @include card(); }
+.card.person {
+  .company { font-weight: $bold; }  
+}

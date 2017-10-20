@@ -170,7 +170,7 @@ sup {
 svg {
   overflow: hidden; }
 
-.vendor:after {
+.cards .card:after, .card.vendor:after {
   content: "";
   display: table;
   clear: both; }
@@ -378,7 +378,7 @@ video {
   z-index: 1;
   opacity: 0.65; }
 
-.sessions {
+.cards {
   position: fixed;
   top: 0;
   right: 0;
@@ -391,77 +391,72 @@ video {
   padding-bottom: 10px;
   transform: translateY(-120%);
   transition: transform 1s ease; }
-  .sessions.visible {
+  .cards.visible {
     transform: translateY(0); }
-
-.session {
-  margin: 0 10px 10px 10px;
-  padding: 10px;
-  background-color: #e8e8e8;
-  box-shadow: 0 0 3px rgba(73, 73, 73, 0.3);
-  font-family: "Catamaran", sans-serif;
-  position: relative; }
-  .session a {
-    color: #F86C4F; }
-  .session .title {
-    font-family: "Libre Baskerville", serif;
-    margin-bottom: 0.25em;
-    padding-right: 42px;
-    font-size: 115%; }
-  .session a.favorite {
-    color: #494949;
-    width: 26px;
-    height: 26px;
-    position: absolute;
-    top: 10px;
-    right: 10px; }
-    .session a.favorite .fill {
-      opacity: 0; }
-    .session a.favorite:hover {
+  .cards .card {
+    margin: 0 10px 10px 10px;
+    padding: 10px;
+    background-color: #e8e8e8;
+    box-shadow: 0 0 3px rgba(73, 73, 73, 0.3);
+    font-family: "Catamaran", sans-serif;
+    position: relative; }
+    .cards .card a {
       color: #F86C4F; }
-    .session a.favorite.active .fill {
-      opacity: 1; }
-  .session a.meetoo {
-    color: #4885ed;
-    width: 26px;
-    height: 26px;
-    position: absolute;
-    top: 40px;
-    right: 10px; }
-    .session a.meetoo .filled {
-      opacity: 0; }
-    .session a.meetoo:hover .filled {
-      opacity: 1; }
-    .session a.meetoo:hover .outlined {
-      opacity: 0; }
-  .session .icon-link {
-    margin-right: 0.5em;
-    color: #F86C4F; }
-    .session .icon-link .icon {
-      width: 1.2em;
-      height: 1.2em; }
-  .session.full {
-    margin: 0 0 30px 0;
-    padding: 20px; }
-    .session.full .title {
-      font-size: 140%;
-      /*transition:all 0.5s ease;*/ }
-  .session.disabled {
-    opacity: 0.4;
-    transition: all 0.5s ease; }
-  .session a {
-    color: #F86C4F; }
-  .session .when-and-where {
-    margin-bottom: 0.5em; }
-  .session time {
-    font-weight: 600; }
-  .session .desc {
-    margin-bottom: 0.5em; }
-  .session .speakers {
-    padding-left: 0; }
-    .session .speakers li {
-      list-style: none;
+    .cards .card .title {
+      font-family: "Libre Baskerville", serif;
+      margin-bottom: 0.25em;
+      padding-right: 42px;
+      font-size: 115%; }
+    .cards .card a.favorite {
+      color: #494949;
+      width: 26px;
+      height: 26px;
+      position: absolute;
+      top: 10px;
+      right: 10px; }
+      .cards .card a.favorite .fill {
+        opacity: 0; }
+      .cards .card a.favorite:hover {
+        color: #F86C4F; }
+      .cards .card a.favorite.active .fill {
+        opacity: 1; }
+    .cards .card a.meetoo {
+      color: #4885ed;
+      width: 26px;
+      height: 26px;
+      position: absolute;
+      top: 40px;
+      right: 10px; }
+      .cards .card a.meetoo .filled {
+        opacity: 0; }
+      .cards .card a.meetoo:hover .filled {
+        opacity: 1; }
+      .cards .card a.meetoo:hover .outlined {
+        opacity: 0; }
+    .cards .card .icon-link {
+      margin-right: 0.5em;
+      color: #F86C4F; }
+      .cards .card .icon-link .icon {
+        width: 1.2em;
+        height: 1.2em; }
+    .cards .card.full {
+      margin: 0 0 30px 0;
+      padding: 20px; }
+      .cards .card.full .title {
+        font-size: 140%; }
+    .cards .card.disabled {
+      opacity: 0.4;
+      transition: all 0.5s ease; }
+    .cards .card .tags {
+      padding-left: 0;
       margin-bottom: 0.5em; }
+      .cards .card .tags li {
+        background-color: #494949;
+        color: #eee;
+        display: inline-block;
+        margin-right: 0.5em;
+        padding: 0.1em 0.65em;
+        font-size: 80%; }
 
 figure.pic {
   width: 92px;
@@ -477,103 +472,33 @@ figure.pic {
     max-height: none;
     text-align: center; }
 
-.vendors {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 42px;
-  left: 0;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  z-index: 2;
-  padding-top: 20px;
-  padding-bottom: 10px;
-  transform: translateY(-120%);
-  transition: transform 1s ease; }
-  .vendors.visible {
-    transform: translateY(0); }
+.card.session a {
+  color: #F86C4F; }
 
-.vendor {
-  margin: 0 10px 10px 10px;
-  padding: 10px;
-  background-color: #e8e8e8;
-  box-shadow: 0 0 3px rgba(73, 73, 73, 0.3);
-  font-family: "Catamaran", sans-serif;
-  position: relative;
+.card.session .when-and-where {
+  margin-bottom: 0.5em; }
+
+.card.session time {
+  font-weight: 600; }
+
+.card.session .desc {
+  margin-bottom: 0.5em; }
+
+.card.session .speakers {
+  padding-left: 0; }
+  .card.session .speakers li {
+    list-style: none;
+    margin-bottom: 0.5em; }
+
+.card.vendor {
   padding-bottom: 0; }
-  .vendor a {
-    color: #F86C4F; }
-  .vendor .title {
-    font-family: "Libre Baskerville", serif;
-    margin-bottom: 0.25em;
-    padding-right: 42px;
-    font-size: 115%; }
-  .vendor a.favorite {
-    color: #494949;
-    width: 26px;
-    height: 26px;
-    position: absolute;
-    top: 10px;
-    right: 10px; }
-    .vendor a.favorite .fill {
-      opacity: 0; }
-    .vendor a.favorite:hover {
-      color: #F86C4F; }
-    .vendor a.favorite.active .fill {
-      opacity: 1; }
-  .vendor a.meetoo {
-    color: #4885ed;
-    width: 26px;
-    height: 26px;
-    position: absolute;
-    top: 40px;
-    right: 10px; }
-    .vendor a.meetoo .filled {
-      opacity: 0; }
-    .vendor a.meetoo:hover .filled {
-      opacity: 1; }
-    .vendor a.meetoo:hover .outlined {
-      opacity: 0; }
-  .vendor .icon-link {
-    margin-right: 0.5em;
-    color: #F86C4F; }
-    .vendor .icon-link .icon {
-      width: 1.2em;
-      height: 1.2em; }
-  .vendor.full {
-    margin: 0 0 30px 0;
-    padding: 20px; }
-    .vendor.full .title {
-      font-size: 140%;
-      /*transition:all 0.5s ease;*/ }
-  .vendor.disabled {
-    opacity: 0.4;
-    transition: all 0.5s ease; }
-  .vendor figure.logo {
-    float: left;
-    margin-right: 20px;
-    margin-bottom: 10px;
-    width: 72px;
-    max-height: 72px; }
-  .vendor p {
+  .card.vendor p {
     margin-bottom: 1em; }
-  .vendor .vendor-contacts {
+  .card.vendor .vendor-contacts {
     margin-bottom: 0.65em;
     font-size: 1.25em; }
-  .vendor .tags {
-    padding-left: 0;
-    margin-bottom: 0.5em; }
-    .vendor .tags li {
-      background-color: #494949;
-      color: #eee;
-      display: inline-block;
-      margin-right: 0.5em;
-      padding: 0.25em 1em;
-      font-size: 80%; }
-  .vendor .people .name {
+  .card.vendor .people .name {
     font-weight: 600; }
-  .vendor.full {
-    margin: 0 0 30px 0; }
 
 .vendor-people {
   padding-left: 0;
@@ -619,77 +544,8 @@ figure.pic {
     .vendor-toggle a.active {
       background-color: #f6431e; }
 
-.people {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 42px;
-  left: 0;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  z-index: 2;
-  padding-top: 20px;
-  padding-bottom: 10px;
-  transform: translateY(-120%);
-  transition: transform 1s ease; }
-  .people.visible {
-    transform: translateY(0); }
-
-.person {
-  margin: 0 10px 10px 10px;
-  padding: 10px;
-  background-color: #e8e8e8;
-  box-shadow: 0 0 3px rgba(73, 73, 73, 0.3);
-  font-family: "Catamaran", sans-serif;
-  position: relative; }
-  .person a {
-    color: #F86C4F; }
-  .person .title {
-    font-family: "Libre Baskerville", serif;
-    margin-bottom: 0.25em;
-    padding-right: 42px;
-    font-size: 115%; }
-  .person a.favorite {
-    color: #494949;
-    width: 26px;
-    height: 26px;
-    position: absolute;
-    top: 10px;
-    right: 10px; }
-    .person a.favorite .fill {
-      opacity: 0; }
-    .person a.favorite:hover {
-      color: #F86C4F; }
-    .person a.favorite.active .fill {
-      opacity: 1; }
-  .person a.meetoo {
-    color: #4885ed;
-    width: 26px;
-    height: 26px;
-    position: absolute;
-    top: 40px;
-    right: 10px; }
-    .person a.meetoo .filled {
-      opacity: 0; }
-    .person a.meetoo:hover .filled {
-      opacity: 1; }
-    .person a.meetoo:hover .outlined {
-      opacity: 0; }
-  .person .icon-link {
-    margin-right: 0.5em;
-    color: #F86C4F; }
-    .person .icon-link .icon {
-      width: 1.2em;
-      height: 1.2em; }
-  .person.full {
-    margin: 0 0 30px 0;
-    padding: 20px; }
-    .person.full .title {
-      font-size: 140%;
-      /*transition:all 0.5s ease;*/ }
-  .person.disabled {
-    opacity: 0.4;
-    transition: all 0.5s ease; }
+.card.person .company {
+  font-weight: 600; }
 
 .my-sessions, .my-vendors {
   font-family: "Catamaran", sans-serif;

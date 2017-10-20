@@ -1,21 +1,7 @@
 // jshint -W117
 // jshint -W119
 
-
-
-/////////////////////////////////
-// Functions (General Use)
-function snap(array, search_term, multi = false) {
-  for (var i = array.length - 1; i >= 0; i--) {
-    if (array[i] === search_term) {
-      array.splice(i, 1);
-      if (multi === true) {
-        break;
-      }
-    }
-  }
-}
-
+//@prepros-prepend partials/_functions.js
 
 var app = new Vue({
   el: '#app',
@@ -58,8 +44,8 @@ var app = new Vue({
 
     // Grab Sessions
     $.ajax({
-      url: 'https://circle.red/wigc/events',
-      //url: 'http://localhost/wigc/events',
+      //url: 'https://circle.red/wigc/events',
+      url: 'http://localhost/wigc/events',
       method: 'GET',
       success: function (data) {
         self.sessions = data;
@@ -173,7 +159,7 @@ var app = new Vue({
         onLoad();
       }
       self.my.view = newView;
-
+      trackEvent("Screen", self.my.view)
     },
     mapClick: function(vendor) {
       var query = vendor.street_address + ' ' + vendor.city+ ', ' +vendor.state+ ' ' +vendor.zip;
