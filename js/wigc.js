@@ -13,6 +13,7 @@ var app = new Vue({
       sessions: [],
       vendors: []
     },
+    home: {},
     sessions: [],
     vendors: [],
     people: [],
@@ -41,11 +42,24 @@ var app = new Vue({
   },
   mounted: function () {
     var self = this;
+    
+    $.ajax({
+      url: 'https://circle.red/wigc/',
+      //url: 'http://localhost/wigc/',
+      method: 'GET',
+      success: function (data) {
+        self.home = data;
+      },
+      error: function (error) {
+         alert(JSON.stringify(error));
+        //self.error_msg = error
+      }
+    });
 
     // Grab Sessions
     $.ajax({
-      //url: 'https://circle.red/wigc/events',
-      url: 'http://localhost/wigc/events',
+      url: 'https://circle.red/wigc/events',
+      //url: 'http://localhost/wigc/events',
       method: 'GET',
       success: function (data) {
         self.sessions = data;
@@ -159,7 +173,7 @@ var app = new Vue({
         onLoad();
       }
       self.my.view = newView;
-      trackEvent("Screen", self.my.view)
+      trackEvent("Screen", self.my.view);
     },
     mapClick: function(vendor) {
       var query = vendor.street_address + ' ' + vendor.city+ ', ' +vendor.state+ ' ' +vendor.zip;
@@ -181,6 +195,7 @@ var app = new Vue({
         var cursor = evt.target.result;
         if (cursor) {
           self.my = cursor.value;
+          self.my.view = 'home';
         }
       };
     },

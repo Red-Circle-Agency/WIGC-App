@@ -40,6 +40,11 @@
           </nav>
         </footer>
       </div>
+      <section class="home" v-cloak v-bind:class="{ visible: my.view == 'home' }">
+        <div class="welcome">
+          <div class="inner" v-html="home.text"></div>
+        </div>
+      </section>
       <section class="cards sessions my-wigc" v-cloak v-bind:class="{ visible: my.view == 'My WIGC' }">
         <article class="card session" v-for="session in mySessions" :class="{full: session.fullinfo, disabled:isDisabled(session) }">
           <h3 class="title"> <a v-on:click="session.fullinfo = !session.fullinfo">{{session.title}}</a><a class="favorite" v-on:click="toggleFavorite(my.sessions, session);" :class="{active: session.favorite}">

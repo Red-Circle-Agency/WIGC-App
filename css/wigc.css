@@ -170,7 +170,7 @@ sup {
 svg {
   overflow: hidden; }
 
-.cards .card:after, .card.vendor:after {
+section.home .welcome:after, .cards .card:after, .card.vendor:after {
   content: "";
   display: table;
   clear: both; }
@@ -378,6 +378,98 @@ video {
   z-index: 1;
   opacity: 0.65; }
 
+section.home {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 42px;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  z-index: 2;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  transform: translateY(-120%);
+  transition: transform 1s ease; }
+  section.home.visible {
+    transform: translateY(0); }
+  section.home .welcome {
+    margin: 0 10px 10px 10px;
+    padding: 10px;
+    background-color: #e8e8e8;
+    box-shadow: 0 0 3px rgba(73, 73, 73, 0.3);
+    font-family: "Catamaran", sans-serif;
+    position: relative;
+    background-color: transparent;
+    box-shadow: none;
+    color: #eee;
+    text-shadow: 1px 1px 0 #494949, -1px -1px 0 #494949;
+    font-size: 130%; }
+    section.home .welcome a {
+      color: #F86C4F; }
+    section.home .welcome .title {
+      font-family: "Libre Baskerville", serif;
+      margin-bottom: 0.25em;
+      padding-right: 42px;
+      font-size: 115%; }
+    section.home .welcome a.favorite {
+      color: #494949;
+      width: 26px;
+      height: 26px;
+      position: absolute;
+      top: 10px;
+      right: 10px; }
+      section.home .welcome a.favorite .fill {
+        opacity: 0; }
+      section.home .welcome a.favorite:hover {
+        color: #F86C4F; }
+      section.home .welcome a.favorite.active .fill {
+        opacity: 1; }
+    section.home .welcome a.meetoo {
+      color: #4885ed;
+      width: 26px;
+      height: 26px;
+      position: absolute;
+      top: 40px;
+      right: 10px; }
+      section.home .welcome a.meetoo .filled {
+        opacity: 0; }
+      section.home .welcome a.meetoo:hover .filled {
+        opacity: 1; }
+      section.home .welcome a.meetoo:hover .outlined {
+        opacity: 0; }
+    section.home .welcome .icon-link {
+      margin-right: 0.5em;
+      color: #F86C4F; }
+      section.home .welcome .icon-link .icon {
+        width: 1.2em;
+        height: 1.2em; }
+    section.home .welcome.full {
+      margin: 0 0 30px 0;
+      padding: 20px; }
+      section.home .welcome.full .title {
+        font-size: 140%; }
+    section.home .welcome.disabled {
+      opacity: 0.4;
+      transition: all 0.5s ease; }
+    section.home .welcome .tags {
+      padding-left: 0;
+      margin-bottom: 0.5em; }
+      section.home .welcome .tags li {
+        background-color: #494949;
+        color: #eee;
+        display: inline-block;
+        margin-right: 0.5em;
+        padding: 0.1em 0.65em;
+        font-size: 80%; }
+  section.home h1 {
+    margin-bottom: 0.5em; }
+
+/*
+.home-wrapper { background: $white;
+  .inner { }
+}
+*/
 .cards {
   position: fixed;
   top: 0;
