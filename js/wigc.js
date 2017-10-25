@@ -7,12 +7,13 @@ var app = new Vue({
   el: '#app',
   data: {
     my: {
-      sidebarVisible: true,
+      sidebarVisible: false,
       meetoo: '',
-      view: 'home',
+      view: 'loading',
       sessions: [],
       vendors: []
     },
+    loaded: false,
     home: {},
     sessions: [],
     vendors: [],
@@ -48,13 +49,20 @@ var app = new Vue({
       //url: 'http://localhost/wigc/',
       method: 'GET',
       success: function (data) {
-        self.home = data;
+        self.home     = data.home;
+        self.sessions = data.sessions;
+        self.people   = data.people;
+        self.vendors  = data.vendors;
+        self.loaded   = true;
       },
       error: function (error) {
-         alert(JSON.stringify(error));
-        //self.error_msg = error
+        //alert(JSON.stringify(error));
+        self.error_msg = error.responseText;
+        self.my.view = "error";
       }
     });
+    
+    /*
 
     // Grab Sessions
     $.ajax({
@@ -97,6 +105,7 @@ var app = new Vue({
         //self.error_msg = error
       }
     });
+    */
 
     var request = indexedDB.open("WIGCApp", 3);
 
@@ -195,7 +204,11 @@ var app = new Vue({
         var cursor = evt.target.result;
         if (cursor) {
           self.my = cursor.value;
-          self.my.view = 'home';
+          if (self.error_msg) {
+            self.my.view = 'error';
+          } else {
+            self.my.view = 'home';
+          }
         }
       };
     },
