@@ -234,6 +234,7 @@ ul {
   .desktop-only {
     display: none; } }
 
+<<<<<<< HEAD
 header {
   z-index: 5;
   background: rgba(73, 73, 73, 0.7);
@@ -292,6 +293,13 @@ header {
       padding-top: 6px; }
       header .logo.cniga img {
         height: 44px; }
+=======
+@keyframes spin {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
+>>>>>>> 02e97fbe710f6cc04b9759d7ff578d5dc4370e10
 
 aside.sidebar {
   position: fixed;
@@ -396,11 +404,21 @@ footer {
     top: 0;
     right: 5px;
     bottom: 0;
-    padding-top: 6px; }
+    padding-top: 6px;
+    transform: translateY(100%);
+    transition: transform 0.65s ease; }
+    footer .sun * {
+      transform-origin: center; }
     footer .sun .red {
       fill: #ffeecd; }
     footer .sun .blue {
       fill: #f26c51; }
+    footer .sun.loaded {
+      transform: translateY(0);
+      transition-delay: 2s; }
+      footer .sun.loaded * {
+        animation: spin 4.5s ease;
+        animation-iteration-count: 1; }
   footer .wigc {
     width: 56px;
     color: #FEECCE;
@@ -409,6 +427,36 @@ footer {
     right: 40px;
     bottom: 0;
     padding-top: 12px; }
+
+section.loading {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 42px;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  z-index: 2;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  transform: translateY(-120%);
+  transition: transform 1s ease;
+  transform: translate(0);
+  transition: all 3s ease;
+  transition-delay: 1s; }
+  section.loading.visible {
+    transform: translateY(0); }
+  section.loading .inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%; }
+  section.loading .sun {
+    width: 92px;
+    height: 92px;
+    animation: spin 3s linear infinite; }
+  section.loading.loaded {
+    transform: translateY(100vh); }
 
 video {
   position: fixed;
@@ -437,11 +485,17 @@ section.home {
   -webkit-transform: translateY(-120%);
   -ms-transform: translateY(-120%);
   transform: translateY(-120%);
+<<<<<<< HEAD
   -webkit-transition: -webkit-transform 1s ease;
   transition: -webkit-transform 1s ease;
   -o-transition: transform 1s ease;
   transition: transform 1s ease;
   transition: transform 1s ease, -webkit-transform 1s ease; }
+=======
+  transition: transform 1s ease;
+  transition: all 2s ease;
+  transition-delay: 1s; }
+>>>>>>> 02e97fbe710f6cc04b9759d7ff578d5dc4370e10
   section.home.visible {
     -webkit-transform: translateY(0);
     -ms-transform: translateY(0);
@@ -521,6 +575,22 @@ section.home {
         font-size: 80%; }
   section.home h1 {
     margin-bottom: 0.5em; }
+
+section.error {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 42px;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  z-index: 2;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  transform: translateY(-120%);
+  transition: transform 1s ease; }
+  section.error.visible {
+    transform: translateY(0); }
 
 /*
 .home-wrapper { background: $white;

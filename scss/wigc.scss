@@ -7,10 +7,13 @@
 
 @import "partials/_variables";
 @import "partials/_z-index";
+@import "globals/_animations";
 
-@import "partials/_header";
+//@import "partials/_header";
 @import "partials/_sidebar";
 @import "partials/_footer";
+
+@import "partials/_loading";
 @import "partials/_home";
 @import "partials/_cards";
 @import "partials/_sessions";

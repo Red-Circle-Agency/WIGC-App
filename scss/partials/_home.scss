@@ -1,8 +1,11 @@
 video { @include position(fixed,null,null,0,0);min-width: 100%;  min-height: 100%; width: auto; height: auto;object-fit: fill; z-index: 1; opacity: 0.65; }
 
-section.home { @include cards();
+section.home { @include cards(); transition:all 2s ease; transition-delay: 1s;
   .welcome { @include card(); background-color:transparent; box-shadow: none; color:$white; text-shadow: 1px 1px 0 $black, -1px -1px 0 $black; font-size:130%; }
   h1 { margin-bottom: 0.5em; }
+}
+
+section.error { @include cards();
 }
 
 /*
