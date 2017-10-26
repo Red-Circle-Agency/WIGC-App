@@ -21,6 +21,7 @@ var app = new Vue({
     unfavorited: [],
     showMyVendors: true,
     showTwitter: true,
+    instagramFeed: {},
     error_msg: false
   },
   computed: {
@@ -39,6 +40,12 @@ var app = new Vue({
           return true;
         }
       });
+    },
+    instagramLatest: function(){
+      var self = this;
+      if(self.instagramFeed.length > 0){
+        return self.instagramFeed.slice(0, 3);
+      }
     }
   },
   mounted: function () {
@@ -61,7 +68,8 @@ var app = new Vue({
         self.my.view = "error";
       }
     });
-    
+
+    self.getInstagramFeed();
     /*
 
     // Grab Sessions
@@ -121,7 +129,6 @@ var app = new Vue({
       var objStore = event.currentTarget.result.createObjectStore('my');
     };
 
-
     document.addEventListener('deviceready', function () {
       // Enable to debug issues.
        window.plugins.OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
@@ -139,7 +146,6 @@ var app = new Vue({
       // This improves the effectiveness of OneSignal's "best-time" notification scheduling feature.
       // window.plugins.OneSignal.syncHashedEmail(userEmail);
     }, false);
-
   },
   updated: function() {
     var self = this;
@@ -155,6 +161,8 @@ var app = new Vue({
     request.onupgradeneeded = function(event) {
       var objStore = event.currentTarget.result.createObjectStore('my');
     };
+    if(self.showTwitter === true && self.my.view === 'social')
+      self.styleTwitterWidget();
   },
   methods: {
     toggleFavorite: function(faves,fave) {
@@ -259,6 +267,29 @@ var app = new Vue({
         return true;
       }
       return false;
+    },
+    styleTwitterWidget: function(){
+      var w = document.getElementById("twitter-widget-0").contentDocument;
+      var s = document.createElement("link");
+      s.href = "http://localhost:8888/wigc-app/css/wigc.css";
+      s.rel = "stylesheet";
+      w.head.appendChild(s);
+    },
+    getInstagramFeed: function(){
+      var self = this;
+      $.ajax({
+        url: 'https://circle.red/wigc/instagram.php?tag=minneapolis',
+        method: 'GET',
+        success: function (data) {
+          console.log(data.entry_data.TagPage[0].tag.media);
+          self.instagramFeed = data.entry_data.TagPage[0].tag.media.nodes;
+        },
+        error: function (error) {
+          //alert(JSON.stringify(error));
+          self.error_msg = error.responseText;
+          self.my.view = "error";
+        }
+      });
     }
   }
 });

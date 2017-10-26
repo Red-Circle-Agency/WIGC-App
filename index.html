@@ -225,10 +225,12 @@
       </section>
       <section class="cards social" v-cloak v-bind:class="{ visible: my.view == 'social' }">
         <nav class="vendor-toggle"><a v-on:click="showTwitter = true">Twitter</a><a v-on:click="showTwitter = false">Instagram</a></nav>
-        <div class="twitter-wrapper" v-bind:class="{active: showTwitter}"><a class="twitter-timeline" data-chrome="noheader nofooter noborders transparent" data-dnt="true" href="https://twitter.com/hashtag/WIGC2018" data-widget-id="923205064826740738">
+        <div class="twitter-wrapper" v-bind:class="{visible: showTwitter}"><a class="twitter-timeline" data-chrome="noheader nofooter noborders transparent" data-width="1280" data-tweet-limit="5" data-dnt="true" href="https://twitter.com/hashtag/WIGC2018" data-widget-id="923205064826740738">
             <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></a></div>
-        <div class="instagram-wrapper" v-bind:class="{active: !showTwitter}">
-          <h1>INSTAGRAM!!!!!!</h1>
+        <div class="instagram-wrapper" v-bind:class="{visible: !showTwitter}">
+          <article class="instagram-post" v-for="instagramPost in instagramLatest"><img v-cloak :src="instagramPost.display_src">
+            <p class="caption" v-html="instagramPost.caption"></p>
+          </article>
         </div>
       </section>
     </main>
