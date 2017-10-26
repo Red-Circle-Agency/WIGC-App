@@ -19,8 +19,8 @@ var app = new Vue({
     people: [],
     unfavorited: [],
     showMyVendors: true,
+    showTwitter: true,
     error_msg: false
-
   },
   computed: {
     mySessions: function(){
@@ -42,7 +42,7 @@ var app = new Vue({
   },
   mounted: function () {
     var self = this;
-    
+
     $.ajax({
       url: 'https://circle.red/wigc/',
       //url: 'http://localhost/wigc/',
@@ -83,7 +83,7 @@ var app = new Vue({
         //self.error_msg = error
       }
     });
-    
+
     // Grab People
     $.ajax({
       url: 'https://circle.red/wigc/people',

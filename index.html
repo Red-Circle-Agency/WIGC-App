@@ -22,7 +22,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
               <path d="M97.5 29.4H4.4V17.3h93.1v12.1zm0 14.7H4.4v12.1h93.1V44.1zm0 26.8H4.4V83h93.1V70.9z"></path>
             </svg></a>
-          <nav><a v-on:click="switchSection('map')">Map</a><a v-on:click="my.meetoo = 'https://web.meetoo.com/170479740'; switchSection('meetoo');">Chat</a>
+          <nav><a v-on:click="switchSection('map')">Map</a><a v-on:click="my.meetoo = 'https://web.meetoo.com/170479740'; switchSection('meetoo');">Chat</a><a v-on:click="switchSection('social')">Social</a>
             <!--a(v-on:click="switchSection('meetoo')") Meetoo-->
             <!--a Exhibitors-->
             <!--a Contact-->
@@ -213,6 +213,14 @@
       <section class="meetoo" v-cloak v-bind:class="{ visible: my.view == 'meetoo' }">
         <div class="map-wrapper">
           <iframe class="meetoo-frame" width="100%" :src="my.meetoo"></iframe>
+        </div>
+      </section>
+      <section class="cards social" v-cloak v-bind:class="{ visible: my.view == 'social' }">
+        <nav class="vendor-toggle"><a v-on:click="showTwitter = true">Twitter</a><a v-on:click="showTwitter = false">Instagram</a></nav>
+        <div class="twitter-wrapper" v-bind:class="{active: showTwitter}"><a class="twitter-timeline" data-chrome="noheader nofooter noborders transparent" data-dnt="true" href="https://twitter.com/hashtag/WIGC2018" data-widget-id="923205064826740738">
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></a></div>
+        <div class="instagram-wrapper" v-bind:class="{active: !showTwitter}">
+          <h1>INSTAGRAM!!!!!!</h1>
         </div>
       </section>
     </main>
