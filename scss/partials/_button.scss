@@ -1,0 +1,10 @@
+button, .button { font-size:0.8em; color:$white; background:$orange; border:none; border-radius: 2px; padding:0.6em 2em; cursor:pointer; display:inline-block; text-transform: uppercase; text-decoration: none; font-family: $sans;
+  &:hover { background: saturate($orange, 20%); }
+  .icon{
+    display: inline-block;
+    height: 1em;
+    line-height: 1em;
+    margin: 0 0.5em 0 0;
+    width: 1em;
+  }
+}
