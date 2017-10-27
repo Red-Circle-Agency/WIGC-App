@@ -6,7 +6,7 @@ html(lang="en")
     title Test App
     link(href="https://fonts.googleapis.com/css?family=Catamaran:400,700|Libre+Baskerville:700" rel="stylesheet")
     link(href="css/wigc.css" rel="stylesheet")
-    meta(http-equiv="Content-Security-Policy" content="default-src * gap://ready file:; style-src 'self' 'unsafe-inline' *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *")
+    meta(http-equiv="Content-Security-Policy" content="default-src * gap://ready file:; style-src 'self' 'unsafe-inline' *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; img-src * data:;")
     meta(name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1")
     meta(name="format-detection" content="telephone=no")
     //
@@ -31,6 +31,7 @@ html(lang="en")
       include partials/sections/_people.pug
       include partials/sections/_map.pug
       include partials/sections/_meetoo.pug
+      include partials/sections/_social.pug
             
     include partials/_javascripts.pug
     

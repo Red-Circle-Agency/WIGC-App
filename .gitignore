@@ -2,6 +2,7 @@
 *.css.map
 .DS_Store
 
+/css
 /hooks
 /node_modules
 /plugins

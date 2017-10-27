@@ -1,0 +1,18 @@
+.SandboxRoot{
+  body{
+    background-color: transparent;
+  }
+}
+
+.timeline-TweetList{
+  @include cards();
+  padding-top: 0;
+  transform: translateY(0);
+  .timeline-TweetList-tweet{
+    @include card();
+  }
+}
+
+.timeline-LoadMore--edge{
+  display: none;
+}

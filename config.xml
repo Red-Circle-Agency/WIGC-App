@@ -14,8 +14,9 @@
     <access origin="*" />
     <allow-intent href="*" />
     <allow-navigation href="*" />
-    <engine name="android" spec="^6.3.0" />
     <engine name="ios" spec="^4.4.0" />
     <plugin name="cordova-plugin-whitelist" spec="~1.2.1" />
     <plugin name="onesignal-cordova-plugin" spec="^2.2.2" />
+    <engine name="android" spec="~6.3.0" />
+    <plugin name="cordova-plugin-inappbrowser" spec="^1.7.1" />
 </widget>

@@ -20,8 +20,9 @@ var app = new Vue({
     people: [],
     unfavorited: [],
     showMyVendors: true,
+    showTwitter: true,
+    instagramFeed: {},
     error_msg: false
-
   },
   computed: {
     mySessions: function(){
@@ -39,11 +40,17 @@ var app = new Vue({
           return true;
         }
       });
+    },
+    instagramLatest: function(){
+      var self = this;
+      if(self.instagramFeed.length > 0){
+        return self.instagramFeed.slice(0, 3);
+      }
     }
   },
   mounted: function () {
     var self = this;
-    
+    trackEvent('Load', self.parseUserAgent());
     $.ajax({
       url: 'https://circle.red/wigc/',
       //url: 'http://localhost/wigc/',
@@ -61,7 +68,9 @@ var app = new Vue({
         self.my.view = "error";
       }
     });
-    
+
+    self.getInstagramFeed();
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
     /*
 
     // Grab Sessions
@@ -91,7 +100,7 @@ var app = new Vue({
         //self.error_msg = error
       }
     });
-    
+
     // Grab People
     $.ajax({
       url: 'https://circle.red/wigc/people',
@@ -121,7 +130,6 @@ var app = new Vue({
       var objStore = event.currentTarget.result.createObjectStore('my');
     };
 
-
     document.addEventListener('deviceready', function () {
       // Enable to debug issues.
        window.plugins.OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
@@ -139,7 +147,6 @@ var app = new Vue({
       // This improves the effectiveness of OneSignal's "best-time" notification scheduling feature.
       // window.plugins.OneSignal.syncHashedEmail(userEmail);
     }, false);
-
   },
   updated: function() {
     var self = this;
@@ -155,6 +162,8 @@ var app = new Vue({
     request.onupgradeneeded = function(event) {
       var objStore = event.currentTarget.result.createObjectStore('my');
     };
+    if(self.showTwitter === true && self.my.view === 'social')
+      self.styleTwitterWidget();
   },
   methods: {
     toggleFavorite: function(faves,fave) {
@@ -163,6 +172,8 @@ var app = new Vue({
       console.log(fave.url);
       if (fave.favorite) {
         faves.push(fave.url);
+        console.log(fave);
+        trackEvent("Favorite", self.my.view, fave.title);
       } else {
         if(self.my.view === 'my-wigc' || (self.my.view === 'vendors' && self.showMyVendors === true)){
           self.unfavorited.push(fave.url);
@@ -259,6 +270,42 @@ var app = new Vue({
         return true;
       }
       return false;
+    },
+    styleTwitterWidget: function(){
+      var w = document.getElementById("twitter-widget-0").contentDocument;
+      var s = document.createElement("link");
+      s.href = "http://localhost:8888/wigc-app/css/wigc.css";
+      s.rel = "stylesheet";
+      w.head.appendChild(s);
+    },
+    getInstagramFeed: function(){
+      var self = this;
+      $.ajax({
+        url: 'https://circle.red/wigc/instagram.php?tag=minneapolis',
+        method: 'GET',
+        success: function (data) {
+          self.instagramFeed = data.entry_data.TagPage[0].tag.media.nodes;
+        },
+        error: function (error) {
+          //alert(JSON.stringify(error));
+          self.error_msg = error.responseText;
+          self.my.view = "error";
+        }
+      });
+    },
+    parseUserAgent: function(){
+      var ua = navigator.userAgent.toLowerCase();
+      device = "";
+      if (ua.indexOf("android") > -1) {
+        device = "Android";
+      } else if (ua.indexOf('iphone') > -1 || ua.indexOf('ipad') > -1 || ua.indexOf('ipod') > -1) {
+        device = "iOS";
+      } else if (ua.indexOf('windows') > -1) {
+        device = "Windows";
+      } else if (ua.indexOf('mac os x') > -1) {
+        device = "OSX";
+      }
+      return device;
     }
   }
 });
