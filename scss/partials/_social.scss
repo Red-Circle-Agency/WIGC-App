@@ -1,0 +1,12 @@
+.twitter-wrapper, .instagram-wrapper{
+  @include cards();
+  top: 50px;
+  .social-links{
+    @include flex-container();
+    justify-content: space-around;
+    a{
+      @include flex-item(50%, 0,1);
+      text-align: center;
+    }
+  }
+}

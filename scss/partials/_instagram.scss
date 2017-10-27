@@ -1,0 +1,9 @@
+.instagram-wrapper{
+  @include cards();
+  top: 50px;
+  .instagram-post{
+    @include card();
+    padding: 1em;
+    margin: 1em;
+  }
+}  

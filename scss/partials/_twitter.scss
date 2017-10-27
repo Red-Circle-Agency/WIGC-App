@@ -1,14 +1,3 @@
-.twitter-wrapper, .instagram-wrapper{
-  @include cards();
-  height: 100%;
-  top: 50px;
-  .instagram-post{
-    @include card();
-    padding: 1em;
-    margin: 1em;
-  }
-}
-
 .SandboxRoot{
   body{
     background-color: transparent;

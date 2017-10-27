@@ -70,6 +70,7 @@ var app = new Vue({
     });
 
     self.getInstagramFeed();
+    //!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
     /*
 
     // Grab Sessions
@@ -161,8 +162,8 @@ var app = new Vue({
     request.onupgradeneeded = function(event) {
       var objStore = event.currentTarget.result.createObjectStore('my');
     };
-    if(self.showTwitter === true && self.my.view === 'social')
-      self.styleTwitterWidget();
+    //if(self.showTwitter === true && self.my.view === 'social')
+      //self.styleTwitterWidget();
   },
   methods: {
     toggleFavorite: function(faves,fave) {
@@ -281,7 +282,6 @@ var app = new Vue({
         url: 'https://circle.red/wigc/instagram.php?tag=minneapolis',
         method: 'GET',
         success: function (data) {
-          console.log(data.entry_data.TagPage[0].tag.media);
           self.instagramFeed = data.entry_data.TagPage[0].tag.media.nodes;
         },
         error: function (error) {
