@@ -3,7 +3,7 @@ section.cards.social(v-cloak v-bind:class="{ visible: my.view == 'social' }")
     a(v-on:click="showTwitter = true") Twitter
     a(v-on:click="showTwitter = false") Instagram
   .twitter-wrapper(v-bind:class="{visible: showTwitter}")
-    //a.twitter-timeline(data-chrome="noheader nofooter noborders transparent" data-width="1280" data-tweet-limit="5" data-dnt="true" href="https://twitter.com/hashtag/WIGC2018" data-widget-id="923205064826740738")
+    a.twitter-timeline(data-chrome="noheader nofooter noborders transparent" data-width="1280" data-tweet-limit="5" data-dnt="true" href="https://twitter.com/hashtag/WIGC2018" data-widget-id="923205064826740738")
     .social-links.twitter
       a.button(href="#" onclick="window.open('http://www.twitter.com/hashtag/halloween', '_system');") 
         svg.icon(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8")

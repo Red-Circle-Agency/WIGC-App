@@ -1,5 +1,17 @@
 // jshint -W117
 
+var _paq = _paq || [];
+/* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+_paq.push(['trackPageView']);
+_paq.push(['enableLinkTracking']);
+(function() {
+  var u="//circle.red/stats/";
+  _paq.push(['setTrackerUrl', u+'piwik.php']);
+  _paq.push(['setSiteId', '2']);
+  var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+  g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+})();
+
 function snap(array, search_term) {
   for (var i = array.length - 1; i >= 0; i--) {
     if (array[i] === search_term) {
@@ -17,15 +29,15 @@ function snap(array, search_term) {
 // This will report events back to Google Analytics, Piwik, or to the console, depending.
 function trackEvent(c, a, l, v) {
   if (v) {
-    //_paq.push(['trackEvent', c, a, l, v]);
+    _paq.push(['trackEvent', c, a, l, v]);
     //ga('send', 'event', { eventCategory: c, eventAction: a, eventLabel: l, eventValue:v });
     console.log('CATEGORY: '+c+', ACTION:'+a+', LABEL:'+l+', VALUE:'+v);
   } else if (l) {
-    //_paq.push(['trackEvent', c, a, l]);
+    _paq.push(['trackEvent', c, a, l]);
     //ga('send', 'event', { eventCategory: c, eventAction: a, eventLabel: l });
     console.log('CATEGORY: '+c+', ACTION:'+a+', LABEL:'+l);
   } else {
-    //_paq.push(['trackEvent', c, a]);
+    _paq.push(['trackEvent', c, a]);
     //ga('send', 'event', { eventCategory: c, eventAction: a });
     console.log('CATEGORY: '+c+', ACTION:'+a);
   }

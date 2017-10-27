@@ -50,7 +50,7 @@ var app = new Vue({
   },
   mounted: function () {
     var self = this;
-
+    trackEvent('Load', self.parseUserAgent());
     $.ajax({
       url: 'https://circle.red/wigc/',
       //url: 'http://localhost/wigc/',
@@ -70,7 +70,7 @@ var app = new Vue({
     });
 
     self.getInstagramFeed();
-    //!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
     /*
 
     // Grab Sessions
@@ -162,8 +162,8 @@ var app = new Vue({
     request.onupgradeneeded = function(event) {
       var objStore = event.currentTarget.result.createObjectStore('my');
     };
-    //if(self.showTwitter === true && self.my.view === 'social')
-      //self.styleTwitterWidget();
+    if(self.showTwitter === true && self.my.view === 'social')
+      self.styleTwitterWidget();
   },
   methods: {
     toggleFavorite: function(faves,fave) {
@@ -172,6 +172,8 @@ var app = new Vue({
       console.log(fave.url);
       if (fave.favorite) {
         faves.push(fave.url);
+        console.log(fave);
+        trackEvent("Favorite", self.my.view, fave.title);
       } else {
         if(self.my.view === 'my-wigc' || (self.my.view === 'vendors' && self.showMyVendors === true)){
           self.unfavorited.push(fave.url);
@@ -290,6 +292,20 @@ var app = new Vue({
           self.my.view = "error";
         }
       });
+    },
+    parseUserAgent: function(){
+      var ua = navigator.userAgent.toLowerCase();
+      device = "";
+      if (ua.indexOf("android") > -1) {
+        device = "Android";
+      } else if (ua.indexOf('iphone') > -1 || ua.indexOf('ipad') > -1 || ua.indexOf('ipod') > -1) {
+        device = "iOS";
+      } else if (ua.indexOf('windows') > -1) {
+        device = "Windows";
+      } else if (ua.indexOf('mac os x') > -1) {
+        device = "OSX";
+      }
+      return device;
     }
   }
 });
