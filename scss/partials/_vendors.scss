@@ -16,7 +16,7 @@
     h4 { font-size:1.25em; margin-bottom: 0.5em; }
   }
 }
-.vendor-toggle{
+.vendor-toggle{ margin-bottom: 10px;
   @include flex-container();
   a{ @include flex-item(50%); background-color: $orange; color: $white; font-family: $sans; text-align: center; text-transform: uppercase;
     &.active{

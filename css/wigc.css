@@ -499,6 +499,7 @@ section.home {
   transition: -webkit-transform 1s ease;
   -o-transition: transform 1s ease;
   transition: transform 1s ease;
+<<<<<<< HEAD
   transition: transform 1s ease, -webkit-transform 1s ease;
   -webkit-transition: all 2s ease;
   -o-transition: all 2s ease;
@@ -506,10 +507,15 @@ section.home {
   -webkit-transition-delay: 1s;
   -o-transition-delay: 1s;
   transition-delay: 1s; }
+=======
+  transition: all 2s ease; }
+>>>>>>> aafc2262395b10429f4350d45262fe2f25b9480b
   section.home.visible {
     -webkit-transform: translateY(0);
     -ms-transform: translateY(0);
     transform: translateY(0); }
+  section.home.visible {
+    transition-delay: 1s; }
   section.home .welcome {
     margin: 0 10px 10px 10px;
     padding: 10px;
@@ -769,6 +775,7 @@ figure.pic {
       margin-bottom: 0.5em; }
 
 .vendor-toggle {
+  margin-bottom: 10px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-flex;

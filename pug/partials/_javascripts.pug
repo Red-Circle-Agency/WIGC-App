@@ -11,4 +11,19 @@
     script(src="js/vendor/hammer.min.js")
   script(src="js/pinch-zoom.js")
   script(src="js/wigc.min.js")
+  // Piwik
+  script.
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+      var u="//circle.red/stats/";
+      _paq.push(['setTrackerUrl', u+'piwik.php']);
+      _paq.push(['setSiteId', '2']);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+      g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+
+
+  
   
