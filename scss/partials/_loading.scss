@@ -2,5 +2,5 @@ section.loading { @include cards(); transform: translate(0); transition:all 3s e
   .inner { display: flex; align-items: center; justify-content: center; height: 100%; }
   .sun { width:92px; height: 92px; animation:spin 3s linear infinite; }
   
-  &.loaded { transform: translateY(100vh); }
+  &.loaded { transform: translateY(-100vh); }
 }

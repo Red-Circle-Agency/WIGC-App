@@ -12,22 +12,36 @@ section.cards.sessions(v-cloak v-bind:class="{ visible: my.view == 'Seminars' }"
           path.filled(d="M50 4C23.3 4 1.6 21.6 1.6 43.4c0 12.6 7.6 22.9 18.9 30.2L11.1 96l26-14.2c3.5.7 9.2 1 13 1 26.7 0 48.4-17.6 48.4-39.4C98.4 21.6 76.7 4 50 4zM24 34.7c4.6 0 8.3 3.7 8.3 8.3 0 4.6-3.7 8.3-8.3 8.3s-8.3-3.7-8.3-8.3c.1-4.6 3.8-8.3 8.3-8.3zm26 0c4.6 0 8.3 3.7 8.3 8.3 0 4.6-3.7 8.3-8.3 8.3s-8.3-3.7-8.3-8.3c0-4.6 3.7-8.3 8.3-8.3zm26 0c4.6 0 8.3 3.7 8.3 8.3 0 4.6-3.7 8.3-8.3 8.3-4.6 0-8.3-3.7-8.3-8.3 0-4.6 3.7-8.3 8.3-8.3z")
     .when-and-where
       time.when
-        span {{session.date}} @ {{session.time}}
-        span(v-if="session.duration")
-          |   ({{session.duration}})
+        span.datetime {{session.date}} - {{session.time}}
+        span.duration(v-if="session.duration")
+          | {{session.duration}}
       .where.room(v-if="session.room") {{session.room}}
     summary.desc(v-if="session.teaser && !session.fullinfo" v-html="session.teaser")
     .desc.fulltext(v-if="session.text && session.fullinfo" v-html="session.text")
-    ul.speakers(v-if="session.speakers")
-      li(v-for="speaker in session.speakers")
-        .speaker
-          .name-and-title
-            b.role(v-if="speaker.role") {{speaker.role}}: 
-            a.name(v-if="speaker.url" v-on:click="speaker.fullinfo = !speaker.fullinfo") {{speaker.name}}
-            span.name(v-else-if="!speaker.url") {{speaker.name}}
-            span.job(v-if="speaker.company") , {{speaker.company}}
-          figure.pic(v-if="speaker.fullinfo" v-on:click="speaker.fullpic = !speaker.fullpic" v-bind:class="{full: speaker.fullpic}")
-            img(:src="speaker.pic")
-          .desc.fulltext(v-if="speaker.text && speaker.fullinfo" v-html="speaker.text")
+    .people(v-if="session.people")
+      .presented-by Presented by:
+      ul.speakers
+        li.person(v-for="person in session.people" v-bind:class="{ full: person.fullinfo }")
+          .role-and-name
+            b.role(v-if="person.role") {{person.role}}:  
+            a.name(v-if="person.url" v-on:click="person.fullinfo = !person.fullinfo") {{person.name}}
+            span.name(v-else) {{person.name}}
+          .job-and-company(v-if="person.job_title || person.company")
+            span.job(v-if="person.job_title") {{person.job_title}}
+            span(v-if="person.job_title && person.company") , 
+            span.company(v-if="person.company") {{person.company}}
+          figure.pic(v-if="person.fullinfo" v-on:click="person.fullpic = !person.fullpic" v-bind:class="{ full :person.fullpic }")
+            img(:src="person.pic")
+          summary.desc(v-show="person.fullinfo" v-html="person.text")
+          .person-contacts.contacts(v-show="person.fullinfo")
+            a.icon-link(:href="'mailto:' + person.email" v-if="person.email")
+              svg.icon(xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8")
+                path(d="M4 0l-4 2v6h8v-6l-4-2zm0 1.13l3 1.5v1.88l-3 1.5-3-1.5v-1.88l3-1.5zm-2 1.88v1l2 1 2-1v-1h-4z")
+            a.icon-link(:href="person.linkedin" v-if="person.linkedin")
+              svg.icon(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8")
+                path(d="M7.4 0H.6C.3 0 0 .3 0 .6v6.8c0 .3.3.6.6.6h6.8c.3 0 .6-.3.6-.6V.6c0-.3-.3-.6-.6-.6zm-5 6.8H1.2V3h1.2v3.8zm-.6-4.3c-.4 0-.7-.3-.7-.7 0-.4.3-.7.7-.7.4 0 .7.3.7.7 0 .4-.3.7-.7.7zm5 4.3H5.6V5c0-.4 0-1-.6-1s-.7.5-.7 1v1.9H3.1V3h1.1v.5c.2-.3.5-.6 1.1-.6 1.2 0 1.4.8 1.4 1.8v2.1z")
+            a.icon-link(:href="person.linkedin" v-if="person.linkedin")
+              svg.icon(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8")
+                path(d="M7.9 1.5c-.3.1-.6.2-.9.2.3-.2.6-.5.7-.9-.3.2-.6.4-1 .4C6.4.9 6 .7 5.5.7c-.9 0-1.6.7-1.6 1.6v.4C2.6 2.6 1.4 2 .6 1c-.2.3-.2.5-.2.8 0 .6.3 1.1.7 1.3-.3.1-.5 0-.7-.1 0 .8.6 1.4 1.3 1.6-.1 0-.3.1-.4.1H1c.2.6.8 1.1 1.5 1.1-.6.4-1.3.7-2 .7H.1c.7.5 1.6.7 2.5.7 3 0 4.6-2.5 4.6-4.6v-.3c.2-.2.5-.5.7-.8z")
     ul.tags(v-if="session.tags")
       li(v-for="tag in session.tags") {{tag}}

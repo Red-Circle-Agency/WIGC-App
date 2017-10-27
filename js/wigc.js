@@ -207,7 +207,7 @@ var app = new Vue({
           if (self.error_msg) {
             self.my.view = 'error';
           } else {
-            self.my.view = 'home';
+            self.my.view = 'Home';
           }
         }
       };

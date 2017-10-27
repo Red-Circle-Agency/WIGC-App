@@ -1,0 +1,19 @@
+@font-face {
+  font-family: 'DejaVu';
+  src: url('../fonts/DejaVuSerif.woff') format('woff');
+}
+@font-face {
+  font-family: 'DejaVu';
+  src: url('../fonts/DejaVuSerif-Bold.woff') format('woff');
+  font-weight:$bold;
+}
+
+@font-face {
+  font-family: 'Sen';
+  src: url('../fonts/Sen.woff') format('woff')
+}
+@font-face {
+  font-family: 'Sen';
+  src: url('../fonts/Sen-Bold.woff') format('woff');
+  font-weight:$bold;
+}

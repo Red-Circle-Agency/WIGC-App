@@ -1,8 +1,11 @@
 .cards { @include cards();
-  .card { @include card(); }
+  .card { @include card(); border-radius: $radius; }
+  .card.alt { background-color:darken(#f76b4f,12%); color:#fff; border-radius: $radius;
+    a { color:yellow; }
+  }
 }
 
 
-figure.pic { width:92px; max-height: 92px; display: block; float: left; margin-right: 10px; margin-bottom: 10px; transition: all 0.3s ease;
-  &.full { float: none; width:100%; max-height: none; text-align: center; }
+figure.pic { width:92px; max-height: 92px; display: block; float: left; margin-left: -$padding; margin-right: 10px; margin-bottom: 10px; transition: all 0.3s ease; border-top-right-radius: $radius;  border-bottom-right-radius: $radius; overflow:hidden;
+  &.full { float: none; width:100%; max-height: none; text-align: center; border-radius:0; }
 }

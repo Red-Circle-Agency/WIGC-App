@@ -3,20 +3,21 @@ section.cards.vendors(v-cloak v-bind:class="{ visible: my.view == 'Vendors' }")
     a(v-on:click="showMyVendors = true" :class="{active:showMyVendors}") My Vendors
     a(v-on:click="showMyVendors = false" :class="{active:!showMyVendors}") All Vendors
     
-  article.card.empty-notification(v-if="showMyVendors && (my.vendors.length < 1)")
+  article.card.alt.empty-notification(v-if="showMyVendors && (my.vendors.length < 1)")
     h3.title Add some vendors
     p You can use this section as a To-Do list with flagged vendors you'd like to talk to. Browse 
       a(v-on:click="showMyVendors = false") my vendors
       |  and click the star to add any vendors to this list.
   article.card.vendor(v-for="vendor in myVendors" :class="{ full: vendor.fullinfo, disabled:!vendor.favorite && showMyVendors }")
-    figure.pic(v-on:click="vendor.fullpic = !vendor.fullpic" v-bind:class="{full: vendor.fullpic}")
-      img(:src="vendor.logo")
+    a.favorite(v-on:click="toggleFavorite(my.vendors, vendor);" :class="{active: vendor.favorite}")
+      svg.icon(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100")
+        path.fill(d="M49.8 1.6L64.6 33l33 5.1-23.9 24.4 5.7 34.6-29.6-16.3-29.5 16.3 5.6-34.6L2 38.1 35 33z")
+        path.outline(d="M49.8 13.3L60 35.1l1.1 2.4 2.6.4 23.4 3.6-17 17.6-1.8 1.8.4 2.5 4 24.4-20.5-11.4-2.4-1.3-2.4 1.3-20.5 11.4 4-24.4.4-2.5-1.8-1.8-17.1-17.6L35.8 38l2.6-.4 1.1-2.4 10.3-21.9m0-11.7L35 33 2 38l23.9 24.5-5.6 34.6 29.5-16.3 29.5 16.3-5.6-34.6L97.6 38l-33-5L49.8 1.6z")
     h3.title
       a(v-on:click="vendor.fullinfo = !vendor.fullinfo") {{vendor.title}}
-      a.favorite(v-on:click="toggleFavorite(my.vendors, vendor);" :class="{active: vendor.favorite}")
-        svg.icon(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100")
-          path.fill(d="M49.8 1.6L64.6 33l33 5.1-23.9 24.4 5.7 34.6-29.6-16.3-29.5 16.3 5.6-34.6L2 38.1 35 33z")
-          path.outline(d="M49.8 13.3L60 35.1l1.1 2.4 2.6.4 23.4 3.6-17 17.6-1.8 1.8.4 2.5 4 24.4-20.5-11.4-2.4-1.3-2.4 1.3-20.5 11.4 4-24.4.4-2.5-1.8-1.8-17.1-17.6L35.8 38l2.6-.4 1.1-2.4 10.3-21.9m0-11.7L35 33 2 38l23.9 24.5-5.6 34.6 29.5-16.3 29.5 16.3-5.6-34.6L97.6 38l-33-5L49.8 1.6z")
+    figure.pic(v-on:click="vendor.fullpic = !vendor.fullpic" v-bind:class="{full: vendor.fullpic}")
+      img(:src="vendor.logo")
+    
     //figure.logo(:style="{ 'background-image': 'url(' +vendor.logo+')' }")
 
     .booth(v-if="vendor.booth") Booth {{vendor.booth}}

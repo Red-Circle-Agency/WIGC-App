@@ -3,13 +3,17 @@
 @import "globals/_variables";
 @import "globals/_mixins";
 @import "globals/_extends";
+
+@import "partials/_fonts";
+
+
 @import "globals/_defaults";
 
 @import "partials/_variables";
 @import "partials/_z-index";
 @import "globals/_animations";
 
-//@import "partials/_header";
+@import "partials/_header";
 @import "partials/_sidebar";
 @import "partials/_footer";
 
@@ -22,8 +26,6 @@
 @import "partials/_my-wigc";
 @import "partials/_map";
 @import "partials/_meetoo";
-//@import "partials/_cards-test";
-//@import "partials/_list-test";
 
 [v-cloak] { display: none !important; }
 

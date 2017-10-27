@@ -175,6 +175,24 @@ section.home .welcome:after, .cards .card:after, .card.vendor:after {
   display: table;
   clear: both; }
 
+@font-face {
+  font-family: 'DejaVu';
+  src: url("../fonts/DejaVuSerif.woff") format("woff"); }
+
+@font-face {
+  font-family: 'DejaVu';
+  src: url("../fonts/DejaVuSerif-Bold.woff") format("woff");
+  font-weight: 600; }
+
+@font-face {
+  font-family: 'Sen';
+  src: url("../fonts/Sen.woff") format("woff"); }
+
+@font-face {
+  font-family: 'Sen';
+  src: url("../fonts/Sen-Bold.woff") format("woff");
+  font-weight: 600; }
+
 * {
   box-sizing: border-box; }
 
@@ -238,9 +256,86 @@ ul {
   to {
     transform: rotate(360deg); } }
 
-aside.sidebar {
+header {
+  z-index: 5;
+  background: rgba(73, 73, 73, 0.44);
   position: fixed;
   top: 0;
+  right: 0;
+  left: 0;
+  height: 38px;
+  overflow: hidden; }
+  header .inside {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: strech;
+    -ms-flex-align: strech;
+    align-items: strech;
+    padding-left: 24px;
+    padding-right: 24px; }
+  header .logo.wigc {
+    width: 82px;
+    flex-basis: 82px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    align-self: auto;
+    padding-top: 12px; }
+  header .current-screen {
+    flex-basis: 50%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    align-self: auto; }
+  header .logo.cniga {
+    width: 100px;
+    flex-basis: 100px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    align-self: auto;
+    padding-top: 14px; }
+    header .logo.cniga .sun {
+      display: block;
+      width: 38px;
+      height: 38px;
+      float: left;
+      transform: translateY(-150%);
+      transition: transform 0.65s ease; }
+      header .logo.cniga .sun * {
+        transform-origin: center; }
+      header .logo.cniga .sun .blue {
+        fill: #F86C4F; }
+      header .logo.cniga .sun .red {
+        fill: #eee; }
+      header .logo.cniga .sun.loaded {
+        transform: translateY(0);
+        transition-delay: 2s; }
+        header .logo.cniga .sun.loaded * {
+          animation: spin 4.9s ease;
+          animation-iteration-count: 1; }
+    header .logo.cniga .letters {
+      display: block;
+      width: 58px;
+      float: left;
+      padding-top: 4px;
+      padding-left: 8px; }
+      header .logo.cniga .letters * {
+        fill: #eee; }
+  header .current-screen {
+    padding-top: 10px; }
+    header .current-screen span {
+      font-size: 1.25em;
+      font-family: "DejaVu", "Papyrus", serif;
+      color: #2a2a2a; }
+
+aside.sidebar {
+  position: fixed;
+  top: 38px;
   bottom: 42px;
   left: 0;
   z-index: 3;
@@ -270,7 +365,7 @@ aside.sidebar {
   aside.sidebar a {
     font-size: 7vw;
     color: #eee;
-    font-family: "Libre Baskerville", serif;
+    font-family: "DejaVu", "Papyrus", serif;
     mix-blend-mode: normal; }
   aside.sidebar.visible {
     transform: translate(0); }
@@ -280,13 +375,30 @@ footer {
   right: 0;
   bottom: 0;
   left: 0;
-  background: rgba(73, 73, 73, 0.95);
+  background: rgba(73, 73, 73, 0.77);
   z-index: 4;
   padding-left: 10px;
   padding-right: 10px;
   height: 42px;
   padding-top: 10px;
-  padding-left: 70px; }
+  padding-left: 70px;
+  /*
+  .sun { width:30px; display: block; float: right; @include position(absolute,0,5px,0); padding-top: 6px;
+    * { transform-origin: center; }
+    .red { fill:#ffeecd; }
+    .blue { fill:#f26c51; }
+    
+    transform: translateY(100%); transition:transform 0.65s ease;
+    &.loaded { transform: translateY(0); transition-delay: 2s;
+      * { animation: spin 4.5s ease; animation-iteration-count:1; }
+    }
+  }
+  
+  
+  .wigc { width: 56px; color:#FEECCE; @include position(absolute,0,40px,0); padding-top: 12px;
+    
+  }
+  */ }
   footer .toggle-sidebar {
     background-color: #F86C4F;
     position: absolute;
@@ -303,55 +415,23 @@ footer {
       transform: translateX(0); }
   footer nav a {
     color: #eee;
-    font-family: "Catamaran", sans-serif;
+    font-family: "Sen", "Comic Sans MS", "Comic Sans", cursive;
     text-transform: uppercase;
     margin-right: 1em;
     cursor: pointer;
     font-size: 16px;
     font-weight: 600; }
-  footer .sun {
-    width: 30px;
-    display: block;
-    float: right;
-    position: absolute;
-    top: 0;
-    right: 5px;
-    bottom: 0;
-    padding-top: 6px;
-    transform: translateY(100%);
-    transition: transform 0.65s ease; }
-    footer .sun * {
-      transform-origin: center; }
-    footer .sun .red {
-      fill: #ffeecd; }
-    footer .sun .blue {
-      fill: #f26c51; }
-    footer .sun.loaded {
-      transform: translateY(0);
-      transition-delay: 2s; }
-      footer .sun.loaded * {
-        animation: spin 4.5s ease;
-        animation-iteration-count: 1; }
-  footer .wigc {
-    width: 56px;
-    color: #FEECCE;
-    position: absolute;
-    top: 0;
-    right: 40px;
-    bottom: 0;
-    padding-top: 12px; }
 
 section.loading {
   position: fixed;
   top: 0;
   right: 0;
-  bottom: 42px;
+  bottom: 0;
   left: 0;
+  padding-top: 62px;
   overflow-x: hidden;
   overflow-y: scroll;
   z-index: 2;
-  padding-top: 20px;
-  padding-bottom: 10px;
   transform: translateY(-120%);
   transition: transform 1s ease;
   transform: translate(0);
@@ -369,7 +449,7 @@ section.loading {
     height: 92px;
     animation: spin 3s linear infinite; }
   section.loading.loaded {
-    transform: translateY(100vh); }
+    transform: translateY(-100vh); }
 
 video {
   position: fixed;
@@ -387,27 +467,28 @@ section.home {
   position: fixed;
   top: 0;
   right: 0;
-  bottom: 42px;
+  bottom: 0;
   left: 0;
+  padding-top: 62px;
   overflow-x: hidden;
   overflow-y: scroll;
   z-index: 2;
-  padding-top: 20px;
-  padding-bottom: 10px;
   transform: translateY(-120%);
   transition: transform 1s ease;
   transition: all 2s ease; }
   section.home.visible {
     transform: translateY(0); }
   section.home.visible {
-    transition-delay: 1s; }
+    transition-delay: 2s; }
   section.home .welcome {
-    margin: 0 10px 10px 10px;
-    padding: 10px;
+    margin: 0 24px 24px 24px;
+    padding: 24px;
     background-color: #e8e8e8;
     box-shadow: 0 0 3px rgba(73, 73, 73, 0.3);
-    font-family: "Catamaran", sans-serif;
+    font-family: "Sen", "Comic Sans MS", "Comic Sans", cursive;
     position: relative;
+    color: #494949;
+    transition: margin 0.5s linear, padding 0.5s linear,border-radius 0.5s linear;
     background-color: transparent;
     box-shadow: none;
     color: #eee;
@@ -416,7 +497,7 @@ section.home {
     section.home .welcome a {
       color: #F86C4F; }
     section.home .welcome .title {
-      font-family: "Libre Baskerville", serif;
+      font-family: "DejaVu", "Papyrus", serif;
       margin-bottom: 0.25em;
       padding-right: 42px;
       font-size: 115%; }
@@ -425,8 +506,8 @@ section.home {
       width: 26px;
       height: 26px;
       position: absolute;
-      top: 10px;
-      right: 10px; }
+      top: 24px;
+      right: 24px; }
       section.home .welcome a.favorite .fill {
         opacity: 0; }
       section.home .welcome a.favorite:hover {
@@ -438,8 +519,8 @@ section.home {
       width: 26px;
       height: 26px;
       position: absolute;
-      top: 40px;
-      right: 10px; }
+      top: 60px;
+      right: 24px; }
       section.home .welcome a.meetoo .filled {
         opacity: 0; }
       section.home .welcome a.meetoo:hover .filled {
@@ -453,8 +534,8 @@ section.home {
         width: 1.2em;
         height: 1.2em; }
     section.home .welcome.full {
-      margin: 0 0 30px 0;
-      padding: 20px; }
+      margin: 0 0 48px 0;
+      border-radius: 0; }
       section.home .welcome.full .title {
         font-size: 140%; }
     section.home .welcome.disabled {
@@ -470,6 +551,8 @@ section.home {
         margin-right: 0.5em;
         padding: 0.1em 0.65em;
         font-size: 80%; }
+    section.home .welcome:last-child {
+      margin-bottom: 60px; }
   section.home h1 {
     margin-bottom: 0.5em; }
 
@@ -477,13 +560,12 @@ section.error {
   position: fixed;
   top: 0;
   right: 0;
-  bottom: 42px;
+  bottom: 0;
   left: 0;
+  padding-top: 62px;
   overflow-x: hidden;
   overflow-y: scroll;
   z-index: 2;
-  padding-top: 20px;
-  padding-bottom: 10px;
   transform: translateY(-120%);
   transition: transform 1s ease; }
   section.error.visible {
@@ -498,28 +580,30 @@ section.error {
   position: fixed;
   top: 0;
   right: 0;
-  bottom: 42px;
+  bottom: 0;
   left: 0;
+  padding-top: 62px;
   overflow-x: hidden;
   overflow-y: scroll;
   z-index: 2;
-  padding-top: 20px;
-  padding-bottom: 10px;
   transform: translateY(-120%);
   transition: transform 1s ease; }
   .cards.visible {
     transform: translateY(0); }
   .cards .card {
-    margin: 0 10px 10px 10px;
-    padding: 10px;
+    margin: 0 24px 24px 24px;
+    padding: 24px;
     background-color: #e8e8e8;
     box-shadow: 0 0 3px rgba(73, 73, 73, 0.3);
-    font-family: "Catamaran", sans-serif;
-    position: relative; }
+    font-family: "Sen", "Comic Sans MS", "Comic Sans", cursive;
+    position: relative;
+    color: #494949;
+    transition: margin 0.5s linear, padding 0.5s linear,border-radius 0.5s linear;
+    border-radius: 6px; }
     .cards .card a {
       color: #F86C4F; }
     .cards .card .title {
-      font-family: "Libre Baskerville", serif;
+      font-family: "DejaVu", "Papyrus", serif;
       margin-bottom: 0.25em;
       padding-right: 42px;
       font-size: 115%; }
@@ -528,8 +612,8 @@ section.error {
       width: 26px;
       height: 26px;
       position: absolute;
-      top: 10px;
-      right: 10px; }
+      top: 24px;
+      right: 24px; }
       .cards .card a.favorite .fill {
         opacity: 0; }
       .cards .card a.favorite:hover {
@@ -541,8 +625,8 @@ section.error {
       width: 26px;
       height: 26px;
       position: absolute;
-      top: 40px;
-      right: 10px; }
+      top: 60px;
+      right: 24px; }
       .cards .card a.meetoo .filled {
         opacity: 0; }
       .cards .card a.meetoo:hover .filled {
@@ -556,8 +640,8 @@ section.error {
         width: 1.2em;
         height: 1.2em; }
     .cards .card.full {
-      margin: 0 0 30px 0;
-      padding: 20px; }
+      margin: 0 0 48px 0;
+      border-radius: 0; }
       .cards .card.full .title {
         font-size: 140%; }
     .cards .card.disabled {
@@ -573,20 +657,33 @@ section.error {
         margin-right: 0.5em;
         padding: 0.1em 0.65em;
         font-size: 80%; }
+    .cards .card:last-child {
+      margin-bottom: 60px; }
+  .cards .card.alt {
+    background-color: #f43a14;
+    color: #fff;
+    border-radius: 6px; }
+    .cards .card.alt a {
+      color: yellow; }
 
 figure.pic {
   width: 92px;
   max-height: 92px;
   display: block;
   float: left;
+  margin-left: -24px;
   margin-right: 10px;
   margin-bottom: 10px;
-  transition: all 0.3s ease; }
+  transition: all 0.3s ease;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  overflow: hidden; }
   figure.pic.full {
     float: none;
     width: 100%;
     max-height: none;
-    text-align: center; }
+    text-align: center;
+    border-radius: 0; }
 
 .card.session a {
   color: #F86C4F; }
@@ -595,16 +692,28 @@ figure.pic {
   margin-bottom: 0.5em; }
 
 .card.session time {
-  font-weight: 600; }
+  text-transform: uppercase; }
+  .card.session time span {
+    display: block; }
+  .card.session time .duration {
+    font-size: 80%; }
 
 .card.session .desc {
   margin-bottom: 0.5em; }
 
-.card.session .speakers {
-  padding-left: 0; }
-  .card.session .speakers li {
-    list-style: none;
-    margin-bottom: 0.5em; }
+.card.session .people {
+  padding-left: 0;
+  font-size: 85%; }
+  .card.session .people ul {
+    padding-left: 0; }
+  .card.session .people .presented-by {
+    letter-spacing: 0.1em;
+    text-transform: uppercase; }
+  .card.session .people figure {
+    margin-top: 10px; }
+  .card.session .people li {
+    margin-bottom: 0.25em;
+    list-style: none; }
 
 .card.vendor {
   padding-bottom: 0; }
@@ -655,7 +764,7 @@ figure.pic {
     align-self: auto;
     background-color: #F86C4F;
     color: #eee;
-    font-family: "Catamaran", sans-serif;
+    font-family: "Sen", "Comic Sans MS", "Comic Sans", cursive;
     text-align: center;
     text-transform: uppercase; }
     .vendor-toggle a.active {
@@ -665,20 +774,19 @@ figure.pic {
   font-weight: 600; }
 
 .my-sessions, .my-vendors {
-  font-family: "Catamaran", sans-serif;
+  font-family: "Sen", "Comic Sans MS", "Comic Sans", cursive;
   margin: 0 10px 10px 10px; }
 
 .map {
   position: fixed;
   top: 0;
   right: 0;
-  bottom: 42px;
+  bottom: 0;
   left: 0;
+  padding-top: 62px;
   overflow-x: hidden;
   overflow-y: scroll;
   z-index: 2;
-  padding-top: 20px;
-  padding-bottom: 10px;
   transform: translateY(-120%);
   transition: transform 1s ease;
   padding: 0; }
@@ -696,13 +804,12 @@ section.meetoo {
   position: fixed;
   top: 0;
   right: 0;
-  bottom: 42px;
+  bottom: 0;
   left: 0;
+  padding-top: 62px;
   overflow-x: hidden;
   overflow-y: scroll;
   z-index: 2;
-  padding-top: 20px;
-  padding-bottom: 10px;
   transform: translateY(-120%);
   transition: transform 1s ease;
   padding: 10px; }

@@ -1,11 +1,22 @@
-header { z-index: $z-header; background:rgba($black,0.70); @include position(fixed,0,0,null,0); height: $header-height; overflow: hidden;
-  .logos { @include flex-container(); justify-content: space-between; padding-left: 10px; padding-right: 10px; }
-  .logo { @include flex-item(120px); max-width: 45%;
-    &.wigc { padding-top:10px;
-      img { height: 24px; }
+header { z-index: $z-header; background:rgba(#494949,0.44); @include position(fixed,0,0,null,0); height: $header-height; overflow: hidden;
+  .inside { @include flex-container(); padding-left: $padding; padding-right: $padding; }
+  .logo.wigc { @include flex-item(82px,0,0); padding-top: 12px; }
+  .current-screen { @include flex-item(50%); }
+  .logo.cniga { @include flex-item(100px,0,0); padding-top: 14px;
+    .sun { display: block; width:38px; height: 38px; float:left;
+      * { transform-origin: center; }
+      .blue { fill:$orange; }
+      .red { fill:$white; }
+      transform: translateY(-150%); transition:transform 0.65s ease;
+      &.loaded { transform: translateY(0); transition-delay: 2s;
+        * { animation: spin 4.9s ease; animation-iteration-count:1; }
+      }
     }
-    &.cniga { text-align: right; padding-top: 6px;
-      img { height: 44px; }
+    .letters { display: block; width:58px; float: left; padding-top: 4px; padding-left: 8px;
+      * { fill:$white; }
     }
+  }
+  .current-screen { padding-top: 10px;
+    span { font-size:1.25em; font-family: $serif; color:darken($black,12%); }
   }
 }

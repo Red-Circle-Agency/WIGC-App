@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <title>Test App</title>
-    <link href="https://fonts.googleapis.com/css?family=Catamaran:400,700|Libre+Baskerville:700" rel="stylesheet">
+    <!--link(href="https://fonts.googleapis.com/css?family=Catamaran:400,700|Libre+Baskerville:700" rel="stylesheet")-->
     <link href="css/wigc.css" rel="stylesheet">
     <meta http-equiv="Content-Security-Policy" content="default-src * gap://ready file:; style-src 'self' 'unsafe-inline' *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *">
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
@@ -14,36 +14,43 @@
       <!--section.errors(v-if="error_msg" v-html="error_msg")-->
       <div class="video-holder">
         <video src="video/glorybands.mp4" autoplay muted loop></video>
-        <!--include partials/_header-->
-        <aside class="sidebar" v-bind:class="{visible: my.sidebarVisible}" v-cloak>
-          <nav><a v-on:click="switchSection('My WIGC')">My WIGC</a><a v-on:click="switchSection('Seminars')">Seminars</a><a v-on:click="switchSection('Parties')">Parties</a><a v-on:click="switchSection('Vendors')">Vendors</a><a v-on:click="switchSection('People')">People</a></nav>
-        </aside>
-        <footer><a class="toggle-sidebar" v-on:click="my.sidebarVisible = !my.sidebarVisible" v-bind:class="{visible: !my.sidebarVisible}">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-              <path d="M97.5 29.4H4.4V17.3h93.1v12.1zm0 14.7H4.4v12.1h93.1V44.1zm0 26.8H4.4V83h93.1V70.9z"></path>
-            </svg></a>
-          <nav><a v-on:click="switchSection('map')">Map</a><a v-on:click="my.meetoo = 'https://web.meetoo.com/170479740'; switchSection('meetoo');">Chat</a>
-            <!--a(v-on:click="switchSection('meetoo')") Meetoo-->
-            <!--a Exhibitors-->
-            <!--a Contact-->
+      </div>
+      <header>
+        <div class="inside">
+          <div class="logo wigc"><img src="svg/logos/wigc.svg"></div>
+          <div class="current-screen"><span v-if="my.view &amp;&amp; (my.view != 'Home') &amp;&amp; (my.view != 'loading')">{{my.view}}</span></div>
+          <div class="logo cniga" v-cloak>
             <div class="sun" v-bind:class="{loaded:loaded}">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                 <path class="red" d="M11.1 77.2c3.3 4.8 7.4 8.8 12 12 1-4.3 1.4-8.7 1.1-13-4.5-.3-8.9 0-13.1 1m2.3-26.9c-2.9-3.3-6.2-6.1-10-8.5-1 5.5-1 11.2 0 16.9 3.7-2.3 7.1-5.1 10-8.4m-2.3-27c4.3 1 8.7 1.4 13 1.1.3-4.4-.1-8.8-1.1-13-4.7 3.2-8.7 7.3-11.9 11.9M77 89.2c4.8-3.3 8.8-7.4 12-12-4.3-1-8.7-1.4-13-1.1-.4 4.4 0 8.8 1 13.1m19.6-47.4c-3.7 2.3-7.1 5.2-10 8.5 2.9 3.3 6.2 6.1 10 8.5 1-5.6 1-11.3 0-17M41.5 96.9c5.5 1 11.2 1 16.9 0-2.3-3.7-5.2-7.1-8.5-10-3.2 2.9-6 6.2-8.4 10m17-93.2c-5.5-1-11.2-1-16.9 0 2.3 3.7 5.2 7.1 8.5 10 3.2-3 6-6.3 8.4-10M77 11.3c4.6 3.2 8.7 7.2 12 12-4.3 1-8.7 1.4-13 1.1-.4-4.4 0-8.8 1-13.1"></path>
                 <path class="blue" d="M20.8 62.3c-1-2.3-2.1-4.6-3.5-6.7-3.3 3.7-7.2 6.8-11.5 9.4l-.7.4c.3 1 .7 2 1.1 3 .4 1 .9 2 1.3 2.9l.8-.2c4.8-1.3 9.8-1.8 14.8-1.6-.5-2.4-1.3-4.8-2.3-7.2M29 7.8l.2.8c1.3 4.8 1.8 9.8 1.6 14.8 4.9-1.1 9.6-3.1 13.9-5.8-3.7-3.4-6.8-7.2-9.3-11.5l-.4-.7c-1 .3-2 .7-3 1.1-1.1.4-2.1.9-3 1.3M5.8 35.5c4.3 2.5 8.2 5.7 11.6 9.3 1.3-2.1 2.5-4.4 3.5-6.7s1.7-4.7 2.3-7.2c-5 .2-9.9-.3-14.8-1.6l-.8-.2C6.6 31 5.8 33 5.1 35l.7.5zM94.2 65c-4.3-2.5-8.2-5.7-11.6-9.3-1.3 2.1-2.5 4.4-3.5 6.7s-1.7 4.7-2.3 7.2c5-.2 9.9.3 14.8 1.6l.8.2c1-1.9 1.8-3.9 2.5-5.9l-.7-.5zM35.3 94.4c2.5-4.3 5.7-8.2 9.3-11.6-2.1-1.3-4.4-2.5-6.7-3.5s-4.7-1.7-7.2-2.3c.2 5-.3 9.9-1.6 14.8l-.1.9c1.9 1 3.9 1.8 5.9 2.5l.4-.8zM71 92.7l-.2-.8c-1.3-4.8-1.8-9.8-1.6-14.8-4.9 1.1-9.6 3.1-13.9 5.8 3.7 3.4 6.8 7.2 9.3 11.5l.4.7c1-.3 2-.7 3-1.1 1.1-.4 2.1-.8 3-1.3m20.6-63.3c-4.8 1.3-9.8 1.8-14.8 1.6.6 2.5 1.3 4.9 2.3 7.2 1 2.3 2.1 4.6 3.5 6.7 3.4-3.7 7.2-6.8 11.5-9.3l.7-.4c-.3-1-.7-2-1.1-3-.4-1-.9-2-1.3-2.9l-.8.1zM70.8 8.6l.2-.8c-1.9-1-3.9-1.8-5.9-2.5l-.4.7c-2.5 4.3-5.7 8.2-9.3 11.6 2.1 1.3 4.4 2.5 6.7 3.5s4.7 1.7 7.2 2.3c-.2-5 .3-9.9 1.5-14.8m7.5 41.6v.1c-2.1 3-3.8 6.2-5.2 9.5-1.4 3.3-2.4 6.8-3 10.4H70v.1c-7.1 1.3-13.9 4.1-19.9 8.2h-.2c-3-2.1-6.2-3.8-9.5-5.2-3.3-1.4-6.8-2.4-10.4-3v-.1h-.1c-.6-3.6-1.7-7.1-3-10.4-1.4-3.3-3.1-6.5-5.2-9.5v-.2c2.1-3 3.8-6.2 5.2-9.5 1.4-3.3 2.4-6.8 3-10.4h.1v-.1c7.1-1.3 13.9-4.1 19.9-8.2h.2c3 2.1 6.2 3.8 9.5 5.2 3.3 1.4 6.8 2.4 10.4 3v.1h.1c.6 3.6 1.7 7.1 3 10.4 1.4 3.4 3.1 6.6 5.2 9.6"></path>
               </svg>
             </div>
-            <div class="wigc">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 75.8">
-                <path d="M91.2 74.5H68.7L56.9 32.4 45.1 74.5H22.6L2.4 2.7H22L34.1 51 46.9 2.7h20.4L80 51 92 2.7h19.5L91.2 74.5zm47.8 0h-19.1V2.7H139v71.8zm74-63.2l-13.4 13.6c-3.6-3.6-8.4-5.5-13.4-5.3-10 0-17 7.8-17 19 0 13.2 8.4 19.6 17.3 19.6s14-3.5 15.9-10.6h-16.5V33.4h35c.3 2.1.4 4.3.4 6.4 0 23.9-17.4 36-34 36-22.1 0-37.7-15.4-37.7-37.2 0-21.8 15.6-37.2 37.7-37.2 11.2-.1 19.8 3.7 25.7 9.9zm85.8 8.2l-17 9.5c-3-5.8-9.1-9.3-15.5-9.1-9.7 0-17 7.6-17 18.6 0 12.3 8.4 18.6 17 18.6 6.5.1 12.6-3.4 15.9-9.1l15.6 11.2c-6.6 10.2-17.4 16.5-31.4 16.5-21.8 0-37.2-15.4-37.2-37.2 0-21.8 15.4-37.2 37.2-37.2 14 0 26.2 6.7 32.4 18.2z"></path>
+            <div class="letters">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 25">
+                <path d="M43.5 23.5h-3.9L28.8 9.4v14.1h-4.2V2.3h3.9l10.8 14.2V2.3h4.2M48.6 2.3h2.7v21.2h-2.7zM84.5 15.2h8.3L88.7 5l-4.2 10.2zM99 23.5h-2.9l-2.3-5.8H83.5l-2.3 5.8h-2.8L87 2.3h3.3L99 23.5zM21.2 6.7l-3.6 2.2C16.4 7.1 14.5 6 12.1 6c-3.8 0-6.7 2.8-6.7 6.9 0 4.3 3 6.9 6.7 6.9 2.3 0 4.3-1.1 5.5-2.9l3.5 2.5c-1.9 2.8-5.1 4.5-8.9 4.5-6.6 0-11.2-4.6-11.2-11s4.6-11 11.1-11c3.9 0 7.4 1.8 9.1 4.8M75 5.5l-2 1.9c-1.5-1.8-3.7-2.8-6.3-2.8-4.7 0-8.2 3.4-8.2 8.4s3.5 8.4 8.1 8.4c4.3 0 7-2.5 7.4-6.7h-6.4v-2.5H77v.7c0 6.2-3.9 11-10.3 11-5.6 0-10.9-4-10.9-10.9 0-6.4 4.7-10.9 11-10.9 3.4-.1 6.3 1.2 8.2 3.4"></path>
               </svg>
             </div>
-          </nav>
-        </footer>
-      </div>
+          </div>
+        </div>
+      </header>
+      <aside class="sidebar" v-bind:class="{visible: my.sidebarVisible}" v-cloak>
+        <nav><a v-on:click="switchSection('My WIGC')">My WIGC</a><a v-on:click="switchSection('Seminars')">Seminars</a><a v-on:click="switchSection('Parties')">Parties</a><a v-on:click="switchSection('Vendors')">Vendors</a><a v-on:click="switchSection('People')">People</a></nav>
+      </aside>
+      <footer><a class="toggle-sidebar" v-on:click="my.sidebarVisible = !my.sidebarVisible" v-bind:class="{visible: !my.sidebarVisible}">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+            <path d="M97.5 29.4H4.4V17.3h93.1v12.1zm0 14.7H4.4v12.1h93.1V44.1zm0 26.8H4.4V83h93.1V70.9z"></path>
+          </svg></a>
+        <nav><a v-on:click="switchSection('Map')">Map</a><a v-on:click="switchSection('Info')">Info</a><a v-on:click="switchSection('Contact')">Contact</a><a v-on:click="my.meetoo = 'https://web.meetoo.com/170479740'; switchSection('meetoo');">Chat</a>
+          <!--a(v-on:click="switchSection('meetoo')") Meetoo-->
+          <!--a Exhibitors-->
+          <!--a Contact-->
+        </nav>
+      </footer>
       <section class="loading" v-cloak v-bind:class="{ loaded: loaded }">
         <div class="inner"><img class="sun" src="svg/logos/sun.svg"></div>
       </section>
-      <section class="home" v-cloak v-bind:class="{ visible: my.view == 'home' }">
+      <section class="home" v-cloak v-bind:class="{ visible: my.view == 'Home' }">
         <div class="welcome">
           <div class="inner" v-html="home.text"></div>
         </div>
@@ -61,7 +68,7 @@
                 <path class="outline" d="M49.8 13.3L60 35.1l1.1 2.4 2.6.4 23.4 3.6-17 17.6-1.8 1.8.4 2.5 4 24.4-20.5-11.4-2.4-1.3-2.4 1.3-20.5 11.4 4-24.4.4-2.5-1.8-1.8-17.1-17.6L35.8 38l2.6-.4 1.1-2.4 10.3-21.9m0-11.7L35 33 2 38l23.9 24.5-5.6 34.6 29.5-16.3 29.5 16.3-5.6-34.6L97.6 38l-33-5L49.8 1.6z"></path>
               </svg></a></h3>
           <div class="when-and-where">
-            <time class="when"><span>{{session.date}} @ {{session.time}}</span><span v-if="session.duration">  ({{session.duration}})</span></time>
+            <time class="when"><span class="datetime">{{session.date}} - {{session.time}}</span><span class="duration" v-if="session.duration">{{session.duration}}</span></time>
             <div class="where room" v-if="session.room">{{session.room}}</div>
           </div>
           <summary class="desc" v-if="session.teaser &amp;&amp; !session.fullinfo" v-html="session.teaser"></summary>
@@ -90,20 +97,32 @@
                 <path class="filled" d="M50 4C23.3 4 1.6 21.6 1.6 43.4c0 12.6 7.6 22.9 18.9 30.2L11.1 96l26-14.2c3.5.7 9.2 1 13 1 26.7 0 48.4-17.6 48.4-39.4C98.4 21.6 76.7 4 50 4zM24 34.7c4.6 0 8.3 3.7 8.3 8.3 0 4.6-3.7 8.3-8.3 8.3s-8.3-3.7-8.3-8.3c.1-4.6 3.8-8.3 8.3-8.3zm26 0c4.6 0 8.3 3.7 8.3 8.3 0 4.6-3.7 8.3-8.3 8.3s-8.3-3.7-8.3-8.3c0-4.6 3.7-8.3 8.3-8.3zm26 0c4.6 0 8.3 3.7 8.3 8.3 0 4.6-3.7 8.3-8.3 8.3-4.6 0-8.3-3.7-8.3-8.3 0-4.6 3.7-8.3 8.3-8.3z"></path>
               </svg></a></h3>
           <div class="when-and-where">
-            <time class="when"><span>{{session.date}} @ {{session.time}}</span><span v-if="session.duration">  ({{session.duration}})</span></time>
+            <time class="when"><span class="datetime">{{session.date}} - {{session.time}}</span><span class="duration" v-if="session.duration">{{session.duration}}</span></time>
             <div class="where room" v-if="session.room">{{session.room}}</div>
           </div>
           <summary class="desc" v-if="session.teaser &amp;&amp; !session.fullinfo" v-html="session.teaser"></summary>
           <div class="desc fulltext" v-if="session.text &amp;&amp; session.fullinfo" v-html="session.text"></div>
-          <ul class="speakers" v-if="session.speakers">
-            <li v-for="speaker in session.speakers">
-              <div class="speaker">
-                <div class="name-and-title"><b class="role" v-if="speaker.role">{{speaker.role}}: </b><a class="name" v-if="speaker.url" v-on:click="speaker.fullinfo = !speaker.fullinfo">{{speaker.name}}</a><span class="name" v-else-if="!speaker.url">{{speaker.name}}</span><span class="job" v-if="speaker.company">, {{speaker.company}}</span></div>
-                <figure class="pic" v-if="speaker.fullinfo" v-on:click="speaker.fullpic = !speaker.fullpic" v-bind:class="{full: speaker.fullpic}"><img :src="speaker.pic"></figure>
-                <div class="desc fulltext" v-if="speaker.text &amp;&amp; speaker.fullinfo" v-html="speaker.text"></div>
-              </div>
-            </li>
-          </ul>
+          <div class="people" v-if="session.people">
+            <div class="presented-by">Presented by:</div>
+            <ul class="speakers">
+              <li class="person" v-for="person in session.people" v-bind:class="{ full: person.fullinfo }">
+                <div class="role-and-name"><b class="role" v-if="person.role">{{person.role}}:  </b><a class="name" v-if="person.url" v-on:click="person.fullinfo = !person.fullinfo">{{person.name}}</a><span class="name" v-else>{{person.name}}</span></div>
+                <div class="job-and-company" v-if="person.job_title || person.company"><span class="job" v-if="person.job_title">{{person.job_title}}</span><span v-if="person.job_title &amp;&amp; person.company">, </span><span class="company" v-if="person.company">{{person.company}}</span></div>
+                <figure class="pic" v-if="person.fullinfo" v-on:click="person.fullpic = !person.fullpic" v-bind:class="{ full :person.fullpic }"><img :src="person.pic"></figure>
+                <summary class="desc" v-show="person.fullinfo" v-html="person.text"></summary>
+                <div class="person-contacts contacts" v-show="person.fullinfo"><a class="icon-link" :href="'mailto:' + person.email" v-if="person.email">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
+                      <path d="M4 0l-4 2v6h8v-6l-4-2zm0 1.13l3 1.5v1.88l-3 1.5-3-1.5v-1.88l3-1.5zm-2 1.88v1l2 1 2-1v-1h-4z"></path>
+                    </svg></a><a class="icon-link" :href="person.linkedin" v-if="person.linkedin">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8">
+                      <path d="M7.4 0H.6C.3 0 0 .3 0 .6v6.8c0 .3.3.6.6.6h6.8c.3 0 .6-.3.6-.6V.6c0-.3-.3-.6-.6-.6zm-5 6.8H1.2V3h1.2v3.8zm-.6-4.3c-.4 0-.7-.3-.7-.7 0-.4.3-.7.7-.7.4 0 .7.3.7.7 0 .4-.3.7-.7.7zm5 4.3H5.6V5c0-.4 0-1-.6-1s-.7.5-.7 1v1.9H3.1V3h1.1v.5c.2-.3.5-.6 1.1-.6 1.2 0 1.4.8 1.4 1.8v2.1z"></path>
+                    </svg></a><a class="icon-link" :href="person.linkedin" v-if="person.linkedin">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8">
+                      <path d="M7.9 1.5c-.3.1-.6.2-.9.2.3-.2.6-.5.7-.9-.3.2-.6.4-1 .4C6.4.9 6 .7 5.5.7c-.9 0-1.6.7-1.6 1.6v.4C2.6 2.6 1.4 2 .6 1c-.2.3-.2.5-.2.8 0 .6.3 1.1.7 1.3-.3.1-.5 0-.7-.1 0 .8.6 1.4 1.3 1.6-.1 0-.3.1-.4.1H1c.2.6.8 1.1 1.5 1.1-.6.4-1.3.7-2 .7H.1c.7.5 1.6.7 2.5.7 3 0 4.6-2.5 4.6-4.6v-.3c.2-.2.5-.5.7-.8z"></path>
+                    </svg></a></div>
+              </li>
+            </ul>
+          </div>
           <ul class="tags" v-if="session.tags">
             <li v-for="tag in session.tags">{{tag}}</li>
           </ul>
@@ -140,17 +159,17 @@
       </section>
       <section class="cards vendors" v-cloak v-bind:class="{ visible: my.view == 'Vendors' }">
         <nav class="vendor-toggle"><a v-on:click="showMyVendors = true" :class="{active:showMyVendors}">My Vendors</a><a v-on:click="showMyVendors = false" :class="{active:!showMyVendors}">All Vendors</a></nav>
-        <article class="card empty-notification" v-if="showMyVendors &amp;&amp; (my.vendors.length &lt; 1)">
+        <article class="card alt empty-notification" v-if="showMyVendors &amp;&amp; (my.vendors.length &lt; 1)">
           <h3 class="title">Add some vendors</h3>
           <p>You can use this section as a To-Do list with flagged vendors you'd like to talk to. Browse <a v-on:click="showMyVendors = false">my vendors</a> and click the star to add any vendors to this list.</p>
         </article>
-        <article class="card vendor" v-for="vendor in myVendors" :class="{ full: vendor.fullinfo, disabled:!vendor.favorite &amp;&amp; showMyVendors }">
+        <article class="card vendor" v-for="vendor in myVendors" :class="{ full: vendor.fullinfo, disabled:!vendor.favorite &amp;&amp; showMyVendors }"><a class="favorite" v-on:click="toggleFavorite(my.vendors, vendor);" :class="{active: vendor.favorite}">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+              <path class="fill" d="M49.8 1.6L64.6 33l33 5.1-23.9 24.4 5.7 34.6-29.6-16.3-29.5 16.3 5.6-34.6L2 38.1 35 33z"></path>
+              <path class="outline" d="M49.8 13.3L60 35.1l1.1 2.4 2.6.4 23.4 3.6-17 17.6-1.8 1.8.4 2.5 4 24.4-20.5-11.4-2.4-1.3-2.4 1.3-20.5 11.4 4-24.4.4-2.5-1.8-1.8-17.1-17.6L35.8 38l2.6-.4 1.1-2.4 10.3-21.9m0-11.7L35 33 2 38l23.9 24.5-5.6 34.6 29.5-16.3 29.5 16.3-5.6-34.6L97.6 38l-33-5L49.8 1.6z"></path>
+            </svg></a>
+          <h3 class="title"><a v-on:click="vendor.fullinfo = !vendor.fullinfo">{{vendor.title}}</a></h3>
           <figure class="pic" v-on:click="vendor.fullpic = !vendor.fullpic" v-bind:class="{full: vendor.fullpic}"><img :src="vendor.logo"></figure>
-          <h3 class="title"><a v-on:click="vendor.fullinfo = !vendor.fullinfo">{{vendor.title}}</a><a class="favorite" v-on:click="toggleFavorite(my.vendors, vendor);" :class="{active: vendor.favorite}">
-              <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                <path class="fill" d="M49.8 1.6L64.6 33l33 5.1-23.9 24.4 5.7 34.6-29.6-16.3-29.5 16.3 5.6-34.6L2 38.1 35 33z"></path>
-                <path class="outline" d="M49.8 13.3L60 35.1l1.1 2.4 2.6.4 23.4 3.6-17 17.6-1.8 1.8.4 2.5 4 24.4-20.5-11.4-2.4-1.3-2.4 1.3-20.5 11.4 4-24.4.4-2.5-1.8-1.8-17.1-17.6L35.8 38l2.6-.4 1.1-2.4 10.3-21.9m0-11.7L35 33 2 38l23.9 24.5-5.6 34.6 29.5-16.3 29.5 16.3-5.6-34.6L97.6 38l-33-5L49.8 1.6z"></path>
-              </svg></a></h3>
           <!--figure.logo(:style="{ 'background-image': 'url(' +vendor.logo+')' }")-->
           <div class="booth" v-if="vendor.booth">Booth {{vendor.booth}}</div>
           <!--img.logo(v-if="vendor.logo" :src="vendor.logo")-->
@@ -191,8 +210,8 @@
       </section>
       <section class="cards people" v-cloak v-bind:class="{ visible: my.view == 'People' }">
         <article class="card person" v-for="person in people" v-bind:class="{full: person.fullinfo}">
+          <h3 class="title"><a v-if="person.url" v-on:click="person.fullinfo = !person.fullinfo">{{person.name}}</a><span v-else>{{person.name}}</span></h3>
           <figure class="pic" v-if="person.pic" v-on:click="person.fullpic = !person.fullpic" v-bind:class="{full: person.fullpic}"><img :src="person.pic"></figure>
-          <h3 class="name"><a v-if="person.text || person.website || person.email || person.linkedin || person.twitter" v-on:click="person.fullinfo = !person.fullinfo">{{person.name}}</a><span v-else>{{person.name}}</span></h3>
           <div class="job" v-if="person.job_title &amp;&amp; person.company"><span class="job-title">{{person.job_title}}</span>,  <span class="company">{{person.company}}</span></div>
           <div class="job" v-else-if="person.job_title"><span class="job-title">{{person.job_title}}</span></div>
           <div class="job" v-else-if="person.company"><span class="company">{{person.company}}</span></div>
@@ -214,7 +233,7 @@
               </svg></a></div>
         </article>
       </section>
-      <section class="map" v-cloak v-bind:class="{ visible: my.view == 'map' }">
+      <section class="map" v-cloak v-bind:class="{ visible: my.view == 'Map' }">
         <div class="map-wrapper">
           <!--button(onclick="zoomIn()") Zoom In-->
           <div class="pinch-zoom-container">
@@ -234,6 +253,19 @@
       <script src="http://hammerjs.github.io/dist/hammer.min.js"></script>
       <script src="js/pinch-zoom.js"></script>
       <script src="js/wigc.min.js"></script>
+      <!-- Piwik-->
+      <script>
+        var _paq = _paq || [];
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+          var u="//circle.red/stats/";
+          _paq.push(['setTrackerUrl', u+'piwik.php']);
+          _paq.push(['setSiteId', '2']);
+          var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+          g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        })();
+      </script>
     </div>
   </body>
 </html>

@@ -1,10 +1,10 @@
 section.cards.people(v-cloak v-bind:class="{ visible: my.view == 'People' }")
   article.card.person(v-for="person in people" v-bind:class="{full: person.fullinfo}")
+    h3.title
+      a(v-if="person.url" v-on:click="person.fullinfo = !person.fullinfo") {{person.name}}
+      span(v-else) {{person.name}}
     figure.pic(v-if="person.pic" v-on:click="person.fullpic = !person.fullpic" v-bind:class="{full: person.fullpic}")
       img(:src="person.pic")
-    h3.name
-      a(v-if="person.text || person.website || person.email || person.linkedin || person.twitter" v-on:click="person.fullinfo = !person.fullinfo") {{person.name}}
-      span(v-else) {{person.name}}
     .job(v-if="person.job_title && person.company")
       span.job-title {{person.job_title}}
       |,  
