@@ -396,10 +396,11 @@ section.home {
   padding-bottom: 10px;
   transform: translateY(-120%);
   transition: transform 1s ease;
-  transition: all 2s ease;
-  transition-delay: 1s; }
+  transition: all 2s ease; }
   section.home.visible {
     transform: translateY(0); }
+  section.home.visible {
+    transition-delay: 1s; }
   section.home .welcome {
     margin: 0 10px 10px 10px;
     padding: 10px;
@@ -634,6 +635,7 @@ figure.pic {
       margin-bottom: 0.5em; }
 
 .vendor-toggle {
+  margin-bottom: 10px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-flex;
