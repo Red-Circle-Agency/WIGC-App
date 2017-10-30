@@ -50,7 +50,7 @@ var app = new Vue({
   },
   mounted: function () {
     var self = this;
-    trackEvent('Load', self.parseUserAgent());
+    //trackEvent('Load', self.parseUserAgent());
     $.ajax({
       url: 'https://circle.red/wigc/',
       //url: 'http://localhost/wigc/',
