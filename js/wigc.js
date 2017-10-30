@@ -10,6 +10,7 @@ var app = new Vue({
       sidebarVisible: false,
       meetoo: '',
       view: 'loading',
+      showMySessionsDesc: true,
       sessions: [],
       vendors: []
     },
@@ -175,7 +176,7 @@ var app = new Vue({
         console.log(fave);
         trackEvent("Favorite", self.my.view, fave.title);
       } else {
-        if(self.my.view === 'my-wigc' || (self.my.view === 'vendors' && self.showMyVendors === true)){
+        if(self.my.view === 'My WIGC' || (self.my.view === 'Vendors' && self.showMyVendors === true)){
           self.unfavorited.push(fave.url);
           setTimeout(function(){
             snap(self.unfavorited, fave.url);

@@ -61,6 +61,16 @@
         </div>
       </section>
       <section class="cards sessions my-wigc" v-cloak v-bind:class="{ visible: my.view == 'My WIGC' }">
+        <article class="card alt empty-notification" v-if="my.showMySessionsDesc">
+          <div class="card-header">
+            <h3 class="title">Personalize your schedule</h3><a class="close-button" v-on:click="my.showMySessionsDesc = false">
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+                <path class="close-x" d="M 10,10 L 30,30 M 30,10 L 10,30"></path>
+              </svg></a>
+          </div>
+          <p>Events you star under Sessions and Parties will show here as part of your WIGC schedule. Go add some if you haven't already!</p>
+          <div class="card-footer"><a class="button" v-on:click="switchSection('Seminars')">Sessions</a><a class="button" v-on:click="switchSection('Parties')">Parties</a></div>
+        </article>
         <article class="card session" v-for="session in mySessions" :class="{full: session.fullinfo, disabled:isDisabled(session) }">
           <h3 class="title"> <a v-on:click="session.fullinfo = !session.fullinfo">{{session.title}}</a><a class="favorite" v-on:click="toggleFavorite(my.sessions, session);" :class="{active: session.favorite}">
               <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
