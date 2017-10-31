@@ -171,7 +171,7 @@ sup {
 svg {
   overflow: hidden; }
 
-section.home .welcome:after, .cards .card:after, .card.vendor:after {
+section.home .welcome:after, .cards .card:after, .card.vendor:after, .timeline-TweetList .timeline-TweetList-tweet:after, .instagram-wrapper .instagram-post:after {
   content: "";
   display: table;
   clear: both; }
@@ -1059,6 +1059,277 @@ section.meetoo {
     transform: translateY(0); }
   section.meetoo iframe {
     height: calc(100vh - 96px); }
+
+.twitter-wrapper, .instagram-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding-top: 62px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  z-index: 2;
+  -webkit-transform: translateY(-120%);
+  -ms-transform: translateY(-120%);
+  transform: translateY(-120%);
+  -webkit-transition: -webkit-transform 1s ease;
+  transition: -webkit-transform 1s ease;
+  -o-transition: transform 1s ease;
+  transition: transform 1s ease;
+  transition: transform 1s ease, -webkit-transform 1s ease;
+  top: 50px;
+  padding-top: 0;
+  margin-top: 62px; }
+  .twitter-wrapper.visible, .instagram-wrapper.visible {
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0); }
+  .twitter-wrapper .social-links, .instagram-wrapper .social-links {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: strech;
+    -ms-flex-align: strech;
+    -webkit-align-items: strech;
+    align-items: strech;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: distribute;
+    justify-content: space-around; }
+    .twitter-wrapper .social-links a, .instagram-wrapper .social-links a {
+      width: 50%;
+      -webkit-flex-basis: 50%;
+      -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+      -webkit-box-flex: 0;
+      -webkit-flex-grow: 0;
+      -ms-flex-positive: 0;
+      flex-grow: 0;
+      -webkit-flex-shrink: 1;
+      -ms-flex-negative: 1;
+      flex-shrink: 1;
+      -webkit-align-self: auto;
+      -ms-flex-item-align: auto;
+      align-self: auto;
+      text-align: center; }
+
+.SandboxRoot body {
+  background-color: transparent; }
+
+.timeline-TweetList {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding-top: 62px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  z-index: 2;
+  -webkit-transform: translateY(-120%);
+  -ms-transform: translateY(-120%);
+  transform: translateY(-120%);
+  -webkit-transition: -webkit-transform 1s ease;
+  transition: -webkit-transform 1s ease;
+  -o-transition: transform 1s ease;
+  transition: transform 1s ease;
+  transition: transform 1s ease, -webkit-transform 1s ease;
+  padding-top: 0;
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0); }
+  .timeline-TweetList.visible {
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0); }
+  .timeline-TweetList .timeline-TweetList-tweet {
+    margin: 0 24px 24px 24px;
+    padding: 24px;
+    background-color: #e8e8e8;
+    -webkit-box-shadow: 0 0 3px rgba(73, 73, 73, 0.3);
+    box-shadow: 0 0 3px rgba(73, 73, 73, 0.3);
+    font-family: "Sen", "Comic Sans MS", "Comic Sans", cursive;
+    position: relative;
+    color: #494949;
+    -webkit-transition: margin 0.5s linear, padding 0.5s linear,border-radius 0.5s linear;
+    -o-transition: margin 0.5s linear, padding 0.5s linear,border-radius 0.5s linear;
+    transition: margin 0.5s linear, padding 0.5s linear,border-radius 0.5s linear; }
+    .timeline-TweetList .timeline-TweetList-tweet a {
+      color: #F86C4F; }
+    .timeline-TweetList .timeline-TweetList-tweet .title {
+      font-family: "DejaVu", "Papyrus", serif;
+      margin-bottom: 0.25em;
+      padding-right: 42px;
+      font-size: 115%; }
+    .timeline-TweetList .timeline-TweetList-tweet a.favorite {
+      color: #494949;
+      width: 26px;
+      height: 26px;
+      position: absolute;
+      top: 24px;
+      right: 24px; }
+      .timeline-TweetList .timeline-TweetList-tweet a.favorite .fill {
+        opacity: 0; }
+      .timeline-TweetList .timeline-TweetList-tweet a.favorite:hover {
+        color: #F86C4F; }
+      .timeline-TweetList .timeline-TweetList-tweet a.favorite.active .fill {
+        opacity: 1; }
+    .timeline-TweetList .timeline-TweetList-tweet a.meetoo {
+      color: #4885ed;
+      width: 26px;
+      height: 26px;
+      position: absolute;
+      top: 60px;
+      right: 24px; }
+      .timeline-TweetList .timeline-TweetList-tweet a.meetoo .filled {
+        opacity: 0; }
+      .timeline-TweetList .timeline-TweetList-tweet a.meetoo:hover .filled {
+        opacity: 1; }
+      .timeline-TweetList .timeline-TweetList-tweet a.meetoo:hover .outlined {
+        opacity: 0; }
+    .timeline-TweetList .timeline-TweetList-tweet .icon-link {
+      margin-right: 0.5em;
+      color: #F86C4F; }
+      .timeline-TweetList .timeline-TweetList-tweet .icon-link .icon {
+        width: 1.2em;
+        height: 1.2em; }
+    .timeline-TweetList .timeline-TweetList-tweet.full {
+      margin: 0 0 48px 0;
+      border-radius: 0; }
+      .timeline-TweetList .timeline-TweetList-tweet.full .title {
+        font-size: 140%; }
+    .timeline-TweetList .timeline-TweetList-tweet.disabled {
+      opacity: 0.4;
+      -webkit-transition: all 0.5s ease;
+      -o-transition: all 0.5s ease;
+      transition: all 0.5s ease; }
+    .timeline-TweetList .timeline-TweetList-tweet .tags {
+      padding-left: 0;
+      margin-bottom: 0.5em; }
+      .timeline-TweetList .timeline-TweetList-tweet .tags li {
+        background-color: #494949;
+        color: #eee;
+        display: inline-block;
+        margin-right: 0.5em;
+        padding: 0.1em 0.65em;
+        font-size: 80%; }
+    .timeline-TweetList .timeline-TweetList-tweet:last-child {
+      margin-bottom: 60px; }
+
+.timeline-LoadMore--edge, .MediaCard-siteUser {
+  display: none; }
+
+.instagram-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding-top: 62px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  z-index: 2;
+  -webkit-transform: translateY(-120%);
+  -ms-transform: translateY(-120%);
+  transform: translateY(-120%);
+  -webkit-transition: -webkit-transform 1s ease;
+  transition: -webkit-transform 1s ease;
+  -o-transition: transform 1s ease;
+  transition: transform 1s ease;
+  transition: transform 1s ease, -webkit-transform 1s ease;
+  top: 50px;
+  padding-top: 0;
+  margin-top: 62px; }
+  .instagram-wrapper.visible {
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0); }
+  .instagram-wrapper .instagram-post {
+    margin: 0 24px 24px 24px;
+    padding: 24px;
+    background-color: #e8e8e8;
+    -webkit-box-shadow: 0 0 3px rgba(73, 73, 73, 0.3);
+    box-shadow: 0 0 3px rgba(73, 73, 73, 0.3);
+    font-family: "Sen", "Comic Sans MS", "Comic Sans", cursive;
+    position: relative;
+    color: #494949;
+    -webkit-transition: margin 0.5s linear, padding 0.5s linear,border-radius 0.5s linear;
+    -o-transition: margin 0.5s linear, padding 0.5s linear,border-radius 0.5s linear;
+    transition: margin 0.5s linear, padding 0.5s linear,border-radius 0.5s linear;
+    padding: 1em;
+    margin: 1em; }
+    .instagram-wrapper .instagram-post a {
+      color: #F86C4F; }
+    .instagram-wrapper .instagram-post .title {
+      font-family: "DejaVu", "Papyrus", serif;
+      margin-bottom: 0.25em;
+      padding-right: 42px;
+      font-size: 115%; }
+    .instagram-wrapper .instagram-post a.favorite {
+      color: #494949;
+      width: 26px;
+      height: 26px;
+      position: absolute;
+      top: 24px;
+      right: 24px; }
+      .instagram-wrapper .instagram-post a.favorite .fill {
+        opacity: 0; }
+      .instagram-wrapper .instagram-post a.favorite:hover {
+        color: #F86C4F; }
+      .instagram-wrapper .instagram-post a.favorite.active .fill {
+        opacity: 1; }
+    .instagram-wrapper .instagram-post a.meetoo {
+      color: #4885ed;
+      width: 26px;
+      height: 26px;
+      position: absolute;
+      top: 60px;
+      right: 24px; }
+      .instagram-wrapper .instagram-post a.meetoo .filled {
+        opacity: 0; }
+      .instagram-wrapper .instagram-post a.meetoo:hover .filled {
+        opacity: 1; }
+      .instagram-wrapper .instagram-post a.meetoo:hover .outlined {
+        opacity: 0; }
+    .instagram-wrapper .instagram-post .icon-link {
+      margin-right: 0.5em;
+      color: #F86C4F; }
+      .instagram-wrapper .instagram-post .icon-link .icon {
+        width: 1.2em;
+        height: 1.2em; }
+    .instagram-wrapper .instagram-post.full {
+      margin: 0 0 48px 0;
+      border-radius: 0; }
+      .instagram-wrapper .instagram-post.full .title {
+        font-size: 140%; }
+    .instagram-wrapper .instagram-post.disabled {
+      opacity: 0.4;
+      -webkit-transition: all 0.5s ease;
+      -o-transition: all 0.5s ease;
+      transition: all 0.5s ease; }
+    .instagram-wrapper .instagram-post .tags {
+      padding-left: 0;
+      margin-bottom: 0.5em; }
+      .instagram-wrapper .instagram-post .tags li {
+        background-color: #494949;
+        color: #eee;
+        display: inline-block;
+        margin-right: 0.5em;
+        padding: 0.1em 0.65em;
+        font-size: 80%; }
+    .instagram-wrapper .instagram-post:last-child {
+      margin-bottom: 60px; }
 
 [v-cloak] {
   display: none !important; }

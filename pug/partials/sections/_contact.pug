@@ -1,0 +1,5 @@
+section.cards.sessions(v-cloak v-bind:class="{ visible: my.view == 'Contact' }")
+  article.card
+    h3.title {{contactUs.title}}
+    summary.desc
+    .desc.fulltext(v-html="contactUs.text")

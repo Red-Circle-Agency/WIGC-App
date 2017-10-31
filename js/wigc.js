@@ -12,7 +12,7 @@ var app = new Vue({
       view: 'loading',
       showMySessionsDesc: true,
       sessions: [],
-      vendors: []
+      vendors: [],
     },
     loaded: false,
     home: {},
@@ -23,6 +23,8 @@ var app = new Vue({
     showMyVendors: true,
     showTwitter: true,
     instagramFeed: {},
+    contactUs: {},
+    exhibitorInfo: {},
     error_msg: false
   },
   computed: {
@@ -61,6 +63,8 @@ var app = new Vue({
         self.sessions = data.sessions;
         self.people   = data.people;
         self.vendors  = data.vendors;
+        self.contactUs = data.pages.contactus;
+        self.exhibitorInfo = data.pages.exhibitorinformation;
         self.loaded   = true;
       },
       error: function (error) {

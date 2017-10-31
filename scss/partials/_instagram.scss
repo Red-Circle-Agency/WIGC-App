@@ -1,9 +1,13 @@
 .instagram-wrapper{
   @include cards();
   top: 50px;
+  //Only using this for demoing with temporary toggle. Will probably have to change
+  padding-top: 0;
+  margin-top: 62px;
+  //---------------------------------------------------------------------------------
   .instagram-post{
     @include card();
     padding: 1em;
     margin: 1em;
   }
-}  
+}
