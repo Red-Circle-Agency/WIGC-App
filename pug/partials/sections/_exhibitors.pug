@@ -1,5 +1,5 @@
-section.cards.sessions(v-cloak v-bind:class="{ visible: my.view == 'Info' }")
-  article.card
-    h3.title {{exhibitorInfo.title}}
+section.cards.exhibitors(v-cloak v-bind:class="{ visible: my.view == 'Info' }")
+  article.card(v-for="card in exhibitorInfo.cards")
+    h3.title {{card.title}}
     summary.desc
-    .desc.fulltext(v-html="exhibitorInfo.text")
+    .desc.fulltext(v-html="card.text")
