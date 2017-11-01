@@ -19,6 +19,7 @@ var app = new Vue({
     sessions: [],
     vendors: [],
     people: [],
+    sponsors: [],
     unfavorited: [],
     showMyVendors: true,
     showTwitter: true,
@@ -63,6 +64,8 @@ var app = new Vue({
         self.sessions = data.sessions;
         self.people   = data.people;
         self.vendors  = data.vendors;
+        self.sponsors = data.sponsors;
+        //self.sponsors  = data.sponsors;
         self.contactUs = data.pages.contactus;
         self.exhibitorInfo = data.pages.exhibitorinformation;
         self.loaded   = true;

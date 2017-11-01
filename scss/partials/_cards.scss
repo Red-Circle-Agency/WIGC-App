@@ -1,19 +1,8 @@
 .cards { @include cards();
   .card { @include card(); border-radius: $radius;
-    .close-button{
-      display: inline-block;
-      position: absolute;
-      text-align: right;
-      right: $padding;
-      top: $padding;
-      svg{
-        width: 1.5em;
-        .close-x {
-          stroke: $black;
-          fill: transparent;
-          stroke-linecap: round;
-          stroke-width: 5;
-        }
+    .close-button{ display: inline-block; position: absolute; text-align: right; right: $padding; top: $padding;
+      svg{ width: 1.5em;
+        .close-x { stroke: $black; fill: transparent; stroke-linecap: round; stroke-width: 5; }
       }
     }
    }
@@ -27,6 +16,10 @@
       }
     }
   }
+}
+
+.card {
+  .category { color:$orange; text-transform: uppercase; font-size:1rem; border-bottom:1px solid currentColor; padding-bottom: 0.2em; margin-bottom: 1rem;  margin-top:-0.5em; }
 }
 
 
