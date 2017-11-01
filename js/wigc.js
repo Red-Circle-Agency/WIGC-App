@@ -36,6 +36,14 @@ var app = new Vue({
         }
       });
     },
+    conferenceSchedule: function(){
+      var self = this;
+      return self.sessions.filter(function(s){
+        if(s.type === 'schedule') {
+          return true;
+        }
+      });
+    },
     myVendors: function(){
       var self = this;
       return self.vendors.filter(function(v){

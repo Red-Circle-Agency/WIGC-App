@@ -1,6 +1,7 @@
 aside.sidebar(v-bind:class="{visible: my.sidebarVisible}" v-cloak)
   nav
     a(v-on:click="switchSection('My WIGC')") My WIGC
+    a(v-on:click="switchSection('Schedule')") Schedule
     a(v-on:click="switchSection('Seminars')") Seminars
     a(v-on:click="switchSection('Parties')") Parties
     a(v-on:click="switchSection('Vendors')") Vendors
