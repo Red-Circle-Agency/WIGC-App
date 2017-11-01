@@ -322,17 +322,17 @@
         </div>
       </section>
       <section class="cards contact" v-cloak v-bind:class="{ visible: my.view == 'Contact' }">
-        <article class="card">
-          <h3 class="title">{{contactUs.title}}</h3>
+        <article class="card" v-for="card in contactUs.cards">
+          <h3 class="title">{{card.title}}</h3>
           <summary class="desc"></summary>
-          <div class="desc fulltext" v-html="contactUs.text"></div>
+          <div class="desc fulltext" v-html="card.text"></div>
         </article>
       </section>
       <section class="cards exhibitors" v-cloak v-bind:class="{ visible: my.view == 'Info' }">
-        <article class="card">
-          <h3 class="title">{{exhibitorInfo.title}}</h3>
+        <article class="card" v-for="card in exhibitorInfo.cards">
+          <h3 class="title">{{card.title}}</h3>
           <summary class="desc"></summary>
-          <div class="desc fulltext" v-html="exhibitorInfo.text"></div>
+          <div class="desc fulltext" v-html="card.text"></div>
         </article>
       </section>
     </main>

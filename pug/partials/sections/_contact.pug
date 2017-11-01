@@ -1,5 +1,5 @@
 section.cards.contact(v-cloak v-bind:class="{ visible: my.view == 'Contact' }")
-  article.card
-    h3.title {{contactUs.title}}
+  article.card(v-for="card in contactUs.cards")
+    h3.title {{card.title}}
     summary.desc
-    .desc.fulltext(v-html="contactUs.text")
+    .desc.fulltext(v-html="card.text")
