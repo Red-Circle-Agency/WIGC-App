@@ -1,4 +1,4 @@
-.twitter-wrapper, .instagram-wrapper{
+.social-wrapper{
   @include cards();
   top: 50px;
   //Only using this for demoing with temporary toggle. Will probably have to change
@@ -8,9 +8,41 @@
   .social-links{
     @include flex-container();
     justify-content: space-around;
-    a{
-      @include flex-item(50%, 0,1);
-      text-align: center;
+    margin: 2em 0 4em;
+  }
+  .social-card{
+    @include card();
+    padding: 1em;
+    margin: 1em;
+    .button{
+      color: white;
+    }
+  }
+}
+
+
+.social-toggle{
+  @include flex-container();
+  justify-content: space-around;
+  a{
+    @include flex-item(2.5em, 0,1);
+    background-color: $orange;
+    border-radius: 50%;
+    color: $white;
+    height: 2.5em;
+    padding: .65em;
+    position: relative;
+    text-align: center;
+    &.active{
+      background-color: brown;
+    }
+    .external-bubble{
+      border-radius: 50%;
+      position: absolute;
+      top: 0.15em;
+      right: 0;
+      width: 20px;
+      height: 20px;
     }
   }
 }

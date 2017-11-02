@@ -21,7 +21,7 @@ var app = new Vue({
     people: [],
     unfavorited: [],
     showMyVendors: true,
-    showTwitter: true,
+    socialView: 'twitter',
     instagramFeed: {},
     contactUs: {},
     exhibitorInfo: {},
@@ -175,7 +175,7 @@ var app = new Vue({
     request.onupgradeneeded = function(event) {
       var objStore = event.currentTarget.result.createObjectStore('my');
     };
-    if(self.showTwitter === true && self.my.view === 'social')
+    if(self.socialView === 'twitter')
       self.styleTwitterWidget();
   },
   methods: {
