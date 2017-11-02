@@ -1,5 +1,5 @@
 section.cards.people(v-cloak v-bind:class="{ visible: my.view == 'People' }")
-  article.card.person(v-for="person in people" v-bind:class="{full: person.fullinfo}")
+  article.card.person(v-for="person in people" v-bind:class="{full: person.fullinfo}" :id="person.slug")
     h3.title
       a(v-if="person.url" v-on:click="person.fullinfo = !person.fullinfo") {{person.name}}
       span(v-else) {{person.name}}

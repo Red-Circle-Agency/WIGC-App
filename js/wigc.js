@@ -156,7 +156,7 @@ var app = new Vue({
         snap(faves,fave.url);
       }
     },
-    switchSection: function(newView) {
+    switchSection: function(newView, anchor) {
       var self = this;
       self.my.sidebarVisible = false;
       if(self.my.view === 'my-wigc'){
@@ -165,6 +165,9 @@ var app = new Vue({
         onLoad();
       }
       self.my.view = newView;
+      if(typeof(anchor) !== 'undefined'){
+        $('#' + anchor).parent('.cards').animate({scrollTop: document.getElementById(anchor).offsetTop - 50 });
+      }
       trackEvent("Screen", self.my.view);
     },
     mapClick: function(vendor) {

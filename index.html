@@ -42,6 +42,7 @@
             <path d="M97.5 29.4H4.4V17.3h93.1v12.1zm0 14.7H4.4v12.1h93.1V44.1zm0 26.8H4.4V83h93.1V70.9z"></path>
           </svg></a>
         <nav><a v-on:click="switchSection('Map')">Map</a><a v-on:click="switchSection('Info')">Info</a><a v-on:click="switchSection('Contact')">Contact</a><a v-on:click="my.meetoo = 'https://web.meetoo.com/170479740'; switchSection('meetoo');">Chat</a><a v-on:click="switchSection('social')">Social</a>
+          <!--a(v-on:click="switchSection('Seminars', 'nightclubs-attract-risks-nightlife-and-pool-exposures-to-casinos')") TEST-->
           <!--a(v-on:click="switchSection('meetoo')") Meetoo-->
           <!--a Exhibitors-->
           <!--a Contact-->
@@ -94,7 +95,7 @@
         </article>
       </section>
       <section class="cards schedule" v-cloak v-bind:class="{ visible: my.view == 'Schedule' }">
-        <article class="card session" v-for="session in conferenceSchedule" :class="{full: session.fullinfo }">
+        <article class="card session" v-for="session in conferenceSchedule" :class="{full: session.fullinfo }" :id="session.slug">
           <h3 class="title"> <a v-on:click="session.fullinfo = !session.fullinfo">{{session.title}}</a><a class="favorite" v-on:click="toggleFavorite(my.sessions, session);" :class="{active: session.favorite}">
               <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                 <path class="fill" d="M49.8 1.6L64.6 33l33 5.1-23.9 24.4 5.7 34.6-29.6-16.3-29.5 16.3 5.6-34.6L2 38.1 35 33z"></path>
@@ -137,7 +138,7 @@
         </article>
       </section>
       <section class="cards sessions" v-cloak v-bind:class="{ visible: my.view == 'Seminars' }">
-        <article class="card session" v-for="session in sessions" :class="{full: session.fullinfo }">
+        <article class="card session" v-for="session in sessions" :class="{full: session.fullinfo }" :id="session.slug">
           <h3 class="title"> <a v-on:click="session.fullinfo = !session.fullinfo">{{session.title}}</a><a class="favorite" v-on:click="toggleFavorite(my.sessions, session);" :class="{active: session.favorite}">
               <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                 <path class="fill" d="M49.8 1.6L64.6 33l33 5.1-23.9 24.4 5.7 34.6-29.6-16.3-29.5 16.3 5.6-34.6L2 38.1 35 33z"></path>
@@ -180,7 +181,7 @@
         </article>
       </section>
       <section class="cards parties" v-cloak v-bind:class="{ visible: my.view == 'Parties' }">
-        <article class="card session" v-for="session in sessions" v-if="session.type == 'parties'" :class="{full: session.fullinfo }">
+        <article class="card session" v-for="session in sessions" v-if="session.type == 'parties'" :class="{full: session.fullinfo }" :id="session.slug">
           <h3 class="title"> <a v-on:click="session.fullinfo = !session.fullinfo">{{session.title}}</a><a class="favorite" v-on:click="toggleFavorite(my.sessions, session);" :class="{active: session.favorite}">
               <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                 <path class="fill" d="M49.8 1.6L64.6 33l33 5.1-23.9 24.4 5.7 34.6-29.6-16.3-29.5 16.3 5.6-34.6L2 38.1 35 33z"></path>
@@ -260,7 +261,7 @@
         </article>
       </section>
       <section class="cards people" v-cloak v-bind:class="{ visible: my.view == 'People' }">
-        <article class="card person" v-for="person in people" v-bind:class="{full: person.fullinfo}">
+        <article class="card person" v-for="person in people" v-bind:class="{full: person.fullinfo}" :id="person.slug">
           <h3 class="title"><a v-if="person.url" v-on:click="person.fullinfo = !person.fullinfo">{{person.name}}</a><span v-else>{{person.name}}</span></h3>
           <figure class="pic" v-if="person.pic" v-on:click="person.fullpic = !person.fullpic" v-bind:class="{full: person.fullpic}"><img :src="person.pic"></figure>
           <div class="job" v-if="person.job_title &amp;&amp; person.company"><span class="job-title">{{person.job_title}}</span>,  <span class="company">{{person.company}}</span></div>

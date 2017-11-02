@@ -1,5 +1,5 @@
 section.cards.parties(v-cloak v-bind:class="{ visible: my.view == 'Parties' }")
-  article.card.session(v-for="session in sessions" v-if="session.type == 'parties'"  :class="{full: session.fullinfo }")
+  article.card.session(v-for="session in sessions" v-if="session.type == 'parties'"  :class="{full: session.fullinfo }" :id="session.slug")
     h3.title 
       a(v-on:click="session.fullinfo = !session.fullinfo") {{session.title}}
       a.favorite(v-on:click="toggleFavorite(my.sessions, session);" :class="{active: session.favorite}")
