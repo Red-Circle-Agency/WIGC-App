@@ -1,4 +1,4 @@
-header { z-index: $z-header; background:rgba(#494949,0.44); @include position(fixed,0,0,null,0); height: $header-height; overflow: hidden;
+header { z-index: $z-header; background:rgba(#494949,0.77); @include position(fixed,0,0,null,0); height: $header-height; overflow: hidden;
   .inside { @include flex-container(); padding-left: $padding; padding-right: $padding; }
   .logo.wigc { @include flex-item(82px,0,0); padding-top: 12px; }
   .current-screen { @include flex-item(50%); }

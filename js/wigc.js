@@ -87,50 +87,6 @@ var app = new Vue({
 
     self.getInstagramFeed();
     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-    /*
-
-    // Grab Sessions
-    $.ajax({
-      url: 'https://circle.red/wigc/events',
-      //url: 'http://localhost/wigc/events',
-      method: 'GET',
-      success: function (data) {
-        self.sessions = data;
-      },
-      error: function (error) {
-        alert(JSON.stringify(error));
-        //self.error_msg = error
-      }
-    });
-
-    // Grab Vendors
-    $.ajax({
-      url: 'https://circle.red/wigc/vendors',
-      //url: 'http://localhost/wigc/vendors',
-      method: 'GET',
-      success: function (data) {
-        self.vendors = data;
-      },
-      error: function (error) {
-        alert(JSON.stringify(error));
-        //self.error_msg = error
-      }
-    });
-
-    // Grab People
-    $.ajax({
-      url: 'https://circle.red/wigc/people',
-      //url: 'http://localhost/wigc/people',
-      method: 'GET',
-      success: function (data) {
-        self.people = data;
-      },
-      error: function (error) {
-        alert(JSON.stringify(error));
-        //self.error_msg = error
-      }
-    });
-    */
 
     var request = indexedDB.open("WIGCApp", 3);
 
@@ -290,7 +246,7 @@ var app = new Vue({
     styleTwitterWidget: function(){
       var w = document.getElementById("twitter-widget-0").contentDocument;
       var s = document.createElement("link");
-      s.href = "http://localhost:8888/wigc-app/css/wigc.css";
+      s.href = "https://circle.red/wigc-app/css/wigc.css";
       s.rel = "stylesheet";
       w.head.appendChild(s);
     },
