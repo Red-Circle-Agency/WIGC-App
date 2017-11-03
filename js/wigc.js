@@ -164,9 +164,13 @@ var app = new Vue({
       } if (self.my.view == "map"){
         onLoad();
       }
+      if(newView === 'Vendors' && typeof(anchor) !== 'undefined')
+        self.showMyVendors = false;
       self.my.view = newView;
       if(typeof(anchor) !== 'undefined'){
-        $('#' + anchor).parent('.cards').animate({scrollTop: document.getElementById(anchor).offsetTop - 50 });
+        setTimeout(function(){
+          $('#' + anchor).parent('.cards').animate({scrollTop: document.getElementById(anchor).offsetTop - 50 });
+        },1000);
       }
       trackEvent("Screen", self.my.view);
     },

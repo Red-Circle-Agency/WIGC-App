@@ -8,7 +8,7 @@ section.cards.vendors(v-cloak v-bind:class="{ visible: my.view == 'Vendors' }")
     p You can use this section as a To-Do list with flagged vendors you'd like to talk to. Browse 
       a(v-on:click="showMyVendors = false") my vendors
       |  and click the star to add any vendors to this list.
-  article.card.vendor(v-for="vendor in myVendors" :class="{ full: vendor.fullinfo, disabled:!vendor.favorite && showMyVendors }")
+  article.card.vendor(v-for="vendor in myVendors" :class="{ full: vendor.fullinfo, disabled:!vendor.favorite && showMyVendors }" :id="vendor.slug")
     a.favorite(v-on:click="toggleFavorite(my.vendors, vendor);" :class="{active: vendor.favorite}")
       svg.icon(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100")
         path.fill(d="M49.8 1.6L64.6 33l33 5.1-23.9 24.4 5.7 34.6-29.6-16.3-29.5 16.3 5.6-34.6L2 38.1 35 33z")
