@@ -1,18 +1,9 @@
-.SandboxRoot{
-  body{
-    background-color: transparent;
+.social-wrapper{
+  &.twitter{
+    padding: $padding;
   }
 }
-
-.timeline-TweetList{
-  @include cards();
-  padding-top: 0;
-  transform: translateY(0);
-  .timeline-TweetList-tweet{
-    @include card();
-  }
-}
-
-.timeline-LoadMore--edge, .MediaCard-siteUser{
-  display: none;
+#twitter-widget-0{
+  background-color: $gray;
+  width: 100%!important;
 }

@@ -16,7 +16,7 @@ section.cards.sessions(v-cloak v-bind:class="{ visible: my.view == 'Seminars' }"
         span.duration(v-if="session.duration")
           | {{session.duration}}
       .where.room(v-if="session.room") {{session.room}}
-    summary.desc(v-if="session.teaser && !session.fullinfo" v-html="session.teaser")
+    .desc(v-if="session.teaser && !session.fullinfo" v-html="session.teaser")
     .desc.fulltext(v-if="session.text && session.fullinfo" v-html="session.text")
     .people(v-if="session.people")
       .presented-by Presented by:
