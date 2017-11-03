@@ -130,7 +130,7 @@
   &.visible { transform: translateY(0); }
 }
 
-@mixin card() { margin: 0 $padding $padding $padding; padding:$padding; background-color:#e8e8e8; box-shadow: 0 0 3px rgba($black,0.3); font-family:$sans; position: relative; @extend %clearfix; color:$black;
+@mixin card() { margin: 0 $padding $padding $padding; padding:$padding; background-color:#e8e8e8; box-shadow: 0 0 3px rgba($black,0.3); font-family:$sans; position: relative; @extend %clearfix; color:$black; border-radius: $radius;
   a { color:$orange; }
   .title { font-family: $serif; margin-bottom: 0.25em; padding-right: 42px; font-size:115%; }
 
