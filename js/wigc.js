@@ -20,6 +20,7 @@ var app = new Vue({
     vendors: [],
     people: [],
     sponsors: [],
+    social: {},
     unfavorited: [],
     showMyVendors: true,
     socialView: 'twitter',
@@ -73,7 +74,7 @@ var app = new Vue({
         self.people   = data.people;
         self.vendors  = data.vendors;
         self.sponsors = data.sponsors;
-        //self.sponsors  = data.sponsors;
+        self.social  = data.social;
         self.contactUs = data.pages.contactus;
         self.exhibitorInfo = data.pages.exhibitorinformation;
         self.loaded   = true;
