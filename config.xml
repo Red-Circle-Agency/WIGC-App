@@ -15,8 +15,14 @@
     <allow-intent href="*" />
     <allow-navigation href="*" />
     <engine name="ios" spec="^4.4.0" />
+    <engine name="android" spec="^6.3.0" />
+    <plugin name="cordova-plugin-dialogs" spec="~1.2.0" />
+    <plugin name="cordova-plugin-file" spec="^4.3.3" />
+    <plugin name="cordova-plugin-geolocation" spec="~2.1.0" />
+    <plugin name="cordova-plugin-globalization" spec="~1.0.3" />
+    <plugin name="cordova-plugin-splashscreen" spec="~3.2.1" />
+    <plugin name="cordova-plugin-vibration" spec="~2.1.0" />
     <plugin name="cordova-plugin-whitelist" spec="~1.2.1" />
     <plugin name="onesignal-cordova-plugin" spec="^2.2.2" />
-    <engine name="android" spec="~6.3.0" />
     <plugin name="cordova-plugin-inappbrowser" spec="^1.7.1" />
 </widget>

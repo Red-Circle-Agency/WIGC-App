@@ -104,7 +104,7 @@ var app = new Vue({
 
     document.addEventListener('deviceready', function () {
       // Enable to debug issues.
-       window.plugins.OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
+       window.plugins.OneSignal.setLogLevel({logLevel: 1, visualLevel: 1});
        console.log("Device Ready!");
       var notificationOpenedCallback = function(jsonData) {
         console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
