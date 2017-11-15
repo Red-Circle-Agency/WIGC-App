@@ -32,7 +32,7 @@
         </div>
       </header>
       <aside class="sidebar" v-bind:class="{visible: my.sidebarVisible}" v-cloak>
-        <nav><a v-on:click="switchSection('My WIGC')">My WIGC</a><a v-on:click="switchSection('Schedule')">Schedule</a><a v-on:click="switchSection('Seminars')">Seminars</a><a v-on:click="switchSection('Parties')">Parties</a><a v-on:click="switchSection('Vendors')">Exhibitors</a><a v-on:click="switchSection('People')">People</a><a v-on:click="switchSection('Sponsors')">Sponsors</a></nav>
+        <nav><a v-on:click="switchSection('My WIGC')">My WIGC</a><a v-on:click="switchSection('Schedule')">Schedule</a><a v-on:click="switchSection('Seminars')">Seminars</a><a v-on:click="switchSection('Networking Events')">Networking Events</a><a v-on:click="switchSection('Exhibitors')">Exhibitors</a><a v-on:click="switchSection('People')">People</a><a v-on:click="switchSection('Sponsors')">Sponsors</a></nav>
       </aside>
       <footer><a class="toggle-sidebar" v-on:click="my.sidebarVisible = !my.sidebarVisible" v-bind:class="{visible: !my.sidebarVisible}">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
@@ -177,7 +177,7 @@
           </ul>
         </article>
       </section>
-      <section class="cards parties" v-cloak v-bind:class="{ visible: my.view == 'Parties' }">
+      <section class="cards parties" v-cloak v-bind:class="{ visible: my.view == 'Networking Events' }">
         <article class="card session" v-for="session in sessions" v-if="session.type == 'parties'" :class="{full: session.fullinfo }" :id="session.slug">
           <h3 class="title"> <a v-on:click="session.fullinfo = !session.fullinfo">{{session.title}}</a><a class="favorite" v-on:click="toggleFavorite(my.sessions, session);" :class="{active: session.favorite}">
               <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
@@ -206,7 +206,7 @@
           </ul>
         </article>
       </section>
-      <section class="cards vendors" v-cloak v-bind:class="{ visible: my.view == 'Vendors' }">
+      <section class="cards vendors" v-cloak v-bind:class="{ visible: my.view == 'Exhibitors' }">
         <nav class="vendor-toggle"><a v-on:click="showMyVendors = true" :class="{active:showMyVendors}">My Exhibitors</a><a v-on:click="showMyVendors = false" :class="{active:!showMyVendors}">All Exhibitors</a></nav>
         <article class="card alt empty-notification" v-if="showMyVendors &amp;&amp; (my.vendors.length &lt; 1)">
           <h3 class="title">Add some exhibitors</h3>

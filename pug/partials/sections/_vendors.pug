@@ -1,4 +1,4 @@
-section.cards.vendors(v-cloak v-bind:class="{ visible: my.view == 'Vendors' }")
+section.cards.vendors(v-cloak v-bind:class="{ visible: my.view == 'Exhibitors' }")
   nav.vendor-toggle
     a(v-on:click="showMyVendors = true" :class="{active:showMyVendors}") My Exhibitors
     a(v-on:click="showMyVendors = false" :class="{active:!showMyVendors}") All Exhibitors
