@@ -395,6 +395,54 @@ header {
       font-family: "DejaVu", "Papyrus", serif;
       color: #2a2a2a; }
 
+.bg-photo {
+  background-image: url(../img/bg-desert.jpg);
+  background-size: cover;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: -2; }
+
+.bg {
+  -webkit-animation: slide 10s ease-in-out infinite alternate;
+  animation: slide 10s ease-in-out infinite alternate;
+  background-image: -webkit-linear-gradient(150deg, #a61304 50%, #807055 50%);
+  background-image: -o-linear-gradient(150deg, #a61304 50%, #807055 50%);
+  background-image: linear-gradient(-60deg, #a61304 50%, #807055 50%);
+  bottom: 0;
+  left: -50%;
+  opacity: .25;
+  position: fixed;
+  right: -50%;
+  top: 0;
+  z-index: -1; }
+
+.bg2 {
+  -webkit-animation-direction: alternate-reverse;
+  animation-direction: alternate-reverse;
+  -webkit-animation-duration: 11s;
+  animation-duration: 11s; }
+
+.bg3 {
+  -webkit-animation-duration: 12s;
+  animation-duration: 12s; }
+
+@-webkit-keyframes slide {
+  0% {
+    -webkit-transform: translateX(-25%);
+    transform: translateX(-25%); }
+  100% {
+    -webkit-transform: translateX(25%);
+    transform: translateX(25%); } }
+
+@keyframes slide {
+  0% {
+    -webkit-transform: translateX(-25%);
+    transform: translateX(-25%); }
+  100% {
+    -webkit-transform: translateX(25%);
+    transform: translateX(25%); } }
+
 aside.sidebar {
   position: fixed;
   top: 38px;
