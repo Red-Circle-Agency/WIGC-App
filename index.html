@@ -32,7 +32,7 @@
         </div>
       </header>
       <aside class="sidebar" v-bind:class="{visible: my.sidebarVisible}" v-cloak>
-        <nav><a v-on:click="switchSection('My WIGC')">My WIGC</a><a v-on:click="switchSection('Schedule')">Schedule</a><a v-on:click="switchSection('Seminars')">Seminars</a><a v-on:click="switchSection('Parties')">Parties</a><a v-on:click="switchSection('Vendors')">Vendors</a><a v-on:click="switchSection('People')">People</a><a v-on:click="switchSection('Sponsors')">Sponsors</a></nav>
+        <nav><a v-on:click="switchSection('My WIGC')">My WIGC</a><a v-on:click="switchSection('Schedule')">Schedule</a><a v-on:click="switchSection('Seminars')">Seminars</a><a v-on:click="switchSection('Parties')">Parties</a><a v-on:click="switchSection('Vendors')">Exhibitors</a><a v-on:click="switchSection('People')">People</a><a v-on:click="switchSection('Sponsors')">Sponsors</a></nav>
       </aside>
       <footer><a class="toggle-sidebar" v-on:click="my.sidebarVisible = !my.sidebarVisible" v-bind:class="{visible: !my.sidebarVisible}">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
