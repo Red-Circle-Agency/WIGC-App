@@ -1,13 +1,13 @@
 section.cards.vendors(v-cloak v-bind:class="{ visible: my.view == 'Vendors' }")
   nav.vendor-toggle
-    a(v-on:click="showMyVendors = true" :class="{active:showMyVendors}") My Vendors
-    a(v-on:click="showMyVendors = false" :class="{active:!showMyVendors}") All Vendors
+    a(v-on:click="showMyVendors = true" :class="{active:showMyVendors}") My Exhibitors
+    a(v-on:click="showMyVendors = false" :class="{active:!showMyVendors}") All Exhibitors
     
   article.card.alt.empty-notification(v-if="showMyVendors && (my.vendors.length < 1)")
-    h3.title Add some vendors
-    p You can use this section as a To-Do list with flagged vendors you'd like to talk to. Browse 
-      a(v-on:click="showMyVendors = false") my vendors
-      |  and click the star to add any vendors to this list.
+    h3.title Add some exhibitors
+    p You can use this section as a To-Do list with flagged exhibitors you'd like to talk to. Browse 
+      a(v-on:click="showMyVendors = false") my exhibitors
+      |  and click the star to add any exhibitors to this list.
   article.card.vendor(v-for="vendor in myVendors" :class="{ full: vendor.fullinfo, disabled:!vendor.favorite && showMyVendors }" :id="vendor.slug")
     a.favorite(v-on:click="toggleFavorite(my.vendors, vendor);" :class="{active: vendor.favorite}")
       svg.icon(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100")
