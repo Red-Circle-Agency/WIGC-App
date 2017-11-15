@@ -924,6 +924,19 @@ figure.pic {
 .card.session a {
   color: #F86C4F; }
 
+.card.session .track {
+  margin-bottom: 0.5rem;
+  padding-right: 3rem; }
+  .card.session .track span {
+    font-family: "Sen", "Comic Sans MS", "Comic Sans", cursive;
+    font-size: 1rem;
+    font-weight: 300;
+    display: inline-block;
+    padding-right: 2em;
+    border-bottom: 1px solid currentColor;
+    line-height: 100%;
+    text-transform: uppercase; }
+
 .card.session .when-and-where {
   margin-bottom: 0.5em; }
 
