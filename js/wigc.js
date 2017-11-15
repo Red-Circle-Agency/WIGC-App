@@ -46,6 +46,14 @@ var app = new Vue({
         }
       });
     },
+    seminars: function(){
+      var self = this;
+      return self.sessions.filter(function(s){
+        if(s.type === 'sessions') {
+          return true;
+        }
+      });
+    },
     myVendors: function(){
       var self = this;
       return self.vendors.filter(function(v){
@@ -87,7 +95,6 @@ var app = new Vue({
     });
 
     self.getInstagramFeed();
-    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 
     var request = indexedDB.open("WIGCApp", 3);
 
@@ -135,8 +142,8 @@ var app = new Vue({
     request.onupgradeneeded = function(event) {
       var objStore = event.currentTarget.result.createObjectStore('my');
     };
-    if(self.socialView === 'twitter')
-      self.styleTwitterWidget();
+    //if(self.socialView === 'twitter')
+      //self.styleTwitterWidget();
   },
   methods: {
     toggleFavorite: function(faves,fave) {

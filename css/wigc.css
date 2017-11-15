@@ -171,7 +171,7 @@ sup {
 svg {
   overflow: hidden; }
 
-section.home .welcome:after, .cards .card:after, .card.vendor:after, .social-wrapper .social-card:after, .timeline-TweetList .timeline-TweetList-tweet:after {
+section.home .welcome:after, .cards .card:after, .card.vendor:after, .social-wrapper .social-card:after {
   content: "";
   display: table;
   clear: both; }
@@ -200,6 +200,9 @@ section.home .welcome:after, .cards .card:after, .card.vendor:after, .social-wra
 
 html {
   font-size: 18px; }
+
+html, body {
+  overflow: hidden; }
 
 img {
   max-width: 100%;
@@ -514,6 +517,7 @@ section.loading {
   padding-top: 62px;
   overflow-x: hidden;
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   z-index: 2;
   -webkit-transform: translateY(-120%);
   -ms-transform: translateY(-120%);
@@ -610,6 +614,7 @@ section.home {
   padding-top: 62px;
   overflow-x: hidden;
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   z-index: 2;
   -webkit-transform: translateY(-120%);
   -ms-transform: translateY(-120%);
@@ -639,6 +644,7 @@ section.home {
     font-family: "Sen", "Comic Sans MS", "Comic Sans", cursive;
     position: relative;
     color: #494949;
+    border-radius: 6px;
     -webkit-transition: margin 0.5s linear, padding 0.5s linear,border-radius 0.5s linear;
     -o-transition: margin 0.5s linear, padding 0.5s linear,border-radius 0.5s linear;
     transition: margin 0.5s linear, padding 0.5s linear,border-radius 0.5s linear;
@@ -721,6 +727,7 @@ section.error {
   padding-top: 62px;
   overflow-x: hidden;
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   z-index: 2;
   -webkit-transform: translateY(-120%);
   -ms-transform: translateY(-120%);
@@ -749,6 +756,7 @@ section.error {
   padding-top: 62px;
   overflow-x: hidden;
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   z-index: 2;
   -webkit-transform: translateY(-120%);
   -ms-transform: translateY(-120%);
@@ -771,6 +779,7 @@ section.error {
     font-family: "Sen", "Comic Sans MS", "Comic Sans", cursive;
     position: relative;
     color: #494949;
+    border-radius: 6px;
     -webkit-transition: margin 0.5s linear, padding 0.5s linear,border-radius 0.5s linear;
     -o-transition: margin 0.5s linear, padding 0.5s linear,border-radius 0.5s linear;
     transition: margin 0.5s linear, padding 0.5s linear,border-radius 0.5s linear;
@@ -1032,6 +1041,7 @@ figure.pic {
   padding-top: 62px;
   overflow-x: hidden;
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   z-index: 2;
   -webkit-transform: translateY(-120%);
   -ms-transform: translateY(-120%);
@@ -1063,6 +1073,7 @@ section.meetoo {
   padding-top: 62px;
   overflow-x: hidden;
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   z-index: 2;
   -webkit-transform: translateY(-120%);
   -ms-transform: translateY(-120%);
@@ -1089,6 +1100,7 @@ section.meetoo {
   padding-top: 62px;
   overflow-x: hidden;
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   z-index: 2;
   -webkit-transform: translateY(-120%);
   -ms-transform: translateY(-120%);
@@ -1137,6 +1149,7 @@ section.meetoo {
     font-family: "Sen", "Comic Sans MS", "Comic Sans", cursive;
     position: relative;
     color: #494949;
+    border-radius: 6px;
     -webkit-transition: margin 0.5s linear, padding 0.5s linear,border-radius 0.5s linear;
     -o-transition: margin 0.5s linear, padding 0.5s linear,border-radius 0.5s linear;
     transition: margin 0.5s linear, padding 0.5s linear,border-radius 0.5s linear;
@@ -1260,111 +1273,13 @@ section.meetoo {
       width: 20px;
       height: 20px; }
 
-.SandboxRoot body {
-  background-color: transparent; }
+.social-wrapper.twitter {
+  padding: 24px; }
 
-.timeline-TweetList {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding-top: 62px;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  z-index: 2;
-  -webkit-transform: translateY(-120%);
-  -ms-transform: translateY(-120%);
-  transform: translateY(-120%);
-  -webkit-transition: -webkit-transform 1s ease;
-  transition: -webkit-transform 1s ease;
-  -o-transition: transform 1s ease;
-  transition: transform 1s ease;
-  transition: transform 1s ease, -webkit-transform 1s ease;
-  padding-top: 0;
-  -webkit-transform: translateY(0);
-  -ms-transform: translateY(0);
-  transform: translateY(0); }
-  .timeline-TweetList.visible {
-    -webkit-transform: translateY(0);
-    -ms-transform: translateY(0);
-    transform: translateY(0); }
-  .timeline-TweetList .timeline-TweetList-tweet {
-    margin: 0 24px 24px 24px;
-    padding: 24px;
-    background-color: #e8e8e8;
-    -webkit-box-shadow: 0 0 3px rgba(73, 73, 73, 0.3);
-    box-shadow: 0 0 3px rgba(73, 73, 73, 0.3);
-    font-family: "Sen", "Comic Sans MS", "Comic Sans", cursive;
-    position: relative;
-    color: #494949;
-    -webkit-transition: margin 0.5s linear, padding 0.5s linear,border-radius 0.5s linear;
-    -o-transition: margin 0.5s linear, padding 0.5s linear,border-radius 0.5s linear;
-    transition: margin 0.5s linear, padding 0.5s linear,border-radius 0.5s linear; }
-    .timeline-TweetList .timeline-TweetList-tweet a {
-      color: #F86C4F; }
-    .timeline-TweetList .timeline-TweetList-tweet .title {
-      font-family: "DejaVu", "Papyrus", serif;
-      margin-bottom: 0.25em;
-      padding-right: 42px;
-      font-size: 115%; }
-    .timeline-TweetList .timeline-TweetList-tweet a.favorite {
-      color: #494949;
-      width: 26px;
-      height: 26px;
-      position: absolute;
-      top: 24px;
-      right: 24px; }
-      .timeline-TweetList .timeline-TweetList-tweet a.favorite .fill {
-        opacity: 0; }
-      .timeline-TweetList .timeline-TweetList-tweet a.favorite:hover {
-        color: #F86C4F; }
-      .timeline-TweetList .timeline-TweetList-tweet a.favorite.active .fill {
-        opacity: 1; }
-    .timeline-TweetList .timeline-TweetList-tweet a.meetoo {
-      color: #4885ed;
-      width: 26px;
-      height: 26px;
-      position: absolute;
-      top: 60px;
-      right: 24px; }
-      .timeline-TweetList .timeline-TweetList-tweet a.meetoo .filled {
-        opacity: 0; }
-      .timeline-TweetList .timeline-TweetList-tweet a.meetoo:hover .filled {
-        opacity: 1; }
-      .timeline-TweetList .timeline-TweetList-tweet a.meetoo:hover .outlined {
-        opacity: 0; }
-    .timeline-TweetList .timeline-TweetList-tweet .icon-link {
-      margin-right: 0.5em;
-      color: #F86C4F; }
-      .timeline-TweetList .timeline-TweetList-tweet .icon-link .icon {
-        width: 1.2em;
-        height: 1.2em; }
-    .timeline-TweetList .timeline-TweetList-tweet.full {
-      margin: 0 0 48px 0;
-      border-radius: 0; }
-      .timeline-TweetList .timeline-TweetList-tweet.full .title {
-        font-size: 140%; }
-    .timeline-TweetList .timeline-TweetList-tweet.disabled {
-      opacity: 0.4;
-      -webkit-transition: all 0.5s ease;
-      -o-transition: all 0.5s ease;
-      transition: all 0.5s ease; }
-    .timeline-TweetList .timeline-TweetList-tweet .tags {
-      padding-left: 0;
-      margin-bottom: 0.5em; }
-      .timeline-TweetList .timeline-TweetList-tweet .tags li {
-        background-color: #494949;
-        color: #eee;
-        display: inline-block;
-        margin-right: 0.5em;
-        padding: 0.1em 0.65em;
-        font-size: 80%; }
-    .timeline-TweetList .timeline-TweetList-tweet:last-child {
-      margin-bottom: 60px; }
-
-.timeline-LoadMore--edge, .MediaCard-siteUser {
-  display: none; }
+#twitter-widget-0 {
+  background-color: #e8e8e8;
+  border-radius: 6px;
+  width: 100% !important; }
 
 [v-cloak] {
   display: none !important; }

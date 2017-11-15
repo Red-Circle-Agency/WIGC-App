@@ -1,5 +1,5 @@
 section.cards.sessions(v-cloak v-bind:class="{ visible: my.view == 'Seminars' }")
-  article.card.session(v-for="session in sessions" :class="{full: session.fullinfo }" :id="session.slug")
+  article.card.session(v-for="session in seminars" :class="{full: session.fullinfo }" :id="session.slug")
     h3.title 
       a(v-on:click="session.fullinfo = !session.fullinfo") {{session.title}}
       a.favorite(v-on:click="toggleFavorite(my.sessions, session);" :class="{active: session.favorite}")
@@ -16,7 +16,7 @@ section.cards.sessions(v-cloak v-bind:class="{ visible: my.view == 'Seminars' }"
         span.duration(v-if="session.duration")
           | {{session.duration}}
       .where.room(v-if="session.room") {{session.room}}
-    summary.desc(v-if="session.teaser && !session.fullinfo" v-html="session.teaser")
+    .desc(v-if="session.teaser && !session.fullinfo" v-html="session.teaser")
     .desc.fulltext(v-if="session.text && session.fullinfo" v-html="session.text")
     .people(v-if="session.people")
       .presented-by Presented by:

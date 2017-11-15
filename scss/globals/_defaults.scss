@@ -1,6 +1,7 @@
 * { box-sizing: border-box; }
 html { font-size:$font-size; }
 //body { background-color:$body; color:$copy; font-family: 'Quattrocento', serif; }
+html, body {overflow: hidden; }
 img { max-width: 100%; height: auto; }
 svg * { fill:currentColor; }
 a { cursor: pointer; color:$link; }
@@ -12,7 +13,7 @@ h4 { font-size:1.5em; }
 h5 { font-size:1.25em; }
 h6 { font-size:1em; }
 h1, h2, h3, h4, h5, h6 { line-height: 105%; }
-ul { padding-left: 1.5em; 
+ul { padding-left: 1.5em;
   li { list-style-type: disc; }
 }
 [v-cloak] { display: none; }
