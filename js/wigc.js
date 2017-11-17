@@ -27,6 +27,7 @@ var app = new Vue({
     instagramFeed: {},
     contactUs: {},
     exhibitorInfo: {},
+    booths: [],
     error_msg: false
   },
   computed: {
@@ -85,6 +86,7 @@ var app = new Vue({
         self.social  = data.social;
         self.contactUs = data.pages.contactus;
         self.exhibitorInfo = data.pages.exhibitorinformation;
+        self.booths = data.booths;
         self.loaded   = true;
       },
       error: function (error) {

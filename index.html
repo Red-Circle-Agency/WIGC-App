@@ -37,13 +37,14 @@
         </div>
       </header>
       <aside class="sidebar" v-bind:class="{visible: my.sidebarVisible}" v-cloak>
-        <nav><a v-on:click="switchSection('My WIGC')">My WIGC</a><a v-on:click="switchSection('Schedule')">Schedule</a><a v-on:click="switchSection('Seminars')">Seminars</a><a v-on:click="switchSection('Networking Events')">Networking Events</a><a v-on:click="switchSection('Exhibitors')">Exhibitors</a><a v-on:click="switchSection('People')">People</a><a v-on:click="switchSection('Sponsors')">Sponsors</a></nav>
+        <nav><a v-on:click="switchSection('My WIGC')">My WIGC</a><a v-on:click="switchSection('Schedule')">Schedule</a><a v-on:click="switchSection('Seminars')">Seminars</a><a v-on:click="switchSection('Networking Events')">Networking Events</a><a v-on:click="switchSection('Exhibitors')">Exhibitors</a><a v-on:click="switchSection('People')">People</a><a v-on:click="switchSection('Sponsors')">Sponsors</a><a v-on:click="switchSection('social')">Social Media</a></nav>
       </aside>
       <footer><a class="toggle-sidebar" v-on:click="my.sidebarVisible = !my.sidebarVisible" v-bind:class="{visible: !my.sidebarVisible}">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
             <path d="M97.5 29.4H4.4V17.3h93.1v12.1zm0 14.7H4.4v12.1h93.1V44.1zm0 26.8H4.4V83h93.1V70.9z"></path>
           </svg></a>
-        <nav><a v-on:click="switchSection('Map')">Map</a><a v-on:click="switchSection('Info')">Info</a><a v-on:click="switchSection('Contact')">Contact</a><a v-on:click="my.meetoo = 'https://web.meetoo.com/170479740'; switchSection('meetoo');">Chat</a><a v-on:click="switchSection('social')">Social</a>
+        <nav><a v-on:click="switchSection('Map')">Map</a><a v-on:click="switchSection('Info')">Info</a><a v-on:click="switchSection('Contact')">Contact</a><a v-on:click="my.meetoo = 'https://web.meetoo.com/170479740'; switchSection('meetoo');">Chat</a>
+          <!--a(v-on:click="switchSection('social')") Social-->
           <!--a(v-on:click="switchSection('Seminars', 'nightclubs-attract-risks-nightlife-and-pool-exposures-to-casinos')") TEST-->
           <!--a(v-on:click="switchSection('meetoo')") Meetoo-->
           <!--a Exhibitors-->
@@ -300,8 +301,19 @@
       <section class="map" v-cloak v-bind:class="{ visible: my.view == 'Map' }">
         <div class="map-wrapper">
           <!--button(onclick="zoomIn()") Zoom In-->
-          <div class="pinch-zoom-container">
-            <!--img.panzoom#pinch-zoom-image-id(src="img/sample-map.jpg" class="pinch-zoom-image" onload="onLoad()")--><img class="pinch-zoom-image" id="pinch-zoom-image-id" src="img/wigc-floorplan.jpg">
+          <figure>
+            <!--img.panzoom#pinch-zoom-image-id(src="img/sample-map.jpg" class="pinch-zoom-image" onload="onLoad()")-->
+            <!--img.pinch-zoom-image#pinch-zoom-image-id(src="svg/wigc-map.svg")--><img src="svg/wigc-map.svg">
+          </figure>
+          <div class="booths">
+            <table>
+              <tbody>
+                <tr v-for="booth in booths">
+                  <td class="number">{{booth.num}}</td>
+                  <td class="name">{{booth.name}}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
@@ -325,7 +337,7 @@
             <svg class="icon" viewBox="0 0 512 512">
               <path d="M211.9 197.4h-36.7v59.9h36.7V433.1h70.5V256.5h49.2l5.2-59.1h-54.4c0 0 0-22.1 0-33.7 0-13.9 2.8-19.5 16.3-19.5 10.9 0 38.2 0 38.2 0V82.9c0 0-40.2 0-48.8 0 -52.5 0-76.1 23.1-76.1 67.3C211.9 188.8 211.9 197.4 211.9 197.4z"></path>
             </svg></a></nav>
-        <div class="social-wrapper twitter" v-bind:class="{visible: socialView == 'twitter'}"><a class="twitter-timeline" v-if="social.twitter_hashtag" data-chrome="noheader nofooter transparent" data-tweet-limit="5" data-dnt="true" :href="'https://twitter.com/hashtag/'+social.twitter_hashtag" data-widget-id="923205064826740738"></a>
+        <div class="social-wrapper twitter" v-bind:class="{visible: socialView == 'twitter'}"><a class="twitter-timeline" data-chrome="noheader nofooter transparent" data-tweet-limit="5" data-dnt="true" :href="'https://twitter.com/hashtag/'+social.twitter_hashtag" data-widget-id="923205064826740738"></a>
           <article class="card" v-if="social.twitter_leadin" v-html="social.twitter_leadin"></article>
           <div class="social-links twitter" v-if="social.twitter_button_url &amp;&amp; social.twitter_button_text"><a class="button" v-on:click="window.open(social.twitter_button_url, '_system');">
               <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8">

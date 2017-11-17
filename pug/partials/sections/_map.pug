@@ -1,6 +1,13 @@
 section.map(v-cloak v-bind:class="{ visible: my.view == 'Map' }")
   .map-wrapper
     //button(onclick="zoomIn()") Zoom In
-    .pinch-zoom-container
+    figure
       //img.panzoom#pinch-zoom-image-id(src="img/sample-map.jpg" class="pinch-zoom-image" onload="onLoad()")
-      img.pinch-zoom-image#pinch-zoom-image-id(src="img/wigc-floorplan.jpg")
+      //img.pinch-zoom-image#pinch-zoom-image-id(src="svg/wigc-map.svg")
+      img(src="svg/wigc-map.svg")
+    .booths
+      table
+        tbody
+          tr(v-for="booth in booths")
+            td.number {{booth.num}}
+            td.name {{booth.name}}

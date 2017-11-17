@@ -1111,19 +1111,67 @@ figure.pic {
   transition: -webkit-transform 1s ease;
   -o-transition: transform 1s ease;
   transition: transform 1s ease;
-  transition: transform 1s ease, -webkit-transform 1s ease;
-  padding: 0; }
+  transition: transform 1s ease, -webkit-transform 1s ease; }
   .map.visible {
     -webkit-transform: translateY(0);
     -ms-transform: translateY(0);
     transform: translateY(0); }
-  .map .pinch-zoom-container {
-    overflow: hidden;
-    height: calc(100vh - 78px);
-    background: white; }
-  .map .pinch-zoom-image {
-    width: 100%;
-    max-width: none; }
+  .map .map-wrapper {
+    margin-left: 24px;
+    margin-right: 24px;
+    background: #eee;
+    min-height: calc(100% - 60px);
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    margin-bottom: 52.5px; }
+  .map figure {
+    -webkit-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -webkit-flex-shrink: 1;
+    -ms-flex-negative: 1;
+    flex-shrink: 1;
+    -webkit-align-self: auto;
+    -ms-flex-item-align: auto;
+    align-self: auto; }
+  .map img {
+    width: 100%; }
+  .map .booths {
+    padding: 20px;
+    width: 100%; }
+    .map .booths table {
+      width: 100%; }
+    .map .booths td {
+      border-bottom: 1px solid #494949;
+      padding-bottom: 0.25em;
+      padding-top: 0.5em; }
+    .map .booths td.number {
+      font-family: "Sen", "Comic Sans MS", "Comic Sans", cursive;
+      font-weight: 600;
+      text-align: right; }
+    .map .booths td.name {
+      padding-left: 1em;
+      font-family: "DejaVu", "Papyrus", serif; }
 
 section.meetoo {
   position: fixed;

@@ -1,4 +1,14 @@
-.map { @include cards(); padding: 0;
-  .pinch-zoom-container { overflow: hidden; height: calc(100vh - 78px); background: white; }
-  .pinch-zoom-image {width: 100%; max-width:none; }
+.map { @include cards();
+  //.pinch-zoom-container { overflow: hidden; height: calc(100vh - 78px); background: white; }
+  //.pinch-zoom-image {width: 100%; max-width:none; }
+  .map-wrapper { margin-left: 24px; margin-right: 24px; background:$white; min-height: calc(100% - 60px); @include flex-center(); margin-bottom: ($footer-height * 1.25); }
+  figure { @include flex-item(100%); }
+  img { width: 100%;  }
+  
+  .booths { padding: 20px; width:100%;
+    table { width: 100%; }
+    td { border-bottom: 1px solid $black; padding-bottom: 0.25em; padding-top: 0.5em; }
+    td.number { font-family: $sans; font-weight: $bold; text-align: right; }
+    td.name { padding-left: 1em; font-family: $serif; }
+  }
 }
