@@ -268,7 +268,7 @@ var app = new Vue({
     getInstagramFeed: function(){
       var self = this;
       $.ajax({
-        url: 'https://circle.red/wigc/instagram.php?tag=minneapolis',
+        url: 'https://circle.red/wigc/instagram.php?tag=mywigc',
         method: 'GET',
         success: function (data) {
           self.instagramFeed = data.entry_data.TagPage[0].tag.media.nodes;
