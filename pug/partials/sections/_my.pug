@@ -12,7 +12,8 @@ section.cards.sessions.my-wigc(v-cloak v-bind:class="{ visible: my.view == 'My W
         
   article.card.session(v-for="session in mySessions" :class="{full: session.fullinfo, disabled:isDisabled(session) }")
     h3.title 
-      a(v-on:click="session.fullinfo = !session.fullinfo") {{session.title}}
+      a(v-if="session.text && session.text != session.teaser" v-on:click="session.fullinfo = !session.fullinfo") {{session.title}}
+      span(v-else) {{session.title}}
       a.favorite(v-on:click="toggleFavorite(my.sessions, session);" :class="{active: session.favorite}")
         svg.icon(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100")
           path.fill(d="M49.8 1.6L64.6 33l33 5.1-23.9 24.4 5.7 34.6-29.6-16.3-29.5 16.3 5.6-34.6L2 38.1 35 33z")

@@ -710,7 +710,7 @@ section.home {
       padding-right: 42px;
       font-size: 115%; }
     section.home .welcome a.favorite {
-      color: #494949;
+      color: #F86C4F;
       width: 26px;
       height: 26px;
       position: absolute;
@@ -718,8 +718,6 @@ section.home {
       right: 24px; }
       section.home .welcome a.favorite .fill {
         opacity: 0; }
-      section.home .welcome a.favorite:hover {
-        color: #F86C4F; }
       section.home .welcome a.favorite.active .fill {
         opacity: 1; }
     section.home .welcome a.meetoo {
@@ -840,7 +838,7 @@ section.error {
       padding-right: 42px;
       font-size: 115%; }
     .cards .card a.favorite {
-      color: #494949;
+      color: #F86C4F;
       width: 26px;
       height: 26px;
       position: absolute;
@@ -848,8 +846,6 @@ section.error {
       right: 24px; }
       .cards .card a.favorite .fill {
         opacity: 0; }
-      .cards .card a.favorite:hover {
-        color: #F86C4F; }
       .cards .card a.favorite.active .fill {
         opacity: 1; }
     .cards .card a.meetoo {
@@ -1274,7 +1270,7 @@ section.meetoo {
       padding-right: 42px;
       font-size: 115%; }
     .social-wrapper .social-card a.favorite {
-      color: #494949;
+      color: #F86C4F;
       width: 26px;
       height: 26px;
       position: absolute;
@@ -1282,8 +1278,6 @@ section.meetoo {
       right: 24px; }
       .social-wrapper .social-card a.favorite .fill {
         opacity: 0; }
-      .social-wrapper .social-card a.favorite:hover {
-        color: #F86C4F; }
       .social-wrapper .social-card a.favorite.active .fill {
         opacity: 1; }
     .social-wrapper .social-card a.meetoo {

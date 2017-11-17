@@ -134,9 +134,9 @@
   a { color:$orange; }
   .title { font-family: $serif; margin-bottom: 0.25em; padding-right: 42px; font-size:115%; }
 
-  a.favorite { color:$black; width:26px; height: 26px; @include position(absolute,$padding,$padding);
+  a.favorite { color:$orange; width:26px; height: 26px; @include position(absolute,$padding,$padding);
     .fill { opacity: 0; }
-    &:hover { color:$orange; }
+    //-&:hover { color:$orange; }
     &.active {
       .fill { opacity: 1; }
     }
