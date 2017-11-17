@@ -69,8 +69,8 @@
                 <path class="close-x" d="M 10,10 L 30,30 M 30,10 L 10,30"></path>
               </svg></a>
           </div>
-          <p>Events you star under Sessions and Parties will show here as part of your WIGC schedule. Go add some if you haven't already!</p>
-          <div class="card-footer"><a class="button" v-on:click="switchSection('Seminars')">Sessions</a><a class="button" v-on:click="switchSection('Parties')">Parties</a></div>
+          <p>Events you star under Seminars and Network Events will show here as part of your WIGC schedule. Go add some!</p>
+          <div class="card-footer"><a class="button" v-on:click="switchSection('Seminars')">Seminars</a><a class="button" v-on:click="switchSection('Parties')">Networking</a></div>
         </article>
         <article class="card session" v-for="session in mySessions" :class="{full: session.fullinfo, disabled:isDisabled(session) }">
           <h3 class="title"> <a v-on:click="session.fullinfo = !session.fullinfo">{{session.title}}</a><a class="favorite" v-on:click="toggleFavorite(my.sessions, session);" :class="{active: session.favorite}">
@@ -98,7 +98,7 @@
       </section>
       <section class="cards schedule" v-cloak v-bind:class="{ visible: my.view == 'Schedule' }">
         <article class="card session" v-for="session in conferenceSchedule" :class="{full: session.fullinfo }" :id="session.slug">
-          <h3 class="title"> <a v-on:click="session.fullinfo = !session.fullinfo">{{session.title}}</a><a class="favorite" v-on:click="toggleFavorite(my.sessions, session);" :class="{active: session.favorite}">
+          <h3 class="title"> <a v-if="session.text &amp;&amp; session.text != session.teaser" v-on:click="session.fullinfo = !session.fullinfo">{{session.title}}</a><span v-else="session.text">{{session.title}}</span><a class="favorite" v-on:click="toggleFavorite(my.sessions, session);" :class="{active: session.favorite}">
               <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                 <path class="fill" d="M49.8 1.6L64.6 33l33 5.1-23.9 24.4 5.7 34.6-29.6-16.3-29.5 16.3 5.6-34.6L2 38.1 35 33z"></path>
                 <path class="outline" d="M49.8 13.3L60 35.1l1.1 2.4 2.6.4 23.4 3.6-17 17.6-1.8 1.8.4 2.5 4 24.4-20.5-11.4-2.4-1.3-2.4 1.3-20.5 11.4 4-24.4.4-2.5-1.8-1.8-17.1-17.6L35.8 38l2.6-.4 1.1-2.4 10.3-21.9m0-11.7L35 33 2 38l23.9 24.5-5.6 34.6 29.5-16.3 29.5 16.3-5.6-34.6L97.6 38l-33-5L49.8 1.6z"></path>
@@ -142,7 +142,7 @@
       <section class="cards sessions" v-cloak v-bind:class="{ visible: my.view == 'Seminars' }">
         <article class="card session" v-for="session in seminars" :class="{full: session.fullinfo }" :id="session.slug">
           <div class="track" v-if="session.track"><span>{{session.track}}</span></div>
-          <h3 class="title"> <a v-on:click="session.fullinfo = !session.fullinfo">{{session.title}}</a><a class="favorite" v-on:click="toggleFavorite(my.sessions, session);" :class="{active: session.favorite}">
+          <h3 class="title"> <a v-if="session.text &amp;&amp; session.text != session.teaser" v-on:click="session.fullinfo = !session.fullinfo">{{session.title}}</a><span v-else>{{session.title}}</span><a class="favorite" v-on:click="toggleFavorite(my.sessions, session);" :class="{active: session.favorite}">
               <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                 <path class="fill" d="M49.8 1.6L64.6 33l33 5.1-23.9 24.4 5.7 34.6-29.6-16.3-29.5 16.3 5.6-34.6L2 38.1 35 33z"></path>
                 <path class="outline" d="M49.8 13.3L60 35.1l1.1 2.4 2.6.4 23.4 3.6-17 17.6-1.8 1.8.4 2.5 4 24.4-20.5-11.4-2.4-1.3-2.4 1.3-20.5 11.4 4-24.4.4-2.5-1.8-1.8-17.1-17.6L35.8 38l2.6-.4 1.1-2.4 10.3-21.9m0-11.7L35 33 2 38l23.9 24.5-5.6 34.6 29.5-16.3 29.5 16.3-5.6-34.6L97.6 38l-33-5L49.8 1.6z"></path>
@@ -185,7 +185,7 @@
       </section>
       <section class="cards parties" v-cloak v-bind:class="{ visible: my.view == 'Networking Events' }">
         <article class="card session" v-for="session in sessions" v-if="session.type == 'parties'" :class="{full: session.fullinfo }" :id="session.slug">
-          <h3 class="title"> <a v-on:click="session.fullinfo = !session.fullinfo">{{session.title}}</a><a class="favorite" v-on:click="toggleFavorite(my.sessions, session);" :class="{active: session.favorite}">
+          <h3 class="title"> <a v-if="session.text &amp;&amp; session.text != session.teaser" v-on:click="session.fullinfo = !session.fullinfo">{{session.title}}</a><span v-else>{{session.title}}</span><a class="favorite" v-on:click="toggleFavorite(my.sessions, session);" :class="{active: session.favorite}">
               <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                 <path class="fill" d="M49.8 1.6L64.6 33l33 5.1-23.9 24.4 5.7 34.6-29.6-16.3-29.5 16.3 5.6-34.6L2 38.1 35 33z"></path>
                 <path class="outline" d="M49.8 13.3L60 35.1l1.1 2.4 2.6.4 23.4 3.6-17 17.6-1.8 1.8.4 2.5 4 24.4-20.5-11.4-2.4-1.3-2.4 1.3-20.5 11.4 4-24.4.4-2.5-1.8-1.8-17.1-17.6L35.8 38l2.6-.4 1.1-2.4 10.3-21.9m0-11.7L35 33 2 38l23.9 24.5-5.6 34.6 29.5-16.3 29.5 16.3-5.6-34.6L97.6 38l-33-5L49.8 1.6z"></path>
@@ -307,7 +307,7 @@
       </section>
       <section class="meetoo" v-cloak v-bind:class="{ visible: my.view == 'meetoo' }">
         <div class="map-wrapper">
-          <iframe class="meetoo-frame" width="100%" :src="my.meetoo"></iframe>
+          <iframe class="meetoo-frame" :src="my.meetoo"></iframe>
         </div>
       </section>
       <section class="cards social" v-cloak v-bind:class="{ visible: my.view == 'social' }">
@@ -328,7 +328,7 @@
         <div class="social-wrapper twitter" v-bind:class="{visible: socialView == 'twitter'}"><a class="twitter-timeline" v-if="social.twitter_hashtag" data-chrome="noheader nofooter transparent" data-tweet-limit="5" data-dnt="true" :href="'https://twitter.com/hashtag/'+social.twitter_hashtag" data-widget-id="923205064826740738"></a>
           <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
           <article class="card" v-if="social.twitter_leadin" v-html="social.twitter_leadin"></article>
-          <div class="social-links twitter" v-if="social.twitter_button_url &amp;&amp; social.twitter_button_text"><a class="button" v-on:click="window.open(social.twitter_button_url, '_system');"> 
+          <div class="social-links twitter" v-if="social.twitter_button_url &amp;&amp; social.twitter_button_text"><a class="button" v-on:click="window.open(social.twitter_button_url, '_system');">
               <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8">
                 <path d="M7.9 1.5c-.3.1-.6.2-.9.2.3-.2.6-.5.7-.9-.3.2-.6.4-1 .4C6.4.9 6 .7 5.5.7c-.9 0-1.6.7-1.6 1.6v.4C2.6 2.6 1.4 2 .6 1c-.2.3-.2.5-.2.8 0 .6.3 1.1.7 1.3-.3.1-.5 0-.7-.1 0 .8.6 1.4 1.3 1.6-.1 0-.3.1-.4.1H1c.2.6.8 1.1 1.5 1.1-.6.4-1.3.7-2 .7H.1c.7.5 1.6.7 2.5.7 3 0 4.6-2.5 4.6-4.6v-.3c.2-.2.5-.5.7-.8z"></path>
               </svg><span>{{social.twitter_button_text}}</span></a></div>

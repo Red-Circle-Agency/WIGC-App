@@ -5,10 +5,10 @@ section.cards.sessions.my-wigc(v-cloak v-bind:class="{ visible: my.view == 'My W
       a.close-button(v-on:click="my.showMySessionsDesc = false")
         svg.icon(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40")
           path.close-x(d="M 10,10 L 30,30 M 30,10 L 10,30")
-    p Events you star under Sessions and Parties will show here as part of your WIGC schedule. Go add some if you haven't already!
+    p Events you star under Seminars and Network Events will show here as part of your WIGC schedule. Go add some!
     .card-footer
-      a.button(v-on:click="switchSection('Seminars')") Sessions
-      a.button(v-on:click="switchSection('Parties')") Parties
+      a.button(v-on:click="switchSection('Seminars')") Seminars
+      a.button(v-on:click="switchSection('Parties')") Networking
         
   article.card.session(v-for="session in mySessions" :class="{full: session.fullinfo, disabled:isDisabled(session) }")
     h3.title 

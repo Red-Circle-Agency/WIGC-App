@@ -1143,14 +1143,16 @@ section.meetoo {
   transition: -webkit-transform 1s ease;
   -o-transition: transform 1s ease;
   transition: transform 1s ease;
-  transition: transform 1s ease, -webkit-transform 1s ease;
-  padding: 10px; }
+  transition: transform 1s ease, -webkit-transform 1s ease; }
   section.meetoo.visible {
     -webkit-transform: translateY(0);
     -ms-transform: translateY(0);
     transform: translateY(0); }
   section.meetoo iframe {
-    height: calc(100vh - 96px); }
+    height: calc(100vh - 120px);
+    margin-left: 24px;
+    margin-right: 24px;
+    width: calc(100% - 48px); }
 
 .social-wrapper {
   position: fixed;
