@@ -3,7 +3,7 @@ header
     .logo.wigc
       img(src="svg/logos/wigc.svg")
     .current-screen
-      span(v-if="my.view && (my.view != 'Home') && (my.view != 'loading')") {{my.view}}
+      span(v-cloak v-if="my.view && (my.view != 'Home') && (my.view != 'loading')") {{my.view}}
     .logo.cniga(v-cloak)
       .sun(v-bind:class="{loaded:loaded}")
         svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100")

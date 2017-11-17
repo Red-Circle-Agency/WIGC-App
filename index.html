@@ -20,7 +20,7 @@
       <header>
         <div class="inside">
           <div class="logo wigc"><img src="svg/logos/wigc.svg"></div>
-          <div class="current-screen"><span v-if="my.view &amp;&amp; (my.view != 'Home') &amp;&amp; (my.view != 'loading')">{{my.view}}</span></div>
+          <div class="current-screen"><span v-cloak v-if="my.view &amp;&amp; (my.view != 'Home') &amp;&amp; (my.view != 'loading')">{{my.view}}</span></div>
           <div class="logo cniga" v-cloak>
             <div class="sun" v-bind:class="{loaded:loaded}">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
