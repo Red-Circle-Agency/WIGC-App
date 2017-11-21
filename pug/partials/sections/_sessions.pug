@@ -1,6 +1,7 @@
 section.cards.sessions(v-cloak v-bind:class="{ visible: my.view == 'Seminars' }")
   nav.session-filters
-    a.show-filters(v-on:click="showFilters = !showFilters" v-bind:class="{active: showFilters}") Filter Session Tracks
+    a.show-filters(v-on:click="showFilters = !showFilters" v-bind:class="{active: showFilters}") Now Showing: 
+      strong {{filterIndicator}}
     .filter-menu(v-bind:class="{visible: showFilters}")
       label.session-filter(v-for="track in seminarTracks" ) 
         input(type="checkbox"  v-bind:name="track" v-bind:value="track" v-model="selectedTracks") 

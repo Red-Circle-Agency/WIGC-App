@@ -68,6 +68,13 @@ var app = new Vue({
         return (t.indexOf(s) === i && s !== undefined);
       });
     },
+    filterIndicator:function(){
+      var self = this;
+      if( self.selectedTracks.length === 0 || self.selectedTracks.length === self.seminarTracks.length)
+        return "All Sessions";
+      else
+        return self.selectedTracks.join(', ');
+    },
     myVendors: function(){
       var self = this;
       return self.vendors.filter(function(v){

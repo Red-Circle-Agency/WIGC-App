@@ -141,7 +141,7 @@
         </article>
       </section>
       <section class="cards sessions" v-cloak v-bind:class="{ visible: my.view == 'Seminars' }">
-        <nav class="session-filters"><a class="show-filters" v-on:click="showFilters = !showFilters" v-bind:class="{active: showFilters}">Filter Session Tracks</a>
+        <nav class="session-filters"><a class="show-filters" v-on:click="showFilters = !showFilters" v-bind:class="{active: showFilters}">Now Showing: <strong>{{filterIndicator}}</strong></a>
           <div class="filter-menu" v-bind:class="{visible: showFilters}">
             <label class="session-filter" v-for="track in seminarTracks"> 
               <input type="checkbox" v-bind:name="track" v-bind:value="track" v-model="selectedTracks">{{track}}
