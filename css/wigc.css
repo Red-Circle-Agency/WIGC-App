@@ -1209,6 +1209,8 @@ figure.pic {
     .map .booths td.name {
       padding-left: 1em;
       font-family: "DejaVu", "Papyrus", serif; }
+    .map .booths a {
+      color: #F86C4F; }
 
 section.meetoo {
   position: fixed;
