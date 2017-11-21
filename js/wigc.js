@@ -28,6 +28,7 @@ var app = new Vue({
     contactUs: {},
     exhibitorInfo: {},
     booths: [],
+    selectedTracks: [],
     error_msg: false
   },
   computed: {
@@ -51,8 +52,18 @@ var app = new Vue({
       var self = this;
       return self.sessions.filter(function(s){
         if(s.type === 'sessions') {
-          return true;
+          if((self.selectedTracks.indexOf(s.track) !== -1) || (self.selectedTracks.length === 0))
+            return true;
         }
+      });
+    },
+    seminarTracks:function(){
+      var self = this;
+      tracks = self.sessions.map(function(s){
+        return s.track;
+      });
+      return tracks.filter(function(s,i,t){
+        return (t.indexOf(s) === i && s !== undefined);
       });
     },
     myVendors: function(){
