@@ -4,6 +4,13 @@ section.home { @include cards(); transition:all 2s ease;
   &.visible { transition-delay: 2s; }
   .welcome { @include card(); background-color:transparent; box-shadow: none; color:$white; text-shadow: 1px 1px 0 $black, -1px -1px 0 $black; font-size:130%; }
   h1 { margin-bottom: 0.5em; }
+  
+  
+  .card { color:$white; padding-left: 0; padding-right: 0; box-shadow:none; border:none; text-align: center; background: transparent; 
+    h2, h3, h4 { margin-bottom: 0.75em; }
+  }
+  
+  
 }
 
 section.error { @include cards();

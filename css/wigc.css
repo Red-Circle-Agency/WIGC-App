@@ -764,6 +764,17 @@ section.home {
       margin-bottom: 60px; }
   section.home h1 {
     margin-bottom: 0.5em; }
+  section.home .card {
+    color: #eee;
+    padding-left: 0;
+    padding-right: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: none;
+    text-align: center;
+    background: transparent; }
+    section.home .card h2, section.home .card h3, section.home .card h4 {
+      margin-bottom: 0.75em; }
 
 section.error {
   position: fixed;
