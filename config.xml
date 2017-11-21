@@ -47,15 +47,11 @@
         <splash src="res/splash/android/drawable-land-ldpi/screen.png" density="land-ldpi"/>
         <splash src="res/splash/android/drawable-land-mdpi/screen.png" density="land-mdpi"/>
         <splash src="res/splash/android/drawable-land-xhdpi/screen.png" density="land-xhdpi"/>
-        <splash src="res/splash/android/drawable-land-xxhdpi/screen.png" density="land-xxhdpi"/>
-        <splash src="res/splash/android/drawable-land-xxxhdpi/screen.png" density="land-xxxhdpi"/>
 
         <splash src="res/splash/android/drawable-hdpi/screen.png" density="port-hdpi"/>
         <splash src="res/splash/android/drawable-ldpi/screen.png" density="port-ldpi"/>
         <splash src="res/splash/android/drawable-mdpi/screen.png" density="port-mdpi"/>
         <splash src="res/splash/android/drawable-xhdpi/screen.png" density="port-xhdpi"/>
-        <splash src="res/splash/android/drawable-xxhdpi/screen.png" density="port-xxhdpi"/>
-        <splash src="res/splash/android/drawable-xxxhdpi/screen.png" density="port-xxxhdpi"/>
     </platform>
     <preference name="android-minSdkVersion" value="20" />
     <platform name="winphone" />
