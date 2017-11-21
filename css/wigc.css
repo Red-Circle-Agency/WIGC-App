@@ -936,6 +936,30 @@ section.error {
       .cards .card.alt .card-footer .button {
         margin: 1.5em; }
 
+.cards .input-holder {
+  width: 100%;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-bottom: 24px; }
+  .cards .input-holder input {
+    display: block;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    font-family: "Sen", "Comic Sans MS", "Comic Sans", cursive;
+    font-size: 20px;
+    outline: none;
+    border-bottom: 2px solid transparent;
+    color: #eee; }
+    .cards .input-holder input::-webkit-input-placeholder {
+      color: rgba(238, 238, 238, 0.65); }
+    .cards .input-holder input:-ms-input-placeholder {
+      color: rgba(238, 238, 238, 0.65); }
+    .cards .input-holder input::placeholder {
+      color: rgba(238, 238, 238, 0.65); }
+    .cards .input-holder input:focus {
+      border-color: #eee; }
+
 .card .category {
   color: #F86C4F;
   text-transform: uppercase;

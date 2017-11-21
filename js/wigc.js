@@ -23,6 +23,7 @@ var app = new Vue({
     social: {},
     unfavorited: [],
     showMyVendors: true,
+    search: '',
     socialView: 'twitter',
     instagramFeed: {},
     contactUs: {},
@@ -169,6 +170,7 @@ var app = new Vue({
     },
     switchSection: function(newView, anchor) {
       var self = this;
+      self.search = '';0-
       self.my.sidebarVisible = false;
       if(self.my.view === 'my-wigc'){
         self.unfavorited = [];
@@ -194,7 +196,6 @@ var app = new Vue({
       var self = this;
       self.my.meetoo = u;
       self.switchSection('meetoo');
-      //alert(u);
     },
     getFavorites: function() {
       var self = this;
