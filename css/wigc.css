@@ -936,15 +936,35 @@ section.error {
       .cards .card.alt .card-footer .button {
         margin: 1.5em; }
 
-.card .category {
-  color: #F86C4F;
-  text-transform: uppercase;
-  font-size: 1rem;
-  border-bottom: 1px solid currentColor;
-  padding-bottom: 0.2em;
-  margin-bottom: 1rem;
-  margin-top: -0.5em; }
+.cards .input-holder {
+  width: 100%;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-bottom: 24px; }
+  .cards .input-holder input {
+    display: block;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    font-family: "Sen", "Comic Sans MS", "Comic Sans", cursive;
+    font-size: 20px;
+    outline: none;
+    border-bottom: 2px solid transparent;
+    color: #eee; }
+    .cards .input-holder input::-webkit-input-placeholder {
+      color: rgba(238, 238, 238, 0.65); }
+    .cards .input-holder input:-ms-input-placeholder {
+      color: rgba(238, 238, 238, 0.65); }
+    .cards .input-holder input::placeholder {
+      color: rgba(238, 238, 238, 0.65); }
+    .cards .input-holder input:focus {
+      border-color: #eee; }
 
+/*
+.card {
+  .category { color:$orange; text-transform: uppercase; font-size:1rem; border-bottom:1px solid currentColor; padding-bottom: 0.2em; margin-bottom: 1rem;  margin-top:-0.5em; }
+}
+*/
 figure.pic {
   width: 92px;
   max-height: 92px;
@@ -965,6 +985,145 @@ figure.pic {
     max-height: none;
     text-align: center;
     border-radius: 0; }
+
+.session-filters {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: strech;
+  -ms-flex-align: strech;
+  -webkit-align-items: strech;
+  align-items: strech;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  font-family: "Sen", "Comic Sans MS", "Comic Sans", cursive;
+  margin-bottom: 1rem;
+  overflow: hidden; }
+  .session-filters .show-filters {
+    -webkit-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -webkit-flex-shrink: 1;
+    -ms-flex-negative: 1;
+    flex-shrink: 1;
+    -webkit-align-self: auto;
+    -ms-flex-item-align: auto;
+    align-self: auto;
+    color: #F86C4F;
+    background: #eee;
+    border-top: 3px solid #eee;
+    text-align: center;
+    padding: .5em;
+    z-index: 5;
+    -webkit-transition: 0.3s border-color ease;
+    -o-transition: 0.3s border-color ease;
+    transition: 0.3s border-color ease; }
+    .session-filters .show-filters.active {
+      border-color: #F86C4F; }
+  .session-filters .filter-menu {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    max-height: 0;
+    -webkit-transition: 1s max-height ease;
+    -o-transition: 1s max-height ease;
+    transition: 1s max-height ease;
+    z-index: 4; }
+    .session-filters .filter-menu.visible {
+      max-height: 100em; }
+  .session-filters .session-filter {
+    -webkit-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -webkit-flex-shrink: 1;
+    -ms-flex-negative: 1;
+    flex-shrink: 1;
+    -webkit-align-self: auto;
+    -ms-flex-item-align: auto;
+    align-self: auto;
+    background: #eee;
+    border-right: 3px solid #eee;
+    padding: .5em; }
+    .session-filters .session-filter.active {
+      border-color: #F86C4F; }
+  .session-filters .set-filters {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: strech;
+    -ms-flex-align: strech;
+    -webkit-align-items: strech;
+    align-items: strech;
+    -webkit-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -webkit-flex-shrink: 1;
+    -ms-flex-negative: 1;
+    flex-shrink: 1;
+    -webkit-align-self: auto;
+    -ms-flex-item-align: auto;
+    align-self: auto;
+    width: 100%; }
+    .session-filters .set-filters a {
+      background: #eee;
+      color: #F86C4F;
+      -webkit-flex-basis: 50%;
+      -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+      -webkit-box-flex: 1;
+      -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+      flex-grow: 1;
+      -webkit-flex-shrink: 1;
+      -ms-flex-negative: 1;
+      flex-shrink: 1;
+      -webkit-align-self: auto;
+      -ms-flex-item-align: auto;
+      align-self: auto;
+      padding: .5em;
+      text-align: center; }
 
 .card.session a {
   color: #F86C4F; }
@@ -1038,7 +1197,9 @@ figure.pic {
       margin-bottom: 0.5em; }
 
 .vendor-toggle {
-  margin-bottom: 10px;
+  margin-bottom: 24px;
+  padding-left: 24px;
+  padding-right: 24px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-flex;
@@ -1071,13 +1232,18 @@ figure.pic {
     -webkit-align-self: auto;
     -ms-flex-item-align: auto;
     align-self: auto;
-    background-color: #F86C4F;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
     color: #eee;
     font-family: "Sen", "Comic Sans MS", "Comic Sans", cursive;
     text-align: center;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    border-bottom: 3px solid transparent;
+    background: rgba(248, 108, 79, 0.2); }
     .vendor-toggle a.active {
-      background-color: #f6431e; }
+      border-color: #F86C4F;
+      color: #F86C4F;
+      background: #eee; }
 
 .card.person .company {
   font-weight: 600; }
@@ -1085,6 +1251,19 @@ figure.pic {
 .sponsors .sponsored {
   font-family: "DejaVu", "Papyrus", serif;
   margin-bottom: 0.5em; }
+
+.sponsors .level {
+  margin-bottom: 0.5rem;
+  padding-right: 3rem; }
+  .sponsors .level span {
+    font-family: "Sen", "Comic Sans MS", "Comic Sans", cursive;
+    font-size: 1rem;
+    font-weight: 300;
+    display: inline-block;
+    padding-right: 2em;
+    border-bottom: 1px solid currentColor;
+    line-height: 100%;
+    text-transform: uppercase; }
 
 .my-sessions, .my-vendors {
   font-family: "Sen", "Comic Sans MS", "Comic Sans", cursive;

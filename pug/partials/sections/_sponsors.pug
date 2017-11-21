@@ -1,6 +1,7 @@
 section.cards.sponsors(v-cloak v-bind:class="{ visible: my.view == 'Sponsors' }")
-  article.card.vendor(v-for="sponsor in sponsors")
-    h4.category(v-if="sponsor.level") {{sponsor.level}}
+  article.card.sponsor(v-for="sponsor in sponsors")
+    .level(v-if="sponsor.level")
+      span {{sponsor.level}}
     h3.title {{sponsor.name}}
     .sponsored(v-if="sponsor.sponsored")
       b Sponsored: 

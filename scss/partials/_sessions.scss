@@ -1,3 +1,44 @@
+.session-filters{
+  @include flex-container();
+  flex-direction: column;
+  font-family: $sans;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  .show-filters{
+    @include flex-item(100%);
+    color:$orange; background:$white; border-top: 3px solid $white; text-align: center; padding: .5em;z-index: $z-header; transition: 0.3s border-color ease;
+    &.active { border-color:$orange;  }
+  }
+  .filter-menu{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: 0;
+    transition: 1s max-height ease;
+    z-index: $z-footer;
+    &.visible{
+      max-height: 100em;
+    }
+  }
+  .session-filter{
+    @include flex-item(100%);
+    background:$white; border-right: 3px solid $white; padding: .5em;
+    &.active { border-color:$orange;  }
+  }
+  .set-filters{
+    @include flex-container();
+    @include flex-item(100%);
+    width: 100%;
+    a{
+      background:$white;
+      color:$orange;
+      @include flex-item(50%);
+      padding: .5em;
+      text-align: center;
+    }
+  }
+}
+
 .card.session {
   a { color:$orange; }
   .track { margin-bottom: 0.5rem; padding-right: 3rem;
@@ -9,7 +50,7 @@
     .duration { font-size:80%; }
   }
   .desc { margin-bottom: 0.5em; }
-  .people { padding-left: 0; font-size:85%; 
+  .people { padding-left: 0; font-size:85%;
     ul { padding-left: 0; }
     .presented-by { letter-spacing: 0.1em; text-transform: uppercase; }
     figure { margin-top: 10px; }

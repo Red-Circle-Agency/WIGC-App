@@ -12,15 +12,13 @@
   h4 { font-size:1em; font-weight: $medium;
     .name { font-weight: $bold; }
   }
-  li.full { border-bottom: 1px solid $black; 
+  li.full { border-bottom: 1px solid $black;
     h4 { font-size:1.25em; margin-bottom: 0.5em; }
   }
 }
-.vendor-toggle{ margin-bottom: 10px;
+.vendor-toggle{ margin-bottom: 24px; padding-left: 24px; padding-right: 24px;
   @include flex-container();
-  a{ @include flex-item(50%); background-color: $orange; color: $white; font-family: $sans; text-align: center; text-transform: uppercase;
-    &.active{
-      background-color: darken($orange, 10%);
-    }
+  a{ @include flex-item(50%); padding-top: 0.25em; padding-bottom: 0.25em; color: $white; font-family: $sans; text-align: center; text-transform: uppercase; border-bottom: 3px solid transparent; background:rgba($orange,0.2);
+    &.active { border-color:$orange; color:$orange; background:$white; }
   }
 }

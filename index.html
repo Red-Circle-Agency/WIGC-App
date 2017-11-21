@@ -141,10 +141,13 @@
         </article>
       </section>
       <section class="cards sessions" v-cloak v-bind:class="{ visible: my.view == 'Seminars' }">
-        <nav class="session-filters">
-          <label class="session-filter" v-for="track in seminarTracks" v-bind:for="track">{{track}}
-            <input type="checkbox" v-bind:name="track" v-bind:value="track" v-model="selectedTracks">
-          </label>
+        <nav class="session-filters"><a class="show-filters" v-on:click="showFilters = !showFilters" v-bind:class="{active: showFilters}">Filter Session Tracks</a>
+          <div class="filter-menu" v-bind:class="{visible: showFilters}">
+            <label class="session-filter" v-for="track in seminarTracks"> 
+              <input type="checkbox" v-bind:name="track" v-bind:value="track" v-model="selectedTracks">{{track}}
+            </label>
+            <div class="set-filters"> <a class="apply-filters" v-on:click="showFilters = false">Apply Filters</a><a class="clear-filters" v-on:click="selectedTracks = []">Clear Filters</a></div>
+          </div>
         </nav>
         <article class="card session" v-for="session in seminars" :class="{full: session.fullinfo }" :id="session.slug">
           <div class="track" v-if="session.track"><span>{{session.track}}</span></div>
@@ -219,7 +222,7 @@
         </article>
       </section>
       <section class="cards vendors" v-cloak v-bind:class="{ visible: my.view == 'Exhibitors' }">
-        <nav class="vendor-toggle"><a v-on:click="showMyVendors = true" :class="{active:showMyVendors}">My Exhibitors</a><a v-on:click="showMyVendors = false" :class="{active:!showMyVendors}">All Exhibitors</a></nav>
+        <nav class="vendor-toggle"><a v-on:click="showMyVendors = true" :class="{active:showMyVendors}">My</a><a v-on:click="showMyVendors = false" :class="{active:!showMyVendors}">All</a></nav>
         <article class="card alt empty-notification" v-if="showMyVendors &amp;&amp; (my.vendors.length &lt; 1)">
           <h3 class="title">Add some exhibitors</h3>
           <p>You can use this section as a To-Do list with flagged exhibitors you'd like to talk to. Browse <a v-on:click="showMyVendors = false">my exhibitors</a> and click the star to add any exhibitors to this list.</p>
@@ -270,7 +273,10 @@
         </article>
       </section>
       <section class="cards people" v-cloak v-bind:class="{ visible: my.view == 'People' }">
-        <article class="card person" v-for="person in people" v-bind:class="{full: person.fullinfo}" :id="person.slug">
+        <div class="input-holder">
+          <input class="people-search" type="search" placeholder="Search" v-model="search">
+        </div>
+        <article class="card person" v-for="person in people" v-show="person.name.toLowerCase().includes(search.toLowerCase())" v-bind:class="{full: person.fullinfo}" :id="person.slug">
           <h3 class="title"><a v-if="person.url" v-on:click="person.fullinfo = !person.fullinfo">{{person.name}}</a><span v-else>{{person.name}}</span></h3>
           <figure class="pic" v-if="person.pic" v-on:click="person.fullpic = !person.fullpic" v-bind:class="{full: person.fullpic}"><img :src="person.pic"></figure>
           <div class="job" v-if="person.job_title &amp;&amp; person.company"><span class="job-title">{{person.job_title}}</span>,  <span class="company">{{person.company}}</span></div>
@@ -295,8 +301,8 @@
         </article>
       </section>
       <section class="cards sponsors" v-cloak v-bind:class="{ visible: my.view == 'Sponsors' }">
-        <article class="card vendor" v-for="sponsor in sponsors">
-          <h4 class="category" v-if="sponsor.level">{{sponsor.level}}</h4>
+        <article class="card sponsor" v-for="sponsor in sponsors">
+          <div class="level" v-if="sponsor.level"><span>{{sponsor.level}}</span></div>
           <h3 class="title">{{sponsor.name}}</h3>
           <div class="sponsored" v-if="sponsor.sponsored"><b>Sponsored: </b><span>{{sponsor.sponsored}}</span></div>
           <figure class="pic" v-if="sponsor.logo" v-on:click="sponsor.fullpic = !sponsor.fullpic" v-bind:class="{full: sponsor.fullpic}"><img :src="sponsor.logo"></figure>
