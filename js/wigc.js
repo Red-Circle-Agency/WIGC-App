@@ -66,18 +66,9 @@ var app = new Vue({
         }
       });
     },
-    seminarTracks:function(){
-      var self = this;
-      tracks = self.sessions.map(function(s){
-        return s.track;
-      });
-      return tracks.filter(function(s,i,t){
-        return (t.indexOf(s) === i && s !== undefined);
-      });
-    },
     filterIndicator:function(){
       var self = this;
-      if( self.selectedTracks.length === 0 || self.selectedTracks.length === self.seminarTracks.length)
+      if( self.selectedTracks.length === 0 || self.selectedTracks.length === self.tracks.length)
         return "All Sessions";
       else
         return self.selectedTracks.join(', ');
