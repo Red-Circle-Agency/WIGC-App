@@ -321,7 +321,8 @@
               <tbody>
                 <tr v-for="booth in booths">
                   <td class="number">{{booth.num}}</td>
-                  <td class="name">{{booth.name}}</td>
+                  <td class="name" v-if="booth.slug"><a v-on:click="showMyVendors = false; switchSection('Exhibitors',booth.slug)">{{booth.name}}</a></td>
+                  <td class="name" v-else><span>{{booth.name}}</span></td>
                 </tr>
               </tbody>
             </table>
