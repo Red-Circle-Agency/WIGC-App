@@ -5,7 +5,9 @@ section.cards.sponsors(v-cloak v-bind:class="{ visible: my.view == 'Sponsors' }"
     h3.title {{sponsor.name}}
     .sponsored(v-if="sponsor.sponsored")
       b Sponsored: 
-      span {{sponsor.sponsored}}
+      a(v-if="sponsor.sponsored_type && sponsor.sponsored_slug" v-on:click="switchSection(sponsor.sponsored_type, sponsor.sponsored_slug)") {{sponsor.sponsored}}
+      a(v-else-if="sponsor.sponsored_type" v-on:click="switchSection(sponsor.sponsored_type)") {{sponsor.sponsored}}
+      span(v-else) {{sponsor.sponsored}}
     figure.pic(v-if="sponsor.logo" v-on:click="sponsor.fullpic = !sponsor.fullpic" v-bind:class="{full: sponsor.fullpic}")
       img(:src="sponsor.logo")
     summary.desc(v-if="sponsor.teaser && !sponsor.fullinfo" v-html="sponsor.teaser")

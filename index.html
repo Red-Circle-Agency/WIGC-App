@@ -304,7 +304,7 @@
         <article class="card sponsor" v-for="sponsor in sponsors">
           <div class="level" v-if="sponsor.level"><span>{{sponsor.level}}</span></div>
           <h3 class="title">{{sponsor.name}}</h3>
-          <div class="sponsored" v-if="sponsor.sponsored"><b>Sponsored: </b><span>{{sponsor.sponsored}}</span></div>
+          <div class="sponsored" v-if="sponsor.sponsored"><b>Sponsored: </b><a v-if="sponsor.sponsored_type &amp;&amp; sponsor.sponsored_slug" v-on:click="switchSection(sponsor.sponsored_type, sponsor.sponsored_slug)">{{sponsor.sponsored}}</a><a v-else-if="sponsor.sponsored_type" v-on:click="switchSection(sponsor.sponsored_type)">{{sponsor.sponsored}}</a><span v-else>{{sponsor.sponsored}}</span></div>
           <figure class="pic" v-if="sponsor.logo" v-on:click="sponsor.fullpic = !sponsor.fullpic" v-bind:class="{full: sponsor.fullpic}"><img :src="sponsor.logo"></figure>
           <summary class="desc" v-if="sponsor.teaser &amp;&amp; !sponsor.fullinfo" v-html="sponsor.teaser"></summary>
         </article>
