@@ -146,7 +146,7 @@
             <label class="session-filter" v-for="track in seminarTracks"> 
               <input type="checkbox" v-bind:name="track" v-bind:value="track" v-model="selectedTracks">{{track}}
             </label>
-            <div class="set-filters"> <a class="apply-filters" v-on:click="showFilters = false">Apply Filters</a><a class="clear-filters" v-on:click="selectedTracks = []">Clear Filters</a></div>
+            <div class="set-filters"> <a class="clear-filters" v-on:click="selectedTracks = []">Clear Filters</a><a class="apply-filters" v-on:click="showFilters = false">Close</a></div>
           </div>
         </nav>
         <article class="card session" v-for="session in seminars" :class="{full: session.fullinfo }" :id="session.slug">
