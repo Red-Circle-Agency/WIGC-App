@@ -3,7 +3,7 @@ section.cards.sessions(v-cloak v-bind:class="{ visible: my.view == 'Seminars' }"
     a.show-filters(v-on:click="showFilters = !showFilters" v-bind:class="{active: showFilters}") Now showing: 
       strong {{filterIndicator}}
     .filter-menu(v-bind:class="{visible: showFilters}")
-      label.session-filter(v-for="track in seminarTracks" ) 
+      label.session-filter(v-for="track in tracks" ) 
         input(type="checkbox"  v-bind:name="track" v-bind:value="track" v-model="selectedTracks") 
         | {{track}}
       .set-filters 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Test App</title>
+    <title>WIGC</title>
     <!--link(href="https://fonts.googleapis.com/css?family=Catamaran:400,700|Libre+Baskerville:700" rel="stylesheet")-->
     <link href="css/wigc.css" rel="stylesheet">
     <meta http-equiv="Content-Security-Policy" content="default-src * gap://ready file:; style-src 'self' 'unsafe-inline' *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; img-src * data:;">
@@ -37,15 +37,16 @@
         </div>
       </header>
       <aside class="sidebar" v-bind:class="{visible: my.sidebarVisible}" v-cloak>
-        <nav><a v-on:click="switchSection('My WIGC')">My WIGC</a><a v-on:click="switchSection('Schedule')">Schedule</a><a v-on:click="switchSection('Seminars')">Seminars</a><a v-on:click="switchSection('Networking Events')">Networking Events</a><a v-on:click="switchSection('Exhibitors')">Exhibitors</a><a v-on:click="switchSection('People')">People</a><a v-on:click="switchSection('Sponsors')">Sponsors</a><a v-on:click="switchSection('social')">Social Media</a></nav>
+        <nav><a v-on:click="switchSection('My WIGC')">My WIGC</a><a v-on:click="switchSection('Schedule')">Schedule</a><a v-on:click="switchSection('Seminars')">Seminars</a><a v-on:click="switchSection('Networking Events')">Networking Events</a><a v-on:click="switchSection('Exhibitors')">Exhibitors</a><a v-on:click="switchSection('People')">People</a><a v-on:click="switchSection('Sponsors')">Sponsors</a>
+          <!-- a(v-on:click="switchSection('social')") Social Media-->
+        </nav>
       </aside>
       <footer><a class="toggle-sidebar" v-on:click="my.sidebarVisible = !my.sidebarVisible" v-bind:class="{visible: !my.sidebarVisible}">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
             <path d="M97.5 29.4H4.4V17.3h93.1v12.1zm0 14.7H4.4v12.1h93.1V44.1zm0 26.8H4.4V83h93.1V70.9z"></path>
           </svg></a>
         <nav><a v-on:click="switchSection('Map')">Map</a><a v-on:click="switchSection('Info')">Info</a><a v-on:click="switchSection('Contact')">Contact</a>
-          <!--a(v-on:click="my.meetoo = 'https://web.meetoo.com/170479740'; switchSection('meetoo');") Chat-->
-          <!--a(v-on:click="switchSection('social')") Social-->
+          <!--a(v-on:click="my.meetoo = 'https://web.meetoo.com/170479740'; switchSection('meetoo');") Chat--><a v-on:click="switchSection('social')">Social</a>
           <!--a(v-on:click="switchSection('Seminars', 'nightclubs-attract-risks-nightlife-and-pool-exposures-to-casinos')") TEST-->
           <!--a(v-on:click="switchSection('meetoo')") Meetoo-->
           <!--a Exhibitors-->
@@ -144,7 +145,7 @@
       <section class="cards sessions" v-cloak v-bind:class="{ visible: my.view == 'Seminars' }">
         <nav class="session-filters"><a class="show-filters" v-on:click="showFilters = !showFilters" v-bind:class="{active: showFilters}">Now showing: <strong>{{filterIndicator}}</strong></a>
           <div class="filter-menu" v-bind:class="{visible: showFilters}">
-            <label class="session-filter" v-for="track in seminarTracks"> 
+            <label class="session-filter" v-for="track in tracks"> 
               <input type="checkbox" v-bind:name="track" v-bind:value="track" v-model="selectedTracks">{{track}}
             </label>
             <div class="set-filters"> <a class="clear-filters" v-on:click="selectedTracks = []">Clear Filters</a><a class="apply-filters" v-on:click="showFilters = false">Close</a></div>

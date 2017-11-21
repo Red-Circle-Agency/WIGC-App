@@ -1,34 +1,30 @@
 .session-filters{
-  @include flex-container();
-  flex-direction: column;
+  display: block;
   font-family: $sans;
   margin-bottom: 1rem;
   padding: 0 24px;
   overflow: hidden;
   .show-filters{
-    @include flex-item(100%);
+    display: block;
     color:$orange; background:$white; border-top: 3px solid $white; text-align: center; padding: .5em;z-index: $z-header; transition: 0.3s border-color ease;
     &.active { border-color:$orange;  }
   }
   .filter-menu{
-    
-    flex-direction: column;
     width: 100%;
     display: none;
-    //transition: 1s max-height ease;
     z-index: $z-footer;
     &.visible{
-      display: flex;
+      display: block;
     }
+    &.visible {}
   }
   .session-filter{
-    @include flex-item(100%);
+    display: block;
     background:$white; border-right: 3px solid $white; padding: .5em;
     &.active { border-color:$orange;  }
   }
   .set-filters{
     @include flex-container();
-    @include flex-item(100%);
     width: 100%;
     a{
       background:$white;
