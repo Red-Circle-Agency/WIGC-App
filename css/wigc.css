@@ -1038,23 +1038,19 @@ figure.pic {
     .session-filters .show-filters.active {
       border-color: #F86C4F; }
   .session-filters .filter-menu {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
     width: 100%;
-    max-height: 0;
-    -webkit-transition: 1s max-height ease;
-    -o-transition: 1s max-height ease;
-    transition: 1s max-height ease;
+    display: none;
     z-index: 4; }
     .session-filters .filter-menu.visible {
-      max-height: 100em; }
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex; }
   .session-filters .session-filter {
     -webkit-flex-basis: 100%;
     -ms-flex-preferred-size: 100%;
