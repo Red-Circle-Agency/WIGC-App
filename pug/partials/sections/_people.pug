@@ -1,6 +1,6 @@
 section.cards.people(v-cloak v-bind:class="{ visible: my.view == 'People' }")
   .input-holder
-    input.people-search(type="search" placeholder="Search" v-model="search")
+    input.people-search(type="text" placeholder="Search" v-model="search")
   article.card.person(v-for="person in people" v-show="person.name.toLowerCase().includes(search.toLowerCase())" v-bind:class="{full: person.fullinfo}" :id="person.slug")
     h3.title
       a(v-if="person.url" v-on:click="person.fullinfo = !person.fullinfo") {{person.name}}

@@ -11,7 +11,8 @@ section.cards.sessions(v-cloak v-bind:class="{ visible: my.view == 'Seminars' }"
         a.apply-filters(v-on:click="showFilters = false") Close
   article.card.session(v-for="session in seminars" :class="{full: session.fullinfo }" :id="session.slug")
     .track(v-if="session.track")
-      span {{session.track}}
+      span(v-if="session.track == 'MCLEs'" style="text-transform:none;") MCLEs
+      span(v-else) {{session.track}}
     h3.title
       a(v-if="session.text && session.text != session.teaser" v-on:click="session.fullinfo = !session.fullinfo") {{session.title}}
       span(v-else) {{session.title}}

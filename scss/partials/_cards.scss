@@ -21,7 +21,7 @@
 
 .cards {
   .input-holder { width:100%; padding-left: 24px; padding-right: 24px; padding-bottom: 24px;
-    input { display: block; width:100%; background-color:transparent; border:none; font-family: $sans; font-size:20px; outline: none; border-bottom: 2px solid transparent; color:$white;
+    input { display: block; width:100%; background:transparent; border:none; font-family: $sans; font-size:20px; outline: none; border-bottom: 2px solid transparent; color:$white;
       &::placeholder { color:rgba($white,0.65); }
       &:focus { border-color:$white; }
     }

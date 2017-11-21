@@ -152,7 +152,7 @@
           </div>
         </nav>
         <article class="card session" v-for="session in seminars" :class="{full: session.fullinfo }" :id="session.slug">
-          <div class="track" v-if="session.track"><span>{{session.track}}</span></div>
+          <div class="track" v-if="session.track"><span v-if="session.track == 'MCLEs'" style="text-transform:none;">MCLEs</span><span v-else>{{session.track}}</span></div>
           <h3 class="title"><a v-if="session.text &amp;&amp; session.text != session.teaser" v-on:click="session.fullinfo = !session.fullinfo">{{session.title}}</a><span v-else>{{session.title}}</span><a class="favorite" v-on:click="toggleFavorite(my.sessions, session);" :class="{active: session.favorite}">
               <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                 <path class="fill" d="M49.8 1.6L64.6 33l33 5.1-23.9 24.4 5.7 34.6-29.6-16.3-29.5 16.3 5.6-34.6L2 38.1 35 33z"></path>
@@ -276,7 +276,7 @@
       </section>
       <section class="cards people" v-cloak v-bind:class="{ visible: my.view == 'People' }">
         <div class="input-holder">
-          <input class="people-search" type="search" placeholder="Search" v-model="search">
+          <input class="people-search" type="text" placeholder="Search" v-model="search">
         </div>
         <article class="card person" v-for="person in people" v-show="person.name.toLowerCase().includes(search.toLowerCase())" v-bind:class="{full: person.fullinfo}" :id="person.slug">
           <h3 class="title"><a v-if="person.url" v-on:click="person.fullinfo = !person.fullinfo">{{person.name}}</a><span v-else>{{person.name}}</span></h3>

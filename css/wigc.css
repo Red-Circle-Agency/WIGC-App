@@ -955,7 +955,7 @@ section.error {
   .cards .input-holder input {
     display: block;
     width: 100%;
-    background-color: transparent;
+    background: transparent;
     border: none;
     font-family: "Sen", "Comic Sans MS", "Comic Sans", cursive;
     font-size: 20px;
