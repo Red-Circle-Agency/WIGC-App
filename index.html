@@ -293,8 +293,8 @@
         </article>
       </section>
       <section class="cards sponsors" v-cloak v-bind:class="{ visible: my.view == 'Sponsors' }">
-        <article class="card vendor" v-for="sponsor in sponsors">
-          <h4 class="category" v-if="sponsor.level">{{sponsor.level}}</h4>
+        <article class="card sponsor" v-for="sponsor in sponsors">
+          <div class="level" v-if="sponsor.level"><span>{{sponsor.level}}</span></div>
           <h3 class="title">{{sponsor.name}}</h3>
           <div class="sponsored" v-if="sponsor.sponsored"><b>Sponsored: </b><span>{{sponsor.sponsored}}</span></div>
           <figure class="pic" v-if="sponsor.logo" v-on:click="sponsor.fullpic = !sponsor.fullpic" v-bind:class="{full: sponsor.fullpic}"><img :src="sponsor.logo"></figure>
