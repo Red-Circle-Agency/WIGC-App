@@ -1010,6 +1010,7 @@ figure.pic {
   flex-direction: column;
   font-family: "Sen", "Comic Sans MS", "Comic Sans", cursive;
   margin-bottom: 1rem;
+  padding: 0 24px;
   overflow: hidden; }
   .session-filters .show-filters {
     -webkit-flex-basis: 100%;
