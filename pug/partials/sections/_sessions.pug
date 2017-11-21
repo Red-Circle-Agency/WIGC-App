@@ -7,8 +7,8 @@ section.cards.sessions(v-cloak v-bind:class="{ visible: my.view == 'Seminars' }"
         input(type="checkbox"  v-bind:name="track" v-bind:value="track" v-model="selectedTracks") 
         | {{track}}
       .set-filters 
-        a.apply-filters(v-on:click="showFilters = false") Apply Filters
         a.clear-filters(v-on:click="selectedTracks = []") Clear Filters
+        a.apply-filters(v-on:click="showFilters = false") Close
   article.card.session(v-for="session in seminars" :class="{full: session.fullinfo }" :id="session.slug")
     .track(v-if="session.track")
       span {{session.track}}

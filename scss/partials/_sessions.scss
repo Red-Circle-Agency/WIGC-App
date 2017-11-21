@@ -11,14 +11,14 @@
     &.active { border-color:$orange;  }
   }
   .filter-menu{
-    display: flex;
+    
     flex-direction: column;
     width: 100%;
-    max-height: 0;
-    transition: 1s max-height ease;
+    display: none;
+    //transition: 1s max-height ease;
     z-index: $z-footer;
     &.visible{
-      max-height: 100em;
+      display: flex;
     }
   }
   .session-filter{

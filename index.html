@@ -43,7 +43,8 @@
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
             <path d="M97.5 29.4H4.4V17.3h93.1v12.1zm0 14.7H4.4v12.1h93.1V44.1zm0 26.8H4.4V83h93.1V70.9z"></path>
           </svg></a>
-        <nav><a v-on:click="switchSection('Map')">Map</a><a v-on:click="switchSection('Info')">Info</a><a v-on:click="switchSection('Contact')">Contact</a><a v-on:click="my.meetoo = 'https://web.meetoo.com/170479740'; switchSection('meetoo');">Chat</a>
+        <nav><a v-on:click="switchSection('Map')">Map</a><a v-on:click="switchSection('Info')">Info</a><a v-on:click="switchSection('Contact')">Contact</a>
+          <!--a(v-on:click="my.meetoo = 'https://web.meetoo.com/170479740'; switchSection('meetoo');") Chat-->
           <!--a(v-on:click="switchSection('social')") Social-->
           <!--a(v-on:click="switchSection('Seminars', 'nightclubs-attract-risks-nightlife-and-pool-exposures-to-casinos')") TEST-->
           <!--a(v-on:click="switchSection('meetoo')") Meetoo-->
@@ -146,7 +147,7 @@
             <label class="session-filter" v-for="track in seminarTracks"> 
               <input type="checkbox" v-bind:name="track" v-bind:value="track" v-model="selectedTracks">{{track}}
             </label>
-            <div class="set-filters"> <a class="apply-filters" v-on:click="showFilters = false">Apply Filters</a><a class="clear-filters" v-on:click="selectedTracks = []">Clear Filters</a></div>
+            <div class="set-filters"> <a class="clear-filters" v-on:click="selectedTracks = []">Clear Filters</a><a class="apply-filters" v-on:click="showFilters = false">Close</a></div>
           </div>
         </nav>
         <article class="card session" v-for="session in seminars" :class="{full: session.fullinfo }" :id="session.slug">
