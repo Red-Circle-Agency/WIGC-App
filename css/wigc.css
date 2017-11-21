@@ -1062,7 +1062,9 @@ figure.pic {
       margin-bottom: 0.5em; }
 
 .vendor-toggle {
-  margin-bottom: 10px;
+  margin-bottom: 24px;
+  padding-left: 24px;
+  padding-right: 24px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-flex;
@@ -1095,13 +1097,18 @@ figure.pic {
     -webkit-align-self: auto;
     -ms-flex-item-align: auto;
     align-self: auto;
-    background-color: #F86C4F;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
     color: #eee;
     font-family: "Sen", "Comic Sans MS", "Comic Sans", cursive;
     text-align: center;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    border-bottom: 3px solid transparent;
+    background: rgba(248, 108, 79, 0.2); }
     .vendor-toggle a.active {
-      background-color: #f6431e; }
+      border-color: #F86C4F;
+      color: #F86C4F;
+      background: #eee; }
 
 .card.person .company {
   font-weight: 600; }

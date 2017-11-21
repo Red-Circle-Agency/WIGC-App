@@ -214,7 +214,7 @@
         </article>
       </section>
       <section class="cards vendors" v-cloak v-bind:class="{ visible: my.view == 'Exhibitors' }">
-        <nav class="vendor-toggle"><a v-on:click="showMyVendors = true" :class="{active:showMyVendors}">My Exhibitors</a><a v-on:click="showMyVendors = false" :class="{active:!showMyVendors}">All Exhibitors</a></nav>
+        <nav class="vendor-toggle"><a v-on:click="showMyVendors = true" :class="{active:showMyVendors}">My</a><a v-on:click="showMyVendors = false" :class="{active:!showMyVendors}">All</a></nav>
         <article class="card alt empty-notification" v-if="showMyVendors &amp;&amp; (my.vendors.length &lt; 1)">
           <h3 class="title">Add some exhibitors</h3>
           <p>You can use this section as a To-Do list with flagged exhibitors you'd like to talk to. Browse <a v-on:click="showMyVendors = false">my exhibitors</a> and click the star to add any exhibitors to this list.</p>
