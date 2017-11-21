@@ -1,9 +1,9 @@
 header { z-index: $z-header; background:rgba(#494949,0.77); @include position(fixed,0,0,null,0); height: $header-height; overflow: hidden;
   .inside { @include flex-container(); padding-left: $padding; padding-right: $padding; }
   .logo.wigc { @include flex-item(82px,0,0); padding-top: 12px; }
-  .current-screen { @include flex-item(50%); }
-  .logo.cniga { @include flex-item(100px,0,0); padding-top: 14px;
-    .sun { display: block; width:38px; height: 38px; float:left;
+  .current-screen { @include flex-item(50%,0,0); }
+  .logo.cniga { @include flex-item(80px,0,0); padding-top: 14px;
+    .sun { display: block; width:38px; height: 38px; margin-left: auto;
       * { transform-origin: center; }
       .blue { fill:$orange; }
       .red { fill:$white; }
