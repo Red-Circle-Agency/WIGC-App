@@ -347,11 +347,11 @@ header {
     -webkit-align-self: auto;
     -ms-flex-item-align: auto;
     align-self: auto;
-    padding-top: 14px; }
+    padding-top: 4px; }
     header .logo.cniga .sun {
       display: block;
-      width: 38px;
-      height: 38px;
+      width: 32px;
+      height: 32px;
       margin-left: auto;
       -webkit-transform: translateY(-150%);
       -ms-transform: translateY(-150%);
