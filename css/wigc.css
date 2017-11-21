@@ -987,45 +987,13 @@ figure.pic {
     border-radius: 0; }
 
 .session-filters {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-wrap: wrap;
-  -moz-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-box-align: strech;
-  -ms-flex-align: strech;
-  -webkit-align-items: strech;
-  align-items: strech;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  display: block;
   font-family: "Sen", "Comic Sans MS", "Comic Sans", cursive;
   margin-bottom: 1rem;
   padding: 0 24px;
   overflow: hidden; }
   .session-filters .show-filters {
-    -webkit-flex-basis: 100%;
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
-    -webkit-box-flex: 1;
-    -webkit-flex-grow: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-    -webkit-flex-shrink: 1;
-    -ms-flex-negative: 1;
-    flex-shrink: 1;
-    -webkit-align-self: auto;
-    -ms-flex-item-align: auto;
-    align-self: auto;
+    display: block;
     color: #F86C4F;
     background: #eee;
     border-top: 3px solid #eee;
@@ -1038,33 +1006,13 @@ figure.pic {
     .session-filters .show-filters.active {
       border-color: #F86C4F; }
   .session-filters .filter-menu {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
     width: 100%;
     display: none;
     z-index: 4; }
     .session-filters .filter-menu.visible {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex; }
+      display: block; }
   .session-filters .session-filter {
-    -webkit-flex-basis: 100%;
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
-    -webkit-box-flex: 1;
-    -webkit-flex-grow: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-    -webkit-flex-shrink: 1;
-    -ms-flex-negative: 1;
-    flex-shrink: 1;
-    -webkit-align-self: auto;
-    -ms-flex-item-align: auto;
-    align-self: auto;
+    display: block;
     background: #eee;
     border-right: 3px solid #eee;
     padding: .5em; }
@@ -1089,19 +1037,6 @@ figure.pic {
     -ms-flex-align: strech;
     -webkit-align-items: strech;
     align-items: strech;
-    -webkit-flex-basis: 100%;
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
-    -webkit-box-flex: 1;
-    -webkit-flex-grow: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-    -webkit-flex-shrink: 1;
-    -ms-flex-negative: 1;
-    flex-shrink: 1;
-    -webkit-align-self: auto;
-    -ms-flex-item-align: auto;
-    align-self: auto;
     width: 100%; }
     .session-filters .set-filters a {
       background: #eee;
