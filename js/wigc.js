@@ -20,6 +20,13 @@ var app = new Vue({
     vendors: [],
     people: [],
     sponsors: [],
+    tracks: [
+      'Tribal Government',
+      'Casino Operations & Security',
+      'Regulation',
+      'Finance & Business Development',
+      'MCLEs'
+    ],
     social: {},
     unfavorited: [],
     showMyVendors: true,
