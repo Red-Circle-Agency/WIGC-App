@@ -16,7 +16,8 @@
       "cordova-plugin-whitelist": {},
       "onesignal-cordova-plugin": {},
       "cordova-plugin-inappbrowser": {},
-      "cordova-plugin-splashscreen": {}
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-statusbar": {}
     }
   },
   "dependencies": {
@@ -30,6 +31,7 @@
     "cordova-plugin-globalization": "~1.0.3",
     "cordova-plugin-inappbrowser": "^1.7.1",
     "cordova-plugin-splashscreen": "^4.1.0",
+    "cordova-plugin-statusbar": "^2.3.0",
     "cordova-plugin-vibration": "~2.1.0",
     "cordova-plugin-whitelist": "~1.2.1",
     "io": "^0.1.10",

@@ -2,7 +2,7 @@ header { z-index: $z-header; background:rgba(#494949,0.77); @include position(fi
   .inside { @include flex-container(); padding-left: $padding; padding-right: $padding; }
   .logo.wigc { @include flex-item(82px,0,0); padding-top: 12px; }
   .current-screen { @include flex-item(50%,0,0); }
-  .logo.cniga { @include flex-item(80px,0,0); padding-top: 4px; //padding-top: 14px; 
+  .logo.cniga { @include flex-item(80px,0,0); padding-top: 4px; //padding-top: 14px;
     .sun { display: block; width:32px; height: 32px; margin-left: auto;
       * { transform-origin: center; }
       .blue { fill:$orange; }
