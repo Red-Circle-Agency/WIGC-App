@@ -314,6 +314,12 @@ var app = new Vue({
         device = "OSX";
       }
       return device;
+    },
+    openLink: function(destination, target){
+      if(typeof(cordova.InAppBrowser) !== 'undefined'){
+          window.open = cordova.InAppBrowser.open;
+      }
+      window.open(destination, target)      
     }
   }
 });
