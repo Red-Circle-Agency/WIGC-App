@@ -29,3 +29,9 @@ function trackEvent(c, a, l, v) {
     console.log('CATEGORY: '+c+', ACTION:'+a);
   }
 }
+
+(function(){
+  if(typeof(cordova.InAppBrowser) !== 'undefined'){
+      window.open = cordova.InAppBrowser.open;
+  }
+})
