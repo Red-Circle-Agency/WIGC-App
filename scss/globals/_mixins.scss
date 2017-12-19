@@ -141,6 +141,17 @@
   .icon-link { margin-right: 0.5em; color:$orange;
     .icon { width:1.2em; height:1.2em; }
   }
+  
+  blockquote { margin-bottom: 1em; border-left: 5px solid rgba(0,0,0,0.35); padding-left: 1em;}
+  
+  hr { display: block; width: 100%; margin-bottom: 2em; border-bottom:3px solid rgba(0,0,0,0.6); margin-top: 1em; }
+  
+  ol { padding-bottom: 1em; list-style-type: decimal; padding-left: 1.5em;
+    li { margin-bottom: 0.35em; }
+  }
+  ul { padding-bottom: 1em;
+    li { margin-bottom: 0.35em }
+  }
 
   transition: margin 0.5s linear, padding 0.5s linear,border-radius 0.5s linear; ;
   &.full { margin: 0 0 ($padding * 2) 0; border-radius:0;
