@@ -107,7 +107,7 @@ var app = new Vue({
         self.exhibitorInfo = data.pages.exhibitorinformation;
         self.booths = data.booths;
         self.loaded   = true;
-        
+
       },
       error: function (error) {
         //alert(JSON.stringify(error));
@@ -165,8 +165,6 @@ var app = new Vue({
     request.onupgradeneeded = function(event) {
       var objStore = event.currentTarget.result.createObjectStore('my');
     };
-    //if(self.socialView === 'twitter')
-      //self.styleTwitterWidget();
   },
   methods: {
     toggleFavorite: function(faves,fave) {
@@ -281,13 +279,6 @@ var app = new Vue({
       }
       return false;
     },
-    styleTwitterWidget: function(){
-      var w = document.getElementById("twitter-widget-0").contentDocument;
-      var s = document.createElement("link");
-      s.href = "https://circle.red/wigc-app/css/wigc.css";
-      s.rel = "stylesheet";
-      w.head.appendChild(s);
-    },
     getInstagramFeed: function(){
       var self = this;
       $.ajax({
@@ -338,20 +329,6 @@ var app = new Vue({
           window.open = cordova.InAppBrowser.open;
       }
       window.open(destination, target)
-<<<<<<< HEAD
-=======
-    },
-    createTwitter: function(d,s,id){
-      var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
-      if(!d.getElementById(id)){
-        js=d.createElement(s);
-        js.id=id;js.src=p+"://platform.twitter.com/widgets.js";
-        fjs.parentNode.insertBefore(js,fjs);
-      }
-    },
-    loadPiwik: function(){
-
->>>>>>> 41330c4f674dac4f070a675e16496424551833e9
     }
   }
 });
