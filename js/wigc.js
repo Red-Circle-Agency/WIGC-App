@@ -115,7 +115,7 @@ var app = new Vue({
         self.my.view = "error";
       }
     });
-    self.loadPiwik();
+    //self.loadPiwik();
     self.getInstagramFeed();
     self.getTweets();
 
