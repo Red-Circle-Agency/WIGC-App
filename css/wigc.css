@@ -717,6 +717,26 @@ section.home {
       section.home .welcome .icon-link .icon {
         width: 1.2em;
         height: 1.2em; }
+    section.home .welcome blockquote {
+      margin-bottom: 1em;
+      border-left: 5px solid rgba(0, 0, 0, 0.35);
+      padding-left: 1em; }
+    section.home .welcome hr {
+      display: block;
+      width: 100%;
+      margin-bottom: 2em;
+      border-bottom: 3px solid rgba(0, 0, 0, 0.6);
+      margin-top: 1em; }
+    section.home .welcome ol {
+      padding-bottom: 1em;
+      list-style-type: decimal;
+      padding-left: 1.5em; }
+      section.home .welcome ol li {
+        margin-bottom: 0.35em; }
+    section.home .welcome ul {
+      padding-bottom: 1em; }
+      section.home .welcome ul li {
+        margin-bottom: 0.35em; }
     section.home .welcome.full {
       margin: 0 0 48px 0;
       border-radius: 0; }
@@ -856,6 +876,26 @@ section.error {
       .cards .card .icon-link .icon {
         width: 1.2em;
         height: 1.2em; }
+    .cards .card blockquote {
+      margin-bottom: 1em;
+      border-left: 5px solid rgba(0, 0, 0, 0.35);
+      padding-left: 1em; }
+    .cards .card hr {
+      display: block;
+      width: 100%;
+      margin-bottom: 2em;
+      border-bottom: 3px solid rgba(0, 0, 0, 0.6);
+      margin-top: 1em; }
+    .cards .card ol {
+      padding-bottom: 1em;
+      list-style-type: decimal;
+      padding-left: 1.5em; }
+      .cards .card ol li {
+        margin-bottom: 0.35em; }
+    .cards .card ul {
+      padding-bottom: 1em; }
+      .cards .card ul li {
+        margin-bottom: 0.35em; }
     .cards .card.full {
       margin: 0 0 48px 0;
       border-radius: 0; }
@@ -1379,6 +1419,26 @@ section.meetoo {
       .social-wrapper .social-card .icon-link .icon {
         width: 1.2em;
         height: 1.2em; }
+    .social-wrapper .social-card blockquote {
+      margin-bottom: 1em;
+      border-left: 5px solid rgba(0, 0, 0, 0.35);
+      padding-left: 1em; }
+    .social-wrapper .social-card hr {
+      display: block;
+      width: 100%;
+      margin-bottom: 2em;
+      border-bottom: 3px solid rgba(0, 0, 0, 0.6);
+      margin-top: 1em; }
+    .social-wrapper .social-card ol {
+      padding-bottom: 1em;
+      list-style-type: decimal;
+      padding-left: 1.5em; }
+      .social-wrapper .social-card ol li {
+        margin-bottom: 0.35em; }
+    .social-wrapper .social-card ul {
+      padding-bottom: 1em; }
+      .social-wrapper .social-card ul li {
+        margin-bottom: 0.35em; }
     .social-wrapper .social-card.full {
       margin: 0 0 48px 0;
       border-radius: 0; }

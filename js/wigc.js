@@ -115,7 +115,7 @@ var app = new Vue({
         self.my.view = "error";
       }
     });
-
+    self.loadPiwik();
     self.getInstagramFeed();
     self.getTweets();
 
@@ -294,7 +294,8 @@ var app = new Vue({
         url: 'https://circle.red/wigc/instagram.php?tag=mywigc',
         method: 'GET',
         success: function (data) {
-          self.instagramFeed = data.entry_data.TagPage[0].tag.media.nodes;
+          if(typeof(data.entry_data.TagPage[0].tag.media.nodes) !== "undefined")
+            self.instagramFeed = data.entry_data.TagPage[0].tag.media.nodes;
         },
         error: function (error) {
           //alert(JSON.stringify(error));
@@ -337,6 +338,20 @@ var app = new Vue({
           window.open = cordova.InAppBrowser.open;
       }
       window.open(destination, target)
+<<<<<<< HEAD
+=======
+    },
+    createTwitter: function(d,s,id){
+      var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+      if(!d.getElementById(id)){
+        js=d.createElement(s);
+        js.id=id;js.src=p+"://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js,fjs);
+      }
+    },
+    loadPiwik: function(){
+
+>>>>>>> 41330c4f674dac4f070a675e16496424551833e9
     }
   }
 });
