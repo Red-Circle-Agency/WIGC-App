@@ -33,6 +33,7 @@ var app = new Vue({
     search: '',
     socialView: 'twitter',
     instagramFeed: {},
+    tweets: {},
     contactUs: {},
     exhibitorInfo: {},
     booths: [],
@@ -106,6 +107,7 @@ var app = new Vue({
         self.exhibitorInfo = data.pages.exhibitorinformation;
         self.booths = data.booths;
         self.loaded   = true;
+
       },
       error: function (error) {
         //alert(JSON.stringify(error));
@@ -113,9 +115,9 @@ var app = new Vue({
         self.my.view = "error";
       }
     });
-
+    //self.loadPiwik();
     self.getInstagramFeed();
-    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+    self.getTweets();
 
     var request = indexedDB.open("WIGCApp", 3);
 
@@ -163,8 +165,6 @@ var app = new Vue({
     request.onupgradeneeded = function(event) {
       var objStore = event.currentTarget.result.createObjectStore('my');
     };
-    //if(self.socialView === 'twitter')
-      //self.styleTwitterWidget();
   },
   methods: {
     toggleFavorite: function(faves,fave) {
@@ -279,20 +279,29 @@ var app = new Vue({
       }
       return false;
     },
-    styleTwitterWidget: function(){
-      var w = document.getElementById("twitter-widget-0").contentDocument;
-      var s = document.createElement("link");
-      s.href = "https://circle.red/wigc-app/css/wigc.css";
-      s.rel = "stylesheet";
-      w.head.appendChild(s);
-    },
     getInstagramFeed: function(){
       var self = this;
       $.ajax({
         url: 'https://circle.red/wigc/instagram.php?tag=mywigc',
         method: 'GET',
         success: function (data) {
-          self.instagramFeed = data.entry_data.TagPage[0].tag.media.nodes;
+          if(typeof(data.entry_data.TagPage[0].tag) !== "undefined")
+            self.instagramFeed = data.entry_data.TagPage[0].tag.media.nodes;
+        },
+        error: function (error) {
+          //alert(JSON.stringify(error));
+          self.error_msg = error.responseText;
+          self.my.view = "error";
+        }
+      });
+    },
+    getTweets: function(){
+      var self = this;
+      $.ajax({
+        url: 'https://circle.red/wigc/twitter/twitter.php',
+        method: 'GET',
+        success: function (data) {
+          self.tweets = data.statuses;
         },
         error: function (error) {
           //alert(JSON.stringify(error));
@@ -319,7 +328,7 @@ var app = new Vue({
       if(typeof(cordova.InAppBrowser) !== 'undefined'){
           window.open = cordova.InAppBrowser.open;
       }
-      window.open(destination, target)      
+      window.open(destination, target)
     }
   }
 });

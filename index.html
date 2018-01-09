@@ -4,7 +4,7 @@
     <title>WIGC</title>
     <!--link(href="https://fonts.googleapis.com/css?family=Catamaran:400,700|Libre+Baskerville:700" rel="stylesheet")-->
     <link href="css/wigc.css" rel="stylesheet">
-    <meta http-equiv="Content-Security-Policy" content="default-src * gap://ready file:; style-src 'self' 'unsafe-inline' *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; img-src * data:;">
+    <meta http-equiv="Content-Security-Policy" content="default-src * gap: file:; style-src 'self' 'unsafe-inline' *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; img-src * data:;">
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
     <meta name="format-detection" content="telephone=no">
     <!---->
@@ -351,7 +351,10 @@
             <svg class="icon" viewBox="0 0 512 512">
               <path d="M211.9 197.4h-36.7v59.9h36.7V433.1h70.5V256.5h49.2l5.2-59.1h-54.4c0 0 0-22.1 0-33.7 0-13.9 2.8-19.5 16.3-19.5 10.9 0 38.2 0 38.2 0V82.9c0 0-40.2 0-48.8 0 -52.5 0-76.1 23.1-76.1 67.3C211.9 188.8 211.9 197.4 211.9 197.4z"></path>
             </svg></a></nav>
-        <div class="social-wrapper twitter" v-bind:class="{visible: socialView == 'twitter'}"><a class="twitter-timeline" v-if="social.twitter_toggle != '0'" data-chrome="noheader nofooter transparent" data-tweet-limit="5" data-dnt="true" :href="'https://twitter.com/hashtag/'+social.twitter_hashtag" data-widget-id="923205064826740738"></a>
+        <div class="social-wrapper twitter" v-bind:class="{visible: socialView == 'twitter'}">
+          <article class="social-card instagram-post" v-for="tweet in tweets"><a class="twitter-avatar-link" :href="'http://www.twitter.com/' + tweet.user.screen_name"><img class="twitter-user--avatar" :src="tweet.user.profile_image_url_https"></a><a class="twitter-user" :href="'http://www.twitter.com/' + tweet.user.screen_name">{{tweet.user.name}}</a>
+            <p class="caption tweet-text" v-html="tweet.text"></p>
+          </article>
           <article class="card" v-if="social.twitter_leadin" v-html="social.twitter_leadin"></article>
           <div class="social-links twitter" v-if="social.twitter_button_url &amp;&amp; social.twitter_button_text"><a class="button" v-on:click="openLink(social.twitter_button_url, '_system');">
               <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8">
@@ -399,22 +402,8 @@
       <script src="cordova.js"></script>
       <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
       <script src="js/vendor/vue.js"></script>
-      <script src="http://hammerjs.github.io/dist/hammer.min.js"></script>
       <script src="js/pinch-zoom.js"></script>
       <script src="js/wigc.min.js"></script>
-      <!-- Piwik-->
-      <script>
-        var _paq = _paq || [];
-        _paq.push(['trackPageView']);
-        _paq.push(['enableLinkTracking']);
-        (function() {
-          var u="//circle.red/stats/";
-          _paq.push(['setTrackerUrl', u+'piwik.php']);
-          _paq.push(['setSiteId', '2']);
-          var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-          g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-        })();
-      </script>
     </div>
   </body>
 </html>
