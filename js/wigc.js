@@ -113,9 +113,9 @@ var app = new Vue({
         self.my.view = "error";
       }
     });
-
+    self.loadPiwik();
     self.getInstagramFeed();
-    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+    self.createTwitter(document,"script","twitter-wjs");
 
     var request = indexedDB.open("WIGCApp", 3);
 
@@ -292,7 +292,8 @@ var app = new Vue({
         url: 'https://circle.red/wigc/instagram.php?tag=mywigc',
         method: 'GET',
         success: function (data) {
-          self.instagramFeed = data.entry_data.TagPage[0].tag.media.nodes;
+          if(typeof(data.entry_data.TagPage[0].tag.media.nodes) !== "undefined")
+            self.instagramFeed = data.entry_data.TagPage[0].tag.media.nodes;
         },
         error: function (error) {
           //alert(JSON.stringify(error));
@@ -319,7 +320,18 @@ var app = new Vue({
       if(typeof(cordova.InAppBrowser) !== 'undefined'){
           window.open = cordova.InAppBrowser.open;
       }
-      window.open(destination, target)      
+      window.open(destination, target)
+    },
+    createTwitter: function(d,s,id){
+      var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+      if(!d.getElementById(id)){
+        js=d.createElement(s);
+        js.id=id;js.src=p+"://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js,fjs);
+      }
+    },
+    loadPiwik: function(){
+
     }
   }
 });

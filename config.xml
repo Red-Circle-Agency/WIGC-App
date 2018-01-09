@@ -52,6 +52,9 @@
         <splash density="port-mdpi" src="res/splash/android/drawable-mdpi/screen.png" />
         <splash density="port-xhdpi" src="res/splash/android/drawable-xhdpi/screen.png" />
     </platform>
+    <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="StatusBarDefaultScrollToTop" value="true" />
+    <preference name="StatusBarBackgroundColor" value="#494949" />
     <preference name="android-minSdkVersion" value="20" />
     <platform name="winphone" />
     <access origin="*" />
