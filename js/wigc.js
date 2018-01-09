@@ -115,6 +115,10 @@ var app = new Vue({
         self.my.view = "error";
       }
     });
+<<<<<<< HEAD
+=======
+    //self.loadPiwik();
+>>>>>>> 5303c7a32fb91c33edd96b125babcc78e47c4d88
     self.getInstagramFeed();
     self.getTweets();
 
@@ -164,8 +168,6 @@ var app = new Vue({
     request.onupgradeneeded = function(event) {
       var objStore = event.currentTarget.result.createObjectStore('my');
     };
-    //if(self.socialView === 'twitter')
-      //self.styleTwitterWidget();
   },
   methods: {
     toggleFavorite: function(faves,fave) {
@@ -279,13 +281,6 @@ var app = new Vue({
         return true;
       }
       return false;
-    },
-    styleTwitterWidget: function(){
-      var w = document.getElementById("twitter-widget-0").contentDocument;
-      var s = document.createElement("link");
-      s.href = "https://circle.red/wigc-app/css/wigc.css";
-      s.rel = "stylesheet";
-      w.head.appendChild(s);
     },
     getInstagramFeed: function(){
       var self = this;
