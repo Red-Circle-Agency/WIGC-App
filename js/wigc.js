@@ -33,6 +33,8 @@ var app = new Vue({
     search: '',
     socialView: 'twitter',
     instagramFeed: {},
+    igLoading: true,
+    tweetsLoading: true,
     tweets: {},
     contactUs: {},
     exhibitorInfo: {},
@@ -115,9 +117,6 @@ var app = new Vue({
         self.my.view = "error";
       }
     });
-    //self.loadPiwik();
-    self.getInstagramFeed();
-    self.getTweets();
 
     var request = indexedDB.open("WIGCApp", 3);
 
@@ -197,6 +196,10 @@ var app = new Vue({
       if(newView === 'Vendors' && typeof(anchor) !== 'undefined')
         self.showMyVendors = false;
       self.my.view = newView;
+      if(self.my.view == "social"){
+        self.getInstagramFeed();
+        self.getTweets();
+      }
       if(typeof(anchor) !== 'undefined'){
         setTimeout(function(){
           $('#' + anchor).parent('.cards').animate({scrollTop: document.getElementById(anchor).offsetTop - 50 });
@@ -287,6 +290,7 @@ var app = new Vue({
         success: function (data) {
           if(typeof(data.entry_data.TagPage[0].tag) !== "undefined")
             self.instagramFeed = data.entry_data.TagPage[0].tag.media.nodes;
+            self.igLoading = false;
         },
         error: function (error) {
           //alert(JSON.stringify(error));
@@ -302,6 +306,7 @@ var app = new Vue({
         method: 'GET',
         success: function (data) {
           self.tweets = data.statuses;
+          self.tweetsLoading = false;
         },
         error: function (error) {
           //alert(JSON.stringify(error));

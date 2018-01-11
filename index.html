@@ -280,7 +280,7 @@
         </div>
         <article class="card person" v-for="person in people" v-show="person.name.toLowerCase().includes(search.toLowerCase())" v-bind:class="{full: person.fullinfo}" :id="person.slug">
           <h3 class="title"><a v-if="person.url" v-on:click="person.fullinfo = !person.fullinfo">{{person.name}}</a><span v-else>{{person.name}}</span></h3>
-          <figure class="pic" v-if="person.pic" v-on:click="person.fullpic = !person.fullpic" v-bind:class="{full: person.fullpic}"><img :src="person.pic"></figure>
+          <figure class="pic" v-if="person.pic &amp;&amp; my.view == 'People'" v-on:click="person.fullpic = !person.fullpic" v-bind:class="{full: person.fullpic}"><img :src="person.pic"></figure>
           <div class="job" v-if="person.job_title &amp;&amp; person.company"><span class="job-title">{{person.job_title}}</span>,  <span class="company">{{person.company}}</span></div>
           <div class="job" v-else-if="person.job_title"><span class="job-title">{{person.job_title}}</span></div>
           <div class="job" v-else-if="person.company"><span class="company">{{person.company}}</span></div>
@@ -307,7 +307,7 @@
           <div class="level" v-if="sponsor.level"><span>{{sponsor.level}}</span></div>
           <h3 class="title">{{sponsor.name}}</h3>
           <div class="sponsored" v-if="sponsor.sponsored"><b>Sponsored: </b><a v-if="sponsor.sponsored_type &amp;&amp; sponsor.sponsored_slug" v-on:click="switchSection(sponsor.sponsored_type, sponsor.sponsored_slug)">{{sponsor.sponsored}}</a><a v-else-if="sponsor.sponsored_type" v-on:click="switchSection(sponsor.sponsored_type)">{{sponsor.sponsored}}</a><span v-else>{{sponsor.sponsored}}</span></div>
-          <figure class="pic" v-if="sponsor.logo" v-on:click="sponsor.fullpic = !sponsor.fullpic" v-bind:class="{full: sponsor.fullpic}"><img :src="sponsor.logo"></figure>
+          <figure class="pic" v-if="sponsor.logo &amp;&amp; my.view == 'Sponsors'" v-on:click="sponsor.fullpic = !sponsor.fullpic" v-bind:class="{full: sponsor.fullpic}"><img :src="sponsor.logo"></figure>
           <summary class="desc" v-if="sponsor.teaser &amp;&amp; !sponsor.fullinfo" v-html="sponsor.teaser"></summary>
         </article>
       </section>
@@ -352,9 +352,11 @@
               <path d="M211.9 197.4h-36.7v59.9h36.7V433.1h70.5V256.5h49.2l5.2-59.1h-54.4c0 0 0-22.1 0-33.7 0-13.9 2.8-19.5 16.3-19.5 10.9 0 38.2 0 38.2 0V82.9c0 0-40.2 0-48.8 0 -52.5 0-76.1 23.1-76.1 67.3C211.9 188.8 211.9 197.4 211.9 197.4z"></path>
             </svg></a></nav>
         <div class="social-wrapper twitter" v-bind:class="{visible: socialView == 'twitter'}">
-          <article class="social-card instagram-post" v-for="tweet in tweets"><a class="twitter-avatar-link" :href="'http://www.twitter.com/' + tweet.user.screen_name"><img class="twitter-user--avatar" :src="tweet.user.profile_image_url_https"></a><a class="twitter-user" :href="'http://www.twitter.com/' + tweet.user.screen_name">{{tweet.user.name}}</a>
+          <article class="social-card instagram-post" v-if="tweets" v-for="tweet in tweets"><a class="twitter-avatar-link" :href="'http://www.twitter.com/' + tweet.user.screen_name"><img class="twitter-user--avatar" :src="tweet.user.profile_image_url_https"></a><a class="twitter-user" :href="'http://www.twitter.com/' + tweet.user.screen_name">{{tweet.user.name}}</a>
             <p class="caption tweet-text" v-html="tweet.text"></p>
           </article>
+          <article class="card" v-if="tweetsLoading">Loading most recent Tweets. </article>
+          <article class="card" v-if="!tweetsLoading &amp;&amp; tweets.length == 0 ">No Tweets yet. </article>
           <article class="card" v-if="social.twitter_leadin" v-html="social.twitter_leadin"></article>
           <div class="social-links twitter" v-if="social.twitter_button_url &amp;&amp; social.twitter_button_text"><a class="button" v-on:click="openLink(social.twitter_button_url, '_system');">
               <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8">
@@ -365,6 +367,8 @@
           <article class="social-card instagram-post" v-if="social.instagram_toggle" v-for="instagramPost in instagramLatest"><img v-cloak :src="instagramPost.display_src">
             <p class="caption" v-html="instagramPost.caption"></p>
           </article>
+          <article class="card" v-if="igLoading">Loading most recent Instagram posts. </article>
+          <article class="card" v-if="!igLoading &amp;&amp; Object.keys(instagramFeed).length === 0">No Instagram posts yet. </article>
           <article class="card" v-if="social.instagram_leadin" v-html="social.instagram_leadin"></article>
           <div class="social-links instagram" v-if="social.instagram_button_url &amp;&amp; social.instagram_button_text"><a class="button" href="#" v-on:click="openLink(social.instagram_button_url, '_system');">
               <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
@@ -400,8 +404,8 @@
     </main>
     <div class="javascripts">
       <script src="cordova.js"></script>
-      <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-      <script src="js/vendor/vue.js"></script>
+      <script src="js/vendor/jquery-3.2.1.min.js"></script>
+      <script src="js/vendor/vue.min.js"></script>
       <script src="js/pinch-zoom.js"></script>
       <script src="js/wigc.min.js"></script>
     </div>
