@@ -25,7 +25,7 @@ var app = new Vue({
       'Casino Operations & Security',
       'Regulation',
       'Finance & Business Development',
-      'MCLEs'
+      'MCLE'
     ],
     social: {},
     unfavorited: [],
