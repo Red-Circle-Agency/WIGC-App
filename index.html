@@ -114,6 +114,7 @@
             <time class="when"><span class="datetime">{{session.date}} - {{session.time}}</span><span class="duration" v-if="session.duration">{{session.duration}}</span></time>
             <div class="where room" v-if="session.room">{{session.room}}</div>
           </div>
+          <div class="location" v-if="session.location"><strong>Location:</strong> <span v-text="session.location"></span></div>
           <summary class="desc" v-if="session.teaser &amp;&amp; !session.fullinfo" v-html="session.teaser"></summary>
           <div class="desc fulltext" v-if="session.text &amp;&amp; session.fullinfo" v-html="session.text"></div>
           <div class="people" v-if="session.people">
@@ -166,6 +167,7 @@
             <time class="when"><span class="datetime">{{session.date}} - {{session.time}}</span><span class="duration" v-if="session.duration">{{session.duration}}</span></time>
             <div class="where room" v-if="session.room">{{session.room}}</div>
           </div>
+          <div class="location" v-if="session.location"><strong>Location:</strong> <span v-text="session.location"></span></div>
           <div class="desc" v-if="session.teaser &amp;&amp; !session.fullinfo" v-html="session.teaser"></div>
           <div class="desc fulltext" v-if="session.text &amp;&amp; session.fullinfo" v-html="session.text"></div>
           <div class="people" v-if="session.people">
@@ -207,8 +209,9 @@
               </svg></a></h3>
           <div class="when-and-where">
             <time class="when"><span>{{session.date}} @ {{session.time}}</span><span v-if="session.duration">  ({{session.duration}})</span></time>
-            <div class="where room" v-if="session.room">{{session.room}}</div>
+            <div class="room" v-if="session.room"><strong>Room:</strong> <span v-text="session.location"></span></div>
           </div>
+          <div class="location" v-if="session.location"><strong>Location:</strong> <span v-text="session.location"></span></div>
           <summary class="desc" v-if="session.teaser &amp;&amp; !session.fullinfo" v-html="session.teaser"></summary>
           <div class="desc fulltext" v-if="session.text &amp;&amp; session.fullinfo" v-html="session.text"></div>
           <ul class="speakers" v-if="session.speakers">

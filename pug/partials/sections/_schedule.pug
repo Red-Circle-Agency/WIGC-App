@@ -17,6 +17,12 @@ section.cards.schedule(v-cloak v-bind:class="{ visible: my.view == 'Schedule' }"
         span.duration(v-if="session.duration")
           | {{session.duration}}
       .where.room(v-if="session.room") {{session.room}}
+    
+    .location(v-if="session.location")
+      strong Location:
+      |  
+      span(v-text="session.location")
+    
     summary.desc(v-if="session.teaser && !session.fullinfo" v-html="session.teaser")
     .desc.fulltext(v-if="session.text && session.fullinfo" v-html="session.text")
     .people(v-if="session.people")

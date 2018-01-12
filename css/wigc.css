@@ -1102,6 +1102,10 @@ figure.pic {
 .card.session .when-and-where {
   margin-bottom: 0.5em; }
 
+.card.session .location {
+  font-size: 90%;
+  margin-bottom: 0.5em; }
+
 .card.session time {
   text-transform: uppercase; }
   .card.session time span {
