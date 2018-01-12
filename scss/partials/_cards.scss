@@ -34,6 +34,9 @@
 }
 */
 
-figure.pic { width:92px; max-height: 92px; display: block; float: left; margin-left: -$padding; margin-right: 10px; margin-bottom: 10px; transition: all 0.3s ease; border-top-right-radius: $radius;  border-bottom-right-radius: $radius; overflow:hidden;
-  &.full { float: none; width:100%; max-height: none; text-align: center; border-radius:0; }
+figure.pic { width:92px; max-height: 92px; display: block; float: left; margin-left: -$padding; margin-right: 10px; margin-bottom: 10px; transition: all 0.3s ease; border-top-right-radius: $radius;  border-bottom-right-radius: $radius; overflow:hidden; text-align: center;
+  img { max-height: 92px; }
+  &.full { float: none; width:100%; max-height: none; text-align: center; border-radius:0;
+    img { max-height: none; }
+  }
 }
