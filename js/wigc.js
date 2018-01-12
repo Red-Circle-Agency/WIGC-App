@@ -29,7 +29,7 @@ var app = new Vue({
     ],
     social: {},
     unfavorited: [],
-    showMyVendors: true,
+    showMyVendors: false,
     search: '',
     socialView: 'twitter',
     instagramFeed: {},
@@ -128,6 +128,7 @@ var app = new Vue({
       self.db = this.result;
       self.getFavorites();
       self.my.view = "sessions";
+      self.my.sidebarVisible = true;
     };
     request.onupgradeneeded = function(event) {
       var objStore = event.currentTarget.result.createObjectStore('my');
@@ -150,7 +151,11 @@ var app = new Vue({
       // This improves the effectiveness of OneSignal's "best-time" notification scheduling feature.
       // window.plugins.OneSignal.syncHashedEmail(userEmail);
     }, false);
+    
+    self.showMyVendors = false;
+    
   },
+  
   updated: function() {
     var self = this;
     var request = indexedDB.open("WIGCApp", 3);
