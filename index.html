@@ -11,9 +11,9 @@
   </head>
   <body>
     <main id="app">
-      <div class="backgrounds">
-        <div class="bg-photo"></div>
-      </div>
+      <!-- Animated effect, commented out.-->
+      <!-- Static bg, for Android.-->
+      <div class="bg-photo darker"></div>
       <header>
         <div class="inside">
           <div class="logo wigc"><img src="svg/logos/wigc.svg"></div>
@@ -279,7 +279,7 @@
           <input class="people-search" type="text" placeholder="Search" v-model="search">
         </div>
         <article class="card person" v-for="person in people" v-show="person.name.toLowerCase().includes(search.toLowerCase())" v-bind:class="{full: person.fullinfo}" :id="person.slug">
-          <h3 class="title"><a v-if="person.url" v-on:click="person.fullinfo = !person.fullinfo">{{person.name}}</a><span v-else>{{person.name}}</span></h3>
+          <h3 class="title"><a v-if="person.text || person.website || person.email || person.linkedin || person.twitter" v-on:click="person.fullinfo = !person.fullinfo">{{person.name}}</a><span v-else>{{person.name}}</span></h3>
           <figure class="pic" v-if="person.pic &amp;&amp; my.view == 'People'" v-on:click="person.fullpic = !person.fullpic" v-bind:class="{full: person.fullpic}"><img :src="person.pic"></figure>
           <div class="job" v-if="person.job_title &amp;&amp; person.company"><span class="job-title">{{person.job_title}}</span>,  <span class="company">{{person.company}}</span></div>
           <div class="job" v-else-if="person.job_title"><span class="job-title">{{person.job_title}}</span></div>
@@ -404,8 +404,8 @@
     </main>
     <div class="javascripts">
       <script src="cordova.js"></script>
-      <script src="js/vendor/jquery-3.2.1.min.js"></script>
-      <script src="js/vendor/vue.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+      <script src="js/vendor/vue.js"></script>
       <script src="js/pinch-zoom.js"></script>
       <script src="js/wigc.min.js"></script>
     </div>

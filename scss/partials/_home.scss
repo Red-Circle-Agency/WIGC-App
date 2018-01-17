@@ -1,12 +1,12 @@
 video { @include position(fixed,null,null,0,0);min-width: 100%;  min-height: 100%; width: auto; height: auto;object-fit: fill; z-index: 1; opacity: 0.65; }
 
-section.home { @include cards(); transition:all 2s ease;
+section.home { @include cards(); transition:all 2s ease; @include flex-center();
   &.visible { transition-delay: 2s; }
   .welcome { @include card(); background-color:transparent; box-shadow: none; color:$white; text-shadow: 1px 1px 0 $black, -1px -1px 0 $black; font-size:130%; }
   h1 { margin-bottom: 0.5em; }
   
   
-  .card { color:$white; padding-left: 0; padding-right: 0; box-shadow:none; border:none; text-align: center; background: transparent; 
+  .card { color:$white; padding-left: 0; padding-right: 0; box-shadow:none; border:none; text-align: center; background: transparent; text-shadow: 1px 1px 1px $black;
     h2, h3, h4 { margin-bottom: 0.75em; }
   }
   

@@ -1,3 +1,4 @@
+- var testing = true
 doctype html
 html(lang="en")
   head
@@ -11,11 +12,15 @@ html(lang="en")
   body
     main#app
 
-      .backgrounds
+      // Animated effect, commented out.
+      //-.backgrounds
         .bg-photo
-        //-.bg
-        //-.bg.bg2
-        //-.bg.bg3
+        .bg
+        .bg.bg2
+        .bg.bg3
+        
+      // Static bg, for Android.
+      .bg-photo.darker
 
 
       include partials/_header
