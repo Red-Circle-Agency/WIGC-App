@@ -16,7 +16,15 @@ section.cards.parties(v-cloak v-bind:class="{ visible: my.view == 'Networking Ev
         span {{session.date}} @ {{session.time}}
         span(v-if="session.duration")
           |   ({{session.duration}})
-      .where.room(v-if="session.room") {{session.room}}
+      .room(v-if="session.room")
+        strong Room:
+        |  
+        span(v-text="session.location")
+    .location(v-if="session.location")
+        strong Location:
+        |  
+        span(v-text="session.location")
+    
     summary.desc(v-if="session.teaser && !session.fullinfo" v-html="session.teaser")
     .desc.fulltext(v-if="session.text && session.fullinfo" v-html="session.text")
     ul.speakers(v-if="session.speakers")

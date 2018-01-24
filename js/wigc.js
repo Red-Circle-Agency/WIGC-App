@@ -29,7 +29,7 @@ var app = new Vue({
     ],
     social: {},
     unfavorited: [],
-    showMyVendors: true,
+    showMyVendors: false,
     search: '',
     socialView: 'twitter',
     instagramFeed: {},
@@ -149,6 +149,10 @@ var app = new Vue({
       // This improves the effectiveness of OneSignal's "best-time" notification scheduling feature.
       // window.plugins.OneSignal.syncHashedEmail(userEmail);
     }, false);
+    
+    self.my.sidebarVisible = false;
+    self.showMyVendors = false;
+    
   },
   updated: function() {
     var self = this;
@@ -329,11 +333,13 @@ var app = new Vue({
       }
       return device;
     },
-    openLink: function(destination, target){
-      if(typeof(cordova.InAppBrowser) !== 'undefined'){
-          window.open = cordova.InAppBrowser.open;
+    openLink: function(destination, target) {
+      if (cordova === undefined) {
+        //window.open(destination, target)
+        alert('yes 339');
+      } else {
+        alert('no 341')
       }
-      window.open(destination, target)
     }
   }
 });

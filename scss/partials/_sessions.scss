@@ -42,6 +42,7 @@
     span { font-family: $sans; font-size:1rem; font-weight: $light; display: inline-block; padding-right: 2em; border-bottom: 1px solid currentColor; line-height: 100%; text-transform: uppercase; }
   }
   .when-and-where { margin-bottom: 0.5em; }
+  .location { font-size: 90%; margin-bottom: 0.5em; }
   time { text-transform: uppercase;
     span { display:block; }
     .duration { font-size:80%; }
