@@ -28,8 +28,8 @@ section.cards.social(v-cloak v-bind:class="{ visible: my.view == 'social' }")
         span {{social.twitter_button_text}}
   .social-wrapper.instagram(v-bind:class="{visible: socialView == 'instagram'}")
     article.social-card.instagram-post(v-if="social.instagram_toggle" v-for="instagramPost in instagramLatest")
-      img(v-cloak :src="instagramPost.display_src")
-      p.caption(v-html="instagramPost.caption")
+      img(v-cloak :src="instagramPost.node.display_url")
+      p.caption(v-html="instagramPost.node.edge_media_to_caption.edges[0].node.text")
     article.card(v-if="igLoading") Loading most recent Instagram posts. 
     article.card(v-if="!igLoading && Object.keys(instagramFeed).length === 0") No Instagram posts yet. 
     article.card(v-if="social.instagram_leadin" v-html="social.instagram_leadin")

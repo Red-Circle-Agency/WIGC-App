@@ -288,8 +288,8 @@ var app = new Vue({
         url: 'https://circle.red/wigc/instagram.php?tag=mywigc',
         method: 'GET',
         success: function (data) {
-          if(typeof(data.entry_data.TagPage[0].tag) !== "undefined")
-            self.instagramFeed = data.entry_data.TagPage[0].tag.media.nodes;
+          if(typeof(data.entry_data.TagPage[0].graphql.hashtag.edge_hashtag_to_media.edges) !== "undefined")
+            self.instagramFeed = data.entry_data.TagPage[0].graphql.hashtag.edge_hashtag_to_media.edges;
             self.igLoading = false;
         },
         error: function (error) {

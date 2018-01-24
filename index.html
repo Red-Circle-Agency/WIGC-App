@@ -364,8 +364,8 @@
               </svg><span>{{social.twitter_button_text}}</span></a></div>
         </div>
         <div class="social-wrapper instagram" v-bind:class="{visible: socialView == 'instagram'}">
-          <article class="social-card instagram-post" v-if="social.instagram_toggle" v-for="instagramPost in instagramLatest"><img v-cloak :src="instagramPost.display_src">
-            <p class="caption" v-html="instagramPost.caption"></p>
+          <article class="social-card instagram-post" v-if="social.instagram_toggle" v-for="instagramPost in instagramLatest"><img v-cloak :src="instagramPost.node.display_url">
+            <p class="caption" v-html="instagramPost.node.edge_media_to_caption.edges[0].node.text"></p>
           </article>
           <article class="card" v-if="igLoading">Loading most recent Instagram posts. </article>
           <article class="card" v-if="!igLoading &amp;&amp; Object.keys(instagramFeed).length === 0">No Instagram posts yet. </article>
