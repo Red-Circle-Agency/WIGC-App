@@ -149,10 +149,10 @@ var app = new Vue({
       // This improves the effectiveness of OneSignal's "best-time" notification scheduling feature.
       // window.plugins.OneSignal.syncHashedEmail(userEmail);
     }, false);
-    
+
     self.my.sidebarVisible = false;
     self.showMyVendors = false;
-    
+
   },
   updated: function() {
     var self = this;
