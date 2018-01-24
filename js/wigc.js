@@ -333,11 +333,13 @@ var app = new Vue({
       }
       return device;
     },
-    openLink: function(destination, target){
-      if(typeof(cordova.InAppBrowser) !== 'undefined'){
-          window.open = cordova.InAppBrowser.open;
+    openLink: function(destination, target) {
+      if (cordova === undefined) {
+        //window.open(destination, target)
+        alert('yes 339');
+      } else {
+        alert('no 341')
       }
-      window.open(destination, target)
     }
   }
 });
