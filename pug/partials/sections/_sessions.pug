@@ -42,13 +42,13 @@ section.cards.sessions(v-cloak v-bind:class="{ visible: my.view == 'Seminars' }"
         li.person(v-for="person in session.people" v-bind:class="{ full: person.fullinfo }")
           .role-and-name
             b.role(v-if="person.role") {{person.role}}:
-            a.name(v-if="person.url" v-on:click="person.fullinfo = !person.fullinfo") {{person.name}}
+            a.name(v-if="person.text" v-on:click="person.fullinfo = !person.fullinfo") {{person.name}}
             span.name(v-else) {{person.name}}
           .job-and-company(v-if="person.job_title || person.company")
             span.job(v-if="person.job_title") {{person.job_title}}
             span(v-if="person.job_title && person.company") ,
             span.company(v-if="person.company") {{person.company}}
-          figure.pic(v-if="person.fullinfo" v-on:click="person.fullpic = !person.fullpic" v-bind:class="{ full :person.fullpic }")
+          figure.pic(v-if="person.fullinfo && person.pic" v-on:click="person.fullpic = !person.fullpic" v-bind:class="{ full :person.fullpic }")
             img(:src="person.pic")
           summary.desc(v-show="person.fullinfo" v-html="person.text")
           .person-contacts.contacts(v-show="person.fullinfo")

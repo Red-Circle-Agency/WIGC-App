@@ -48,10 +48,12 @@
     .duration { font-size:80%; }
   }
   .desc { margin-bottom: 0.5em; }
-  .people { padding-left: 0; font-size:85%;
+  .people { padding-left: 0; font-size:85%;  padding-top: 1em;
     ul { padding-left: 0; }
     .presented-by { letter-spacing: 0.1em; text-transform: uppercase; }
     figure { margin-top: 10px; }
-    li { margin-bottom: 0.25em; list-style: none; }
+    li { margin-bottom: 0.75em; list-style: none; }
+    .job-and-company { font-size:85%; padding-left: 10px; }
+    .desc { font-size:90%; padding-left: 10px; padding-top: 10px; }
   }
 }

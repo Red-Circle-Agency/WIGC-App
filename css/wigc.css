@@ -1137,7 +1137,8 @@ figure.pic {
 
 .card.session .people {
   padding-left: 0;
-  font-size: 85%; }
+  font-size: 85%;
+  padding-top: 1em; }
   .card.session .people ul {
     padding-left: 0; }
   .card.session .people .presented-by {
@@ -1146,8 +1147,15 @@ figure.pic {
   .card.session .people figure {
     margin-top: 10px; }
   .card.session .people li {
-    margin-bottom: 0.25em;
+    margin-bottom: 0.75em;
     list-style: none; }
+  .card.session .people .job-and-company {
+    font-size: 85%;
+    padding-left: 10px; }
+  .card.session .people .desc {
+    font-size: 90%;
+    padding-left: 10px;
+    padding-top: 10px; }
 
 .card.vendor {
   padding-bottom: 0; }
