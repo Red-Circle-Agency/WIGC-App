@@ -420,6 +420,20 @@
       <script src="cordova.js"></script>
       <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
       <script src="js/vendor/vue.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+      <script>
+        // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyBuD56Pa5iOAH1D63qdfYjsG9paGeigiRA",
+          authDomain: "wigc-31e4b.firebaseapp.com",
+          databaseURL: "https://wigc-31e4b.firebaseio.com",
+          projectId: "wigc-31e4b",
+          storageBucket: "wigc-31e4b.appspot.com",
+          messagingSenderId: "285403687620"
+        };
+        firebase.initializeApp(config);
+        var database = firebase.database();
+      </script>
       <script src="js/pinch-zoom.js"></script>
       <script src="js/wigc.min.js"></script>
     </div>

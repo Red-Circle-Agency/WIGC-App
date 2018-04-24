@@ -93,10 +93,26 @@ var app = new Vue({
   },
   mounted: function () {
     var self = this;
+    self.bindEvents();
     //trackEvent('Load', self.parseUserAgent());
+
+    /*
+    fbios.once('value', function(id){
+      console.log(id.key);
+      console.log(id.val());
+    });
+    */
+    /*fbios.set({
+      deviceID: "Some new id",
+    });
+    fband.set({
+      deviceID: "Some new ANDROID id",
+    });*/
+
+
     $.ajax({
-      url: 'https://circle.red/wigc/',
-      //url: 'http://localhost/wigc/',
+      //url: 'https://circle.red/wigc/',
+      url: 'http://localhost/wigc/',
       method: 'GET',
       success: function (data) {
         self.home     = data.home;
@@ -132,24 +148,6 @@ var app = new Vue({
       var objStore = event.currentTarget.result.createObjectStore('my');
     };
 
-    document.addEventListener('deviceready', function () {
-      // Enable to debug issues.
-       window.plugins.OneSignal.setLogLevel({logLevel: 1, visualLevel: 1});
-       console.log("Device Ready!");
-      var notificationOpenedCallback = function(jsonData) {
-        console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
-      };
-
-      window.plugins.OneSignal
-        .startInit("2405a721-a178-45fb-a787-a1bf43a2e74c")
-        .handleNotificationOpened(notificationOpenedCallback)
-        .endInit();
-
-      // Call syncHashedEmail anywhere in your app if you have the user's email.
-      // This improves the effectiveness of OneSignal's "best-time" notification scheduling feature.
-      // window.plugins.OneSignal.syncHashedEmail(userEmail);
-    }, false);
-
     self.my.sidebarVisible = false;
     self.showMyVendors = false;
 
@@ -170,6 +168,71 @@ var app = new Vue({
     };
   },
   methods: {
+    bindEvents: function() {
+      console.log('Bind Events');
+      document.addEventListener('deviceready', this.onDeviceReady, false);
+    },
+    onDeviceReady: function() {
+      var self = this;
+      self.deviceready = true;
+      console.log('Received Device Ready Event');
+      console.log('calling setup push');
+      app.setupPush();
+    },
+    setupPush: function() {
+      var self = this;
+
+      console.log('calling push init');
+      var push = PushNotification.init({
+        "android": {
+          "icon": "white",
+          "iconColor": "#f26c51",
+          "senderID": "285403687620"
+        },
+        "browser": {},
+        "ios": {
+          "sound": true,
+          "vibration": true,
+          "badge": true
+        },
+        "windows": {}
+      });
+      console.log('after init');
+
+      push.on('registration', function(data) {
+        console.log('registration event: ' + data.registrationId);
+        console.log('Device Type: ' + data.registrationType);
+        var deviceType = data.registrationType === 'FCM' ? 'android' : 'ios';
+        var fbDeviceRef = firebase.database().ref(deviceType).push();
+        fbDeviceRef.set({
+          deviceID: data.registrationId,
+        });
+        var oldRegId = localStorage.getItem('registrationId');
+        if (oldRegId !== data.registrationId) {
+          // Save new registration ID
+          // Call update API method
+          localStorage.setItem('registrationId', data.registrationId);
+          // Post registrationId to your app server as the value has changed
+          // NOTE: ONLY SEND DEVICE ID TO SERVER IF THE USER IS LOGGED IN
+          // I.E. USE THE CHECK LOGIN CODE METHOD
+        }
+      });
+
+      push.on('error', function(e) {
+        console.log("push error = " + e.message);
+      });
+
+      push.on('notification', function(data) {
+        console.log('notification event');
+        navigator.notification.alert(
+          data.message,         // message
+          null,                 // callback
+          data.title,           // title
+          'Ok'                  // buttonName
+        );
+      });
+    },
+
     toggleFavorite: function(faves,fave) {
       var self = this;
       fave.favorite = !fave.favorite;
