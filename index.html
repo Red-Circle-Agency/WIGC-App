@@ -363,11 +363,6 @@
               <path d="M211.9 197.4h-36.7v59.9h36.7V433.1h70.5V256.5h49.2l5.2-59.1h-54.4c0 0 0-22.1 0-33.7 0-13.9 2.8-19.5 16.3-19.5 10.9 0 38.2 0 38.2 0V82.9c0 0-40.2 0-48.8 0 -52.5 0-76.1 23.1-76.1 67.3C211.9 188.8 211.9 197.4 211.9 197.4z"></path>
             </svg></a></nav>
         <div class="social-wrapper twitter" v-bind:class="{visible: socialView == 'twitter'}">
-          <article class="social-card instagram-post" v-if="tweets" v-for="tweet in tweets"><a class="twitter-avatar-link" :href="'http://www.twitter.com/' + tweet.user.screen_name"><img class="twitter-user--avatar" :src="tweet.user.profile_image_url_https"></a><a class="twitter-user" :href="'http://www.twitter.com/' + tweet.user.screen_name">{{tweet.user.name}}</a>
-            <p class="caption tweet-text" v-html="tweet.text"></p>
-          </article>
-          <article class="card" v-if="tweetsLoading">Loading most recent Tweets. </article>
-          <article class="card" v-if="!tweetsLoading &amp;&amp; tweets.length == 0 ">No Tweets yet. </article>
           <article class="card" v-if="social.twitter_leadin" v-html="social.twitter_leadin"></article>
           <div class="social-links twitter" v-if="social.twitter_button_url &amp;&amp; social.twitter_button_text"><a class="button" v-bind:href="social.twitter_button_url" target="_blank">
               <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8">
@@ -376,11 +371,6 @@
           </div>
         </div>
         <div class="social-wrapper instagram" v-bind:class="{visible: socialView == 'instagram'}">
-          <article class="social-card instagram-post" v-if="social.instagram_toggle" v-for="instagramPost in instagramLatest"><img v-cloak :src="instagramPost.node.display_url">
-            <p class="caption" v-html="instagramPost.node.edge_media_to_caption.edges[0].node.text"></p>
-          </article>
-          <article class="card" v-if="igLoading">Loading most recent Instagram posts. </article>
-          <article class="card" v-if="!igLoading &amp;&amp; Object.keys(instagramFeed).length === 0">No Instagram posts yet. </article>
           <article class="card" v-if="social.instagram_leadin" v-html="social.instagram_leadin"></article>
           <div class="social-links instagram" v-if="social.instagram_button_url &amp;&amp; social.instagram_button_text"><a class="button" v-bind:href="social.instagram_button_url" target="_blank">
               <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">

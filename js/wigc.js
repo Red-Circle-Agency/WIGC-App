@@ -201,8 +201,8 @@ var app = new Vue({
         self.showMyVendors = false;
       self.my.view = newView;
       if(self.my.view == "social"){
-        self.getInstagramFeed();
-        self.getTweets();
+        //self.getInstagramFeed();
+        //self.getTweets();
       }
       if(typeof(anchor) !== 'undefined'){
         setTimeout(function(){
