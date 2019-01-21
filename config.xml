@@ -1,13 +1,14 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.wigc.wigc" version="1.32" versionCode="10006" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.wigc.wigc" version="1.4" versionCode="10007" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>WIGC</name>
     <description>
-    Companion app for Western Indian Gaming Conference, February 6 – 8, 2018.
+    Companion app for Western Indian Gaming Conference, February 4 - 7, 2019.
   </description>
     <author email="dev@redcircleagency.com" href="https://www.redcircleagency.com">
     Red Circle Agency
   </author>
     <platform name="android">
+    
         <icon density="ldpi" src="res/icons/android/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="res/icons/android/drawable-mdpi-icon.png" />
         <icon density="hdpi" src="res/icons/android/drawable-hdpi-icon.png" />
@@ -21,7 +22,6 @@
         <splash platform="android" qualifier="xhdpi"   src="res/screens/android/drawable-port-xhdpi-screen.png" />
         <splash platform="android" qualifier="xxhdpi"  src="res/screens/android/drawable-port-xxhdpi-screen.png" />
         <splash platform="android" qualifier="xxxhdpi" src="res/screens/android/drawable-port-xxxhdpi-screen.png" />
-      
       
     </platform>
     <platform name="ios">
