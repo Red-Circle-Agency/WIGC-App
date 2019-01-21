@@ -8,7 +8,7 @@
     Red Circle Agency
   </author>
     <platform name="android">
-    
+
         <icon density="ldpi" src="res/icons/android/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="res/icons/android/drawable-mdpi-icon.png" />
         <icon density="hdpi" src="res/icons/android/drawable-hdpi-icon.png" />
@@ -55,7 +55,7 @@
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="StatusBarDefaultScrollToTop" value="true" />
     <preference name="StatusBarBackgroundColor" value="#494949" />
-    <preference name="android-minSdkVersion" value="20" />
+    <preference name="android-minSdkVersion" value="26" />
     <platform name="winphone" />
     <access origin="*" />
     <allow-intent href="*" />
