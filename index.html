@@ -295,6 +295,12 @@
           <div class="job" v-if="person.job_title &amp;&amp; person.company"><span class="job-title">{{person.job_title}}</span>,  <span class="company">{{person.company}}</span></div>
           <div class="job" v-else-if="person.job_title"><span class="job-title">{{person.job_title}}</span></div>
           <div class="job" v-else-if="person.company"><span class="company">{{person.company}}</span></div>
+          <div class="appearing" v-if="person.sessions">
+            <div class="label">Presenting</div>
+            <div class="ses" v-for="ses in person.sessions"><strong>{{ses.name}}</strong>
+              <time>{{ses.date}} @ {{ses.time}}</time>
+            </div>
+          </div>
           <!--.desc.fulltext(v-if="person.text" v-html="person.text")-->
           <summary class="desc" v-if="person.teaser &amp;&amp; !person.fullinfo" v-html="person.teaser"></summary>
           <div class="desc fulltext" v-if="person.text &amp;&amp; person.fullinfo" v-html="person.text"></div>

@@ -201,7 +201,8 @@ section.home .welcome:after, .cards .card:after, .card.vendor:after, .social-wra
 html {
   font-size: 18px; }
 
-html, body {
+html,
+body {
   overflow: hidden; }
 
 img {
@@ -215,7 +216,8 @@ a {
   cursor: pointer;
   color: #17680f; }
 
-b, strong {
+b,
+strong {
   font-weight: 600; }
 
 h1 {
@@ -309,6 +311,7 @@ header {
     -ms-flex-negative: 0;
     flex-shrink: 0;
     -ms-flex-item-align: auto;
+    -ms-grid-row-align: auto;
     align-self: auto;
     padding-top: 12px; }
   header .current-screen {
@@ -321,6 +324,7 @@ header {
     -ms-flex-negative: 0;
     flex-shrink: 0;
     -ms-flex-item-align: auto;
+    -ms-grid-row-align: auto;
     align-self: auto; }
   header .logo.cniga {
     width: 80px;
@@ -332,6 +336,7 @@ header {
     -ms-flex-negative: 0;
     flex-shrink: 0;
     -ms-flex-item-align: auto;
+    -ms-grid-row-align: auto;
     align-self: auto;
     padding-top: 4px; }
     header .logo.cniga .sun {
@@ -539,7 +544,8 @@ footer {
     margin-right: 1em;
     cursor: pointer;
     font-size: 16px;
-    font-weight: 600; }
+    font-weight: 600;
+    font-size: 13px; }
 
 section.loading {
   position: fixed;
@@ -1098,6 +1104,7 @@ figure.pic {
       -ms-flex-negative: 1;
       flex-shrink: 1;
       -ms-flex-item-align: auto;
+      -ms-grid-row-align: auto;
       align-self: auto;
       padding: .5em;
       text-align: center; }
@@ -1214,6 +1221,7 @@ figure.pic {
     -ms-flex-negative: 1;
     flex-shrink: 1;
     -ms-flex-item-align: auto;
+    -ms-grid-row-align: auto;
     align-self: auto;
     padding-top: 0.25em;
     padding-bottom: 0.25em;
@@ -1230,6 +1238,11 @@ figure.pic {
 
 .card.person .company {
   font-weight: 600; }
+
+.card.person .appearing {
+  clear: both;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em; }
 
 .sponsors .sponsored {
   font-family: "DejaVu", "Papyrus", serif;
@@ -1306,6 +1319,7 @@ figure.pic {
     -ms-flex-negative: 1;
     flex-shrink: 1;
     -ms-flex-item-align: auto;
+    -ms-grid-row-align: auto;
     align-self: auto; }
   .map img {
     width: 100%; }
@@ -1529,6 +1543,7 @@ section.meetoo {
     -ms-flex-negative: 1;
     flex-shrink: 1;
     -ms-flex-item-align: auto;
+    -ms-grid-row-align: auto;
     align-self: auto;
     background-color: #F86C4F;
     border-radius: 50%;

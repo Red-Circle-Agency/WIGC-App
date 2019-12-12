@@ -4,7 +4,7 @@ footer { @include position(fixed,null,0,0,0); background:rgba($black,0.77); z-in
     &.visible { transform: translateX(0); }
   }
   nav {
-    a { color:$white; font-family: $sans; text-transform: uppercase; margin-right: 1em; cursor: pointer; font-size:16px; font-weight: 600; }
+    a { color:$white; font-family: $sans; text-transform: uppercase; margin-right: 1em; cursor: pointer; font-size:16px; font-weight: 600; font-size: 13px;; }
   }
   
   /*
