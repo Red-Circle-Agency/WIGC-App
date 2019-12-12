@@ -297,7 +297,7 @@
           <div class="job" v-else-if="person.company"><span class="company">{{person.company}}</span></div>
           <div class="appearing" v-if="person.sessions">
             <div class="label">Presenting</div>
-            <div class="ses" v-for="ses in person.sessions"><strong>{{ses.name}}</strong>
+            <div class="ses" v-for="ses in person.sessions"><strong><a @click="switchSection('Seminars',ses.slug)">{{ses.name}}</a></strong>
               <time>{{ses.date}} @ {{ses.time}}</time>
             </div>
           </div>

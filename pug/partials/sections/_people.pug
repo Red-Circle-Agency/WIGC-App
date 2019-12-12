@@ -19,7 +19,8 @@ section.cards.people(v-cloak v-bind:class="{ visible: my.view == 'People' }")
     .appearing(v-if="person.sessions")
       .label Presenting
       .ses(v-for="ses in person.sessions")
-        strong {{ses.name}}
+        strong
+          a(@click="switchSection('Seminars',ses.slug)") {{ses.name}}
         time {{ses.date}} @ {{ses.time}}
 
 
