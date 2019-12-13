@@ -55,7 +55,7 @@
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="StatusBarDefaultScrollToTop" value="true" />
     <preference name="StatusBarBackgroundColor" value="#494949" />
-    <preference name="android-minSdkVersion" value="20" />
+    <preference name="android-minSdkVersion" value="28" />
     <platform name="winphone" />
     <access origin="*" />
     <allow-intent href="*" />
