@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.wigc.wigc" version="1.41.01" versionCode="10009" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.wigc.wigc" version="1.42.01" versionCode="11000" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>WIGC</name>
     <description>
-    Companion app for Western Indian Gaming Conference, February 4 - 7, 2019.
+    Companion app for Western Indian Gaming Conference, February 10 - 13, 2020.
   </description>
     <author email="dev@redcircleagency.com" href="https://www.redcircleagency.com">
     Red Circle Agency
