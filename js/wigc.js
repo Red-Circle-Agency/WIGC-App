@@ -64,11 +64,20 @@ var app = new Vue({
       var self = this;
       return self.sessions.filter(function(s){
         if(s.type === 'sessions') {
-          if((self.selectedTracks.indexOf(s.track) !== -1) || (self.selectedTracks.length === 0))
+          if((self.selectedTracks.indexOf(s.track) !== -1) || (self.selectedTracks.length === 0) || s.headerText)
             return true;
         }
       });
     },
+    /*
+    seminarsWithHeaderText: function() {
+      let self = this;
+      let lastDate = "";
+      for (let seminar in self.seminars) {
+        if 
+      }
+    }
+    */
     filterIndicator:function(){
       var self = this;
       if( self.selectedTracks.length === 0 || self.selectedTracks.length === self.tracks.length)

@@ -850,6 +850,11 @@ section.error {
     -webkit-transform: translateY(0);
     -ms-transform: translateY(0);
     transform: translateY(0); }
+  .cards .session-header-text {
+    margin: 0 24px 24px 24px;
+    font-family: "Sen", "Comic Sans MS", "Comic Sans", cursive;
+    color: #eee;
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4), -1px -1px 0 rgba(0, 0, 0, 0.8); }
   .cards .card {
     margin: 0 24px 24px 24px;
     padding: 24px;
@@ -1587,3 +1592,5 @@ section.meetoo {
 
 body {
   background: #feecce; }
+
+/*# sourceMappingURL=wigc.css.map */

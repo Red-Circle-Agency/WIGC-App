@@ -1,4 +1,6 @@
 .cards { @include cards();
+
+  .session-header-text { margin: 0 24px 24px 24px; font-family: $sans; color:$white; text-shadow: 4px 4px 4px rgba(0,0,0,0.4), -1px -1px 0 rgba(0,0,0,0.8); }
   .card { @include card(); border-radius: $radius;
     .close-button{ display: inline-block; position: absolute; text-align: right; right: $padding; top: $padding;
       svg{ width: 1.5em;
