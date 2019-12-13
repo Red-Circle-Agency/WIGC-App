@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "632004963128",
+    "firebase_url": "https://wigc-822bf.firebaseio.com",
+    "project_id": "wigc-822bf",
+    "storage_bucket": "wigc-822bf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632004963128:android:7efe0af3ad40eb1c5a2fcd",
+        "android_client_info": {
+          "package_name": "com.wigc.wigc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "632004963128-84ue6ka1elcn2pgqf5f3g20f6u7jmgun.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATAneLQXtU6zXuOk9-DEf_735p6-9fbs0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "632004963128-84ue6ka1elcn2pgqf5f3g20f6u7jmgun.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

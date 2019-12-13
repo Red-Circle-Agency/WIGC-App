@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>632004963128-eg61mn1teo9069ft8dnhg7sjtql7qmou.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.632004963128-eg61mn1teo9069ft8dnhg7sjtql7qmou</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBzJt--xOFVihaFkT-ggqOAVZJAqrev8BI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>632004963128</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.wigc.wigc</string>
+	<key>PROJECT_ID</key>
+	<string>wigc-822bf</string>
+	<key>STORAGE_BUCKET</key>
+	<string>wigc-822bf.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:632004963128:ios:ae51af1385ef060c5a2fcd</string>
+	<key>DATABASE_URL</key>
+	<string>https://wigc-822bf.firebaseio.com</string>
+</dict>
+</plist>
