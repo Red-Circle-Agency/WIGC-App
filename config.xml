@@ -7,6 +7,10 @@
     <author email="dev@redcircleagency.com" href="https://www.redcircleagency.com">
     Red Circle Agency
   </author>
+
+
+    <preference name="phonegap-version" value="cli-9.0.0" />
+
     <platform name="android">
 
         <icon density="ldpi" src="res/icons/android/drawable-ldpi-icon.png" />
