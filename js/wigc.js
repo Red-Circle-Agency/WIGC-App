@@ -213,10 +213,12 @@ var app = new Vue({
         //self.getInstagramFeed();
         //self.getTweets();
       }
+
       if(typeof(anchor) !== 'undefined'){
+        //alert(anchor)
         setTimeout(function(){
-          $('#' + anchor).parent('.cards').animate({scrollTop: document.getElementById(anchor).offsetTop - 50 });
-        },1000);
+          $('#' + anchor).parents('.cards').animate({scrollTop: document.getElementById(anchor).offsetTop - 50 });
+        },1350);
       }
       trackEvent("Screen", self.my.view);
     },

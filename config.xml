@@ -9,7 +9,7 @@
   </author>
 
 
-    <preference name="phonegap-version" value="cli-9.0.0" />
+    <preference name="phonegap-version" value="cli-8.1.1" />
 
     <platform name="android">
 
@@ -26,7 +26,6 @@
         <splash platform="android" qualifier="xhdpi"   src="res/screens/android/drawable-port-xhdpi-screen.png" />
         <splash platform="android" qualifier="xxhdpi"  src="res/screens/android/drawable-port-xxhdpi-screen.png" />
         <splash platform="android" qualifier="xxxhdpi" src="res/screens/android/drawable-port-xxxhdpi-screen.png" />
-      
     </platform>
     <platform name="ios">
 
