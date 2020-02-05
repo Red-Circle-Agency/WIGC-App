@@ -212,7 +212,7 @@
         </div>
       </section>
       <section class="cards parties" v-cloak v-bind:class="{ visible: my.view == 'Networking Events' }">
-        <article class="card session" v-for="session in sessions" v-if="session.type == 'parties'" :class="{full: session.fullinfo }" :id="session.slug">
+        <article class="card session" v-for="session in sessions" v-if="session.type == 'parties' &amp;&amp; !session.headerText" :class="{full: session.fullinfo }" :id="session.slug">
           <h3 class="title"> <a v-if="session.text &amp;&amp; session.text != session.teaser" v-on:click="session.fullinfo = !session.fullinfo">{{session.title}}</a><span v-else>{{session.title}}</span><a class="favorite" v-on:click="toggleFavorite(my.sessions, session);" :class="{active: session.favorite}">
               <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                 <path class="fill" d="M49.8 1.6L64.6 33l33 5.1-23.9 24.4 5.7 34.6-29.6-16.3-29.5 16.3 5.6-34.6L2 38.1 35 33z"></path>

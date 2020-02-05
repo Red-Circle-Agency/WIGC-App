@@ -1,5 +1,5 @@
 section.cards.parties(v-cloak v-bind:class="{ visible: my.view == 'Networking Events' }")
-  article.card.session(v-for="session in sessions" v-if="session.type == 'parties'"  :class="{full: session.fullinfo }" :id="session.slug")
+  article.card.session(v-for="session in sessions" v-if="session.type == 'parties' && !session.headerText" :class="{full: session.fullinfo }" :id="session.slug")
     h3.title 
       a(v-if="session.text && session.text != session.teaser" v-on:click="session.fullinfo = !session.fullinfo") {{session.title}}
       span(v-else) {{session.title}}
