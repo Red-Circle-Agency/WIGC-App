@@ -19,7 +19,7 @@
     "browser": "^0.2.6",
     "cordova-android": "^6.3.0",
     "cordova-ios": "^4.5.4",
-    "cordova-plugin-inappbrowser": "^1.7.1",
+    "cordova-plugin-inappbrowser": "^3.1.0",
     "cordova-plugin-splashscreen": "^4.1.0",
     "cordova-plugin-statusbar": "^2.3.0",
     "cordova-plugin-whitelist": "~1.2.1",
